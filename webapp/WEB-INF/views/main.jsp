@@ -10,16 +10,26 @@
 <jsp:include page="../../resources/include/headerMain.jsp" flush="false"/>
 
 <style>
+
+
 p{
 	margin-top: 5px;
 	padding: 0px;
 	font-size: 2em;
 }
+
+#video{
+margin-top : 50px;
+margin-bottom : 50px;
+}
+
 </style>
+
 </head>
 
 <body>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+<p  id=video align="middle"><iframe width="854" height="480" src="https://www.youtube.com/embed/R95Ucc-FUOs?rel=0&amp;controls=0&amp;showinfo=0&autoplay=1&loop=1&playlist=R95Ucc-FUOs" frameborder="0" allowfullscreen></iframe>
+</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 			Quisquam temporibus repellat voluptatem sit nulla commodi, maxime
 			optio aperiam! Consequuntur necessitatibus iste amet id, nihil
 			laboriosam voluptatem cum laudantium ab repudiandae. Lorem ipsum
@@ -229,5 +239,6 @@ p{
 			blanditiis, enim beatae, ipsam tempore, ullam voluptas consequuntur
 			laborum, dolor nobis nam velit iure. Autem veniam atque quo, sunt
 			veritatis!</p>
+</div>
 </body>
 </html>
