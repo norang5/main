@@ -1,4 +1,4 @@
-package com.model.sample;
+package com.shoes.sample;
 
 import java.text.DateFormat;
 import java.util.Date;
