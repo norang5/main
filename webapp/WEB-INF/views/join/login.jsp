@@ -10,10 +10,6 @@ header {
 	width:	1000px;
 	text-align: center;
 }
-section {
-	width:	1000px;
-	text-align: center;
-}
 </style>
 </head>
 
