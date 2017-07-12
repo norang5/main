@@ -41,7 +41,8 @@ html, body {
 }
 
 #menu-container.fixed {
-	opacity: 0.95;
+	opacity: 0.90;
+	background-color: #ECF4FF;
 	-webkit-box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.2);
 	box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
@@ -141,7 +142,7 @@ html, body {
 	<div id="blog-header-container"></div>
 	<div id="menu-container">
 		<a href="" class="menu-item" id="logo"><img alt="logo"
-			src="" width="75" /></a> <a href="" class="menu-icon1"
+			src="../image/logo.png" width="75" /></a> <a href="" class="menu-icon1"
 			style="display: none;">shoes</a> <a href="" class="menu-icon2"
 			style="display: none;">used-item</a> <a href="" class="menu-item"
 			id="login">로그인</a>

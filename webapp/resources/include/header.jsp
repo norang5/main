@@ -6,7 +6,8 @@
 <head>
 <meta charset="utf-8" />
 <title>화면 상단 고정 메뉴 만드는 방법</title>
-<script defer src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script defer
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <style>
 html, body {
 	margin: 0px;
@@ -97,7 +98,6 @@ html, body {
 	top: 15px;
 	left: 900px;
 }
-
 </style>
 <script>
 	// 현재 스크롤바의 위치를 저장하는 변수 (px)
