@@ -1,0 +1,20 @@
+package com.shoes.dao;
+
+import java.sql.SQLException;
+
+public class TestBatisDAO{
+/*	 관리자 자료실 검색 레코드 수(myBatis) 
+	public int getListCount3(String find_name, String find_field) throws SQLException{
+		int count=0;
+		if(find_field.equals("bbs_subject")){//검색어가 자료실 제목 인경우
+			count=this.sqlSession.selectOne("abbsfind_cnt1",find_name);
+		}else if(find_field.equals("bbs_content")){//검색어가 자료실 내용인 경우
+			count=this.sqlSession.selectOne("abbsfind_cnt2",find_name);	
+		}
+		return count;
+	}	*/
+	
+	//public List getList(){
+		
+	//}
+}
