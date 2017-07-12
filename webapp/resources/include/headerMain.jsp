@@ -20,7 +20,7 @@ html, body {
 	left: 0px;
 	right: 0px;
 	width: 100%;
-	height: 40px;
+	height: 60px;
 	background-color: none;
 }
 
@@ -28,8 +28,8 @@ html, body {
 	position: fixed;
 	left: 0px;
 	width: 100%;
-	height: 40px;
-	padding-top: 5px;
+	height: 60px;
+	padding-top: 20px;
 	box-sizing: border-box;
 	background-color: none;
 
@@ -49,9 +49,12 @@ html, body {
 
 #menu-container .menu-item {
 	text-decoration: none;
+	positon: absolute;
+	top: 20px;
 }
 
 #logo {
+
 	color: #57484f;
 	float: left;
 	padding-left: 20px;
@@ -60,10 +63,11 @@ html, body {
 }
 
 #login {
+
 	color: #57484f;
 	float: right;
 	padding-right: 50px;
-	font-size: 1.5em;
+	font-size: 2em;
 	font-weight: bold;
 }
 
@@ -79,7 +83,7 @@ html, body {
 
 #menu-container .menu-icon1.on {
 	position: absolute;
-	top: 5px;
+	top: 20px;
 	left: 700px;
 }
 
@@ -95,8 +99,24 @@ html, body {
 
 #menu-container .menu-icon2.on {
 	position: absolute;
-	top: 5px;
+	top: 20px;
 	left: 900px;
+}
+
+#menu-container .menu-icon3 {
+	display: block !important;
+	position: absolute;
+	top: -80px;
+	text-decoration: none;
+	font-size: 2em;
+	font-weight: bold;
+	color: #57484f;
+}
+
+#menu-container .menu-icon3.on {
+	position: absolute;
+	top: 20px;
+	left: 1100px;
 }
 
 </style>
@@ -126,6 +146,7 @@ html, body {
 				$('#menu-container').addClass('satic');
 				$('#menu-container .menu-icon1').removeClass('on');
 				$('#menu-container .menu-icon2').removeClass('on');
+				$('#menu-container .menu-icon3').removeClass('on');
 			}
 		} else {
 			if (!$('#menu-container').hasClass('fixed')) {
@@ -133,6 +154,7 @@ html, body {
 				$('#menu-container').addClass('fixed');
 				$('#menu-container .menu-icon1').addClass('on');
 				$('#menu-container .menu-icon2').addClass('on');
+				$('#menu-container .menu-icon3').addClass('on');
 			}
 		}
 	}
@@ -144,10 +166,11 @@ html, body {
 		<a href="" class="menu-item" id="logo"><!-- 
 		<img alt="logo" src="../image/logo.png" width="75" /> -->
 		adidas
-		</a> <a href="" class="menu-icon1"
-			style="display: none;">shoes</a> <a href="" class="menu-icon2"
-			style="display: none;">used-item</a> <a href="" class="menu-item"
-			id="login">로그인</a>
+		</a> 
+		<a href="" class="menu-icon1" style="display: none;">about</a> 
+			<a href="" class="menu-icon2" style="display: none;">shoes</a>
+			<a href="" class="menu-icon3" style="display: none;">used-item</a>
+			 <a href="" class="menu-item" id="login">Login</a>
 	</div>
 </body>
 </html>
