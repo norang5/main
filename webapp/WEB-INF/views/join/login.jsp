@@ -1,12 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>로그인</title>
+<style type="text/css">
+header {
+	width:	1000px;
+	text-align: center;
+}
+</style>
 </head>
+
 <body>
-	<a href="#" >아이디찾기</a>
+	<header>
+		<img alt="로그인로고" src="./images/로그인로고.JPG">
+	</header>
+	<form action="">
+		<input type="text"><br>
+		<input type="password"><br>
+		<input type="button" value="LOGIN">
+	</form>
 </body>
 </html>
