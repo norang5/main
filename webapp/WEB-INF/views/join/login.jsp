@@ -10,6 +10,10 @@ header {
 	width:	1000px;
 	text-align: center;
 }
+section {
+	width:	1000px;
+	text-align: center;
+}
 </style>
 </head>
 
@@ -17,10 +21,14 @@ header {
 	<header>
 		<img alt="로그인로고" src="./images/로그인로고.JPG">
 	</header>
-	<form action="">
-		<input type="text"><br>
-		<input type="password"><br>
-		<input type="button" value="LOGIN">
+	<section>
+	<form>
+		<input type="text" style="width : 200px"><br>
+		<input type="password" style="width: 200px"><br>
+		<input type="button" value="LOGIN" style="width: 206px; background-color:black; color: white; border: 1.5	em;"><br>
+		<input type="button" value="아이디 찾기" > 
+		<input type="button" value="비밀번호 찾기"> 
 	</form>
+	</section>
 </body>
 </html>
