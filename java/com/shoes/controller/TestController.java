@@ -42,6 +42,10 @@ public class TestController{
 		System.out.println(name);
 	}
 	
+	@RequestMapping("admin")
+	public String adminTest(){
+		return "admin/addPRDT";
+	}
 	
 	@RequestMapping(value="testajax", method=RequestMethod.GET)
 	public void testajax(HttpServletResponse response, HttpServletRequest request){
