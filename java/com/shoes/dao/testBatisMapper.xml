@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+   <!-- 관리자 단 게시판 myBatis용 -->
+   
+<mapper namespace="spring.mvc.model.SpringBoardBean"> 
+	<select id="testBatisList" resultType="testBatis">
+		SELECT * FROM TESTBATIS
+	</select>
+	
+<!-- 
+   	관리자 단 게시판 총 게시물 수
+	<select id="aBoard_count" resultType="int">
+	  select count(board_no) from springBoard
+	</select>
+	
+	관리자 게시판 검색결과(제목) 총 게시물 수
+	<select id="aboardfind_cnt1" resultType="int"
+	        parameterType="String">
+	  select count(board_no) from springBoard
+	     where board_title like #{find_name}
+	</select>
+	
+	관리자 게시판 검색결과(내용) 총 게시물 수
+	<select id="aboardfind_cnt2" resultType="int"
+	        parameterType="String">
+	  select count(board_no) from springBoard
+	     where board_cont like #{find_name}
+	</select>
+	
+	관리자 게시판 저장
+	<insert id="aboard_insert" 
+	         parameterType="adminBoard">
+	 insert into springBoard values(springBoard_seq.nextval,
+	 #{board_name}, #{board_title}, #{board_cont},
+	 #{board_pwd},0,springBoard_seq.nextval,0,0,sysdate)         
+	</insert>	
+   
+	관리자 게시판 수정
+	<update id="aboardEdit" 
+	         parameterType="adminBoard">
+	 update springBoard set board_name=#{board_name},
+	 board_title=#{board_title},board_cont=#{board_cont}
+	 where board_no=#{board_no}       
+	</update>
+	
+	관리자 게시판 삭제
+	<delete id="aboard_Del" parameterType="int">
+	  delete from springBoard where board_no=#{board_no}
+	</delete>  -->
+</mapper>
+
