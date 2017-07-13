@@ -6,7 +6,8 @@
 <head>
 <meta charset="utf-8" />
 <title>화면 상단 고정 메뉴 만드는 방법</title>
-<script defer src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script defer
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <style>
 html, body {
 	margin: 0px;
@@ -29,7 +30,6 @@ html, body {
 	left: 0px;
 	width: 100%;
 	height: 60px;
-	padding-top: 20px;
 	box-sizing: border-box;
 	background-color: none;
 
@@ -42,7 +42,7 @@ html, body {
 
 #menu-container.fixed {
 	opacity: 0.90;
-	 background-color: #F3F0F0; 
+	background-color: #F3F0F0;
 	-webkit-box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.2);
 	box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
@@ -54,7 +54,7 @@ html, body {
 }
 
 #logo {
-
+	padding-top: 7px;
 	color: #57484f;
 	float: left;
 	padding-left: 20px;
@@ -63,7 +63,7 @@ html, body {
 }
 
 #login {
-
+	padding-top: 15px;
 	color: #57484f;
 	float: right;
 	padding-right: 50px;
@@ -118,7 +118,6 @@ html, body {
 	top: 20px;
 	left: 1100px;
 }
-
 </style>
 <script>
 	// 현재 스크롤바의 위치를 저장하는 변수 (px)
@@ -163,14 +162,13 @@ html, body {
 <body>
 	<div id="blog-header-container"></div>
 	<div id="menu-container">
-		<a href="" class="menu-item" id="logo"><!-- 
-		<img alt="logo" src="../image/logo.png" width="75" /> -->
-		adidas
-		</a> 
-		<a href="" class="menu-icon1" style="display: none;">about</a> 
-			<a href="" class="menu-icon2" style="display: none;">shoes</a>
-			<a href="" class="menu-icon3" style="display: none;">used-item</a>
-			 <a href="" class="menu-item" id="login">Login</a>
+		<a href="./main" class="menu-item" id="logo">
+		<img alt="logo" src="${pageContext.request.contextPath}/image/logo.png" width="50" /></a> 
+		
+		<a href="./info" class="menu-icon1" style="display: none;">about</a> 
+		<a href="./store" class="menu-icon2" style="display: none;">shoes</a> 
+		<a href="./usedStore" class="menu-icon3" style="display: none;">used-item</a> 
+		<a href="" class="menu-item" id="login">Login</a>
 	</div>
 </body>
 </html>

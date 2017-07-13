@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 
 <jsp:include page="../../resources/include/headerMain.jsp" flush="false"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css">
 
 <style>
 
@@ -18,9 +19,16 @@ p{
 	font-size: 2em;
 }
 
-#video{
-margin-top : 50px;
-margin-bottom : 50px;
+#video { 
+     position: absolute;
+     top: 0px;
+     left: 0px;
+     min-width: 100%;
+     min-height: 100%;
+     width: auto;
+     height: auto;
+     z-index: -1;
+     overflow: hidden;
 }
 
 </style>
@@ -28,8 +36,14 @@ margin-bottom : 50px;
 </head>
 
 <body>
-<p  id=video align="middle"><iframe width="854" height="480" src="https://www.youtube.com/embed/R95Ucc-FUOs?rel=0&amp;controls=0&amp;showinfo=0&autoplay=1&loop=1&playlist=R95Ucc-FUOs" frameborder="0" allowfullscreen></iframe>
-</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+<!-- <p  id=video align="middle"><iframe width="854" height="480" src="https://www.youtube.com/embed/R95Ucc-FUOs?rel=0&amp;controls=0&amp;showinfo=0&autoplay=1&loop=1&playlist=R95Ucc-FUOs" frameborder="0" allowfullscreen></iframe>
+</p> -->
+
+<video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+      <source src="./file/background.webm">
+
+</video>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 			Quisquam temporibus repellat voluptatem sit nulla commodi, maxime
 			optio aperiam! Consequuntur necessitatibus iste amet id, nihil
 			laboriosam voluptatem cum laudantium ab repudiandae. Lorem ipsum

@@ -5,9 +5,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
+	
 	@RequestMapping("main")
 	public String goToMain() {
-
 		return "main";
+	}
+	
+	@RequestMapping("info")
+	public String goToInfo() {
+		return "info/infoMain";
+	}
+	
+	@RequestMapping("store")
+	public String goToStore() {
+		return "store/storeMain";
+	}
+	
+	@RequestMapping("usedStore")
+	public String goToUsedStore() {
+		return "usedStore/usedStoreMain";
 	}
 }
