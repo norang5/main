@@ -9,6 +9,6 @@
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="#package/#mapper.xml" />
+		<mapper resource="com/shoes/dao/testBatisMapper.xml" />
 	</mappers>
 </configuration>

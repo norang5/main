@@ -1,8 +1,19 @@
 package com.shoes.dao;
 
-import java.sql.SQLException;
+import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.shoes.model.TestBatisBean;
+
+@Repository
 public class TestBatisDAO{
+	
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+	
 /*	 관리자 자료실 검색 레코드 수(myBatis) 
 	public int getListCount3(String find_name, String find_field) throws SQLException{
 		int count=0;
@@ -14,7 +25,8 @@ public class TestBatisDAO{
 		return count;
 	}	*/
 	
-	//public List getList(){
-		
-	//}
+	public List getList(){
+		List<TestBatisBean> list = sqlSession.selectList("testBatisList");
+		return list;
+	}
 }
