@@ -12,6 +12,7 @@ SELECT * FROM TESTBATIS;
 
 DROP TABLE TESTBATIS PURGE;
 
+<<<<<<< HEAD
 ==============================
 
 DROP TABLE B PURGE;
@@ -66,10 +67,9 @@ SELECT * FROM B;
 
 
 
+CREATE TABLE H(
+	NAME VARCHAR2(12)
+);
 
-
-
-
-
-
-
+INSERT INTO H
+VALUES('노의현');

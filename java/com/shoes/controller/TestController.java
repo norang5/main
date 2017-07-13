@@ -7,12 +7,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shoes.dao.TestBatisDAO;
+import com.shoes.model.HBean;
 import com.shoes.model.TestBatisBean;
 
 @Controller
@@ -20,6 +22,9 @@ public class TestController{
 	
 	@Autowired
 	private TestBatisDAO testBatisDao;
+	
+	@Autowired
+	private SqlSessionTemplate test2Dao; 
 	
 	@RequestMapping("test")
 	public void test(){
@@ -30,6 +35,13 @@ public class TestController{
 			System.out.println(it.next());
 		}
 	}
+	
+	@RequestMapping("2f")
+	public void f2(){
+		HBean name = test2Dao.selectOne("2f");
+		System.out.println(name);
+	}
+	
 	
 	@RequestMapping(value="testajax", method=RequestMethod.GET)
 	public void testajax(HttpServletResponse response, HttpServletRequest request){
