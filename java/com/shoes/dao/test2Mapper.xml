@@ -7,9 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
 <mapper namespace="spring.mvc.model.SpringBoardBean"> 
 
-	<select id="testBatisList" resultType="testBatis">
-		SELECT * FROM TESTBATIS
+	<select id="2f" resultType="test2Batis">
+		SELECT * FROM H
 	</select>
-	
 </mapper>
 
