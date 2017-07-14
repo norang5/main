@@ -30,10 +30,11 @@ public class JoinController {
 		return"join/pw_find";
 	}
 	@RequestMapping("welcome")
-	public String welcome(){
+	public String welcome(HttpServletRequest request){		
+		
+		String email = request.getParameter("email");
+		System.out.println(email);
+		
 		return"join/welcome"; 
 	}
-	
-	
-
 }
