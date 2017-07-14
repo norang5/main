@@ -92,3 +92,11 @@ CREATE TABLE H(
 
 INSERT INTO H
 VALUES('노의현');
+
+create table a(
+ 	id varchar2(20)
+);
+
+select * from a;
+
+insert into a values('메롱');

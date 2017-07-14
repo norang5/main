@@ -7,10 +7,12 @@
 		<!-- Java Bean에 별칭을 지어준다. -->
 		<typeAlias type="com.shoes.model.TestBatisBean" alias="testBatis"/>
 		<typeAlias type="com.shoes.model.HBean" alias="test2Batis"/>
+		<typeAlias type="com.shoes.model.ABean" alias="text3Batis"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/shoes/dao/testBatisMapper.xml" />
 		<mapper resource="com/shoes/dao/test2Mapper.xml"/>
+		<mapper resource="com/shoes/dao/testdj.xml"/>
 	</mappers>
 </configuration>

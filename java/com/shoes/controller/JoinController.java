@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class JoinController {
 	@RequestMapping("join")
 	public String join() {
-		System.out.println("왜 안돼");
 		return "join/join";
 	}
 	
@@ -34,6 +33,35 @@ public class JoinController {
 		
 		String email = request.getParameter("email");
 		System.out.println(email);
+		
+		String passwd = request.getParameter("passwd");
+		System.out.println(passwd);
+		
+		String confirm = request.getParameter("confirm");
+		System.out.println(confirm);
+
+		String name = request.getParameter("name");
+		System.out.println(name);
+		
+		String postcode = request.getParameter("postcode");
+		System.out.println(postcode);
+		
+		String jibun = request.getParameter("jibun");
+		System.out.println(jibun);
+		
+		String road= request.getParameter("road");
+		System.out.println(road);
+		
+		String address = request.getParameter("address");
+		System.out.println(address);
+		
+		String mobile = request.getParameter("mobile");
+		System.out.println(mobile);
+		
+		String mobile2 = request.getParameter("mobile2");
+		System.out.println(mobile2);
+		
+		
 		
 		return"join/welcome"; 
 	}
