@@ -100,3 +100,6 @@ create table a(
 select * from a;
 
 insert into a values('메롱');
+
+DROP TABLE h PURGE;
+DROP TABLE A PURGE;
