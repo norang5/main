@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
    <!-- 관리자 단 게시판 myBatis용 -->
    
-<mapper namespace="spring.mvc.model.SpringBoardBean"> 
+<mapper namespace="com.shoes.model.HBean"> 
 
 	<select id="2f" resultType="test2Batis">
 		SELECT * FROM H
