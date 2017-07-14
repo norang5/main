@@ -551,7 +551,101 @@ FOREIGN KEY(MEM_ID_PK)
 REFERENCES MEMBER_TB(MEM_ID_PK);
 
 
+-------------------------------------------------------------------------
+-------------------------------------------------------------------------
+
+
+-- [시퀀스 생성]
+
+--해당 테이블의 시퀀스 생성
+-- create sequence [이름] start with [시작값] increment by [증가값]
+-- create sequence memos_seq
+-- start with 1 increment by 1;
+
+-- 회원정보
+CREATE SEQUENCE MEMBER_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 마일리지 적립 내역
+CREATE SEQUENCE MILEAGE_HISTORY_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 수령자 정보
+CREATE SEQUENCE RECEIVER_INFO_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 상품 공통정보
+CREATE SEQUENCE PRDT_COMMON_INFO_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 상품 대표 이미지 목록
+CREATE SEQUENCE PRDT_REPRESENT_IMG_LIST_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 상품
+CREATE SEQUENCE PRDT_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 중고상품 상태
+CREATE SEQUENCE USED_ST_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 중고거래 게시글
+CREATE SEQUENCE USED_TRADE_POST_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 중고거래 게시글 이미지 리스트
+-- 이름이 너무 길어서 살짝 줄여놓은것에 유의
+CREATE SEQUENCE USE_TRD_PST_IMG_LIST_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 선택한 상품
+CREATE SEQUENCE SELECT_PRDT_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 상품 판매글
+CREATE SEQUENCE PRDT_POST_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 한 줄 상품평
+CREATE SEQUENCE PRDT_COMMENT_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 상품판매글 이미지 목록
+CREATE SEQUENCE PRDT_POST_IMG_LIST_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 관심 상품글
+CREATE SEQUENCE INTEREST_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 주문
+CREATE SEQUENCE ORDER_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+-- 결제정보
+CREATE SEQUENCE PAYMENT_INFO_TB_SEQ
+START WITH 1
+INCREMENT BY 1;
+
+
 --================================================================
+
 
 -- [전부 실행했다면 이어서 mileage_trig.sql을 프롬프트로 이동해 직접 실행하시오.]
 

@@ -1,6 +1,63 @@
--- [트리거 삭제]
+-- 트리거 삭제를 먼저 수행하세요.
 
-SQL> DROP TRIGGER MILEAGE_SUM_TO_MEMER_TB;
+-- SQL> DROP TRIGGER MILEAGE_SUM;
+
+
+
+
+-------------------------------------------------------------------------
+-------------------------------------------------------------------------
+
+
+-- [시퀀스 삭제]
+
+-- 회원정보
+DROP SEQUENCE MEMBER_TB_SEQ;
+
+-- 마일리지 적립 내역
+DROP SEQUENCE MILEAGE_HISTORY_TB_SEQ;
+
+-- 수령자 정보
+DROP SEQUENCE RECEIVER_INFO_TB_SEQ;
+
+-- 상품 공통정보
+DROP SEQUENCE PRDT_COMMON_INFO_TB_SEQ;
+
+-- 상품 대표 이미지 목록
+DROP SEQUENCE PRDT_REPRESENT_IMG_LIST_TB_SEQ;
+
+-- 상품
+DROP SEQUENCE PRDT_TB_SEQ;
+
+-- 중고상품 상태
+DROP SEQUENCE USED_ST_TB_SEQ;
+
+-- 중고거래 게시글
+DROP SEQUENCE USED_TRADE_POST_TB_SEQ;
+
+-- 중고거래 게시글 이미지 리스트
+DROP SEQUENCE USE_TRD_PST_IMG_LIST_TB_SEQ;
+
+-- 선택한 상품
+DROP SEQUENCE SELECT_PRDT_TB_SEQ;
+
+-- 상품 판매글
+DROP SEQUENCE PRDT_POST_TB_SEQ;
+
+-- 한 줄 상품평
+DROP SEQUENCE PRDT_COMMENT_TB_SEQ;
+
+-- 상품판매글 이미지 목록
+DROP SEQUENCE PRDT_POST_IMG_LIST_TB_SEQ;
+
+-- 관심 상품글
+DROP SEQUENCE INTEREST_TB_SEQ;
+
+-- 주문
+DROP SEQUENCE ORDER_TB_SEQ;
+
+-- 결제정보
+DROP SEQUENCE PAYMENT_INFO_TB_SEQ;
 
 
 -------------------------------------------------------------------------
