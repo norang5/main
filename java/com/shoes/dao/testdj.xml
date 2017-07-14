@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+   <!-- 관리자 단 게시판 myBatis용 -->
+   
+<mapper namespace=""> 
+
+	<select id="dj" resultType="text3Batis">
+		select * from a
+	</select>
+	
+</mapper>
+
