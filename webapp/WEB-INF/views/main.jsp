@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -9,7 +9,15 @@
 <!-- <script defer
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
 
-<jsp:include page="../../resources/include/headerMain.jsp" flush="false" />
+<jsp:include page="../../resources/include/header_bar.jsp" flush="false">
+	<jsp:param name="enableSpread"		value="true"/>
+	<jsp:param name="backgroundColor"	value="#212121"/>
+	<jsp:param name="borderBottomColor"	value="black"/>
+	<jsp:param name="rightMenuColor"	value="white"/>
+	<jsp:param name="centerMenuSmallColor"	value="white"/>
+	<jsp:param name="centerMenuBigColor"	value="white"/>
+</jsp:include>
+
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/main.css">
 
@@ -21,9 +29,6 @@ text-decoration: none;
 color:white;}
 
 #video {
-	position: absolute;
-	top: 0px;
-	left: 0px;
 	min-width: 100vn;
 	min-height: 100vh;
 	width: auto;
