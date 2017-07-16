@@ -28,7 +28,8 @@ a{
 text-decoration: none;
 color:white;}
 
-#video {
+#video {	
+	position: relative;
 	min-width: 100vn;
 	min-height: 100vh;
 	width: auto;
