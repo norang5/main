@@ -23,12 +23,12 @@ section {
 		<form method="post">
 			<input type="text" style="width: 300px; height: 35px; margin: 2px;"placeholder="id"><br>
 			<input type="password" style="width: 300px; height: 35px; margin: 2px;"placeholder="password"><br>
-			<input type="submit" value="LOGIN" id="login"
+			<input type="submit" value="LOGIN" 
 				style="width: 306px; height: 30px; margin: 1px;; background-color: black; color: white;"><br>
 		</form>
 		<div id="id_pw_find">
-				<a href="/shoes_shop/id_find"><img src="/shoes_shop/resources/image/id_find.jpg"></a>
-				<a href="/shoes_shop/pw_find"><img src="/shoes_shop/resources/image/pw_find.jpg"></a>
+				<a href="/shoes_shop/id_find"><img src="/shoes_shop/resources/image/id_find.jpg" name="id_find"></a>
+				<a href="/shoes_shop/pw_find"><img src="/shoes_shop/resources/image/pw_find.jpg" name="pw_find"></a>
 		</div>
 	</section>
 </body>

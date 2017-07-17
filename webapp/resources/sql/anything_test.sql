@@ -105,6 +105,7 @@ DROP TABLE h PURGE;
 DROP TABLE A PURGE;
 
 
+
 CREATE TABLE PRDT_COMMON_INFO_TB(
 	PCI_SQ_PK			NUMBER(8)	NOT NULL,
 	PCI_MATERIAL			VARCHAR2(300)	NOT NULL,
@@ -129,3 +130,12 @@ PCI_MANUFACT_COUNTRY,PCI_QUALITY_GUARANTEE,PCI_REQUIRE_ATTENTION,PCI_AS_MAN_PHON
 VALUES(
 	142, '소가죽', 'ADgg','ADgg','ADgg','ADgg','ADgg','ADgg','ADgg','Stan Smiths'
 );
+
+create table test3(
+	name varchar2(20)
+);
+
+select * from test3;
+
+insert into test3 values('김달중');
+
