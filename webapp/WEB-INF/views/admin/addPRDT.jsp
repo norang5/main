@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+>>>>>>> e405feb1a3f4c53c0cee862fb2d57f60225e75d1
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +13,7 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"
 	type="text/javascript"></script>
 <script type="text/javascript">
+<<<<<<< HEAD
 $(function() {
 				//항목추가 버튼 클릭시
 				$("#addForm").click(
@@ -57,6 +62,21 @@ $("#next").click(
 	return true;
 	
 })
+=======
+	$(document).ready(function(){
+		//항목추가 버튼 클릭시
+		$("#addForm").click(function() {
+			// item 의 최대번호 구하기
+			var lastItemNo = $("#info02 tr:last").attr("class").replace("item", "");
+			var newitem = $("#info02 tr:eq(1)").clone();
+			newitem.removeClass();
+			newitem.find("td:eq(0)").attr("rowspan", "1");
+			newitem.addClass("item" + (parseInt(lastItemNo) + 1));
+			$("#info02").append(newitem);
+		});
+	});
+</script>
+>>>>>>> e405feb1a3f4c53c0cee862fb2d57f60225e75d1
 
 </script>
 <style>
