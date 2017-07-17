@@ -21,8 +21,5 @@ public class MainController {
 		return "store/storeMain";
 	}
 	
-	@RequestMapping("usedStore")
-	public String goToUsedStore() {
-		return "usedStore/usedStoreMain";
-	}
+	
 }
