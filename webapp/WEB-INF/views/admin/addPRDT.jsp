@@ -1,9 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
-	pageEncoding="UTF-8"%>
-=======
-    pageEncoding="UTF-8"%>
->>>>>>> 1a24a7671bd4f5b0710f943c04bf88c2e119c77b
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,23 +6,18 @@
 <title>Insert title here</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-	$(document).ready(
-			function() {
-				//항목추가 버튼 클릭시
-				$("#addForm").click(
-						function() {
-							// item 의 최대번호 구하기
-							var lastItemNo = $("#info02 tr:last")
-									.attr("class").replace("item", "");
-
-							var newitem = $("#info02 tr:eq(1)").clone();
-							newitem.removeClass();
-							newitem.find("td:eq(0)").attr("rowspan", "1");
-							newitem.addClass("item"
-									+ (parseInt(lastItemNo) + 1));
-
-							$("#info02").append(newitem);
-						});
+	$(document).ready(function(){
+		//항목추가 버튼 클릭시
+		$("#addForm").click(function() {
+			// item 의 최대번호 구하기
+			var lastItemNo = $("#info02 tr:last").attr("class").replace("item", "");
+			var newitem = $("#info02 tr:eq(1)").clone();
+			newitem.removeClass();
+			newitem.find("td:eq(0)").attr("rowspan", "1");
+			newitem.addClass("item" + (parseInt(lastItemNo) + 1));
+			$("#info02").append(newitem);
+		});
+	});
 </script>
 
 <style>
