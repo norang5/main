@@ -6,21 +6,63 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- 데이터베이스와 관련된 객체를 생성하는 공간 -->
+	<!-- STS 에디트 창 하단의 Namespaces탭에서 context 네임스페이스를 추가했다.
+		context라는 이름을 가지고있는 xml에서만 쓸 수 있는 일종의 라이브러리를 추가했다고 보면 된다.-->
+  		
+	<!-- 웹컨테이너(Tomcat)은 다음의 코드를 만나면 src/main/resources/context/에 위치한 db.properties 파일을 읽어들여 객체로 만든다. -->
 	<context:property-placeholder location="classpath:/context/db.properties"/>
 	
+	<!-- 위에서 객체화된 로그인 정보를 DB연결정보 담당 클래스(BasicDataSource)로 포장한다. -->
+ 	<!-- 말은 거창하게 포장한다고 하지만, 그냥 DB의 아이디/비밀번호가 담긴 텍스트 파일을 읽어들여서
+ 		연결정보 담당 클래스에 setter로 하나하나 넣어주는 거다. -->
 	<bean id="basicDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driverClassName}"/>
 		<property name="url" value="${jdbc.url}"/>
 		<property name="username" value="${jdbc.username}"/>
 		<property name="password" value="${jdbc.password}"/>
+		<!-- ※용어: 유효성 검사란 DB에 쿼리문을 날릴때마다, 이 DB랑 연결이 가능한지 먼저 테스트 쿼리문을 날리는 것을 말한다.
+		
+			여기서 setValidationQuery()라는 메서드는 유효성 검사를 어떻게 할건지 설정하는 메소드로서,
+		
+			SQL문을 인자로 넣어주면 매번 DB와 연결하기에 앞서
+			내가 넣어준 SQL문을 한 번씩 테스트삼아 실행해준다. 그러니 실제 데이터를 불러오는 쿼리문을 넣어서
+			심각한 성능저하를 내는 잘못을 하지 말자. SELECT 1 FROM DUAL 정도면 충분하다.
+			
+			만약 이 메서드를 아예 호출조차 안하면 BasicDataSource가 가지고 있는 isValid()였던가?
+			뭐 그런 메서드를 자체적으로 호출하면서 이 연결이 실제로 가능한지 유효성검사를 한다.
+		 -->
+		<!-- <property name="validationQuery" value="SELECT 1 FROM DUAL"/> -->
 	</bean>
 	
+	<!-- 바로 위에서 만든 DB연결정보담당 클래스와,
+		/WEB-INF/spring/mybatisConfig.xml 파일을 읽어들여서 SQL문이 적힌 xml파일을 자바가 관리할 수 있게 객체화 해서
+		한데모아 가지고있는 클래스. 일종의 캡슐화라고 보면된다.
+		아직 두 파일로부터 정보들만 읽어들여서 가지고 있는 상태로, 실제 연결을 수행할 수 있는 상태는 아니라고 추측한다.
+	-->
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="basicDataSource"/>
+		<!-- 참고로 mybatis-config.xml은 wepapp 폴더에 우클릭- New - Other - Java ORM plugin - MyBatis Configuration XML누르면
+			자동생성해주니 원하는 위치로 옮겨주자.
+		-->
 		<property name="configLocation" value="/WEB-INF/spring/mybatis-config.xml"/>
 	</bean>
 	
+	<!-- 바로 위에서 만든 캡슐클래스를 가지고 이제 설정파일에 있던 모든 SQL문을 바로 사용가능한 상태로 메모리에 올리고
+		DB에 언제든 연결이 가능하도록 스트림을 생성하는 클래스라고 추측한다.
+		무슨 이 객체 하나 얻으려고 몇 단계를 거치는지 원 ㄱㅡ
+	-->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactoryBean"/>
+		<!-- 
+			참고로 이 객체는 생성자로 BATCH 타입의 열거형을 받을 수 있다.
+			이 열거형의 값으로는 BATCH.~~, BATCH.~~, BATCH.~~ 라는 이름이 기억안나서 물결표로 표시한 세가지가 있는데
+				각각 매 쿼리문을 날릴때마다
+					1. preparedStatement를 새로 생성한다.
+					2. preparedStatement를 재활용한다.
+					3. 동작을 까먹었지만 적절히 좋게좋게 작동한다.
+			는 설정에 관계있다고 한다.
+			
+			index="0", index="1"이 뭔지는 모르겠다. -->
+		<!-- <constructor-arg index="1" value="BATCH"/> -->
 	</bean>
 </beans>
