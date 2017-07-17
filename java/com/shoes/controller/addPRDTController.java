@@ -47,13 +47,13 @@ public class addPRDTController {
 	
 	
 	@RequestMapping(value="/admin", method=RequestMethod.POST)
-	public String submit(PRDTCommonBean pRDTCommonBean){
+	public String submit(PRDTCommonBean prdtCommonBean){
 		//System.out.println("===>submit() 호출");
 		//System.out.println("id:"+memberVO.getId());
 		//System.out.println("pw:"+memberVO.getPasswd());
 		//System.out.println("name:"+memberVO.getName());
 		System.out.println("2번");
-		prdtDao.insertPRDT(pRDTCommonBean);
+		prdtDao.insertPRDT(prdtCommonBean);
 		System.out.println("3번");
 		return "redirect:/list";
 	}/*

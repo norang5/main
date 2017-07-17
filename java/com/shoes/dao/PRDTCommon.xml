@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from PRDT_COMMON_INFO_TB
 	</select>
 	<insert id="addPRDT" parameterType="PRDTCommon">
-	insert into PRDT_COMMON_INFO_TB values (#{PCI_SQ_PK},#{PCI_MATERIAL},#{PCI_PRDT_NAME},#{PCI_IMPORTER},
+	insert into PRDT_COMMON_INFO_TB values (PRDT_TB_SEQ.nextval,#{PCI_MATERIAL},#{PCI_PRDT_NAME},#{PCI_IMPORTER},
 	#{PCI_MANUFACTURER},#{PCI_MANUFACT_COUNTRY},#{PCI_QUALITY_GUARANTEE},#{PCI_REQUIRE_ATTENTION},
 	#{PCI_AS_MAN_PHONE},#{PRDT_CTG_NM})
 	</insert>
