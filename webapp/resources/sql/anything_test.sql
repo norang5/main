@@ -103,3 +103,11 @@ insert into a values('메롱');
 
 DROP TABLE h PURGE;
 DROP TABLE A PURGE;
+
+create table test3(
+	name varchar2(20)
+);
+
+select * from test3;
+
+insert into test3 values('김달중');
