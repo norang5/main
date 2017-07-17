@@ -5,10 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
    <!-- 관리자 단 게시판 myBatis용 -->
    
-<mapper namespace="com.shoes.model.TestBatisBean"> 
+<mapper namespace=""> 
 
-	<select id="testBatisList" resultType="testBatis">
-		SELECT * FROM TESTBATIS
+	<select id="dj" resultType="text3Batis">
+		select * from a
 	</select>
 	
 </mapper>
