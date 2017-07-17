@@ -24,6 +24,9 @@
 	
 	중고거래페이지임<br>
 	<textarea name="utp_body" id="utp_body" rows="22" style="width:645px;">우와아아아</textarea>
+	
+	
+	
 	<script type="text/javascript">
 		var oEditors = [];
 		nhn.husky.EZCreator.createInIFrame({
@@ -45,6 +48,12 @@
 			},
 			fCreator : "createSEditor2"
 		});
+		
+		//저장버튼 클릭시 form 전송
+	      $("#save").click(function(){
+	          oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
+	          $("#frm").submit();
+	      });
 	</script>
 </body>
 </html>
