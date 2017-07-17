@@ -1,6 +1,7 @@
 package com.shoes.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,8 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.shoes.dao.PRDTDAO;
 import com.shoes.dao.TestBatisDAO;
 import com.shoes.model.ABean;
+import com.shoes.model.PRDTCommonBean;
 
 @Controller
 public class TestController{
@@ -38,11 +41,21 @@ public class TestController{
 		//HBean name = test2Dao.selectOne("2f");
 		//System.out.println(name);
 	}
+
 	
-	@RequestMapping("admin")
-	public String adminTest(){
-		return "admin/addPRDT";
-	}
+	@Autowired
+	private PRDTDAO PRDTDao;
+	
+	
+/*	@RequestMapping("addPRDTDAO")
+	public void addPRDT("addPRDT"){
+		request.getParameter
+		
+	}*/
+	/*public void viewPRDT(){
+		List<PRDTCommonBean>list =PRDTDao.getPRDTCommonList(); 
+			System.out.println(list);
+	}*/
 	
 	@RequestMapping(value="testajax", method=RequestMethod.GET)
 	public void testajax(HttpServletResponse response, HttpServletRequest request){

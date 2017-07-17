@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+   
+<mapper namespace="com.shoes.model.PRDTCommonBean"> 
+	<select id="PRDTCommonList" resultType="PRDTCommon">
+		select * from PRDT_COMMON_INFO_TB
+	</select>
+	<insert id="addPRDT" parameterType="PRDTCommon">
+	insert into PRDT_COMMON_INFO_TB values (#{PCI_SQ_PK},#{PCI_MATERIAL},#{PCI_PRDT_NAME},#{PCI_IMPORTER},
+	#{PCI_MANUFACTURER},#{PCI_MANUFACT_COUNTRY},#{PCI_QUALITY_GUARANTEE},#{PCI_REQUIRE_ATTENTION},
+	#{PCI_AS_MAN_PHONE},#{PRDT_CTG_NM})
+	</insert>
+</mapper>
+

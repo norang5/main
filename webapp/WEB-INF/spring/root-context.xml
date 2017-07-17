@@ -6,7 +6,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- 데이터베이스와 관련된 객체를 생성하는 공간 -->
-	<context:property-placeholder location="classpath:/context/db.properties"/>
+	<context:property-placeholder location="classpath:context/db.properties"/>
 	
 	<bean id="basicDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driverClassName}"/>
