@@ -2,7 +2,7 @@ package com.shoes.model;
 
 public class PRDTCommonBean {
 		
-	int PCI_SQ_PK;
+	//int PCI_SQ_PK;
 	String PCI_MATERIAL;
 	String PCI_PRDT_NAME;
 	String PCI_IMPORTER;
@@ -13,12 +13,12 @@ public class PRDTCommonBean {
 	String PCI_AS_MAN_PHONE;
 	String PRDT_CTG_NM;
 	
-		public int getPCI_SQ_PK() {
+		/*public int getPCI_SQ_PK() {
 			return PCI_SQ_PK;
 		}
 		public void setPCI_SQ_PK(int pCI_SQ_PK) {
 			PCI_SQ_PK = pCI_SQ_PK;
-		}
+		}*/
 		public String getPCI_MATERIAL() {
 			return PCI_MATERIAL;
 		}
@@ -76,11 +76,11 @@ public class PRDTCommonBean {
 		
 		@Override
 		public String toString() {
-			return "PRDTCommonBean [PCI_SQ_PK=" + PCI_SQ_PK + ", PCI_MATERIAL=" + PCI_MATERIAL + ", PCI_PRDT_NAME="
+			return "PRDTCommonBean [PCI_MATERIAL=" + PCI_MATERIAL + ", PCI_PRDT_NAME="
 					+ PCI_PRDT_NAME + ", PCI_IMPORTER=" + PCI_IMPORTER + ", PCI_MANUFACTURER=" + PCI_MANUFACTURER
-					+ ", PCI_MANUFACT_COUNTRY=" + PCI_MANUFACT_COUNTRY + ", PCI_QUALITY_GUARANTEE=" + PCI_QUALITY_GUARANTEE
-					+ ", PCI_REQUIRE_ATTENTION=" + PCI_REQUIRE_ATTENTION + ", PCI_AS_MAN_PHONE=" + PCI_AS_MAN_PHONE
-					+ ", PRDT_CTG_NM=" + PRDT_CTG_NM + "]";
+					+ ", PCI_MANUFACT_COUNTRY=" + PCI_MANUFACT_COUNTRY + ", PCI_QUALITY_GUARANTEE="
+					+ PCI_QUALITY_GUARANTEE + ", PCI_REQUIRE_ATTENTION=" + PCI_REQUIRE_ATTENTION + ", PCI_AS_MAN_PHONE="
+					+ PCI_AS_MAN_PHONE + ", PRDT_CTG_NM=" + PRDT_CTG_NM + "]";
 		}
 	
 		

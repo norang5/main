@@ -1,10 +1,13 @@
 package com.shoes.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Repository;
 
+import com.shoes.model.PRDTBean;
 import com.shoes.model.PRDTCommonBean;
 
 @Repository
@@ -13,9 +16,18 @@ public class PRDTDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public void insertPRDT(PRDTCommonBean member){
+	
+	public void insertPRDTCommon(PRDTCommonBean prdtCommonBean){
+		System.out.println("4번");
+		sqlSession.insert("addPRDTCommon", prdtCommonBean);
+		System.out.println("5번");
+	}
+	
+	public void insertPRDT(PRDTBean prdtBean){
+		System.out.println("6번");
 		
-		sqlSession.insert("addPRDT", member);
+		sqlSession.insert("addPRDT", prdtBean);
+		System.out.println("7번");
 	}
 	
 	public void updatePRDT(PRDTCommonBean member){

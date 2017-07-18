@@ -16,13 +16,16 @@
 		<typeAlias type="com.shoes.model.DistrictTbBean" alias="DistrictTbBean"/>
 		<typeAlias type="com.shoes.model.UsedTradeStTbBean" alias="UsedTradeStTbBean"/>
 		<typeAlias type="com.shoes.model.UsedStTbBean" alias="UsedStTbBean"/>
+		<typeAlias type="com.shoes.model.PRDTBean" alias="PRDT"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/shoes/dao/testBatisMapper.xml"/>
 		<mapper resource="com/shoes/dao/test2Mapper.xml"/>
 		<mapper resource="com/shoes/dao/test3Mapper.xml"/>
+		
 		<mapper resource="com/shoes/dao/PRDTCommon.xml"/>	<!-- 상품등록 관련 SQL문 -->
 		<mapper resource="com/shoes/dao/UsedTradeMapper.xml"/>	<!-- 중고장터 관련 SQL문 -->
+		<mapper resource="com/shoes/dao/PRDT.xml"/>
 	</mappers>
 </configuration>
