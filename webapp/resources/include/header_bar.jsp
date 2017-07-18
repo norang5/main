@@ -29,7 +29,7 @@
 	// 헤더바의 배경색(기본색상: 하양)
 	String innerTopContainerBackgroundColor = request.getParameter("backgroundColor");
 	if(innerTopContainerBackgroundColor == null || innerTopContainerBackgroundColor == ""){
-		innerTopContainerBackgroundColor = "white";
+		innerTopContainerBackgroundColor = "none";
 	}
 	
 	// 헤더바의 아래쪽 테두리색(기본색상: 연한 회색)
@@ -71,9 +71,12 @@
 	<title>Header Bar</title>
 	
 	<style type="text/css">
-		
+		@import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 		body{
 			margin: 0;
+			font-family: 'Raleway', Arial, sans-serif;
+			font-weight:bold;
 		}
 		
 		/* 헤더바 뒤쪽에서 실제 자리를 잡고 전체페이지를 밀었다 당겼다 해줄 투명컨테이너 */
