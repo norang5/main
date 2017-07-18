@@ -1,5 +1,9 @@
+<%@page import="org.apache.catalina.Context"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	String ctx = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +13,14 @@
 	
 </head>
 <body>
-	중고상품 판매글 작성 페이지<br>
+	<jsp:include page="/resources/include/header_bar.jsp" flush="false">
+		<jsp:param name="enableSpread" value="false"/>
+	</jsp:include>
+
 	<br>
-	<form method="post">
+	중고상품 판매글 작성<br>
+	<br>
+	<form method="post" method="post" enctype="multipart/form-data">
 	<!-- 스프링의 form 태그 라이브러리. commandName에 객체의 아이디를 써주면 디스패쳐서블릿에서 해당 아이디의 객체와 결합시켜준다. -->
 	<!-- 또한, 자동으로 POST 방식으로 전송하도록 정의되어 있다. get방식으로 보내고 싶으면 method="get"을 써주자. -->
 
