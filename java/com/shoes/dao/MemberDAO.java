@@ -8,8 +8,10 @@ import com.shoes.model.JoinBean;
 
 @Repository
 public class MemberDAO {
+	
 	@Autowired
 	private SqlSessionTemplate sst;
+	
 	
 	public void join(JoinBean joinBean){
 		sst.insert("join",joinBean);

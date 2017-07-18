@@ -10,6 +10,7 @@
 		<typeAlias type="com.shoes.model.ABean" alias="text3Batis"/>
 		<typeAlias type="com.shoes.model.PRDTCommonBean" alias="PRDTCommon"/>
 		<typeAlias type="com.shoes.model.JoinBean" alias="JoinBean"/>
+		<typeAlias type="com.shoes.model.PRDTBean" alias="PRDT"/>
 
 	</typeAliases>
 	
@@ -19,5 +20,7 @@
 		<mapper resource="com/shoes/dao/test3Mapper.xml"/>
 		<mapper resource="com/shoes/dao/PRDTCommon.xml"/>
 		<mapper resource="com/shoes/dao/memberMapper.xml"/>
+		<mapper resource="com/shoes/dao/PRDT.xml"/>
+
 	</mappers>
 </configuration>

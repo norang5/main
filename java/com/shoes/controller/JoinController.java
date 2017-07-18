@@ -2,20 +2,17 @@ package com.shoes.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shoes.dao.MemberDAO;
-import com.shoes.model.GradeBean;
 import com.shoes.model.JoinBean;
 
 @Controller
 public class JoinController {
-	@Autowired
-	private SqlSessionTemplate sst;
 	
 	@Autowired
 	private MemberDAO mb;
@@ -24,6 +21,8 @@ public class JoinController {
 	public String join() {
 		return "join/join";
 	}
+	
+	
 	
 	@RequestMapping("login")
 	public String login() {
@@ -55,17 +54,24 @@ public class JoinController {
 		String mobile2 = request.getParameter("mobile2");
 		
 		JoinBean jb = new JoinBean();
+		
+		String id = email;
+		if(id.length() == 0 || id.equals("")){
+		}else{
+			id = id.substring(0, id.indexOf('@'));
+		}
 		jb.setMEM_EMAIL_PK(email);
-		jb.setMEM_ID(email.substring(0, email.indexOf('@')));
+		jb.setMEM_ID(id);
 		jb.setMEM_PASSWORD(passwd);
 		jb.setMEM_NM(name);
 		jb.setMEM_HOME_PHONE(mobile);
 		jb.setMEM_CELL_PHONE(mobile2);
-		jb.setMEM_ZIPCODE();
-		jb.setMEM_ADDRESS();
-		jb.setMEM_DETAIL_ADDRESS();
+		jb.setMEM_ZIPCODE("");
+		jb.setMEM_ADDRESS("");
+		jb.setMEM_DETAIL_ADDRESS("");
 		jb.setGRADE_ST_PK("회원");
 		jb.setMEMBER_MILEAGE(0);
+		//클라이언에서 온 정보를 jb에 담음.
 		
 		// month에 1을 더하는지 빼는지 출력해볼것.
 		java.util.Date utilDate = new java.util.Date();
@@ -74,6 +80,7 @@ public class JoinController {
 		// System.out.println(sqlDate);
 		jb.setMEM_JOIN_DT(sqlDate);
 		
+		mb.join(jb);
 		
 		
 		
