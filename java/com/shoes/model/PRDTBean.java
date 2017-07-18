@@ -1,5 +1,7 @@
 package com.shoes.model;
 
+import java.util.List;
+
 public class PRDTBean {
 
 	int PRDT_CD_PK;
@@ -8,8 +10,14 @@ public class PRDTBean {
 	int PRDT_AMT;
 	int PCI_SQ_PK;
 	String PRDT_SIZE_PK;
-	
-	
+/*    private List<PRDTBean> PRDTList;
+
+	public List<PRDTBean> getPRDTList() {
+		return PRDTList;
+	}
+	public void setPRDTList(List<PRDTBean> pRDTList) {
+		PRDTList = pRDTList;
+	}*/
 	public int getPRDT_CD_PK() {
 		return PRDT_CD_PK;
 	}
