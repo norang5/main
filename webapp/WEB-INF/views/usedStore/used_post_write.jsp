@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   <!-- 스프링의 폼태그 라이브러리 --> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,47 +11,70 @@
 <body>
 	중고상품 판매글 작성 페이지<br>
 	<br>
-	<form:form commandName="usedTradePostBean">
+	<form method="post">
 	<!-- 스프링의 form 태그 라이브러리. commandName에 객체의 아이디를 써주면 디스패쳐서블릿에서 해당 아이디의 객체와 결합시켜준다. -->
 	<!-- 또한, 자동으로 POST 방식으로 전송하도록 정의되어 있다. get방식으로 보내고 싶으면 method="get"을 써주자. -->
-		<form:hidden path="UTP_SQ_PK"/>		<%-- 글번호 --%>
-		<form:hidden path="UTP_CNT"/>		<%-- 조회수 --%>
-		<form:hidden path="UTP_REPORTING_DT"/>	<%-- 작성일 --%>
-		<form:hidden path="UTP_FIN_MODIF_DT"/>	<%-- 최종수정일 --%>
-		<form:hidden path="MEM_EMAIL_PK"/>	<%-- 이메일 --%>
-		<form:hidden path="MEM_EMAIL_PK"/>	<%-- 작성자 --%>
-		
+
 		<table>
 			<tr>
-				<td><form:label path="UTP_TITLE">제목</form:label></td>
-				<td><form:input path="UTP_TITLE"/></td>
+				<td>제목</td>
+				<td><input name="UTP_TITLE"/></td>
 			</tr>
 			<tr>
-				<td><form:label path="UTP_BODY">내용</form:label></td>
-				<td><form:textarea path="UTP_BODY" cols="30" rows="10"></form:textarea></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="작성완료"></td>
-				<td><input type="submit" value="작성취소"></td>
+				<td>내용</td>
+				<td width="670px">
+					<textarea name="UTP_BODY" id="UTP_BODY" rows="10" cols="30" style="width:650px; height:350px;">
+					</textarea>
+				</td>
 			</tr>
 			<tr>
 				<td>거래지역</td>
-				<td><form:select path="DISTRICT_PK" items="${DISTRICT_TB}"/></td>
+				<td>
+					<select name="DISTRICT_PK">
+						<c:forEach var="item" items="${districtList}">
+							<option value="${item.DISTRICT_PK}">${item.DISTRICT_PK}</option>
+						</c:forEach>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>치수명</td>
-				<td><form:select path="PRDT_SIZE_PK" items="${PRDT_SIZE_TB}"/></td>
+				<td>
+					<select name="PRDT_SIZE_PK">
+						<c:forEach var="item" items="${prdtSizeList}">
+							<option value="${item.PRDT_SIZE_PK}">${item.PRDT_SIZE_PK}</option>
+						</c:forEach>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>상품상태</td>
-				<td><form:select path="USED_ST_GRADE_PK" items="${USED_ST_TB}"/></td>
+				<td>
+					<select name="USED_ST_GRADE_PK">
+						<c:forEach var="item" items="${usedStList}">
+							<option value="${item.USED_ST_GRADE_PK}">${item.USED_ST_GRADE_PK}</option>
+						</c:forEach>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>거래단계</td>
-				<td><form:select path="USED_TRADE_ST_PK" items="${USED_TRADT_ST_TB}"/></td>
+				<td>
+					<select name="USED_TRADE_ST_PK">
+						<c:forEach var="item" items="${usedTradeStList}">
+							<option value="${item.USED_TRADE_ST_PK}">${item.USED_TRADE_ST_PK}</option>
+						</c:forEach>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="작성완료">
+					<input type="submit" value="작성취소">
+				</td>
 			</tr>
 		</table>
-	</form:form>
+	</form>
 	
 	<script src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="./resources/include/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
@@ -59,7 +82,7 @@
 		var oEditors = [];
 		nhn.husky.EZCreator.createInIFrame({
 			oAppRef: oEditors,
-			elPlaceHolder: "utp_body", //textarea에서 지정한 id와 일치해야 합니다.
+			elPlaceHolder: "UTP_BODY", //textarea에서 지정한 id와 일치해야 합니다.
 			sSkinURI: "./resources/include/smarteditor/SmartEditor2Skin.html",
 			htParams:{
 				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -71,13 +94,13 @@
 				fOnBeforeUnload : function(){}
 			}, fOnAppLoad: function(){
 				//기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-				oEditors.getById["utp_body"].exec("PASTE_HTML",[ "기존 DB에 저장된 내용을 에디터에 적용할 문구" ]);
+				oEditors.getById["UTP_BODY"].exec("PASTE_HTML",[ "기존 DB에 저장된 내용을 에디터에 적용할 문구" ]);
 			}, fCreator: "createSEditor2"
 		});
 		
 		//저장버튼 클릭시 form 전송
 	      $("#save").click(function(){
-	          var str = oEditors.getById["utp_body"].exec("UPDATE_CONTENTS_FIELD", []);
+	          var str = oEditors.getById["UTP_BODY"].exec("UPDATE_CONTENTS_FIELD", []);
 	          console.log("출력: " + str);
 	          //$("#frm").submit();
 	      });
