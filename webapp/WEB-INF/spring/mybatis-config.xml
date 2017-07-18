@@ -13,10 +13,9 @@
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="com/shoes/dao/testBatisMapper.xml" />
+		<mapper resource="com/shoes/dao/testBatisMapper.xml"/>
 		<mapper resource="com/shoes/dao/test2Mapper.xml"/>
-	<mapper resource="com/shoes/dao/test3Mapper.xml"/>
-	
+		<mapper resource="com/shoes/dao/test3Mapper.xml"/>
 		<mapper resource="com/shoes/dao/PRDTCommon.xml"/>
 
 	</mappers>
