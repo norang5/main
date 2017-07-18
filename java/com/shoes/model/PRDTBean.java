@@ -1,7 +1,5 @@
 package com.shoes.model;
 
-import java.util.List;
-
 public class PRDTBean {
 
 	int PRDT_CD_PK;

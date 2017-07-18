@@ -37,7 +37,7 @@ public class addPRDTController{
 	   }   
 	
 	@ModelAttribute("PRDT_CTG")
-	protected List<String> categoryData() throws Exception {
+	protected List<String> categoryData() {
 	List<String> PRDT_CTG = new ArrayList<String>();
 	PRDT_CTG.add("superstar");
 	PRDT_CTG.add("stan smith");

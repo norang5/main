@@ -47,7 +47,6 @@ color:white;}
 	background-color: none;
 	text-align: center;
 	display: table-cell;
-	vertical-align: middle;
 	z-index: -50;
 	
 }
@@ -57,7 +56,7 @@ color:white;}
 	positoin: absolute;
 	width: 50%;
 	margin: auto;
-	top: 50vh; left : 0; bottom : 0; right : 0;
+	top: -1300px; left : 0; bottom : 0; right : 0;
 	font-size: 5em;
 	color: white;
 	background-color: none;
@@ -341,13 +340,13 @@ $(".hover").mouseleave(
 	
 	<section class="page first">
 
-		<div id="slogan">
+		<!-- <div id="slogan">
 		</br></br></br></br></br>
 			adidas original</br> 2017 F/W
 			</br></br></br>
 		</div>
 		<div id="down"><a href="#menu">VVV</div>
-		
+		 -->
 	</section>
 	
 	<section class="page second" id="menu">
