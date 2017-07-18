@@ -14,39 +14,43 @@
 	<form:form commandName="usedTradePostBean">
 	<!-- 스프링의 form 태그 라이브러리. commandName에 객체의 아이디를 써주면 디스패쳐서블릿에서 해당 아이디의 객체와 결합시켜준다. -->
 	<!-- 또한, 자동으로 POST 방식으로 전송하도록 정의되어 있다. get방식으로 보내고 싶으면 method="get"을 써주자. -->
-		<form:hidden path="UTP_REPORTING_DT"/>
-		<form:hidden path="UTP_FIN_MODIF_DT"/>
-		<form:hidden path="UTP_CNT"/>
+		<form:hidden path="UTP_SQ_PK"/>		<%-- 글번호 --%>
+		<form:hidden path="UTP_CNT"/>		<%-- 조회수 --%>
+		<form:hidden path="UTP_REPORTING_DT"/>	<%-- 작성일 --%>
+		<form:hidden path="UTP_FIN_MODIF_DT"/>	<%-- 최종수정일 --%>
+		<form:hidden path="MEM_EMAIL_PK"/>	<%-- 이메일 --%>
+		<form:hidden path="MEM_EMAIL_PK"/>	<%-- 작성자 --%>
+		
 		<table>
-			<tr>
-				<td></td>
-				<td></td>
-			</tr>
 			<tr>
 				<td><form:label path="UTP_TITLE">제목</form:label></td>
 				<td><form:input path="UTP_TITLE"/></td>
 			</tr>
 			<tr>
-				<td>등록자</td>
-				<td><input type="text" disabled="disabled" value="" path="MEM_EMAIL_PK"></td>
-			</tr>
-			<tr>
 				<td><form:label path="UTP_BODY">내용</form:label></td>
-				<td><form:textarea id="utp_body" path="UTP_BODY"></form:textarea></td>
+				<td><form:textarea path="UTP_BODY" cols="30" rows="10"></form:textarea></td>
 			</tr>
 			<tr>
-				<td></td>
-				<td></td>
+				<td><input type="submit" value="작성완료"></td>
+				<td><input type="submit" value="작성취소"></td>
 			</tr>
 			<tr>
-				<td></td>
-				<td></td>
+				<td>거래지역</td>
+				<td><form:select path="DISTRICT_PK" items="${DISTRICT_TB}"/></td>
+			</tr>
+			<tr>
+				<td>치수명</td>
+				<td><form:select path="PRDT_SIZE_PK" items="${PRDT_SIZE_TB}"/></td>
+			</tr>
+			<tr>
+				<td>상품상태</td>
+				<td><form:select path="USED_ST_GRADE_PK" items="${USED_ST_TB}"/></td>
+			</tr>
+			<tr>
+				<td>거래단계</td>
+				<td><form:select path="USED_TRADE_ST_PK" items="${USED_TRADT_ST_TB}"/></td>
 			</tr>
 		</table>
-		
-		
-		
-	
 	</form:form>
 	
 	<script src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>

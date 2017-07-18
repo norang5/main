@@ -2,6 +2,7 @@ package com.shoes.model;
 
 import java.sql.Date;
 
+// 중고거래 게시글 테이블의 빈
 public class UsedTradePostTbBean{
 	int UTP_SQ_PK;
 	String UTP_TITLE;

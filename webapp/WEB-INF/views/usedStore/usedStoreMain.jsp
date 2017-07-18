@@ -21,7 +21,12 @@
 </head>
 <body>
 	
-	중고거래페이지임<br>
+	중고거래페이지<br>
+	<input type="button" value="글쓰기" style="
+		color: white;
+		background-color: skyBlue;
+		border: 1px solid black;
+	" onclick="location.href='used_post_write'">
 	
 </body>
 </html>
