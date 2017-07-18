@@ -4,19 +4,25 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<!-- Java Bean에 별칭을 지어준다. -->
+		<!--	Mapper에서 쓸 Java Bean들에 별칭을 지어준다.
+			일일이 패키지명까지 쓰기 싫으니까 여기서 별칭을 지어주는 거다.
+		-->
 		<typeAlias type="com.shoes.model.TestBatisBean" alias="testBatis"/>
 		<typeAlias type="com.shoes.model.HBean" alias="test2Batis"/>
 		<typeAlias type="com.shoes.model.ABean" alias="text3Batis"/>
+		
 		<typeAlias type="com.shoes.model.PRDTCommonBean" alias="PRDTCommon"/>
-
+		<typeAlias type="com.shoes.model.PrdtSizeTbBean" alias="PrdtSizeTbBean"/>
+		<typeAlias type="com.shoes.model.DistrictTbBean" alias="DistrictTbBean"/>
+		<typeAlias type="com.shoes.model.UsedTradeStTbBean" alias="UsedTradeStTbBean"/>
+		<typeAlias type="com.shoes.model.UsedStTbBean" alias="UsedStTbBean"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="com/shoes/dao/testBatisMapper.xml"/>
 		<mapper resource="com/shoes/dao/test2Mapper.xml"/>
 		<mapper resource="com/shoes/dao/test3Mapper.xml"/>
-		<mapper resource="com/shoes/dao/PRDTCommon.xml"/>
-
+		<mapper resource="com/shoes/dao/PRDTCommon.xml"/>	<!-- 상품등록 관련 SQL문 -->
+		<mapper resource="com/shoes/dao/UsedTradeMapper.xml"/>	<!-- 중고장터 관련 SQL문 -->
 	</mappers>
 </configuration>

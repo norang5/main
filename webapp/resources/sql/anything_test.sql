@@ -139,4 +139,4 @@ create table test3(
 select * from test3;
 
 insert into test3 values('김달중');
-
+SELECT * FROM PRDT_SIZE_TB;
