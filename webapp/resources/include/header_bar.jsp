@@ -29,7 +29,7 @@
 	// 헤더바의 배경색(기본색상: 하양)
 	String innerTopContainerBackgroundColor = request.getParameter("backgroundColor");
 	if(innerTopContainerBackgroundColor == null || innerTopContainerBackgroundColor == ""){
-		innerTopContainerBackgroundColor = "none";
+		innerTopContainerBackgroundColor = "white";
 	}
 	
 	// 헤더바의 아래쪽 테두리색(기본색상: 연한 회색)
@@ -81,7 +81,7 @@
 		
 		/* 헤더바 뒤쪽에서 실제 자리를 잡고 전체페이지를 밀었다 당겼다 해줄 투명컨테이너 */
 		#static_header_container{
-			height: 20px;
+			height: 50px;
 			transition-duration: 0.5s;
 			min-width: 800px;
 		}
@@ -91,8 +91,9 @@
 			display: inline-block;
 			width: 100%;
 			position: fixed;
-			top: 0;
+			top :0px;
 			min-width: 800px;
+		
 		}
 		
 		/* left_panel, right_panel이 담길 이너 컨테이너 */
@@ -100,28 +101,39 @@
 			display: inline-block;
 			width: 100%;
 			position: absolute;
-			top: 0;
+			top: 0px;
 			background-color: <%= innerTopContainerBackgroundColor %>;
 			border-bottom: 1px solid <%= innerTopContainerBorderBottomColor %>;
-			z-index: 10;
+			z-index: 310;
 		}
 		
 		/* 로고가 담길 좌측 패널 */
 		#left_panel{
 			display: inline-block;
 			background-size: contain;
-			margin-left: 10px;
+			margin-left: 20px;
 			color: <%= leftPanelBtnColor %>
 		}
+		
+		#logo{
+		width: 40px; 
+		height: 40px; 
+		vertical-align: middle;
+		}
+		
+		#logo_text{
+		display:inline;
+		}
+		
 		
 		/* 고객센터, 장바구니, 로그인 프로필이 담길 우측 패널 */
 		#right_panel{
 			display: inline-block;
 			position: absolute;
-			top: 0;
+			top: 10px;
 			right: 0;
-			margin-right: 10px;
-			z-index: 12;
+			margin-right: 20px;
+			z-index: 312;
 		}
 		
 		/* 메뉴바가 담길 이너 컨테이너 */
@@ -130,7 +142,7 @@
 			width: 100%;
 			text-align: center;
 			padding: 0;
-			margin-top: 0px;
+			margin-top: 10px;
 			transition-duration: 0.05s;
 		}
 		
@@ -141,25 +153,26 @@
 			padding: 0;
 			margin: 0;
 			transition-duration: 2s;
-			z-index: 11;
+			z-index: 311;
 		}
 		
 		.menu_btn{
 			float: left;
 			list-style: none;
-			margin: 0 20px;
-			font-size: 1em;
+			margin: 0 50px;
+			font-size: 2em;
 			transition-duration: 0.5s;
 			color: black;
 			box-sizing: border-box;
-			padding: 0 30px;
-			max-height: 25.1px;
+			padding: 0 20px;
+			max-height: 50px;
 		}
 		
 		.shopping_basket{
 			background-image: url("/shoes_shop/resources/image/shopping_basket.png");
-			height: 20px;
-			width: 20px;
+			height: 30px;
+			width: 30px;
+			margin-left:20px;
 			background-size: contain;
 			display: inline-block;
 			vertical-align: middle;
@@ -175,8 +188,9 @@
 		
 		.user_small_image{
 			background-image: url('${pageContext.request.contextPath}/resources/image/pofile.png');
-			width: 20px;
-			height: 20px;
+			width: 25px;
+			height: 25px;
+			margin-left:20px;
 			background-size: contain;
 			display: inline-block;
 			border-radius: 50%;
@@ -193,15 +207,15 @@
 			border-left: 7px solid  transparent;
 			position: relative;
 			left: 3.5px;
-			top: 6px;
-			z-index: 16;
+			top: 15px;
+			z-index: 316;
 			display: none;
 			transition-duration: 3s;
 		}
 		
 		#profile_container{
 			position: absolute;
-			top: 35px;
+			top: 50px;
 			right: 0;
 			box-shadow: 0 2px 10px rgba(0,0,0,.2);
 			border: 1px solid #ccc;
@@ -212,7 +226,7 @@
 			min-width: 315px;
 			min-height: 150px;
 			background-color: white;
-			z-index: 15;
+			z-index: 315;
 			display: none;
 			transition-duration: 3s;
 		}
@@ -272,7 +286,7 @@
 			background-color: #f8f8f8;
 			border: 1px solid #c6c6c6;
 			display: inline-block;
-			line-height: 28px;
+			line-height: 50px;
 			padding: 0 12px;
 			border-radius: 2px;
 			cursor: pointer;
@@ -297,9 +311,8 @@
 			<!-- 좌측 패널(로고) -->
 			<nav id="left_panel">
 				<a href="./main" class="none_a_style">
-					<img	src="${pageContext.request.contextPath}/image/logo.png"
-						style="	width: 21px; height: 21px; vertical-align: middle"/>
-					<span>Main</span>
+					<img id="logo" src="${pageContext.request.contextPath}/image/logo.png"/>
+					<span id="logo_text">adidas original</span>
 				</a>
 			</nav>
 		</article>
@@ -310,19 +323,25 @@
 				<!-- 이곳에 메뉴를 등록하세요. -->
 				<a class="none_a_style" href="./info">
 					<li class="menu_btn">
-						<span style="vertical-align: super;">about</span>
+						<span style="vertical-align: super;">ABOUT</span>
 					</li>
 				</a>
 				<a class="none_a_style" href="./store">
 					<li class="menu_btn">
-						<span style="vertical-align: super;">shoes</span>
+						<span style="vertical-align: super;">STORE</span>
 					</li>
 				</a>
 				<a class="none_a_style" href="./usedStore">
 					<li class="menu_btn">
-						<span style="vertical-align: super;">used-item</span>
+						<span style="vertical-align: super;">USED-ITEM</span>
 					</li>
 				</a>
+				<a class="none_a_style" href="./location">
+					<li class="menu_btn">
+						<span style="vertical-align: super;">LOCATION</span>
+					</li>
+				</a>
+				
 			</ul>
 		</nav>
 		
@@ -470,21 +489,25 @@
 				
 				// 스크롤 바가 페이지 상단에 위치했다면 메뉴를 펼침.
 				if (st < menuHiddenPosition){
-					(menuHiddenPosition > 30) ? menuHiddenPosition = 1 : menuHiddenPosition = 40;
+					(menuHiddenPosition > 40) ? menuHiddenPosition = 1 : menuHiddenPosition = 40;
 					$('#static_header_container').css({
-						'height':'80px'
+						'height':'80px',
+						'border-bottom': '1px solid <%= innerTopContainerBorderBottomColor %>' 
 					});
 					
 					$('#inner_bottom_container').css({
-						'margin-top':'23px',
+						'margin-top':'20px',
 					});
 					
 					$('.menu_btn').css({
 						'font-size':'2em',
 						'color':'<%= menuBtnBigColor %>',
 						'margin':'0 30px',
-						'max-height':'50px'
+						'max-height':'80px'
+		
+								
 					});
+					
 					
 					$('.menu_btn a').css({
 						'color':'<%= menuBtnBigColor %>',
@@ -492,24 +515,39 @@
 					
 					$('#inner_bottom_container ul').css({
 						'left':'0px',
-						'margin-top': '4px'
+						'margin-top':'0px'
 					});
 					
 					$('.menu_btn a').css({
 						'cursor':'pointer'
 					});
+					
+					$('#inner_top_container').css({
+						'border-bottom': '0px' 
+					});
+					
+					$('#logo').css({
+						'width': '75px', 
+						'height': '75px',
+						'padding-top': '5px'
+					});
+					
+					$('#logo_text').css({
+						'display':'none'
+					});
+					
 				}else{
 				// 스크롤 바가 페이지 하단에 위치했다면 메뉴를 접음.
 					
 					$('#inner_bottom_container').css({
-						'margin-top':'0px',
+						'margin-top':'3px',
 					});
 				
 					$('.menu_btn').css({
-						'font-size':'1em',
+						'font-size':'1.5em',
 						'color':'<%= menuBtnSmallColor %>',
-						'margin':'0px',
-						'max-height':'25.1px'
+						'margin':'0 30px',
+						'max-height':'50px',
 					});
 					
 					$('.menu_btn a').css({
@@ -517,13 +555,30 @@
 					});
 				
 					$('#static_header_container').css({
-						'height':'20px'
+						'height':'50px',
+						
 					});
-				
+					
+					
 					$('#inner_bottom_container ul').css({
-						'left':'-100px',
-						'margin-top': '0px'
+						/* 'left':'-100px', */
+						'margin-top': '5px',
+							'border-bottom': '0px'
 					});
+					
+					$('#inner_top_container').css({
+						'border-bottom': '1px solid <%= innerTopContainerBorderBottomColor %>'  
+					});
+					
+					$('#logo').css({
+						'width': '40px', 
+						'height': '40px'
+					});
+					
+					$('#logo_text').css({
+						'display':'inline'
+					});
+					
 				}
 				
 				// '지난 스크롤 바 위치'에 '현재 스크롤 바 위치'를 저장.

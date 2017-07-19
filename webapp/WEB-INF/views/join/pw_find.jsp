@@ -20,10 +20,10 @@ h2{
 
 </head>
 <body>
-	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+	<%-- <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript">
 		function findId(){
-			<%-- Ajax로 ~~데이터를 받아오는 함수 --%>
+			Ajax로 ~~데이터를 받아오는 함수
 			console.log("Ajax 시작");
 			
 			var userId = $('#userId').val();
@@ -82,7 +82,7 @@ h2{
 		$(document).on('click', '#findId', function(){
 			findId();
 			return false;
-		});
+		}); --%>
 		
 	</script>
 	<header>
@@ -92,10 +92,12 @@ h2{
 		<h5>가입하신 방법에 따라 비밀번호 찾기가 가능합니다.</h5>
 	</header>
 	<hr />
-	<section> <input type="button" value="아이디 찾기" id="idfindbtn"> <input type="button" value="비밀번호 찾기">
+	<section> 
+		<a href="/shoes_shop/id_find"><input type="button" value="아이디 찾기" id="idfindbtn"></a>
+		<a href="/shoes_shop/pw_find"><input type="button" value="비밀번호 찾기"></a>
 		<br>
-		<input type="radio" id="email">이메일 <input type="radio"
-			id="mobile">휴대폰번호
+		<input type="radio" id="email">이메일 
+		<input type="radio" id="mobile">휴대폰번호
 		<hr>
 		<div id="idfindview"></div>
 	</section>
