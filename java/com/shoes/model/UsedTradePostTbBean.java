@@ -15,7 +15,6 @@ public class UsedTradePostTbBean{
 	private String DISTRICT_PK;
 	private String PRDT_SIZE_PK;
 	private String USED_ST_GRADE_PK;
-	private int PRDT_CD_PK;
 	
 	public int getUTP_SQ_PK(){
 		return UTP_SQ_PK;
@@ -104,21 +103,13 @@ public class UsedTradePostTbBean{
 	public void setUSED_ST_GRADE_PK(String uSED_ST_GRADE_PK){
 		USED_ST_GRADE_PK = uSED_ST_GRADE_PK;
 	}
-
-	public int getPRDT_CD_PK(){
-		return PRDT_CD_PK;
-	}
-
-	public void setPRDT_CD_PK(int pRDT_CD_PK){
-		PRDT_CD_PK = pRDT_CD_PK;
-	}
-
+	
 	@Override
 	public String toString(){
 		return "UsedTradePostTbBean [UTP_SQ_PK=" + UTP_SQ_PK + ", UTP_TITLE=" + UTP_TITLE + ", UTP_BODY=" + UTP_BODY
 				+ ", UTP_REPORTING_DT=" + UTP_REPORTING_DT + ", UTP_FIN_MODIF_DT=" + UTP_FIN_MODIF_DT
 				+ ", MEM_EMAIL_PK=" + MEM_EMAIL_PK + ", UTP_CNT=" + UTP_CNT + ", USED_TRADE_ST_PK=" + USED_TRADE_ST_PK
 				+ ", DISTRICT_PK=" + DISTRICT_PK + ", PRDT_SIZE_PK=" + PRDT_SIZE_PK + ", USED_ST_GRADE_PK="
-				+ USED_ST_GRADE_PK + ", PRDT_CD_PK=" + PRDT_CD_PK + "]";
+				+ USED_ST_GRADE_PK + "]";
 	}
 }

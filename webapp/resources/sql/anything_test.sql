@@ -137,10 +137,38 @@ create table test3(
 select * from test3;
 
 insert into test3 values('김달중');
-<<<<<<< HEAD
 
 select * from MEMBER_TB;
 
-=======
+
 SELECT * FROM PRDT_SIZE_TB;
->>>>>>> 674bb22ff9e5408e7a5a10bd2cf65298689477a1
+
+INSERT INTO MEMBER_TB(
+	MEM_EMAIL_PK,
+	MEM_ID,
+	MEM_PASSWORD,
+	MEM_NM,
+	MEM_ADDRESS,
+	MEM_HOME_PHONE,
+	MEM_CELL_PHONE,
+	GRADE_ST_PK,
+	MEM_JOIN_DT,
+	MEM_DETAIL_ADDRESS,
+	MEM_ZIPCODE,
+	MEMBER_MILEAGE
+)values(
+	'testemail@test.com',
+	'testemail',
+	'1234',
+	'테스트',
+	'경기도 양주시',
+	'0310000000',
+	'01000000000',
+	'운영자',
+	'2017-07-20',
+	'이세상 어딘가의 세부주소',
+	'000000',
+	100
+);
+
+SELECT * FROM USED_TRADE_POST_TB;

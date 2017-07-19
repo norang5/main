@@ -18,9 +18,14 @@ public class UsedTradeDAO{
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	// 중고거래 게시글을 DB에 등록하기
-	public void insertUsedTradePost(UsedTradePostTbBean bean){
-		
+	// 신규 중고거래 게시글을 DB에 등록하기
+	public void insertUsedTradePostTb(UsedTradePostTbBean bean){
+		sqlSessionTemplate.insert("insertUsedTradePostTb", bean);
+	}
+	
+	// DB상의 기존 중고거래 게시글을 갱신하기
+	public void updateUsedTradePostTb(UsedTradePostTbBean bean){
+		sqlSessionTemplate.update("updateUsedTradePostTb", bean);
 	}
 	
 	// PRDT_SIZE_TB로부터 치수목록 받아오기
@@ -47,8 +52,24 @@ public class UsedTradeDAO{
 		return list;
 	}
 	
+	// USED_TRADE_POST_TB로부터 USED_SQ_PK와 일치하는 작성일 받아오기
+	public java.sql.Date getUsedTradePostTbCurrentServerTime(int UTP_SQ_PK){
+		return sqlSessionTemplate.selectOne("getUsedTradePostTbCurrentServerTime", UTP_SQ_PK);
+	}
+	
+	// USED_TRADE_POST_TB로부터 USED_SQ_PK와 일치하는 레코드 받아오기
 	public UsedTradePostTbBean getUsedTradePostTb(int UTP_SQ_PK){
 		return sqlSessionTemplate.selectOne("getUsedTradePostTb", UTP_SQ_PK);
+	}
+	
+	// USED_TRADE_POST_TB로부터 USED_SQ_PK와 일치하는 레코드의 MEM_EMAIL만 받아오기
+	public String getUsedTradePostTbMemEmailPk(int UTP_SQ_PK){
+		return sqlSessionTemplate.selectOne("getUsedTradePostTbMemEmailPk", UTP_SQ_PK);
+	}
+	
+	// USED_TRADE_POST_TB로부터 USED_SQ_PK와 일치하는 레코드의 UTP_CNT(조회수)만 받아오기
+	public int getUsedTradePostTbUtpCnt(int UTP_SQ_PK){
+		return sqlSessionTemplate.selectOne("getUsedTradePostTbUtpCnt", UTP_SQ_PK);
 	}
 	
 	

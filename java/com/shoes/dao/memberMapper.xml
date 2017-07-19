@@ -4,8 +4,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dj">
+	<!-- MEMBER_TB로부터 이메일과 일치하는 레코드의, 권한 등급만 받아오기 -->
+	<select id="getMemberTbGradeStPk" parameterType="String">
+		SELECT GRADE_ST_PK
+		FROM MEMBER_TB
+		WHERE MEM_EMAIL_PK = #{MEM_EMAIL_PK}
+	</select>
+
+	<!-- MEMBER_TB에 새로운 회원 저장하기 -->
 	<insert id="join" parameterType="JoinBean">
-		insert into MEMBER_TB(
+		INSERT INTO MEMBER_TB(
 			MEM_EMAIL_PK,
 			MEM_ID,
 			MEM_PASSWORD,
@@ -18,19 +26,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			MEM_DETAIL_ADDRESS,
 			MEM_ZIPCODE,
 			MEMBER_MILEAGE
+		)values(
+			#{MEM_EMAIL_PK},
+			#{MEM_ID},
+			#{MEM_PASSWORD},
+			#{MEM_NM},
+			#{MEM_ADDRESS},
+			#{MEM_HOME_PHONE},
+			#{MEM_CELL_PHONE},
+			#{GRADE_ST_PK},
+			#{MEM_JOIN_DT},
+			#{MEM_DETAIL_ADDRESS},
+			#{MEM_ZIPCODE},
+			#{MEMBER_MILEAGE}
 		)
-		values(#{MEM_EMAIL_PK},
-				#{MEM_ID},
-				#{MEM_PASSWORD},
-				#{MEM_NM},
-				#{MEM_ADDRESS},
-				#{MEM_HOME_PHONE},
-				#{MEM_CELL_PHONE},
-				#{GRADE_ST_PK},
-				#{MEM_JOIN_DT},
-				#{MEM_DETAIL_ADDRESS},
-				#{MEM_ZIPCODE},
-				#{MEMBER_MILEAGE})
 	</insert>
 </mapper>
 

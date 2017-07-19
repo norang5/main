@@ -26,7 +26,7 @@
 	<mappers>
 		<mapper resource="com/shoes/dao/testBatisMapper.xml"/>	<!-- 연습용 예제 -->
 		
-		<mapper resource="com/shoes/dao/memberMapper.xml"/>	<!-- 회원정보 관련 SQL문 -->
+		<mapper resource="com/shoes/dao/MemberMapper.xml"/>	<!-- 회원정보 관련 SQL문 -->
 		<mapper resource="com/shoes/dao/PRDT.xml"/>		<!-- 상품 관련 SQL문 -->
 		<mapper resource="com/shoes/dao/PRDTCommon.xml"/>	<!-- 상품 공통정보 관련 SQL문 -->
 		<mapper resource="com/shoes/dao/UsedTradeMapper.xml"/>	<!-- 중고장터 관련 SQL문 -->
