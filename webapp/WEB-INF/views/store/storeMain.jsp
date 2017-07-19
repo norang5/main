@@ -146,7 +146,7 @@ bottom:15px;
 </style>
 </head>
 <body>
-	<!--인스타 	<ul id="rudr_instafeed"></ul> -->
+
 <div id="store_menu">
 	<img id="background" src="./image/store_main.png" width=1900px;
 		height=850px;>

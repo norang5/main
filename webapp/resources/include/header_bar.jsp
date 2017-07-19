@@ -93,6 +93,7 @@
 			position: fixed;
 			top :0px;
 			min-width: 800px;
+		
 		}
 		
 		/* left_panel, right_panel이 담길 이너 컨테이너 */
@@ -488,9 +489,10 @@
 				
 				// 스크롤 바가 페이지 상단에 위치했다면 메뉴를 펼침.
 				if (st < menuHiddenPosition){
-					(menuHiddenPosition > 30) ? menuHiddenPosition = 1 : menuHiddenPosition = 40;
+					(menuHiddenPosition > 40) ? menuHiddenPosition = 1 : menuHiddenPosition = 40;
 					$('#static_header_container').css({
-						'height':'80px'
+						'height':'80px',
+						'border-bottom': '1px solid #c6c6c6' 
 					});
 					
 					$('#inner_bottom_container').css({
@@ -524,7 +526,6 @@
 						'border-bottom': '0px' 
 					});
 					
-
 					$('#logo').css({
 						'width': '75px', 
 						'height': '75px',
@@ -546,7 +547,7 @@
 						'font-size':'1.5em',
 						'color':'<%= menuBtnSmallColor %>',
 						'margin':'0 30px',
-						'max-height':'50px'
+						'max-height':'50px',
 					});
 					
 					$('.menu_btn a').css({
@@ -554,12 +555,19 @@
 					});
 				
 					$('#static_header_container').css({
-						'height':'50px'
+						'height':'50px',
+						
 					});
-				
+					
+					
 					$('#inner_bottom_container ul').css({
 						/* 'left':'-100px', */
-						'margin-top': '5px'
+						'margin-top': '5px',
+							'border-bottom': '0px'
+					});
+					
+					$('#inner_top_container').css({
+						'border-bottom': '1px solid #c6c6c6'  
 					});
 					
 					$('#logo').css({
