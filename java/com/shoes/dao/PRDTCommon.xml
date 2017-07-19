@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<select id="getCategoryList" resultType="Category">
-		select*from PRDT_CATEGORY_TB
+		select * from PRDT_CATEGORY_TB
 	</select>
 	
 </mapper>

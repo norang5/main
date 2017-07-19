@@ -34,13 +34,13 @@ public class addPRDTController{
 	@ModelAttribute("PRDT_CTG")
 	protected List<String> categoryData() {
 		
-		List<CategoryBean>beanList = new ArrayList<CategoryBean>();
-		beanList=prdtDao.getCategoryList();	
+		List<CategoryBean> beanList = prdtDao.getCategoryList();
+		
 		List<String> categoryList = new ArrayList<String>();
-		for(int i=0; i<beanList.size(); i++){
-		   categoryList.add(beanList[i].getPRDT_CTG_NM());
-		}
-	return categoryList;
+		//for(int i=0; i<beanList.size(); i++){
+		   //categoryList.add(beanList[i].getPRDT_CTG_NM());
+		//}
+		return categoryList;
 	}
 	
 	

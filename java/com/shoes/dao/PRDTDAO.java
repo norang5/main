@@ -25,8 +25,8 @@ public class PRDTDAO {
 	}
 
 	public List<CategoryBean> getCategoryList(){
-		List<CategoryBean> categoryList = new ArrayList<CategoryBean>();
-		categoryList = sqlSession.selectList("getCategoryList");
+		List<CategoryBean> categoryList = sqlSession.selectList("getCategoryList");
+		System.out.println("출력"+categoryList);
 		return categoryList;
 	}
 	
