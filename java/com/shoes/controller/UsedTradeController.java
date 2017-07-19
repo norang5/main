@@ -48,6 +48,7 @@ public class UsedTradeController{
 		// 2. 치수 분류표 받아오기
 		List<PrdtSizeTbBean> prdtSizeList = usedDAO.getPrdtSizeList();
 
+		
 		// 3. 지역 분류표 받아오기
 		List<DistrictTbBean> districtList = usedDAO.getDistrictList();
 

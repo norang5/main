@@ -34,7 +34,8 @@ h2 {
 		<table>
 			<tr>
 				<td>상품카테고리</td>
-				<td><form:select path="PRDT_CTG_NM" items="${PRDT_CTG}" /></td>
+				<td><form:select path="PRDT_CTG_NM"  items="${PRDT_CTG}" />
+					</td>
 			</tr>
 			<tr>
 				<td>상품명</td>

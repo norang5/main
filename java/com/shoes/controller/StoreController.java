@@ -10,6 +10,11 @@ public class StoreController {
 		return "store/storeDetail";
 	}
 	
+
+	@RequestMapping("orderdone")
+	public String orderDone() {
+		return "store/order_done";
+	}
 	
 	
 	

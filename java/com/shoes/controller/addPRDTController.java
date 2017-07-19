@@ -1,21 +1,16 @@
 package com.shoes.controller;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shoes.dao.PRDTDAO;
+import com.shoes.model.CategoryBean;
 import com.shoes.model.PRDTBean;
 import com.shoes.model.PRDTCommonBean;
 
@@ -38,14 +33,14 @@ public class addPRDTController{
 	
 	@ModelAttribute("PRDT_CTG")
 	protected List<String> categoryData() {
-	List<String> PRDT_CTG = new ArrayList<String>();
-	PRDT_CTG.add("superstar");
-	PRDT_CTG.add("stan smith");
-	PRDT_CTG.add("tubular");
-	PRDT_CTG.add("nmd");
-	PRDT_CTG.add("ultra boost");
-	PRDT_CTG.add("yeezy boost");
-	return PRDT_CTG;
+		
+		List<CategoryBean>beanList = new ArrayList<CategoryBean>();
+		beanList=prdtDao.getCategoryList();	
+		List<String> categoryList = new ArrayList<String>();
+		for(int i=0; i<beanList.size(); i++){
+		   categoryList.add(beanList[i].getPRDT_CTG_NM());
+		}
+	return categoryList;
 	}
 	
 	

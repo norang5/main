@@ -12,7 +12,7 @@
 		<typeAlias type="com.shoes.model.ABean" alias="text3Batis"/>
 		
 		<typeAlias type="com.shoes.model.PRDTCommonBean" alias="PRDTCommon"/>
-		<typeAlias type="com.shoes.model.JoinBean" alias="JoinBean"/>
+		<typeAlias type="com.shoes.model.CategoryBean" alias="Category"/>
 		<typeAlias type="com.shoes.model.PRDTBean" alias="PRDT"/>
 
 		<typeAlias type="com.shoes.model.PrdtSizeTbBean" alias="PrdtSizeTbBean"/>
@@ -21,6 +21,8 @@
 		<typeAlias type="com.shoes.model.UsedStTbBean" alias="UsedStTbBean"/>
 		<typeAlias type="com.shoes.model.PRDTBean" alias="PRDT"/>
 		<typeAlias type="com.shoes.model.EditBean" alias="EditBean"/>
+		
+		<typeAlias type="com.shoes.model.JoinBean" alias="JoinBean"/>
 	</typeAliases>
 	
 	<mappers>
