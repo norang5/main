@@ -68,7 +68,7 @@
 
 <body>
 	<form id="joinForm" action="welcome" method="post">
-		<header> <img src="/shoes_shop/resources/image/loginLogo.jpg"></header>
+		<header> <img src="/shoes_shop/resources/image/memberJoin.jpg"></header>
 		<table border="1" align="center">
 			<tr>
 				<td>Email</td>

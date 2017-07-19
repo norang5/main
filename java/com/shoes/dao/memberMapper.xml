@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dj">
+	<insert id="join" parameterType="JoinBean">
+		insert into MEMBER_TB(
+			MEM_EMAIL_PK,
+			MEM_ID,
+			MEM_PASSWORD,
+			MEM_NM,
+			MEM_ADDRESS,
+			MEM_HOME_PHONE,
+			MEM_CELL_PHONE,
+			GRADE_ST_PK,
+			MEM_JOIN_DT,
+			MEM_DETAIL_ADDRESS,
+			MEM_ZIPCODE,
+			MEMBER_MILEAGE
+		)
+		values(#{MEM_EMAIL_PK},
+				#{MEM_ID},
+				#{MEM_PASSWORD},
+				#{MEM_NM},
+				#{MEM_ADDRESS},
+				#{MEM_HOME_PHONE},
+				#{MEM_CELL_PHONE},
+				#{GRADE_ST_PK},
+				#{MEM_JOIN_DT},
+				#{MEM_DETAIL_ADDRESS},
+				#{MEM_ZIPCODE},
+				#{MEMBER_MILEAGE})
+	</insert>
+</mapper>
+

@@ -27,16 +27,19 @@ h2{
 		<h5>가입하신 방법에 따라 아이디 찾기가 가능합니다.</h5>
 	</header>
 	<hr />
-	<section> <input type="button" value="아이디 찾기" id="idfindbtn"> <input type="button" value="비밀번호 찾기">
+	<section> 
+		<a href="/shoes_shop/id_find"><input type="button" value="아이디 찾기" id="idfindbtn"></a>
+		<a href="/shoes_shop/pw_find"><input type="button" value="비밀번호 찾기"></a>
 		<br>
-		<input type="radio" id="email">이메일 <input type="radio"
-			id="mobile">휴대폰번호
+		<input type="radio" id="email">이메일 
+		<input type="radio" id="mobile">휴대폰번호
 		<hr>
 		<form>
 			<tr>
-				<td>이름</td>
+				<td align="center">이름</td>
 				<td style="width: "><input type="text" ></td>
-				<td>이메일로 찾기</td>
+				<br/>
+				<td align="center">이메일로 찾기</td>
 				<td style="width: "><input type="text" ></td>
 				<td><input type="submit" value="확인"></td>
 			</tr>
