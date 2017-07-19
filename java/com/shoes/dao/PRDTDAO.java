@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.shoes.model.CategoryBean;
 import com.shoes.model.PRDTBean;
 import com.shoes.model.PRDTCommonBean;
 
@@ -22,6 +23,18 @@ public class PRDTDAO {
 		sqlSession.insert("addPRDTCommon", prdtCommonBean);
 		System.out.println("5번");
 	}
+
+	public List<CategoryBean> getCategoryList(){
+		List<CategoryBean> categoryList = new ArrayList<CategoryBean>();
+		categoryList = sqlSession.selectList("getCategoryList");
+		return categoryList;
+	}
+	
+	public List<CategoryBean> getSizeList(){
+		List<CategoryBean> sizelist = sqlSession.selectList("getCategoryList");
+		return sizelist;
+	}
+	
 	
 	public void insertPRDT(PRDTBean prdtBean){
 		System.out.println("6번");

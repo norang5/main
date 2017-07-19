@@ -176,7 +176,7 @@ text-align: center;
 				</tr>
 				
 				<tr>
-					<td><button type=button>구매하기</button></td>
+					<td><a href="./orderdone"><button type=button>구매하기</button></a></td>
 					<td><button type=button>장바구니</button></td>
 				</tr>
 	
