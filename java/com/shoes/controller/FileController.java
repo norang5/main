@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class FileController{
 	
-	// 파일 업로드 예제코드. 마음껏 복사해 쓰십시오.
+	// 파일 업로드 예제코드. 마음껏 쓰십시오.(CKEditor)
 	@RequestMapping("/fileuploadex.action")
 	public ModelAndView upload(
 			@RequestParam("number") String number,

@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,24 +31,15 @@ public class UsedTradeController{
 	@Autowired
 	private UsedTradeDAO usedDAO;
 
-	@ModelAttribute // ModelAttribute는 항상 RequestMapping된 메서드보다 먼저 실행된다. 메서드명은
-					// 자유롭게 지어도 되며, 보통 폼백킹이라고 지어준다.
-	public UsedTradePostTbBean formBacking(){ // 즉, 여기서 생성한 MemberVO를 디스패쳐서블릿
-												// 객체로 반환하고,
-		return new UsedTradePostTbBean(); // 디스패쳐 서블릿에선 클라이언트로부터 날아온 form 데이타를
-											// commandName과 path에 따라 이 MemberVO와
-											// 매칭하여,
-	}
-
 	// 중고장터로 이동
 	@RequestMapping("usedStore")
 	public String goToUsedStore(){
 		return "usedStore/usedStoreMain";
 	}
 
-	// 중고거래글 작성 페이지로 이동
-	@RequestMapping(value = "/used_post_write", method = RequestMethod.GET)
-	public ModelAndView usedStorePostWriteGet(){
+	// 중고거래글 작성 페이지로 이동(SmartEditor)
+	@RequestMapping(value = "/used_post_write_se", method = RequestMethod.GET)
+	public ModelAndView usedStorePostWriteSeGet(){
 		ModelAndView mav = new ModelAndView();
 
 		// 1. 현재 세션의 이메일(작성자) 받아오기
@@ -81,9 +73,9 @@ public class UsedTradeController{
 		return mav;
 	}
 
-	// 클라이언트 쪽에서 중고거래글 작성후에, 그 데이터를 서버로 전송할때.
-	@RequestMapping(value = "/used_post_write", method = RequestMethod.POST)
-	public String usedStorePostWritePost(@ModelAttribute UsedTradePostTbBean usedTradePostTbBean,
+	// 클라이언트 쪽에서 중고거래글 작성후에, 그 데이터를 서버로 전송할때.(SmartEditor)
+	@RequestMapping(value = "/used_post_write_se", method = RequestMethod.POST)
+	public String usedStorePostWriteSePost(@ModelAttribute UsedTradePostTbBean usedTradePostTbBean,
 			HttpServletRequest request){
 		System.out.println(usedTradePostTbBean);
 
@@ -92,39 +84,21 @@ public class UsedTradeController{
 		return "redirect:/main";
 	}
 
-	@RequestMapping("/write")
-	public String write(){
-		return "write";
-	}
-
-	/*@RequestMapping(value = "/file_upload", method = RequestMethod.POST)
-	public String procFileUpload(FileBean fileBean,HttpServletRequest request, Model model){
-		HttpSession session = request.getSession();
-		String root_path = session.getServletContext().getRealPath("/");// 웹서비스 root 경로
-		String attach_path = "resources/files/attach/";
-		
-		MultipartFile upload = fileBean.getUpload();
-		String filename = "";
-		String CKEditorFuncNum = "";
-		
-		if(upload != null){
-			filename = upload.getOriginalFilename();
-			fileBean.setFilename(filename);
-			CKEditorFuncNum = fileBean.getCKEditorFuncNum();
+	// 중고거래글 작성 페이지로 이동(CKEditor)
+	// 파라미터로 idx(게시글 번호)를 받아올 것.그렇게 수정하는 글이라면 이전 작성 내용을 되돌려 줄 것이고, 새로 작성이라면 그냥 바로 이동 할 것임.
+	@RequestMapping(value = "/used_post_write_ck", method = RequestMethod.GET)
+	public void usedStroePostWriteCKGet(@RequestParam(value = "idx", defaultValue = "0") int idx, Model model){
+		System.out.println("중고상품 판매글 작성 페이지로 이동");
+		if(idx > 0){
 			
-			try{
-				File file = new File(root_path + attach_path + filename);
-				System.out.println(root_path + attach_path + filename);
-				upload.transferTo(file);
-			}catch(IOException e){
-				e.printStackTrace();
-			}
 		}
 		
-		String file_path = "/" + attach_path + filename;
-		model.addAttribute("file_path", file_path);
-		model.addAttribute("CKEditorFuncNum", CKEditorFuncNum);
+		return "";
+	}
+	
+	// 클라이언트 쪽에서 중고거래글 작성후에, 그 데이터를 서버로 전송할때.(CKEditor)
+	@RequestMapping(value = "/used_post_write_ck", method = RequestMethod.POST)
+	public void usedStroePostWritePEGet(){
 		
-		return "fileupload";
-	}*/
+	}
 }

@@ -86,13 +86,13 @@
 	</form>
 	
 	<script src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="./resources/include/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+	<script type="text/javascript" src="./resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 	<script type="text/javascript">
 		var oEditors = [];
 		nhn.husky.EZCreator.createInIFrame({
 			oAppRef: oEditors,
 			elPlaceHolder: "UTP_BODY", //textarea에서 지정한 id와 일치해야 합니다.
-			sSkinURI: "./resources/include/smarteditor/SmartEditor2Skin.html",
+			sSkinURI: "./resources/smarteditor/SmartEditor2Skin.html",
 			htParams:{
 				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
 				bUseToolbar : true,
