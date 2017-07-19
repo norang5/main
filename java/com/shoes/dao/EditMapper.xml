@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- CKEditor 예제에서 사용하는 SQL문 모음 -->
+
+<mapper namespace="com.shoes.model.HBean"> 
+
+	<select id="selectList" resultType="EditBean">
+		SELECT * FROM BBS
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="EditBean">
+		SELECT * FROM BBS WHERE IDX = #{idx}
+	</select>
+	
+	<insert id="insertOne" parameterType="EditBean">
+		INSERT INTO BBS(USER_NAME, SUBJECT, CONTENT, REG_DATETIME)
+		VALUES(#{user_name},#{subject},#{content},#{reg_datetime})
+	</insert>
+	
+	<update id="updateOne" parameterType="EditBean">
+		UPDATE bbs SET
+		user_name = #{user_name},
+		subject = #{subject},
+		content = #{content},
+		reg_datetime = #{reg_datetime}
+		WHERE idx = #{idx} LIMIT 1
+	</update>
+
+	<delete id="deleteOne" parameterType="int">
+		DELETE FROM bbs WHERE idx = #{idx}
+	</delete>
+</mapper>

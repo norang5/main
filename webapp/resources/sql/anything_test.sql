@@ -137,6 +137,10 @@ create table test3(
 select * from test3;
 
 insert into test3 values('김달중');
+<<<<<<< HEAD
 
 select * from MEMBER_TB;
 
+=======
+SELECT * FROM PRDT_SIZE_TB;
+>>>>>>> 674bb22ff9e5408e7a5a10bd2cf65298689477a1

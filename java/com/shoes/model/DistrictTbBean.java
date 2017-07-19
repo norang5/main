@@ -4,6 +4,11 @@ package com.shoes.model;
 public class DistrictTbBean{
 	private String DISTRICT_PK;
 
+	@Override
+	public String toString(){
+		return "DistrictTbBean [DISTRICT_PK=" + DISTRICT_PK + "]";
+	}
+
 	public String getDISTRICT_PK(){
 		return DISTRICT_PK;
 	}

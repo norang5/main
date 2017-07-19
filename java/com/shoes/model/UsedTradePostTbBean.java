@@ -4,18 +4,18 @@ import java.sql.Date;
 
 // 중고거래 게시글 테이블의 빈
 public class UsedTradePostTbBean{
-	int UTP_SQ_PK;
-	String UTP_TITLE;
-	String UTP_BODY;
-	Date UTP_REPORTING_DT;
-	Date UTP_FIN_MODIF_DT;
-	String MEM_EMAIL_PK;
-	int UTP_CNT;
-	String USED_TRADE_ST_PK;
-	String DISTRICT_PK;
-	String PRDT_SIZE_PK;
-	String USED_ST_GRADE_PK;
-	int PRDT_CD_PK;
+	private int UTP_SQ_PK;
+	private String UTP_TITLE;
+	private String UTP_BODY;
+	private Date UTP_REPORTING_DT;
+	private Date UTP_FIN_MODIF_DT;
+	private String MEM_EMAIL_PK;
+	private int UTP_CNT;
+	private String USED_TRADE_ST_PK;
+	private String DISTRICT_PK;
+	private String PRDT_SIZE_PK;
+	private String USED_ST_GRADE_PK;
+	private int PRDT_CD_PK;
 	
 	public int getUTP_SQ_PK(){
 		return UTP_SQ_PK;
