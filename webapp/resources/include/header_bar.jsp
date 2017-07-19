@@ -81,7 +81,7 @@
 		
 		/* 헤더바 뒤쪽에서 실제 자리를 잡고 전체페이지를 밀었다 당겼다 해줄 투명컨테이너 */
 		#static_header_container{
-			height: 20px;
+			height: 50px;
 			transition-duration: 0.5s;
 			min-width: 800px;
 		}
@@ -91,7 +91,7 @@
 			display: inline-block;
 			width: 100%;
 			position: fixed;
-			top: 0;
+			top :0px;
 			min-width: 800px;
 		}
 		
@@ -100,7 +100,7 @@
 			display: inline-block;
 			width: 100%;
 			position: absolute;
-			top: 0;
+			top: 0px;
 			background-color: <%= innerTopContainerBackgroundColor %>;
 			border-bottom: 1px solid <%= innerTopContainerBorderBottomColor %>;
 			z-index: 10;
@@ -110,7 +110,7 @@
 		#left_panel{
 			display: inline-block;
 			background-size: contain;
-			margin-left: 10px;
+			margin-left: 20px;
 			color: <%= leftPanelBtnColor %>
 		}
 		
@@ -118,9 +118,9 @@
 		#right_panel{
 			display: inline-block;
 			position: absolute;
-			top: 0;
+			top: 10px;
 			right: 0;
-			margin-right: 10px;
+			margin-right: 20px;
 			z-index: 12;
 		}
 		
@@ -130,7 +130,7 @@
 			width: 100%;
 			text-align: center;
 			padding: 0;
-			margin-top: 0px;
+			margin-top: 10px;
 			transition-duration: 0.05s;
 		}
 		
@@ -147,19 +147,20 @@
 		.menu_btn{
 			float: left;
 			list-style: none;
-			margin: 0 20px;
-			font-size: 1em;
+			margin: 0 50px;
+			font-size: 2em;
 			transition-duration: 0.5s;
 			color: black;
 			box-sizing: border-box;
-			padding: 0 30px;
-			max-height: 25.1px;
+			padding: 0 20px;
+			max-height: 50px;
 		}
 		
 		.shopping_basket{
 			background-image: url("/shoes_shop/resources/image/shopping_basket.png");
-			height: 20px;
-			width: 20px;
+			height: 30px;
+			width: 30px;
+			margin-left:20px;
 			background-size: contain;
 			display: inline-block;
 			vertical-align: middle;
@@ -175,8 +176,9 @@
 		
 		.user_small_image{
 			background-image: url('${pageContext.request.contextPath}/resources/image/pofile.png');
-			width: 20px;
-			height: 20px;
+			width: 25px;
+			height: 25px;
+			margin-left:20px;
 			background-size: contain;
 			display: inline-block;
 			border-radius: 50%;
@@ -193,7 +195,7 @@
 			border-left: 7px solid  transparent;
 			position: relative;
 			left: 3.5px;
-			top: 6px;
+			top: 15px;
 			z-index: 16;
 			display: none;
 			transition-duration: 3s;
@@ -201,7 +203,7 @@
 		
 		#profile_container{
 			position: absolute;
-			top: 35px;
+			top: 50px;
 			right: 0;
 			box-shadow: 0 2px 10px rgba(0,0,0,.2);
 			border: 1px solid #ccc;
@@ -272,7 +274,7 @@
 			background-color: #f8f8f8;
 			border: 1px solid #c6c6c6;
 			display: inline-block;
-			line-height: 28px;
+			line-height: 50px;
 			padding: 0 12px;
 			border-radius: 2px;
 			cursor: pointer;
@@ -298,8 +300,8 @@
 			<nav id="left_panel">
 				<a href="./main" class="none_a_style">
 					<img	src="${pageContext.request.contextPath}/image/logo.png"
-						style="	width: 21px; height: 21px; vertical-align: middle"/>
-					<span>Main</span>
+						style="	width: 40px; height: 40px; vertical-align: middle"/>
+					<span>adidas original</span>
 				</a>
 			</nav>
 		</article>
@@ -476,14 +478,14 @@
 					});
 					
 					$('#inner_bottom_container').css({
-						'margin-top':'23px',
+						'margin-top':'40px',
 					});
 					
 					$('.menu_btn').css({
 						'font-size':'2em',
 						'color':'<%= menuBtnBigColor %>',
 						'margin':'0 30px',
-						'max-height':'50px'
+						'max-height':'80px'
 					});
 					
 					$('.menu_btn a').css({
@@ -492,7 +494,7 @@
 					
 					$('#inner_bottom_container ul').css({
 						'left':'0px',
-						'margin-top': '4px'
+						'margin-top':'0px'
 					});
 					
 					$('.menu_btn a').css({
@@ -506,10 +508,10 @@
 					});
 				
 					$('.menu_btn').css({
-						'font-size':'1em',
+						'font-size':'1.5em',
 						'color':'<%= menuBtnSmallColor %>',
-						'margin':'0px',
-						'max-height':'25.1px'
+						'margin':'0 30px',
+						'max-height':'50px'
 					});
 					
 					$('.menu_btn a').css({
@@ -517,12 +519,12 @@
 					});
 				
 					$('#static_header_container').css({
-						'height':'20px'
+						'height':'50px'
 					});
 				
 					$('#inner_bottom_container ul').css({
-						'left':'-100px',
-						'margin-top': '0px'
+						/* 'left':'-100px', */
+						'margin-top': '5px'
 					});
 				}
 				

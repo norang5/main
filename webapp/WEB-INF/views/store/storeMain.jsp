@@ -106,7 +106,15 @@ a:hover,
 .pic-caption,
 .pic:hover .pic-caption,
 .pic:hover img {
-    transition: all 0.5s ease
+    transition: all 0.5s ease;
+    cursor:pointer;
+}
+
+
+a,
+a:hover
+{
+
 }
 
 
@@ -150,40 +158,40 @@ a:hover,
 <!--인스타 	<ul id="rudr_instafeed"></ul> -->
 <img id="background" src="./image/store_main.png" width=1900px; height=800px;>
 
-<figure class="pic pic-3d"><img class="pic-image"  id="ultra" src="./image/ultra_main.png" width=300px; alt="ultraboost" />
+<figure class="pic pic-3d"><a href="./ultraboost"><img class="pic-image"  id="ultra" src="./image/ultra_main.png" width=300px; alt="ultraboost" />
 <span class="pic-caption open-right">
-                <a href="./ultraboost"><h1 class="pic-title">Ultra Boost</h1></a>
+                <h1 class="pic-title">Ultra Boost</h1></a>
             </span>
 </figure>
 
-<figure class="pic pic-3d"><img class="pic-image"  id="superstar" src="./image/super_main.png" width=300px; alt="superstar" />
+<figure class="pic pic-3d"><a href="./superstar"><img class="pic-image"  id="superstar" src="./image/super_main.png" width=300px; alt="superstar" />
 <span class="pic-caption open-right">
-                <a href="./superstar"><h1 class="pic-title">Super Star</h1></a>
+                <h1 class="pic-title">Super Star</h1></a>
             </span>
 </figure>
 
 
-<figure class="pic pic-3d"><img class="pic-image"  id="yeezy" src="./image/yeezy_main.png" width=300px; alt="yeezyboost" />
+<figure class="pic pic-3d"><a href="./yeezyboost"><img class="pic-image"  id="yeezy" src="./image/yeezy_main.png" width=300px; alt="yeezyboost" />
 <span class="pic-caption open-right">
-                <a href="./yeezyboost"><h1 class="pic-title">Yeezy Boost</h1></a>
+                <h1 class="pic-title">Yeezy Boost</h1></a>
             </span>
 </figure>
 
-<figure class="pic pic-3d"><img class="pic-image"  id="nmd" src="./image/nmd_main.png" width=300px; alt="nmd" />
+<figure class="pic pic-3d"><a href="./nmd"><img class="pic-image"  id="nmd" src="./image/nmd_main.png" width=300px; alt="nmd" />
 <span class="pic-caption open-right">
-                <a href="./nmd"><h1 class="pic-title">NMD</h1></a>
+                <h1 class="pic-title">NMD</h1></a>
             </span>
 </figure>
 
-<figure class="pic pic-3d"><img class="pic-image"  id="stan" src="./image/stan_main.png" width=300px; alt="stansmith" />
+<figure class="pic pic-3d"> <a href="./stansmith"><img class="pic-image"  id="stan" src="./image/stan_main.png" width=300px; alt="stansmith" />
 <span class="pic-caption open-right">
-                <a href="./stansmith"><h1 class="pic-title">Stan Smith</h1></a>
+               <h1 class="pic-title">Stan Smith</h1></a>
             </span>
 </figure>
 
-<figure class="pic pic-3d"><img class="pic-image"  id="tubular" src="./image/superstar.png" width=300px; alt="tubular" />
+<figure class="pic pic-3d"><a href="./tubular"><img class="pic-image"  id="tubular" src="./image/superstar.png" width=300px; alt="tubular" />
 <span class="pic-caption open-right">
-                <a href="./tubular"><h1 class="pic-title">Tubular</h1></a>
+                <h1 class="pic-title">Tubular</h1></a>
             </span>
 </figure>
 
