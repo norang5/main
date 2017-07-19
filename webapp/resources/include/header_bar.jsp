@@ -322,19 +322,25 @@
 				<!-- 이곳에 메뉴를 등록하세요. -->
 				<a class="none_a_style" href="./info">
 					<li class="menu_btn">
-						<span style="vertical-align: super;">about</span>
+						<span style="vertical-align: super;">ABOUT</span>
 					</li>
 				</a>
 				<a class="none_a_style" href="./store">
 					<li class="menu_btn">
-						<span style="vertical-align: super;">shoes</span>
+						<span style="vertical-align: super;">STORE</span>
 					</li>
 				</a>
 				<a class="none_a_style" href="./usedStore">
 					<li class="menu_btn">
-						<span style="vertical-align: super;">used-item</span>
+						<span style="vertical-align: super;">USED-ITEM</span>
 					</li>
 				</a>
+				<a class="none_a_style" href="./location">
+					<li class="menu_btn">
+						<span style="vertical-align: super;">LOCATION</span>
+					</li>
+				</a>
+				
 			</ul>
 		</nav>
 		
@@ -488,11 +494,11 @@
 					});
 					
 					$('#inner_bottom_container').css({
-						'margin-top':'18px',
+						'margin-top':'20px',
 					});
 					
 					$('.menu_btn').css({
-						'font-size':'2.5em',
+						'font-size':'2em',
 						'color':'<%= menuBtnBigColor %>',
 						'margin':'0 30px',
 						'max-height':'80px'
@@ -533,7 +539,7 @@
 				// 스크롤 바가 페이지 하단에 위치했다면 메뉴를 접음.
 					
 					$('#inner_bottom_container').css({
-						'margin-top':'0px',
+						'margin-top':'3px',
 					});
 				
 					$('.menu_btn').css({
