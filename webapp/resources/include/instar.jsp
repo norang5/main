@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-h2 {
+#instar_title {
 	padding: 15px;
 	text-align: center;
 }
@@ -77,7 +77,7 @@ h2 {
 
 </head>
 <body>
-<h2>instagram  NOW!</h2>
+<h2 id="instar_title">instagram  NOW!</h2>
 		<ul id="rudr_instafeed"></ul>
 </body>
 </html>

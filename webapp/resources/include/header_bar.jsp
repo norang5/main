@@ -79,11 +79,24 @@
 			font-weight:bold;
 		}
 		
+		/* 헤더 보더라인 가시화를 위해 자리를 차지하고 있을 컨테이너*/
+ 		#fixed_header{
+			margin:0px;
+			padding:0px;
+			height: 80px;
+			transition-duration: 0.5s;
+		}
+		
 		/* 헤더바 뒤쪽에서 실제 자리를 잡고 전체페이지를 밀었다 당겼다 해줄 투명컨테이너 */
 		#static_header_container{
-			height: 50px;
+			margin:0px;
+			padding:0px;
+			height: 80px;
+			position:fixed;
+			background-color: <%= innerTopContainerBackgroundColor %>;
+			border-bottom: 1px solid <%= innerTopContainerBorderBottomColor %>;
 			transition-duration: 0.5s;
-			min-width: 800px;
+			min-width: 100%;
 		}
 		
 		/* inner_top_container, inner_bottom_container가 담길 헤더 컨테이너 */
@@ -102,8 +115,6 @@
 			width: 100%;
 			position: absolute;
 			top: 0px;
-			background-color: <%= innerTopContainerBackgroundColor %>;
-			border-bottom: 1px solid <%= innerTopContainerBorderBottomColor %>;
 			z-index: 310;
 		}
 		
@@ -119,10 +130,12 @@
 		width: 40px; 
 		height: 40px; 
 		vertical-align: middle;
+		transition-duration: 0.5s;
 		}
 		
 		#logo_text{
 		display:inline;
+		transition-duration: 0.5s;
 		}
 		
 		
@@ -305,6 +318,7 @@
 	<header id="static_header_container">
 	
 	</header>
+	<div id="fixed_header"></div>
 	<header id="fixed_header_container">
 		<!-- 내부 컨테이너 -->
 		<article id="inner_top_container">
@@ -489,21 +503,27 @@
 				
 				// 스크롤 바가 페이지 상단에 위치했다면 메뉴를 펼침.
 				if (st < menuHiddenPosition){
-					(menuHiddenPosition > 40) ? menuHiddenPosition = 1 : menuHiddenPosition = 40;
+					(menuHiddenPosition > 50) ? menuHiddenPosition = 1 : menuHiddenPosition = 50;
 					$('#static_header_container').css({
 						'height':'80px',
-						'border-bottom': '1px solid <%= innerTopContainerBorderBottomColor %>' 
 					});
 					
+					$('#fixed_header').css({
+
+						'height': '80px'
+					});
+					
+					
 					$('#inner_bottom_container').css({
-						'margin-top':'20px',
+					'margin-top':'25px' 
+						
 					});
 					
 					$('.menu_btn').css({
 						'font-size':'2em',
 						'color':'<%= menuBtnBigColor %>',
 						'margin':'0 30px',
-						'max-height':'80px'
+						'max-height':'80px',
 		
 								
 					});
@@ -529,7 +549,7 @@
 					$('#logo').css({
 						'width': '75px', 
 						'height': '75px',
-						'padding-top': '5px'
+						'padding-top': '7px'
 					});
 					
 					$('#logo_text').css({
@@ -539,6 +559,13 @@
 				}else{
 				// 스크롤 바가 페이지 하단에 위치했다면 메뉴를 접음.
 					
+						$('#fixed_header').css({
+
+			'height': '50px'
+		});
+		
+				
+				
 					$('#inner_bottom_container').css({
 						'margin-top':'3px',
 					});
@@ -562,17 +589,17 @@
 					
 					$('#inner_bottom_container ul').css({
 						/* 'left':'-100px', */
-						'margin-top': '5px',
-							'border-bottom': '0px'
+						'margin-top': '9px',
 					});
 					
 					$('#inner_top_container').css({
-						'border-bottom': '1px solid <%= innerTopContainerBorderBottomColor %>'  
+					
 					});
 					
 					$('#logo').css({
 						'width': '40px', 
-						'height': '40px'
+						'height': '40px',
+						'padding-top': '8px'
 					});
 					
 					$('#logo_text').css({
