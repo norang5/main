@@ -89,13 +89,13 @@ public class UsedTradeController{
 	// 파라미터로 게시글 번호가 넘어온다면 DB에서 받아와서 함께 전송해주고(수정),
 	// 파라미터로 아무값도 안넘어온다면 그대로 글 작성 페이지로 연결해준다.(새로 글쓰기)
 	@RequestMapping(value = "/used_post_write_ck", method = RequestMethod.GET)
-	public mav usedStroePostWriteCKGet(@RequestParam(value = "postNo", defaultValue = "0") int postNo){
+	public ModelAndView usedStroePostWriteCKGet(@RequestParam(value = "postNo", defaultValue = "0") int postNo){
 		System.out.println("중고상품 판매글 작성 페이지로 이동");
 		ModelAndView mav = new ModelAndView();
 		
 		if(postNo > 0){
 			System.out.println("postNo: " + postNo);
-			UsedTradePostTbBean bean = usedDAO.getSelectOne(postNo);
+			//UsedTradePostTbBean bean = usedDAO.getSelectOne(postNo);
 			mav.addObject("orginalPost", bean);
 		}
 		

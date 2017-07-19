@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.shoes.model.CategoryBean;
 import com.shoes.model.PRDTBean;
 import com.shoes.model.PRDTCommonBean;
+import com.shoes.model.PrdtSizeTbBean;
 
 @Repository
 public class PRDTDAO {
@@ -26,12 +27,11 @@ public class PRDTDAO {
 
 	public List<CategoryBean> getCategoryList(){
 		List<CategoryBean> categoryList = sqlSession.selectList("getCategoryList");
-		System.out.println("출력"+categoryList);
 		return categoryList;
 	}
 	
-	public List<CategoryBean> getSizeList(){
-		List<CategoryBean> sizelist = sqlSession.selectList("getCategoryList");
+	public List<PrdtSizeTbBean> getSizeList(){
+		List<PrdtSizeTbBean> sizelist = sqlSession.selectList("getPrdtSizeList");
 		return sizelist;
 	}
 	
