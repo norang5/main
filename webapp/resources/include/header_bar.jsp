@@ -492,7 +492,7 @@
 					(menuHiddenPosition > 40) ? menuHiddenPosition = 1 : menuHiddenPosition = 40;
 					$('#static_header_container').css({
 						'height':'80px',
-						'border-bottom': '1px solid #c6c6c6' 
+						'border-bottom': '1px solid <%= innerTopContainerBorderBottomColor %>' 
 					});
 					
 					$('#inner_bottom_container').css({
@@ -567,7 +567,7 @@
 					});
 					
 					$('#inner_top_container').css({
-						'border-bottom': '1px solid #c6c6c6'  
+						'border-bottom': '1px solid <%= innerTopContainerBorderBottomColor %>'  
 					});
 					
 					$('#logo').css({

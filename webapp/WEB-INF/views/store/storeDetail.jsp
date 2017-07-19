@@ -29,7 +29,7 @@ body {
 
 #main1{
 padding-top:80px;
-padding-bottom:200px;
+padding-bottom:80px;
 width: 50vw;
 margin: auto;
 }
@@ -94,17 +94,51 @@ height:80px;
 
 .table_title{
 background-color: #C6C6C6;
-width:180px;
+width:150px;
 }
 
 
-#buying_footer {
+#prdt_instar {
+	position:relative;
+	border-top: 1px dotted gray;
+	height:600px;
+	z-index:-100;
+}
+
+#instar_image{
+position:relative;
+}
+
+#buying_review{
 	border-top: 1px dotted gray;
 	height: 500px;
 }
 
+.review{
+	margin-top:40px;
+	border : 1px solid gray;
+	border-collapse : collapse;
+	width: 100%
+}
 
+.review tr,
+.review td{
 
+	padding:5px;
+	padding-left:15px;
+	margin:0px;
+ 	border : 1px solid gray;
+ 	border-collapse : collapse;
+	height: 20px;
+
+}
+
+.review thead{
+text-align: center;
+}
+#buying_footer{
+	border-top: 1px dotted gray;
+}
 
 </style>
 </head>
@@ -224,16 +258,61 @@ width:180px;
 					<td colspan="3">디비에서</td>
 				</tr>
 				<tr>
-					<td class="table_title">A/S 담당자 & 연락처</td>
+					<td class="table_title">A/S 담당(연락처)</td>
 					<td colspan="3">디비에서</td>
 				</tr>
 		</table>
 	</div>
 
-	<!-- 구매 페이지 푸터 (인스타 리뷰, 추천상품 등) -->
-	<div id="buying_footer">
+	<!--인스타 리뷰, 추천상품 등 -->
+	<div id="prdt_instar">
+	<div id="instar_image">
 		<jsp:include page="../../../resources/include/instar.jsp" flush="false" />
+	</div>	
 	</div>
+	
+	<!-- 상품 구매 후기 -->
+	<div id="buying_review">
+		<table class="review" border="1" cellspacing="0">
+			<colgroup>
+				<col width="40">
+				<col>
+				<col width="100">
+				<col width="100">
+				<col width="60">
+				<col width="60">
+			</colgroup>
+			<thead>
+				<tr>
+					<th scope="col"></th>
+					<th scope="col">한줄 상품평</th>
+					<th scope="col">글쓴이</th>
+					<th scope="col">날짜</th>
+					<th scope="col">사이즈</th>
+					<th scope="col">발볼</th>
+			</thead>
+			<tbody>
+			<c:forEach items="${list }" var="list">
+				<tr>
+					<td class="idx">${list.idx }</td>
+					<td class="title"><a href="">${list.title }</a></td>
+					<td class="name">${list.id }</td>
+					<td class="date">${list.date }</td>
+					<td class="size">${list.size }</td>
+					<td class="style">${list.style }</td>
+				</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	
+	<!--구매페이지 푸터 (추천상품 등?) -->
+	<div id="buying_footer">
+
+	</div>
+	
+	
+	
 </div>
 </body>
 </html>
