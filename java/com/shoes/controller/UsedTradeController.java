@@ -85,7 +85,8 @@ public class UsedTradeController{
 	}
 
 	// 중고거래글 작성 페이지로 이동(CKEditor)
-	// 파라미터로 idx(게시글 번호)를 받아올 것.그렇게 수정하는 글이라면 이전 작성 내용을 되돌려 줄 것이고, 새로 작성이라면 그냥 바로 이동 할 것임.
+	// 파라미터로 게시글 번호가 넘어온다면 DB에서 받아와서 함께 전송해주고(수정),
+	// 파라미터로 아무값도 안넘어온다면 그대로 글 작성 페이지로 연결해준다.(새로 글쓰기)
 	@RequestMapping(value = "/used_post_write_ck", method = RequestMethod.GET)
 	public void usedStroePostWriteCKGet(@RequestParam(value = "idx", defaultValue = "0") int idx, Model model){
 		System.out.println("중고상품 판매글 작성 페이지로 이동");

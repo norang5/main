@@ -1,5 +1,7 @@
 package com.shoes.model;
 
+import java.awt.List;
+
 public class EditBean{
 	private Integer idx;
 	private String user_name;
