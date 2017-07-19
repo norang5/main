@@ -20,20 +20,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  -->
 <mapper namespace="com.shoes.dao.UsedTradeDao"> 
 
+	<!-- 치수 목록 가져오기 -->
 	<select id="getPrdtSizeList" resultType="PrdtSizeTbBean">
 		SELECT * FROM PRDT_SIZE_TB
 	</select>
 	
+	<!-- 지역 목록 가져오기 -->
 	<select id="getDistrictList" resultType="DistrictTbBean">
 		SELECT * FROM DISTRICT_TB
 	</select>
 	
+	<!-- 중고거래 상태 목록 가져오기 -->
 	<select id="getUsedTradeStList" resultType="UsedTradeStTbBean">
 		SELECT * FROM USED_TRADE_ST_TB
 	</select>
 	
+	<!-- 중고상품 상태 목록 가져오기 -->
 	<select id="getUsedStList" resultType="UsedStTbBean">
 		SELECT * FROM USED_ST_TB
+	</select>
+	
+	<!-- 특정 식별번호의 중고거래 게시글 가져오기 -->
+	<select id="getUsedTradePostTb" parameterType="int" resultType="UsedTradePostTbBean">
+		SELECT * FROM USED_TRADE_POST_TB
+		WHERE UTP_SQ_PK == #{UTO_SQ_PK}
 	</select>
 </mapper>
 

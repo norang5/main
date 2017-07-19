@@ -72,7 +72,7 @@
 	
 	<style type="text/css">
 		@import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
-@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+		@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 		body{
 			margin: 0;
 			font-family: 'Raleway', Arial, sans-serif;
@@ -127,15 +127,15 @@
 		}
 		
 		#logo{
-		width: 40px; 
-		height: 40px; 
-		vertical-align: middle;
-		transition-duration: 0.5s;
+			width: 40px; 
+			height: 40px; 
+			vertical-align: middle;
+			transition-duration: 0.5s;
 		}
 		
 		#logo_text{
-		display:inline;
-		transition-duration: 0.5s;
+			display:inline;
+			transition-duration: 0.5s;
 		}
 		
 		
@@ -488,7 +488,7 @@
 				showProfile = true;
 			}
 			
-			// 500ms 마다 스크롤 이벤트가 있었는지 확인
+			// 350ms 마다 스크롤 이벤트가 있었는지 확인
 			setInterval(function(){
 				if(didScroll){
 					scrollHandler();
@@ -523,9 +523,7 @@
 						'font-size':'2em',
 						'color':'<%= menuBtnBigColor %>',
 						'margin':'0 30px',
-						'max-height':'80px',
-		
-								
+						'max-height':'80px',		
 					});
 					
 					
@@ -557,19 +555,16 @@
 					});
 					
 				}else{
-				// 스크롤 바가 페이지 하단에 위치했다면 메뉴를 접음.
-					
-						$('#fixed_header').css({
-
-			'height': '50px'
-		});
-		
-				
-				
+					// 스크롤 바가 페이지 하단에 위치했다면 메뉴를 접음.
+						
+					$('#fixed_header').css({
+						'height': '50px'
+					});
+			
 					$('#inner_bottom_container').css({
 						'margin-top':'3px',
 					});
-				
+					
 					$('.menu_btn').css({
 						'font-size':'1.5em',
 						'color':'<%= menuBtnSmallColor %>',
@@ -580,13 +575,11 @@
 					$('.menu_btn a').css({
 						'color':'<%= menuBtnSmallColor %>',
 					});
-				
+					
 					$('#static_header_container').css({
-						'height':'50px',
-						
+						'height':'50px',				
 					});
-					
-					
+						
 					$('#inner_bottom_container ul').css({
 						/* 'left':'-100px', */
 						'margin-top': '9px',
@@ -595,7 +588,7 @@
 					$('#inner_top_container').css({
 					
 					});
-					
+						
 					$('#logo').css({
 						'width': '40px', 
 						'height': '40px',
@@ -605,7 +598,7 @@
 					$('#logo_text').css({
 						'display':'inline'
 					});
-					
+						
 				}
 				
 				// '지난 스크롤 바 위치'에 '현재 스크롤 바 위치'를 저장.

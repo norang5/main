@@ -42,7 +42,7 @@ public class EditController{
 		return "edit/edit";
 	}
 
-	@RequestMapping(value = "/file_upload", method = RequestMethod.POST)
+	@RequestMapping(value = "/file_upload_depricate", method = RequestMethod.POST)
 	public String procFileUpload(FileBean fileBean, HttpServletRequest request, Model model){
 
 		HttpSession session = request.getSession();

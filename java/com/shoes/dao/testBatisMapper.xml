@@ -3,8 +3,20 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-   <!-- 관리자 단 게시판 myBatis용 -->
-   
+   <!-- myBatis -->
+   <!-- DAO에서 아래 SQL문의 아이디를 호출할때 혹시나 있을 중복아이디 방지를 위해
+	다음과 같이 namespace명을 붙여 호출할 수 있다.
+	
+	@Autowired
+	SqlSessionTemplate sessionTemplate;
+	
+	@RequestMapping("link")
+	public void link(){
+		List<자바 빈 명> list = sessionTemplate.selectList("com.shoes.model.HBean.2f");
+	}
+	
+	그저 아이디 식별을 위해서만 쓰이다보니 사실상 namespace엔 없는 경로를 적어도 아무문제 없다.
+ -->
 <mapper namespace="com.shoes.model.TestBatisBean"> 
 
 	<select id="testBatisList" resultType="testBatis">

@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,13 +24,12 @@
 		<table>
 			<tr>
 				<td>제목</td>
-				<td><input name="UTP_TITLE"/></td>
+				<td><input name="UTP_TITLE" value="${orginalPost.UTP_TITLE}"/></td>
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td width="670px">
-					<textarea name="UTP_BODY" id="UTP_BODY" rows="10" cols="30" style="width:650px; height:350px;">
-					</textarea>
+				<td width="900px">
+					<textarea name="UTP_BODY" id="UTP_BODY" rows="10" cols="30" style="width:650px; height:350px;">${orginalPost.UTP_BODY}</textarea>
 				</td>
 			</tr>
 			<tr>
@@ -36,7 +37,14 @@
 				<td>
 					<select name="DISTRICT_PK">
 						<c:forEach var="item" items="${districtList}">
-							<option value="${item.DISTRICT_PK}">${item.DISTRICT_PK}</option>
+							<c:choose>
+								<c:when test="${item.DISTRICT_PK eq orginalPost.DISTRICT_PK}">
+									<option value="${item.DISTRICT_PK}" selected="selected">${item.DISTRICT_PK}</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${item.DISTRICT_PK}">${item.DISTRICT_PK}</option>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</select>
 				</td>
@@ -46,7 +54,14 @@
 				<td>
 					<select name="PRDT_SIZE_PK">
 						<c:forEach var="item" items="${prdtSizeList}">
-							<option value="${item.PRDT_SIZE_PK}">${item.PRDT_SIZE_PK}</option>
+							<c:choose>
+								<c:when test="${item.PRDT_SIZE_PK eq orginalPost.PRDT_SIZE_PK}">
+									<option value="${item.PRDT_SIZE_PK}" selected="selected">${item.PRDT_SIZE_PK}</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${item.PRDT_SIZE_PK}">${item.PRDT_SIZE_PK}</option>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</select>
 				</td>
@@ -56,7 +71,14 @@
 				<td>
 					<select name="USED_ST_GRADE_PK">
 						<c:forEach var="item" items="${usedStList}">
-							<option value="${item.USED_ST_GRADE_PK}">${item.USED_ST_GRADE_PK}</option>
+							<c:choose>
+								<c:when test="${item.USED_ST_GRADE_PK eq orginalPost.USED_ST_GRADE_PK}">
+									<option value="${item.USED_ST_GRADE_PK}" selected="selected">${item.USED_ST_GRADE_PK}</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${item.USED_ST_GRADE_PK}">${item.USED_ST_GRADE_PK}</option>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</select>
 				</td>
@@ -66,7 +88,14 @@
 				<td>
 					<select name="USED_TRADE_ST_PK">
 						<c:forEach var="item" items="${usedTradeStList}">
-							<option value="${item.USED_TRADE_ST_PK}">${item.USED_TRADE_ST_PK}</option>
+							<c:choose>
+								<c:when test="${item.USED_TRADE_ST_PK eq orginalPost.USED_TRADE_ST_PK}">
+									<option value="${item.USED_TRADE_ST_PK}" selected="selected">${item.USED_TRADE_ST_PK}</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${item.USED_TRADE_ST_PK}">${item.USED_TRADE_ST_PK}</option>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</select>
 				</td>
@@ -87,7 +116,7 @@
 	<script>
 		// ckeditor setting
 		var ckeditor_config = {
-			resize_enabled : false, // 에디터 크기를 조절하지 않음
+			resize_enabled : true, // 에디터 크기를 조절하지 않음
 			enterMode : CKEDITOR.ENTER_BR, // 엔터키를 <br> 로 적용함.
 			shiftEnterMode : CKEDITOR.ENTER_P, // 쉬프트 +  엔터를 <p> 로 적용함.
 			toolbarCanCollapse : true,

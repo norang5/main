@@ -2,5 +2,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <script type="text/javascript">
-	window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}', '${file_path}', '파일 전송 완료.');
+	window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}', '${attach_path}', '파일 전송 완료.');
 </script>

@@ -37,18 +37,19 @@ public class UsedTradeController{
 		return "usedStore/usedStoreMain";
 	}
 
-	// 중고거래글 작성 페이지로 이동(SmartEditor)
-	@RequestMapping(value = "/used_post_write_se", method = RequestMethod.GET)
-	public ModelAndView usedStorePostWriteSeGet(){
+	// 중고거래글 작성 페이지로 이동(CKEditor)
+	// 파라미터로 게시글 번호가 넘어온다면 DB에서 받아와서 함께 전송해주고(수정),
+	// 파라미터로 아무값도 안넘어온다면 그대로 글 작성 페이지로 연결해준다.(새로 글쓰기)
+	@RequestMapping(value = "/used_post_write_ck", method = RequestMethod.GET)
+	public ModelAndView usedStroePostWriteCKGet(@RequestParam(value = "UTP_SQ_PK", defaultValue = "0") int UTP_SQ_PK){
 		ModelAndView mav = new ModelAndView();
-
+		
 		// 1. 현재 세션의 이메일(작성자) 받아오기
 		String email = "abc@naver.com";
 
 		// 2. 치수 분류표 받아오기
 		List<PrdtSizeTbBean> prdtSizeList = usedDAO.getPrdtSizeList();
-
-		
+				
 		// 3. 지역 분류표 받아오기
 		List<DistrictTbBean> districtList = usedDAO.getDistrictList();
 
@@ -62,40 +63,10 @@ public class UsedTradeController{
 		mav.addObject("districtList", districtList);
 		mav.addObject("usedTradeStList", usedTradeStList);
 		mav.addObject("usedStList", usedStList);
-
-		mav.setViewName("usedStore/used_post_write");
-
-		System.out.println(email);
-		System.out.println(prdtSizeList);
-		System.out.println(districtList);
-		System.out.println(usedTradeStList);
-		System.out.println(usedStList);
-
-		return mav;
-	}
-
-	// 클라이언트 쪽에서 중고거래글 작성후에, 그 데이터를 서버로 전송할때.(SmartEditor)
-	@RequestMapping(value = "/used_post_write_se", method = RequestMethod.POST)
-	public String usedStorePostWriteSePost(@ModelAttribute UsedTradePostTbBean usedTradePostTbBean,
-			HttpServletRequest request){
-		System.out.println(usedTradePostTbBean);
-
-		String imgSavePath = request.getRealPath("usedStore");
-
-		return "redirect:/main";
-	}
-
-	// 중고거래글 작성 페이지로 이동(CKEditor)
-	// 파라미터로 게시글 번호가 넘어온다면 DB에서 받아와서 함께 전송해주고(수정),
-	// 파라미터로 아무값도 안넘어온다면 그대로 글 작성 페이지로 연결해준다.(새로 글쓰기)
-	@RequestMapping(value = "/used_post_write_ck", method = RequestMethod.GET)
-	public ModelAndView usedStroePostWriteCKGet(@RequestParam(value = "postNo", defaultValue = "0") int postNo){
-		System.out.println("중고상품 판매글 작성 페이지로 이동");
-		ModelAndView mav = new ModelAndView();
 		
-		if(postNo > 0){
-			System.out.println("postNo: " + postNo);
-			//UsedTradePostTbBean bean = usedDAO.getSelectOne(postNo);
+		if(UTP_SQ_PK > 0){
+			System.out.println("클라이언트로부터 넘어온 UTP_SQ_PK: " + UTP_SQ_PK);
+			UsedTradePostTbBean bean = usedDAO.getUsedTradePostTb(UTP_SQ_PK);
 			mav.addObject("orginalPost", bean);
 		}
 		
@@ -106,7 +77,9 @@ public class UsedTradeController{
 	
 	// 클라이언트 쪽에서 중고거래글 작성후에, 그 데이터를 서버로 전송할때.(CKEditor)
 	@RequestMapping(value = "/used_post_write_ck", method = RequestMethod.POST)
-	public void usedStroePostWritePEGet(){
+	public String usedStroePostWritePEGet(HttpServletRequest request){
+		System.out.println("전송받음");
 		
+		return "redirect:/main";
 	}
 }

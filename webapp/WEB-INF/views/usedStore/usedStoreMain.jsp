@@ -26,7 +26,7 @@
 		color: white;
 		background-color: skyBlue;
 		border: 1px solid black;
-	" onclick="location.href='used_post_write'">
+	" onclick="location.href='used_post_write_ck'">
 	
 </body>
 </html>

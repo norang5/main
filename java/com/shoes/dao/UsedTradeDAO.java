@@ -47,5 +47,9 @@ public class UsedTradeDAO{
 		return list;
 	}
 	
+	public UsedTradePostTbBean getUsedTradePostTb(int UTP_SQ_PK){
+		return sqlSessionTemplate.selectOne("getUsedTradePostTb", UTP_SQ_PK);
+	}
+	
 	
 } // class UsedTradeDAO{}
