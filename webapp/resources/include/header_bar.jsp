@@ -29,7 +29,7 @@
 	// 헤더바의 배경색(기본색상: 하양)
 	String innerTopContainerBackgroundColor = request.getParameter("backgroundColor");
 	if(innerTopContainerBackgroundColor == null || innerTopContainerBackgroundColor == ""){
-		innerTopContainerBackgroundColor = "none";
+		innerTopContainerBackgroundColor = "white";
 	}
 	
 	// 헤더바의 아래쪽 테두리색(기본색상: 연한 회색)
@@ -103,7 +103,7 @@
 			top: 0px;
 			background-color: <%= innerTopContainerBackgroundColor %>;
 			border-bottom: 1px solid <%= innerTopContainerBorderBottomColor %>;
-			z-index: 10;
+			z-index: 310;
 		}
 		
 		/* 로고가 담길 좌측 패널 */
@@ -114,6 +114,17 @@
 			color: <%= leftPanelBtnColor %>
 		}
 		
+		#logo{
+		width: 40px; 
+		height: 40px; 
+		vertical-align: middle;
+		}
+		
+		#logo_text{
+		display:inline;
+		}
+		
+		
 		/* 고객센터, 장바구니, 로그인 프로필이 담길 우측 패널 */
 		#right_panel{
 			display: inline-block;
@@ -121,7 +132,7 @@
 			top: 10px;
 			right: 0;
 			margin-right: 20px;
-			z-index: 12;
+			z-index: 312;
 		}
 		
 		/* 메뉴바가 담길 이너 컨테이너 */
@@ -141,7 +152,7 @@
 			padding: 0;
 			margin: 0;
 			transition-duration: 2s;
-			z-index: 11;
+			z-index: 311;
 		}
 		
 		.menu_btn{
@@ -196,7 +207,7 @@
 			position: relative;
 			left: 3.5px;
 			top: 15px;
-			z-index: 16;
+			z-index: 316;
 			display: none;
 			transition-duration: 3s;
 		}
@@ -214,7 +225,7 @@
 			min-width: 315px;
 			min-height: 150px;
 			background-color: white;
-			z-index: 15;
+			z-index: 315;
 			display: none;
 			transition-duration: 3s;
 		}
@@ -299,9 +310,8 @@
 			<!-- 좌측 패널(로고) -->
 			<nav id="left_panel">
 				<a href="./main" class="none_a_style">
-					<img	src="${pageContext.request.contextPath}/image/logo.png"
-						style="	width: 40px; height: 40px; vertical-align: middle"/>
-					<span>adidas original</span>
+					<img id="logo" src="${pageContext.request.contextPath}/image/logo.png"/>
+					<span id="logo_text">adidas original</span>
 				</a>
 			</nav>
 		</article>
@@ -478,15 +488,18 @@
 					});
 					
 					$('#inner_bottom_container').css({
-						'margin-top':'40px',
+						'margin-top':'18px',
 					});
 					
 					$('.menu_btn').css({
-						'font-size':'2em',
+						'font-size':'2.5em',
 						'color':'<%= menuBtnBigColor %>',
 						'margin':'0 30px',
 						'max-height':'80px'
+		
+								
 					});
+					
 					
 					$('.menu_btn a').css({
 						'color':'<%= menuBtnBigColor %>',
@@ -500,6 +513,22 @@
 					$('.menu_btn a').css({
 						'cursor':'pointer'
 					});
+					
+					$('#inner_top_container').css({
+						'border-bottom': '0px' 
+					});
+					
+
+					$('#logo').css({
+						'width': '75px', 
+						'height': '75px',
+						'padding-top': '5px'
+					});
+					
+					$('#logo_text').css({
+						'display':'none'
+					});
+					
 				}else{
 				// 스크롤 바가 페이지 하단에 위치했다면 메뉴를 접음.
 					
@@ -526,6 +555,16 @@
 						/* 'left':'-100px', */
 						'margin-top': '5px'
 					});
+					
+					$('#logo').css({
+						'width': '40px', 
+						'height': '40px'
+					});
+					
+					$('#logo_text').css({
+						'display':'inline'
+					});
+					
 				}
 				
 				// '지난 스크롤 바 위치'에 '현재 스크롤 바 위치'를 저장.

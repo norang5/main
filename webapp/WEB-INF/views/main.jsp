@@ -73,9 +73,9 @@ color: white;
 .page.second {
 	text-decoration: none;
 	position: absolute;
-	top: 1100px;
+	top: 1130px;
 	min-width: 100%;
-	min-height: 100vh;
+	min-height: 80vh;
 	background-color: balck;
 	z-index: -30;
 	font-size: 2em;
