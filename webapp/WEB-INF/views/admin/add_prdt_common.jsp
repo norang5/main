@@ -16,7 +16,6 @@ table {
 	text-align: left;
 }
 
-
 #button {
 	text-align: center;
 }
@@ -27,15 +26,15 @@ h2 {
 </style>
 </head>
 <body>
-<h2>
-		새 상품 등록 페이지 (관리자)</br> </br></br>
+	<h2>
+		새 상품 등록 페이지 (관리자)</br> </br>
+		</br>
 	</h2>
 	<form:form commandName="PRDTCommonBean">
 		<table>
 			<tr>
 				<td>상품카테고리</td>
-				<td><form:select path="PRDT_CTG_NM"  items="${PRDT_CTG}" />
-					</td>
+				<td><form:select path="PRDT_CTG_NM" items="${PRDT_CTG}" /></td>
 			</tr>
 			<tr>
 				<td>상품명</td>
@@ -71,12 +70,12 @@ h2 {
 				<td><form:input path="PCI_AS_MAN_PHONE" /></td>
 			</tr>
 		</table>
-	</br></br>
-				<div id="button">
-				<input type="reset"
-				id="reset" value="재입력" />
-			<input type="submit" id="next" value="상세상품 등록 페이지로" /> 
-		</div> 
-			</form:form>
+		</br>
+		</br>
+		<div id="button">
+			<input type="submit" id="next" value="상세상품 등록 페이지로" />&nbsp;&nbsp;&nbsp;
+			<input type="reset" id="reset" value="재입력" />
+		</div>
+	</form:form>
 </body>
 </html>

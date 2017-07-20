@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shoes.dao.PRDTDAO;
@@ -95,11 +96,23 @@ public class addPRDTController{
 	
 
 	@RequestMapping(value="/addprdt", method=RequestMethod.POST)
-	public String submit(PRDTBean prdtBean){
+	public String submit(PRDTBean prdtInfo){
      
 		System.out.println("넘어옴1");
-		prdtDao.insertPRDT(prdtBean);
+		System.out.println();
+		
+		List<PRDTBean> prdtBeanList = prdtInfo.getPRDTList();
+		
+		PRDTBean prdtBean=null;
+		
+		for(int i=0; i<prdtBeanList.size(); i++){
+			
+			prdtBean=prdtBeanList.get(i);
+			prdtDao.insertPRDT(prdtBean);
+		}
+		
 		System.out.println("넘어옴2");
+		
 		return "redirect:/addprdtdone";
 	}
 

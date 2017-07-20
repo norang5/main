@@ -37,11 +37,13 @@ public class PRDTDAO {
 	
 	
 	public void insertPRDT(PRDTBean prdtBean){
+		
 		System.out.println("6번");
 		
 		sqlSession.insert("addPRDT", prdtBean);
 		System.out.println("7번");
 	}
+	
 	
 	public void updatePRDT(PRDTCommonBean member){
 		
