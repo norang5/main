@@ -64,7 +64,39 @@ public class UsedTradeController{
 		
 		if(UTP_SQ_PK > 0){
 			System.out.println("게시글 수정 요청. 클라이언트로부터 넘어온 UTP_SQ_PK: " + UTP_SQ_PK);
-			// 현재 세션의 mem_email과 요청글의 mem_email이 일치하는지 방어코드 작성할 것.
+			
+			// 현재 세션의 mem_email과 요청글의 mem_email이 일치하는지 검사
+			String dbMemEmail = usedDAO.getUsedTradePostTbMemEmailPk(UTP_SQ_PK);
+			//String sessionMemEmail = (String)session.getAttribute("user_email");
+			String sessionMemEmail = "testemail@test.com";
+			
+			if(dbMemEmail.equals(sessionMemEmail) == false){
+				// 일치하지 않는다면 수정자의 권한 검사
+				String sessionGradeStPk = memberDAO.getMemberTbGradeStPk(sessionMemEmail);
+				switch(sessionGradeStPk){
+					case "운영자":
+						// 운영자나 관리자라면 로그를 띄우고 통과
+						System.out.println(
+								sessionGradeStPk + " 등급의 " + sessionMemEmail + " 유저가 "
+							+	UTP_SQ_PK + "번 글을 수정합니다."		);
+						break;
+					case "관리자":
+						System.out.println(
+								sessionGradeStPk + " 등급의 " + sessionMemEmail + " 유저가 "
+							+	UTP_SQ_PK + "번 글을 수정합니다."		);
+						break;
+					default:
+					// 운영자도 아니면서 남의 글을 수정하려 했다면, 로그를 남기고 신규글 작성으로 전환
+						System.out.println(
+								sessionGradeStPk + " 등급의 " + sessionMemEmail + " 유저가 "
+							+	UTP_SQ_PK + "번 글의 수정을 시도했습니다."		);
+						UTP_SQ_PK = 0;
+						break;
+					}
+			}else{
+				// 작성자와 수정자가 일치한다면 통과
+			}
+			
 			UsedTradePostTbBean bean = usedDAO.getUsedTradePostTb(UTP_SQ_PK);
 			mav.addObject("orginalPost", bean);
 		}
