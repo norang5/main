@@ -121,6 +121,7 @@ CREATE TABLE PRDT_COMMON_INFO_TB(
 select * from PRDT_CATEGORY_TB;
 select*from PRDT_COMMON_INFO_TB;
 select*from PRDT_TB;
+select*from PRDT_POST_TB;
 
 truncate table PRDT_TB;
 truncate table PRDT_COMMON_INFO_TB;

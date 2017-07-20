@@ -21,16 +21,23 @@
       <typeAlias type="com.shoes.model.PRDTBean" alias="PRDT"/>
       
       <typeAlias type="com.shoes.model.JoinBean" alias="JoinBean"/>
+      
+      <typeAlias type="com.shoes.model.PRDTPostBean" alias="PostBean"/>
+      <typeAlias type="com.shoes.model.PRDTSTBean" alias="PRDTSTBean"/>
+      <typeAlias type="com.shoes.model.DeliveryBean" alias="DeliveryBean"/>
+      
+      
    </typeAliases>
    
    <mappers>
+   
       <mapper resource="com/shoes/dao/testBatisMapper.xml"/>   <!-- 연습용 예제 -->
-      
-      <mapper resource="com/shoes/dao/MemberMapper.xml"/>   <!-- 회원정보 관련 SQL문 -->
+
       <mapper resource="com/shoes/dao/PRDT.xml"/>      <!-- 상품 관련 SQL문 -->
       <mapper resource="com/shoes/dao/PRDTCommon.xml"/>   <!-- 상품 공통정보 관련 SQL문 -->
       <mapper resource="com/shoes/dao/UsedTradeMapper.xml"/>   <!-- 중고장터 관련 SQL문 -->
-      
+      <mapper resource="com/shoes/dao/StoreMapper.xml"/>  <!-- 상품 상세정보 관련 SQL문 -->
+      <mapper resource="com/shoes/dao/PRDTPostMapper.xml"/>  <!-- 상품 판매글 관련 SQL문 -->
    </mappers>
 </configuration>
 

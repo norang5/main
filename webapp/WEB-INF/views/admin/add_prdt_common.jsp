@@ -27,7 +27,7 @@ h2 {
 </head>
 <body>
 	<h2>
-		새 상품 등록 페이지 (관리자)</br> </br>
+		상품 포스트 등록 (관리자)</br> </br>
 		</br>
 	</h2>
 	<form:form commandName="PRDTCommonBean">
