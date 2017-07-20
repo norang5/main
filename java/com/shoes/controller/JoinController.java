@@ -64,7 +64,6 @@ public class JoinController {
 		mb.insertMemberTb(bean);
 
 		return mav;
-
 	}
 
 	@RequestMapping("login")
