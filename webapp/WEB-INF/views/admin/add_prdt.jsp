@@ -39,8 +39,7 @@ h2 {
 		$("#addForm").click(
 				function() {
 					// item 의 최대번호 구하기
-					var lastItemNo = $("#info tr:last").attr("class")
-							.replace("item", "");
+					var lastItemNo = $("#info tr:last").attr("class").replace("item", "");
 					var newitem = $("#info tr:eq(1)").clone();
 					newitem.removeClass();
 					newitem.find("td:eq(0)").attr("rowspan", "1");
@@ -58,6 +57,7 @@ h2 {
 		상세 상품 등록 페이지 (관리자)</br> </br>
 	</h2>
 	<form:form commandName="PRDTBean">
+	
 	<table id="info">
 			<tr>
 				<td></td>
@@ -69,10 +69,18 @@ h2 {
 			</tr>
 			<tr class="item1">
 				<td>●</td>
-				<td><form:input path="PRDT_COLOR"/></td>
-				<td><form:select path="PRDT_SIZE_PK" items="${PRDT_SIZE}" /></td>
-				<td><form:input path="PRDT_PRICE"/></td>
-				<td><form:input path="PRDT_AMT"/></td>
+				<td><form:input path="PRDTList[0].PRDT_COLOR"/></td>
+				<td><form:select path="PRDTList[0].PRDT_SIZE_PK" items="${PRDT_SIZE}" /></td>
+				<td><form:input path="PRDTList[0].PRDT_PRICE"/></td>
+				<td><form:input path="PRDTList[0].PRDT_AMT"/></td>
+				<td><!-- <input type="file" name="img_path" id="img_path" /> --></td>
+			</tr>
+			<tr class="item2">
+				<td>●</td>
+				<td><form:input path="PRDTList[1].PRDT_COLOR"/></td>
+				<td><form:select path="PRDTList[1].PRDT_SIZE_PK" items="${PRDT_SIZE}" /></td>
+				<td><form:input path="PRDTList[1].PRDT_PRICE"/></td>
+				<td><form:input path="PRDTList[1].PRDT_AMT"/></td>
 				<td><!-- <input type="file" name="img_path" id="img_path" /> --></td>
 			</tr>
 			<button type="button" id="addForm">+</button>

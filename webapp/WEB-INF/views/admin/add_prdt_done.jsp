@@ -9,6 +9,7 @@
 #done{
 text-align: center;
 margin:auto;
+vertical-align: middle;
 }
 </style>
 </head>

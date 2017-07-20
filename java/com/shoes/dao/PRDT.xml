@@ -8,10 +8,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="PRDTList" resultType="PRDT">
 		select * from PRDT_TB
 	</select>
+	
 	<insert id="addPRDT" parameterType="PRDT">
 	insert into PRDT_TB values (PRDT_TB_SEQ.nextval,#{PRDT_SIZE_PK},#{PRDT_COLOR},#{PRDT_PRICE},
 	#{PRDT_AMT},PRDT_COMMON_INFO_TB_SEQ.currval)
 	</insert>
+
 </mapper>
 
 
