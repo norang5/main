@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
    
 <mapper namespace="com.shoes.model.PRDTBean"> 
+
 	<select id="PRDTList" resultType="PRDT">
 		select * from PRDT_TB
 	</select>
