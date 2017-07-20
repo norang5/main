@@ -40,11 +40,8 @@ public class addPRDTController{
 	@ModelAttribute("PRDT_CTG")
 	protected List<String> categoryData() {
 		
-
-		List<CategoryBean>beanList = new ArrayList<CategoryBean>();
 		List<String> categoryList = new ArrayList<String>();
-		
-		beanList=prdtDao.getCategoryList();	
+		List<CategoryBean> beanList=prdtDao.getCategoryList();	
 		
 		for(int i=0; i<beanList.size(); i++){
 		   categoryList.add(beanList.get(i).getPRDT_CTG_NM());
@@ -53,14 +50,12 @@ public class addPRDTController{
 	}
 	
 
-
 	@ModelAttribute("PRDT_SIZE")
 	protected List<String> sizeData() {
 		
-		List<PrdtSizeTbBean>beanList = new ArrayList<PrdtSizeTbBean>();
 		List<String> sizeList = new ArrayList<String>();
 	
-		beanList=prdtDao.getSizeList();
+		List<PrdtSizeTbBean> beanList=prdtDao.getSizeList();
 	
 		for(int i=0; i<beanList.size(); i++){
 		   sizeList.add(beanList.get(i).getPRDT_SIZE_PK());

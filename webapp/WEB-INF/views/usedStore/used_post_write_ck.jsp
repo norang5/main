@@ -103,7 +103,7 @@
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="작성완료">
-					<input type="submit" value="작성취소">
+					<input type="reset" value="작성취소" onclick="javascript: history.back();">
 				</td>
 			</tr>
 		</table>
