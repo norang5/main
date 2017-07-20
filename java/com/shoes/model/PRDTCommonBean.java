@@ -2,7 +2,7 @@ package com.shoes.model;
 
 public class PRDTCommonBean {
 		
-	//int PCI_SQ_PK;
+	int PCI_SQ_PK;
 	String PCI_MATERIAL;
 	String PCI_PRDT_NAME;
 	String PCI_IMPORTER;
@@ -13,12 +13,13 @@ public class PRDTCommonBean {
 	String PCI_AS_MAN_PHONE;
 	String PRDT_CTG_NM;
 	
-		/*public int getPCI_SQ_PK() {
+	public int getPCI_SQ_PK() {
 			return PCI_SQ_PK;
 		}
 		public void setPCI_SQ_PK(int pCI_SQ_PK) {
 			PCI_SQ_PK = pCI_SQ_PK;
-		}*/
+		}
+		
 		public String getPCI_MATERIAL() {
 			return PCI_MATERIAL;
 		}
