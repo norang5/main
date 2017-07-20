@@ -55,7 +55,7 @@ h2 {
 			</tr>
 			<tr>
 				<td>본문</td>
-				<td><textarea rows="5" cols="30" name="PP_BODY"></textarea></td>
+				<td><textarea name="PP_BODY"></textarea></td>
 			</tr>
 	
 		</table>

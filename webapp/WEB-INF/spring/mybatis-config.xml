@@ -22,7 +22,7 @@
       
       <typeAlias type="com.shoes.model.JoinBean" alias="JoinBean"/>
       
-      <typeAlias type="com.shoes.model.PRDTPostBean" alias="PostBean"/>
+      <typeAlias type="com.shoes.model.PRDTPostBean" alias="PRDTPostBean"/>
       <typeAlias type="com.shoes.model.PRDTSTBean" alias="PRDTSTBean"/>
       <typeAlias type="com.shoes.model.DeliveryBean" alias="DeliveryBean"/>
       

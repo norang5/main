@@ -22,7 +22,7 @@ public class PRDTPostController {
 	private PRDTPostDAO prdtPostDAO;
 	
 	@ModelAttribute   // ModelAttribute는 항상 RequestMapping된 메서드보다 먼저 실행된다. 메서드명은 자유롭게 지어도 되며, 보통 폼백킹이라고 지어준다.
-	   public PRDTPostBean formBacking111(){   // 즉, 여기서 생성한 MemberVO를 디스패쳐서블릿 객체로 반환하고,
+	   public PRDTPostBean formBack(){   // 즉, 여기서 생성한 MemberVO를 디스패쳐서블릿 객체로 반환하고,
 		return new PRDTPostBean();      // 디스패쳐 서블릿에선 클라이언트로부터 날아온 form 데이타를 commandName과 path에 따라 이 MemberVO와 매칭하여,
 	   }   
 	
@@ -53,13 +53,13 @@ public class PRDTPostController {
 	}
 	
 	
-	@RequestMapping(value = "/admin2", method = RequestMethod.GET)
+	@RequestMapping(value = "/post", method = RequestMethod.GET)
 	public String addPostPage(){
 		return "admin/add_post";
 	}
 	
 	
-	@RequestMapping(value = "/admin2", method = RequestMethod.POST)
+	@RequestMapping(value = "/post", method = RequestMethod.POST)
 	public String submit(PRDTPostBean prdtPostBean){
 
 		System.out.println("2번");
@@ -68,7 +68,7 @@ public class PRDTPostController {
 		
 		System.out.println("3번");
 		
-		return "redirect:/store";
+		return "redirect:/addprdtdone";
 	}
 	
 }
