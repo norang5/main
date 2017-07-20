@@ -21,8 +21,8 @@ section {
 	<section>
 		<img src="/shoes_shop/resources/image/loginLogo.jpg"><br>
 		<form method="post">
-			<input type="text" style="width: 300px; height: 35px; margin: 2px;"placeholder="id"><br>
-			<input type="password" style="width: 300px; height: 35px; margin: 2px;"placeholder="password"><br>
+			<input type="text" name="id" style="width: 300px; height: 35px; margin: 2px;"placeholder="id"><br>
+			<input type="password" name="password" style="width: 300px; height: 35px; margin: 2px;"placeholder="password"><br>
 			<input type="submit" value="LOGIN" 
 				style="width: 306px; height: 30px; margin: 1px;; background-color: black; color: white;"><br>
 		</form>

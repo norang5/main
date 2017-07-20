@@ -72,7 +72,7 @@
 		<table border="1" align="center">
 			<tr>
 				<td>Email</td>
-				<td><input type="text" name="email" style="width: 99%;" /></td>
+				<td><input type="text" name="MEM_EMAIL_PK" style="width: 99%;" /></td>
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: center; font-weight: bold;">
@@ -80,37 +80,37 @@
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="passwd" style="width: 99%;" /></td>
+				<td><input type="password" name="MEM_PASSWORD" style="width: 99%;" /></td>
 			</tr>
 			<tr>
 				<td>비밀번호 확인</td>
-				<td><input type="password" name="confirm" style="width: 99%;" /></td>
+				<td><input type="password" style="width: 99%;" /></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td style="width: 390px"><input type="text" name="name"
+				<td style="width: 390px"><input type="text" name="MEM_NM"
 					style="width: 99%;" /></td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><input type="text" id="sample4_postcode" name="postcode" placeholder="우편번호">
+				<td><input type="text" id="sample4_postcode" name="MEM_ZIPCODE" placeholder="우편번호">
 					<input type="button" onclick="sample4_execDaumPostcode()"
 					value="우편번호 찾기"><br> <input type="text"
-					id="sample4_roadAddress" name="road" placeholder="도로명주소"> <input
-					type="text" id="sample4_jibunAddress" name="jibun" placeholder="지번주소"> <span
+					id="sample4_roadAddress" name="MEM_ROAD_ADDRESS" placeholder="도로명주소"> <input
+					type="text" id="sample4_jibunAddress" name="MEM_JIBUN_ADDRESS" placeholder="지번주소"> <span
 					id="guide" style="color: #999"></span></td>
 			</tr>
 			<tr>
 				<td>상세주소</td>
-				<td style="width: 390px"><input type="text" name="address"
+				<td style="width: 390px"><input type="text" name="MEM_DETAIL_ADDRESS"
 					style="width: 99%;" /></td>
 			<tr>
 				<td>전화번호</td>
-				<td><input type="text" name="mobile" style="width: 99%;" /></td>
+				<td><input type="text" name="MEM_HOME_PHONE" style="width: 99%;" /></td>
 			</tr>
 			<tr>
 				<td>휴대폰번호</td>
-				<td><input type="text" name="mobile2" style="width: 99%;" /></td>
+				<td><input type="text" name="MEM_CELL_PHONE" style="width: 99%;" /></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit" value="확인" /></td>

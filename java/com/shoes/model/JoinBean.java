@@ -8,13 +8,14 @@ public class JoinBean {
 	private String MEM_ID;
 	private String MEM_PASSWORD;
 	private String MEM_NM;
-	private String MEM_ADDRESS;
+	private String MEM_ZIPCODE;
+	private String MEM_ROAD_ADDRESS;
+	private String MEM_JIBUN_ADDRESS;
+	private String MEM_DETAIL_ADDRESS;
 	private String MEM_HOME_PHONE;
 	private String MEM_CELL_PHONE;
 	private String GRADE_ST_PK;
 	private Date MEM_JOIN_DT;
-	private String MEM_DETAIL_ADDRESS;
-	private String MEM_ZIPCODE;
 	private int MEMBER_MILEAGE;
 	public String getMEM_EMAIL_PK() {
 		return MEM_EMAIL_PK;
@@ -40,11 +41,29 @@ public class JoinBean {
 	public void setMEM_NM(String mEM_NM) {
 		MEM_NM = mEM_NM;
 	}
-	public String getMEM_ADDRESS() {
-		return MEM_ADDRESS;
+	public String getMEM_ZIPCODE() {
+		return MEM_ZIPCODE;
 	}
-	public void setMEM_ADDRESS(String mEM_ADDRESS) {
-		MEM_ADDRESS = mEM_ADDRESS;
+	public void setMEM_ZIPCODE(String mEM_ZIPCODE) {
+		MEM_ZIPCODE = mEM_ZIPCODE;
+	}
+	public String getMEM_ROAD_ADDRESS() {
+		return MEM_ROAD_ADDRESS;
+	}
+	public void setMEM_ROAD_ADDRESS(String mEM_ROAD_ADDRESS) {
+		MEM_ROAD_ADDRESS = mEM_ROAD_ADDRESS;
+	}
+	public String getMEM_JIBUN_ADDRESS() {
+		return MEM_JIBUN_ADDRESS;
+	}
+	public void setMEM_JIBUN_ADDRESS(String mEM_JIBUN_ADDRESS) {
+		MEM_JIBUN_ADDRESS = mEM_JIBUN_ADDRESS;
+	}
+	public String getMEM_DETAIL_ADDRESS() {
+		return MEM_DETAIL_ADDRESS;
+	}
+	public void setMEM_DETAIL_ADDRESS(String mEM_DETAIL_ADDRESS) {
+		MEM_DETAIL_ADDRESS = mEM_DETAIL_ADDRESS;
 	}
 	public String getMEM_HOME_PHONE() {
 		return MEM_HOME_PHONE;
@@ -70,23 +89,19 @@ public class JoinBean {
 	public void setMEM_JOIN_DT(Date mEM_JOIN_DT) {
 		MEM_JOIN_DT = mEM_JOIN_DT;
 	}
-	public String getMEM_DETAIL_ADDRESS() {
-		return MEM_DETAIL_ADDRESS;
-	}
-	public void setMEM_DETAIL_ADDRESS(String mEM_DETAIL_ADDRESS) {
-		MEM_DETAIL_ADDRESS = mEM_DETAIL_ADDRESS;
-	}
-	public String getMEM_ZIPCODE() {
-		return MEM_ZIPCODE;
-	}
-	public void setMEM_ZIPCODE(String mEM_ZIPCODE) {
-		MEM_ZIPCODE = mEM_ZIPCODE;
-	}
 	public int getMEMBER_MILEAGE() {
 		return MEMBER_MILEAGE;
 	}
 	public void setMEMBER_MILEAGE(int mEMBER_MILEAGE) {
 		MEMBER_MILEAGE = mEMBER_MILEAGE;
+	}
+	@Override
+	public String toString() {
+		return "JoinBean [MEM_EMAIL_PK=" + MEM_EMAIL_PK + ", MEM_ID=" + MEM_ID + ", MEM_PASSWORD=" + MEM_PASSWORD
+				+ ", MEM_NM=" + MEM_NM + ", MEM_ZIPCODE=" + MEM_ZIPCODE + ", MEM_ROAD_ADDRESS=" + MEM_ROAD_ADDRESS
+				+ ", MEM_JIBUN_ADDRESS=" + MEM_JIBUN_ADDRESS + ", MEM_DETAIL_ADDRESS=" + MEM_DETAIL_ADDRESS
+				+ ", MEM_HOME_PHONE=" + MEM_HOME_PHONE + ", MEM_CELL_PHONE=" + MEM_CELL_PHONE + ", GRADE_ST_PK="
+				+ GRADE_ST_PK + ", MEM_JOIN_DT=" + MEM_JOIN_DT + ", MEMBER_MILEAGE=" + MEMBER_MILEAGE + "]";
 	}
 	
 	
