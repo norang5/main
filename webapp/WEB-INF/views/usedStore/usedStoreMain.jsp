@@ -11,11 +11,7 @@
 	
 	<jsp:include page="${ctx}/resources/include/header_bar.jsp" flush="false"/>
 	<style>
-		p{
-			margin-top: 5px;
-			padding: 0px;
-			font-size: 2em;
-		}
+		
 	</style>
 
 </head>
