@@ -11,6 +11,7 @@
 
 	flush="false" />
 <style>
+
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
 
 @import
@@ -154,7 +155,7 @@ text-align: center;
 		<div id="buying_info">
 			<table id="buying_info_table">
 				<tr>
-					<td  colspan="2"><h1>엔엠디 R1</h1></td>
+					<td  colspan="2"><h1>${Common_NAME}</h1></td>
 				</tr>
 				
 				<tr>
@@ -232,34 +233,34 @@ text-align: center;
 
 				
 				<tr>
-					<td class="table_title">소재</td>
-					<td colspan="3">디비에서</td>
+					<td class="table_title" >소재</td>
+					<td colspan="3" >${Common_Mat}</td>
 				</tr>
 				
 				<tr>
 					<td class="table_title">제조국</td>
-					<td colspan="3">디비에서</td>
+					<td colspan="3">${Common_Con}</td>
 				</tr>
 				
 				<tr>
 					<td class="table_title">제조자</td>
-					<td>디비에서</td>
+					<td>${Common_Mau}</td>
 					<td class="table_title">수입자</td>
-					<td>디비에서</td>
+					<td>${Common_Imp}</td>
 				</tr>
 				
 				<tr>
 					<td class="table_title">품질보증기준</td>
-					<td colspan="3">디비에서</td>
+					<td colspan="3">${Common_Qua}</td>
 				</tr>
 				
 				<tr>
 					<td class="table_title">취급시 주의사항</td>
-					<td colspan="3">디비에서</td>
+					<td colspan="3">${Common_ATT}</td>
 				</tr>
 				<tr>
 					<td class="table_title">A/S 담당(연락처)</td>
-					<td colspan="3">디비에서</td>
+					<td colspan="3">${Common_AS}</td>
 				</tr>
 		</table>
 	</div>
@@ -294,12 +295,12 @@ text-align: center;
 			<tbody>
 			<c:forEach items="${list }" var="list">
 				<tr>
-					<td class="idx">${list.idx }</td>
-					<td class="title"><a href="">${list.title }</a></td>
-					<td class="name">${list.id }</td>
-					<td class="date">${list.date }</td>
-					<td class="size">${list.size }</td>
-					<td class="style">${list.style }</td>
+					<td class="idx">${list.idx}</td>
+					<td class="title"><a href="">${list.title}</a></td>
+					<td class="name">${list.id}</td>
+					<td class="date">${list.date}</td>
+					<td class="size">${list.size}</td>
+					<td class="style">${list.style}</td>
 				</tr>
 				</c:forEach>
 			</tbody>
