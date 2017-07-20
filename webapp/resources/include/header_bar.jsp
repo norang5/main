@@ -73,8 +73,7 @@
 	<style type="text/css">
 		@import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
 		@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
-		body{
-			margin: 0;
+		.header_font{
 			font-family: 'Raleway', Arial, sans-serif;
 			font-weight:bold;
 		}
@@ -332,7 +331,7 @@
 		</article>
 		
 		<!-- 메뉴 패널 -->
-		<nav id="inner_bottom_container">
+		<nav id="inner_bottom_container" class="header_font">
 			<ul>
 				<!-- 이곳에 메뉴를 등록하세요. -->
 				<a class="none_a_style" href="./info">

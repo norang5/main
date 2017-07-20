@@ -10,34 +10,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM MEMBER_TB
 		WHERE MEM_EMAIL_PK = #{MEM_EMAIL_PK}
 	</select>
+	
+	<select id="getMemberTb" parameterType="String" resultType="JoinBean">
+		select * from MEMBER_TB
+		where MEM_EMAIL_PK = #{MEM_EMAIL_PK}
+	</select>
 
 	<!-- MEMBER_TB에 새로운 회원 저장하기 -->
-	<insert id="join" parameterType="JoinBean">
+	<insert id="insertMemberTb" parameterType="JoinBean">
 		INSERT INTO MEMBER_TB(
 			MEM_EMAIL_PK,
 			MEM_ID,
 			MEM_PASSWORD,
 			MEM_NM,
-			MEM_ADDRESS,
+			MEM_ZIPCODE,
+			MEM_ROAD_ADDRESS,
+			MEM_JIBUN_ADDRESS,
+			MEM_DETAIL_ADDRESS,
 			MEM_HOME_PHONE,
 			MEM_CELL_PHONE,
 			GRADE_ST_PK,
 			MEM_JOIN_DT,
-			MEM_DETAIL_ADDRESS,
-			MEM_ZIPCODE,
 			MEMBER_MILEAGE
 		)values(
 			#{MEM_EMAIL_PK},
 			#{MEM_ID},
 			#{MEM_PASSWORD},
 			#{MEM_NM},
-			#{MEM_ADDRESS},
+			#{MEM_ZIPCODE},
+			#{MEM_ROAD_ADDRESS},
+			#{MEM_JIBUN_ADDRESS},
+			#{MEM_DETAIL_ADDRESS},
 			#{MEM_HOME_PHONE},
 			#{MEM_CELL_PHONE},
 			#{GRADE_ST_PK},
 			#{MEM_JOIN_DT},
-			#{MEM_DETAIL_ADDRESS},
-			#{MEM_ZIPCODE},
 			#{MEMBER_MILEAGE}
 		)
 	</insert>
