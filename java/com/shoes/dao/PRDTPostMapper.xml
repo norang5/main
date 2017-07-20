@@ -14,19 +14,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from DELIVERY_CHARGE_TB
 	</select>
 	
-    <insert id="newPRDTPost" parameterType="PostBean">
-	insert into PRDT_POST_TB values (SEQUENCE PRDT_POST_TB_SEQ.nextval,
+    <insert id="newPRDTPost" parameterType="PRDTPostBean">
+	insert into PRDT_POST_TB values (PRDT_POST_TB_SEQ.nextval,
 	#{PP_TITLE},
 	#{PRDT_ST_NM_PK},
 	#{PP_BODY},
 	#{DLVR_CHRG_NM_PK},
 	#{PP_SAVING_MILEAGE_PERCENT},
-	'ueehyeon@gmail.com',<!-- MEM_EMAIL_PK -->	
-	SYSDATE,<!-- PP_REPORTING_DT -->
-	SYSDATE,<!-- PP_FIN_MODIF_DT -->
-	#{PCI_SQ_PK	})
+	'ueehyeon@gmail.com',
+	sysdate,
+	sysdate,
+	#{PCI_SQ_PK})
 	</insert>
-
 
 
 </mapper>
