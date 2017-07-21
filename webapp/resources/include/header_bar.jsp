@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
+	String userEmail = (String)session.getAttribute("userEmail");
+	System.out.println("header_bar에서 session.getAttribute(\"userEmail\"); 로 나온 값: " + userEmail);
+
 	/*
 		이런식으로 사용하세요.
 		<jsp:include page="header_bar.jsp">
@@ -369,14 +372,14 @@
 			</a>
 			
 			<c:choose>
-				<c:when test="false">
+				<c:when test="${null eq userEmail}">
 				<!-- 비로그인 유저라면 로그인 버튼 표시 -->
 					<a href="#" class="right_panel_btn_color none_a_style">
 						<span style="vertical-align: middle;">로그인</span>
 					</a>
 				</c:when>
 				
-				<c:when test="true">
+				<c:when test="${!empty userEmail}">
 				<!-- 로그인 유저라면 프로필 사진과 프로필 팝업 박스 표시 -->
 					<section style="display: inline-block;">
 						<article style="display: inline-block;">
