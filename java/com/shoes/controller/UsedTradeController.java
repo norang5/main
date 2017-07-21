@@ -32,6 +32,9 @@ public class UsedTradeController{
 	// 중고장터로 이동
 	@RequestMapping("usedStore")
 	public String goToUsedStore(){
+		
+		//usedDAO.get
+		
 		return "usedStore/usedStoreMain";
 	}
 

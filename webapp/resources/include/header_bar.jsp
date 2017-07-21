@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
+	/* 이 헤더를 포함했다면, 웹페이지 어디에선든 ${userEmail}로 접근할 수 있다.
+		몇가지 예시.
+		${!empty userEmail}	- userEmail이 비어있지 않다면(로그인 상태라면) true 반환
+		${null eq userEmail}	- userEmail에 null값이 담겨있다면(로그아웃 상태라면) true 반환
+		${userEmail}		- 현재 userEmail에 담겨있는 값을 반환(로그인 상태라면 abc@abcd.com같은걸
+						반활할테고, 비로그인 상태라면 null을 반환할 것이다.
+		
+	*/
 	String userEmail = (String)session.getAttribute("userEmail");
 	System.out.println("header_bar에서 session.getAttribute(\"userEmail\"); 로 나온 값: " + userEmail);
 

@@ -46,6 +46,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE UTP_SQ_PK = #{UTP_SQ_PK}
 	</select>
 	
+	<select id="getUsedTradeTradePostTbList" parameterType="hashmap" resultType="UsedTradePostTbBean">
+		
+	</select>
+	
 	<!-- 특정 식별번호의 중고거래 게시글에서 작성일만 받아오기 -->
 	<!-- resultType엔 java.util.Date와 java.sql.Date 모두 사용 가능합니다.
 		각 타입에 따라 사전정의된 MyBatis 내부의 핸들러 메소드가 동작해 알아서 변환을 진행합니다. -->
@@ -66,6 +70,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE UTP_SQ_PK = #{UTP_SQ_PK}
 	</select>
 	
+	<!-- 전달된 UsedTradePostTbBean의 UTP_SQ_PK와 일치하는 DB상의 레코드를 교체 -->
 	<update id="updateUsedTradePostTb" parameterType="UsedTradePostTbBean">
 		UPDATE USED_TRADE_POST_TB
 		SET	UTP_TITLE = #{UTP_TITLE},
@@ -81,6 +86,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE UTP_SQ_PK = #{UTP_SQ_PK}
 	</update>
 	
+	<!-- 전달된 UsedTradePostTbBean을 DB에 저장 -->
 	<insert id="insertUsedTradePostTb" parameterType="UsedTradePostTbBean">
 		INSERT INTO USED_TRADE_POST_TB(
 			UTP_SQ_PK,
