@@ -427,7 +427,7 @@
 									<a class="gray_btn none_a_style nothingProfile">버튼</a>
 								</div>
 								<div style="display: table-cell;text-align: right"  class="nothingProfile">
-									<a class="gray_btn none_a_style nothingProfile">로그아웃</a>
+									<a class="gray_btn none_a_style nothingProfile" href="logout">로그아웃</a>
 								</div>
 							</div>
 						</article>

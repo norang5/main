@@ -16,7 +16,7 @@ import com.shoes.model.JoinBean;
 public class JoinController {
 	@Autowired
 	private MemberDAO mb;
-	
+
 	@RequestMapping("join")
 	public String join() {
 		return "join/join";
@@ -77,19 +77,23 @@ public class JoinController {
 		String pw = request.getParameter("password");
 
 		JoinBean joinBean = mb.login(email);
-		
-		String toHere="";
-		if (	(email.equals(joinBean.getMEM_EMAIL_PK()) == true)
-			&&	(pw.equals(joinBean.getMEM_PASSWORD()) == true)	){
+		String toHere = "";
+		if ((email.equals(joinBean.getMEM_EMAIL_PK()) == true) && (pw.equals(joinBean.getMEM_PASSWORD()) == true)) {
 			System.out.println("로그인성공");
-			
-			session.setAttribute("userEmail",email);
+
+			session.setAttribute("userEmail", email);
 			toHere = "main";
 		} else {
 			toHere = "join/login";
 			System.out.println("로그인실패");
 		}
-		
+
 		return toHere;
+	}
+
+	@RequestMapping(value = "logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("userEmail");
+		return "main";
 	}
 }
