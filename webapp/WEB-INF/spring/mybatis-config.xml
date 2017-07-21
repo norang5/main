@@ -18,7 +18,6 @@
       <typeAlias type="com.shoes.model.DistrictTbBean" alias="DistrictTbBean"/>
       <typeAlias type="com.shoes.model.UsedTradeStTbBean" alias="UsedTradeStTbBean"/>
       <typeAlias type="com.shoes.model.UsedStTbBean" alias="UsedStTbBean"/>
-      <typeAlias type="com.shoes.model.PRDTBean" alias="PRDT"/>
       
       <typeAlias type="com.shoes.model.JoinBean" alias="JoinBean"/>
       
@@ -41,4 +40,3 @@
       <mapper resource="com/shoes/dao/MemberMapper.xml"/>  <!-- 회원정보 테이블 관련 SQL문 -->
    </mappers>
 </configuration>
-
