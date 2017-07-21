@@ -9,13 +9,22 @@ public class UsedTradePostTbBean{
 	private String UTP_BODY;
 	private Date UTP_REPORTING_DT;
 	private Date UTP_FIN_MODIF_DT;
-	private String MEM_EMAIL_PK;
 	private int UTP_CNT;
 	private String USED_TRADE_ST_PK;
 	private String DISTRICT_PK;
 	private String PRDT_SIZE_PK;
 	private String USED_ST_GRADE_PK;
+	private String MEM_EMAIL_PK;
+	private int UTP_NOTIFY_NUMBER;
 	
+	public int getUTP_NOTIFY_NUMBER(){
+		return UTP_NOTIFY_NUMBER;
+	}
+
+	public void setUTP_NOTIFY_NUMBER(int uTP_NOTIFY_NUMBER){
+		UTP_NOTIFY_NUMBER = uTP_NOTIFY_NUMBER;
+	}
+
 	public int getUTP_SQ_PK(){
 		return UTP_SQ_PK;
 	}
@@ -103,13 +112,13 @@ public class UsedTradePostTbBean{
 	public void setUSED_ST_GRADE_PK(String uSED_ST_GRADE_PK){
 		USED_ST_GRADE_PK = uSED_ST_GRADE_PK;
 	}
-	
+
 	@Override
 	public String toString(){
 		return "UsedTradePostTbBean [UTP_SQ_PK=" + UTP_SQ_PK + ", UTP_TITLE=" + UTP_TITLE + ", UTP_BODY=" + UTP_BODY
-				+ ", UTP_REPORTING_DT=" + UTP_REPORTING_DT + ", UTP_FIN_MODIF_DT=" + UTP_FIN_MODIF_DT
-				+ ", MEM_EMAIL_PK=" + MEM_EMAIL_PK + ", UTP_CNT=" + UTP_CNT + ", USED_TRADE_ST_PK=" + USED_TRADE_ST_PK
-				+ ", DISTRICT_PK=" + DISTRICT_PK + ", PRDT_SIZE_PK=" + PRDT_SIZE_PK + ", USED_ST_GRADE_PK="
-				+ USED_ST_GRADE_PK + "]";
+				+ ", UTP_REPORTING_DT=" + UTP_REPORTING_DT + ", UTP_FIN_MODIF_DT=" + UTP_FIN_MODIF_DT + ", UTP_CNT="
+				+ UTP_CNT + ", USED_TRADE_ST_PK=" + USED_TRADE_ST_PK + ", DISTRICT_PK=" + DISTRICT_PK
+				+ ", PRDT_SIZE_PK=" + PRDT_SIZE_PK + ", USED_ST_GRADE_PK=" + USED_ST_GRADE_PK + ", MEM_EMAIL_PK="
+				+ MEM_EMAIL_PK + ", UTP_NOTIFY_NUMBER=" + UTP_NOTIFY_NUMBER + "]";
 	}
 }
