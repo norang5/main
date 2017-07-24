@@ -96,4 +96,6 @@ public class JoinController {
 		session.removeAttribute("userEmail");
 		return "main";
 	}
+	
+	
 }

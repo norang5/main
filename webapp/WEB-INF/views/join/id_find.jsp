@@ -53,7 +53,7 @@ h2{
 		<form action="">
 			<div class="btn_nm">이름<input type="text"></div>
 			<div class="btn_email">이메일<input type="text"></div>
-			<div class="btn_mobile">휴대폰</div>
+			<div class="btn_mobile">휴대폰<input type="text"></div>
 			<div><input type="submit" value="확인"></div>
 		</form>
 	</section>
