@@ -6,9 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
 <mapper namespace="com.shoes.model.PRDTCommonBean"> 
 
-	<select id="getCommonINfo" resultType="PRDTCommon">
+	<select id="getCommonINfo" resultType="PRDTCommonBean">
 		select * from PRDT_COMMON_INFO_TB  
-		where PCI_SQ_PK = 43
+		where PCI_SQ_PK = 142
 	</select>
 
 	

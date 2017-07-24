@@ -130,8 +130,12 @@ INSERT INTO PRDT_COMMON_INFO_TB(PCI_SQ_PK,PCI_MATERIAL,PCI_PRDT_NAME,PCI_IMPORTE
 PCI_MANUFACT_COUNTRY,PCI_QUALITY_GUARANTEE,PCI_REQUIRE_ATTENTION,PCI_AS_MAN_PHONE,PRDT_CTG_NM)
 
 VALUES(
-	142, '소가죽', 'ADgg','ADgg','ADgg','ADgg','ADgg','ADgg','ADgg','Stan Smiths'
+	142, '소가죽', 'ADgg','ADgg','ADgg','ADgg','ADgg','ADgg','ADgg','stan smith'
 );
+
+select * from PRDT_COMMON_INFO_TB  
+		where PCI_SQ_PK = 142
+
 
 create table test3(
 	name varchar2(20)
