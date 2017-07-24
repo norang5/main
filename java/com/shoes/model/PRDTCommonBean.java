@@ -47,6 +47,7 @@ public class PRDTCommonBean {
 		public String getPCI_MANUFACT_COUNTRY() {
 			return PCI_MANUFACT_COUNTRY;
 		}
+		
 		public void setPCI_MANUFACT_COUNTRY(String pCI_MANUFACT_COUNTRY) {
 			PCI_MANUFACT_COUNTRY = pCI_MANUFACT_COUNTRY;
 		}

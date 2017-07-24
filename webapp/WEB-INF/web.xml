@@ -46,10 +46,6 @@
 	</filter-mapping>
 	
 	
-	
-	
-	
-	
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
@@ -65,6 +61,13 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
+	<jsp-config>
+	<taglib> 
+       <taglib-uri>http://www.springframework.org/tags/form</taglib-uri>
+      <taglib-location>/META-INF/spring-form.tld</taglib-location>  
+</taglib>
+	</jsp-config>
 </web-app>
 
 

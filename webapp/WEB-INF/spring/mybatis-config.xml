@@ -9,7 +9,7 @@
       -->
       <typeAlias type="com.shoes.model.TestBatisBean" alias="testBatis"/>
       
-      <typeAlias type="com.shoes.model.PRDTCommonBean" alias="PRDTCommon"/>
+      <typeAlias type="com.shoes.model.PRDTCommonBean" alias="PRDTCommonBean"/>
       <typeAlias type="com.shoes.model.CategoryBean" alias="Category"/>
       <typeAlias type="com.shoes.model.PRDTBean" alias="PRDT"/>
 
