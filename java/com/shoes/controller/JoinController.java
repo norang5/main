@@ -67,24 +67,6 @@ public class JoinController {
 		return mav;
 	}
 
-/*	아이디 찾기 참고용 코드
- * 	@RequestMapping("idfind")
-	public ModelAndView login(HttpServletRequest request) {
-		// 중대한 문제! 이메일 찾는건데 이메일을 입력받고 있다.
-		ModelAndView mav = new ModelAndView();
-		String email = request.getParameter("email");
-		String name = request.getParameter("name");
-		JoinBean bean = mb.getMemberTbIdEmail("getMemberTbIdEmail", email, name);
-		
-		if(bean.getMEM_EMAIL_PK().equals(email) && bean.getMEM_NM().equals(name)){
-			mav.setAddObject("member", bean);
-			mav.setViewName("");
-		}else{
-			mav.setViewName("");
-		}
-		
-		return mav;
-	}*/
 	
 	@RequestMapping("login")
 	public String login() {
@@ -118,7 +100,7 @@ public class JoinController {
 		String url = request.getHeader("REFERER");	// 클라이언트가 요청을 보내온 페이지의 URL알아내는 방법.
 		String toHere = "/";	// index로 이동
 		if(url != null){
-			toHere = url;		// 이전 페이지로 이동(새로고침 효과)
+			toHere = url;		// 이전 페이지로 이동(새로고침 효과)*
 		}
 		
 		System.out.println("url은: " + url);
@@ -127,6 +109,26 @@ public class JoinController {
 		return toHere;
 	}
 	
+
+	/*	아이디 찾기 참고용 코드
+	 * 	@RequestMapping("idfind")
+	public ModelAndView login(HttpServletRequest request) {
+		// 중대한 문제! 이메일 찾는건데 이메일을 입력받고 있다.
+		ModelAndView mav = new ModelAndView();
+		String email = request.getParameter("email");
+		String name = request.getParameter("name");
+		JoinBean bean = mb.getMemberTbIdEmail("getMemberTbIdEmail", email, name);
+		
+		if(bean.getMEM_EMAIL_PK().equals(email) && bean.getMEM_NM().equals(name)){
+			mav.setAddObject("member", bean);
+			mav.setViewName("");
+		}else{
+			mav.setViewName("");
+		}
+		
+		return mav;
+	}*/
+ 
 	
 }
 

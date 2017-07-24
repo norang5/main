@@ -48,11 +48,19 @@ h2{
 		<a href="/shoes_shop/pw_find"><input type="button" value="비밀번호 찾기"></a>
 		<br/>
 		<hr/>
-		<input type="radio" class="btn_show" name="a" checked="checked">show
-		<input type="radio" class="btn_hide" name="a" >hide
+		<input type="radio" class="btn_show" name="a" checked="checked">질문으로찾기
+		<input type="radio" class="btn_hide" name="a" >휴대폰번호
 		<form action="">
 			<div class="btn_nm">이름<input type="text"></div>
-			<div class="btn_email">이메일<input type="text"></div>
+			<div class="btn_email">질문 내용
+				<select style="height: 30px">
+						<option value="a">가장 친한 친구의 이름은?</option>
+						<option value="b">내가 졸업한 초등학교의 이름은?</option>
+						<option value="c">어릴적 나의 별명은?</option>
+				</select>
+				<br/>
+				<input type="text" style="height: 30px">
+			</div>
 			<div class="btn_mobile">휴대폰<input type="text"></div>
 			<div><input type="submit" value="확인"></div>
 		</form>
