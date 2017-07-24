@@ -1,6 +1,9 @@
 package com.shoes.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -31,19 +34,49 @@ public class UsedTradeController{
 	
 	// 중고장터로 이동
 	@RequestMapping("usedStore")
-	public String goToUsedStore(){
-		return "usedStore/usedStoreMain";
+	public ModelAndView goToUsedStore(){
+		ModelAndView mav = new ModelAndView();
+		
+		// DB로부터 특정 범위의 중고거래글을 불러온다.
+		List<UsedTradePostTbBean> usedTradePostTbBeanList = usedDAO.getUsedTradePostTbList(0, 20);
+		
+		// 불러온 거래글들 각각에 정규식을 적용해 첫번째 이미지만 따로 빼낸다.
+	//	Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
+		Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
+		Matcher match = null;
+		
+		String body = "";
+		String mainImg = "";
+		List<String> mainImgList = new ArrayList<String>();
+		for(UsedTradePostTbBean bean: usedTradePostTbBeanList){
+			body = bean.getUTP_BODY();
+			match = pattern.matcher(body);
+			
+			if(match.find()){	// 본문에 이미지 태그가 있다면,
+				mainImg = match.group(1);	// 글 내용 중에 첫번째 이미지 태그를 뽑아옴.
+				mainImgList.add(mainImg);
+			}
+			
+			System.out.println("body: " + body);
+			System.out.println("mainImg: " + mainImg);
+		}
+		
+		mav.addObject("mainImgList", mainImgList);
+		mav.addObject("usedTradePostTbBeanList", usedTradePostTbBeanList);
+		mav.setViewName("usedStore/usedStoreMain");
+		
+		return mav;
 	}
 
 	// 중고거래글 작성 페이지로 이동(CKEditor)
 	// 파라미터로 게시글 번호가 넘어온다면 DB에서 받아와서 함께 전송해주고(수정),
 	// 파라미터로 아무값도 안넘어온다면 그대로 글 작성 페이지로 연결해준다.(새로 글쓰기)
 	@RequestMapping(value = "/used_post_write_ck", method = RequestMethod.GET)
-	public ModelAndView usedStroePostWriteCKGet(@RequestParam(value = "UTP_SQ_PK", defaultValue = "0") int UTP_SQ_PK){
+	public ModelAndView usedStroePostWriteCKGet(@RequestParam(value = "UTP_SQ_PK", defaultValue = "0") int UTP_SQ_PK, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		
 		// 1. 현재 세션의 이메일(작성자) 받아오기
-		String email = "abc@naver.com";
+		String email = (String)session.getAttribute("userEmail");
 
 		// 2. 치수 분류표 받아오기
 		List<PrdtSizeTbBean> prdtSizeList = usedDAO.getPrdtSizeList();
@@ -67,8 +100,8 @@ public class UsedTradeController{
 			
 			// 현재 세션의 mem_email과 요청글의 mem_email이 일치하는지 검사
 			String dbMemEmail = usedDAO.getUsedTradePostTbMemEmailPk(UTP_SQ_PK);
-			//String sessionMemEmail = (String)session.getAttribute("user_email");
-			String sessionMemEmail = "testemail@test.com";
+			String sessionMemEmail = (String)session.getAttribute("user_email");
+			//String sessionMemEmail = "testemail@test.com";
 			
 			if(dbMemEmail.equals(sessionMemEmail) == false){
 				// 일치하지 않는다면 수정자의 권한 검사
@@ -108,7 +141,7 @@ public class UsedTradeController{
 	
 	// 클라이언트 쪽에서 중고거래글 작성후에, 그 데이터를 서버로 전송할때.(CKEditor)
 	@RequestMapping(value = "/used_post_write_ck", method = RequestMethod.POST)
-	public ModelAndView usedStroePostWritePEGet(UsedTradePostTbBean usedPostBean, HttpServletRequest request){
+	public ModelAndView usedStroePostWritePEGet(UsedTradePostTbBean usedPostBean, HttpServletRequest request, HttpSession session){
 		System.out.println("전송받음 " + usedPostBean);
 		/*
 		 	전송받음 UsedTradePostTbBean [
@@ -123,18 +156,15 @@ public class UsedTradeController{
 		 		DISTRICT_PK=강원,
 		 		PRDT_SIZE_PK=210,
 		 		USED_ST_GRADE_PK=B급,
-		 		PRDT_CD_PK=0
+		 		PRDT_CD_PK=0,
+		 		UTP_NOTIFY_NUMBER=0
 		 	]
 		*/
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("usedStore/usedStoreMain");
-		
-		HttpSession session = request.getSession();
-		
+		mav.setViewName("redirect: usedStore");
 		
 		String dbMemEmail = usedDAO.getUsedTradePostTbMemEmailPk(usedPostBean.getUTP_SQ_PK());
-		//String sessionMemEmail = (String)session.getAttribute("user_email");
-		String sessionMemEmail = "testemail@test.com";
+		String sessionMemEmail = (String)session.getAttribute("userEmail");
 		
 		// 1. 작성자가 누구인지 아래 로직으로 판별
 		// 신규 글이라면 MEM_EMAIL_PK에 현재 세션의 MEM_EMAIL_PK 저장.
@@ -191,16 +221,22 @@ public class UsedTradeController{
 			usedPostBean.setUTP_REPORTING_DT(currentServerTime);
 			usedPostBean.setUTP_FIN_MODIF_DT(currentServerTime);
 		}else{
-			usedPostBean.setUTP_REPORTING_DT(usedDAO.getUsedTradePostTbCurrentServerTime(usedPostBean.getUTP_SQ_PK()));
+			usedPostBean.setUTP_REPORTING_DT(usedDAO.getUsedTradePostTbUtpReportingDt(usedPostBean.getUTP_SQ_PK()));
 			usedPostBean.setUTP_FIN_MODIF_DT(currentServerTime);
 		}
 		
-		// 5. 현재 세션으로부터 MEM_EMAIL_PK를 얻어와 저장. 로그인 기능이 완성되면 주석을 풀 것.
-		usedPostBean.setMEM_EMAIL_PK("testemail@test.com");
-		//String email = (String)request.getSession().getAttribute("user_email");
-		//usedPostBean.setMEM_EMAIL_PK(email);
+		// 5. 신규글이라면 신고횟수를 0으로 설정.
+		//		기존 게시글의 수정 요청이라면 DB에 저장된 값을 불러와서 저장.
+		if(usedPostBean.getUTP_SQ_PK() == 0){
+			usedPostBean.setUTP_NOTIFY_NUMBER(0);
+		}else{
+			usedPostBean.setUTP_NOTIFY_NUMBER(usedDAO.getUsedTradePostTbUtpNotifyNumber(usedPostBean.getUTP_SQ_PK()));
+		}
 		
-		// 6. UTP_SQ_PK가 0이 아니라면(새로 작성된 글이 아니라면) DB로부터 기존 조회수를 불러와 갱신.
+		// 6. 현재 세션으로부터 MEM_EMAIL_PK를 얻어와 저장. 로그인 기능이 완성되면 주석을 풀 것.
+		usedPostBean.setMEM_EMAIL_PK(sessionMemEmail);
+		
+		// 7. UTP_SQ_PK가 0이 아니라면(새로 작성된 글이 아니라면) DB로부터 기존 조회수를 불러와 갱신.
 		if(usedPostBean.getUTP_SQ_PK() != 0){
 			usedPostBean.setUTP_CNT(usedDAO.getUsedTradePostTbUtpCnt(usedPostBean.getUTP_SQ_PK()));
 		}

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,25 +48,44 @@ public class JoinController {
 		// 5.주소는 우편번호 찾기를 통하여 필수로 등록하도록 한다.
 		// 6.상세주소는 null값을 허용한다.
 		// 7.전화번호와 휴대폰번호 중 하나는 필수등록하게 한다.
-
+		
 		String id = bean.getMEM_EMAIL_PK();
 		if (id.length() == 0 || id.equals("")) {
 			// 클라이언트쪽에서 처리함
 		} else {
 			id = id.substring(0, id.indexOf('@'));
 		}
-
+		
 		bean.setMEM_ID(id);
 		bean.setGRADE_ST_PK("일반회원");
 		bean.setMEM_JOIN_DT(new java.sql.Date(new java.util.Date().getTime()));
-
+		
 		System.out.println(bean);
-
+		
 		mb.insertMemberTb(bean);
-
+		
 		return mav;
 	}
 
+/*	아이디 찾기 참고용 코드
+ * 	@RequestMapping("idfind")
+	public ModelAndView login(HttpServletRequest request) {
+		// 중대한 문제! 이메일 찾는건데 이메일을 입력받고 있다.
+		ModelAndView mav = new ModelAndView();
+		String email = request.getParameter("email");
+		String name = request.getParameter("name");
+		JoinBean bean = mb.getMemberTbIdEmail("getMemberTbIdEmail", email, name);
+		
+		if(bean.getMEM_EMAIL_PK().equals(email) && bean.getMEM_NM().equals(name)){
+			mav.setAddObject("member", bean);
+			mav.setViewName("");
+		}else{
+			mav.setViewName("");
+		}
+		
+		return mav;
+	}*/
+	
 	@RequestMapping("login")
 	public String login() {
 		return "join/login";
@@ -92,10 +112,23 @@ public class JoinController {
 	}
 
 	@RequestMapping(value = "logout")
-	public String logout(HttpSession session) {
+	public String logout(HttpServletRequest request, HttpSession session) {
 		session.removeAttribute("userEmail");
-		return "main";
+		
+		String url = request.getHeader("REFERER");	// 클라이언트가 요청을 보내온 페이지의 URL알아내는 방법.
+		String toHere = "/";	// index로 이동
+		if(url != null){
+			toHere = url;		// 이전 페이지로 이동(새로고침 효과)
+		}
+		
+		System.out.println("url은: " + url);
+		System.out.println("toHere는: " + toHere);
+		
+		return toHere;
 	}
 	
 	
 }
+
+
+

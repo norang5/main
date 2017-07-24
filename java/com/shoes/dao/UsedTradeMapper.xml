@@ -46,10 +46,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE UTP_SQ_PK = #{UTP_SQ_PK}
 	</select>
 	
+	<!-- 특정 식별번호의 신고횟수만 가져오기 -->
+	<select id="getUsedTradePostTbUtpNotifyNumber" parameterType="int" resultType="int">
+		SELECT UTP_NOTIFY_NUMBER
+		FROM USED_TRADE_POST_TB
+		WHERE UTP_SQ_PK = #{UTP_SQ_PK}
+	</select>
+	
+	<!-- USED_TRADE_POST_TB로부터 특정범위의 레코드 받아오기 -->
+	<select id="getUsedTradePostTbList" parameterType="java.util.Map" resultType="UsedTradePostTbBean">
+		SELECT * FROM(
+			SELECT	
+				ROWNUM RNUM,
+				UTP_SQ_PK,
+				UTP_TITLE,
+				UTP_BODY,
+				UTP_REPORTING_DT,
+				UTP_FIN_MODIF_DT,
+				UTP_CNT,
+				USED_TRADE_ST_PK,
+				DISTRICT_PK,
+				PRDT_SIZE_PK,
+				USED_ST_GRADE_PK,
+				MEM_EMAIL_PK,
+				UTP_NOTIFY_NUMBER
+			FROM(
+				SELECT * FROM USED_TRADE_POST_TB
+				ORDER BY  UTP_SQ_PK DESC
+			)
+		)WHERE RNUM <![CDATA[>=]]> #{startrow} AND RNUM <![CDATA[<=]]> #{endrow}
+	</select>
+	
 	<!-- 특정 식별번호의 중고거래 게시글에서 작성일만 받아오기 -->
 	<!-- resultType엔 java.util.Date와 java.sql.Date 모두 사용 가능합니다.
 		각 타입에 따라 사전정의된 MyBatis 내부의 핸들러 메소드가 동작해 알아서 변환을 진행합니다. -->
-	<select id="getUsedTradePostTbCurrentServerTime" parameterType="int" resultType="java.sql.Date">
+	<select id="getUsedTradePostTbUtpReportingDt" parameterType="int" resultType="java.sql.Date">
 		SELECT UTP_REPORTING_DT FROM USED_TRADE_POST_TB
 		WHERE UTP_SQ_PK = #{UTP_SQ_PK}
 	</select>
@@ -66,6 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE UTP_SQ_PK = #{UTP_SQ_PK}
 	</select>
 	
+	<!-- 전달된 UsedTradePostTbBean의 UTP_SQ_PK와 일치하는 DB상의 레코드를 교체 -->
 	<update id="updateUsedTradePostTb" parameterType="UsedTradePostTbBean">
 		UPDATE USED_TRADE_POST_TB
 		SET	UTP_TITLE = #{UTP_TITLE},
@@ -77,10 +109,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			USED_TRADE_ST_PK = #{USED_TRADE_ST_PK},
 			DISTRICT_PK = #{DISTRICT_PK},
 			PRDT_SIZE_PK = #{PRDT_SIZE_PK},
-			USED_ST_GRADE_PK = #{USED_ST_GRADE_PK}
+			USED_ST_GRADE_PK = #{USED_ST_GRADE_PK},
+			UTP_NOTIFY_NUMBER = #{UTP_NOTIFY_NUMBER}
 		WHERE UTP_SQ_PK = #{UTP_SQ_PK}
 	</update>
 	
+	<!-- 전달된 UsedTradePostTbBean을 DB에 저장 -->
 	<insert id="insertUsedTradePostTb" parameterType="UsedTradePostTbBean">
 		INSERT INTO USED_TRADE_POST_TB(
 			UTP_SQ_PK,
@@ -93,7 +127,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			USED_TRADE_ST_PK,
 			DISTRICT_PK,
 			PRDT_SIZE_PK,
-			USED_ST_GRADE_PK
+			USED_ST_GRADE_PK,
+			UTP_NOTIFY_NUMBER
 		)VALUES(
 			USED_TRADE_POST_TB_SEQ.NEXTVAL,
 			#{UTP_TITLE},
@@ -105,7 +140,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{USED_TRADE_ST_PK},
 			#{DISTRICT_PK},
 			#{PRDT_SIZE_PK},
-			#{USED_ST_GRADE_PK}
+			#{USED_ST_GRADE_PK},
+			#{UTP_NOTIFY_NUMBER}
 		)
 	</insert>
 </mapper>

@@ -1,5 +1,6 @@
 package com.shoes.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -20,7 +21,9 @@ public class UsedTradeDAO{
 	
 	// 신규 중고거래 게시글을 DB에 등록하기
 	public void insertUsedTradePostTb(UsedTradePostTbBean bean){
+		System.out.println("\n저장하기 직전의 빈객체\n" + bean);
 		sqlSessionTemplate.insert("insertUsedTradePostTb", bean);
+		
 	}
 	
 	// DB상의 기존 중고거래 게시글을 갱신하기
@@ -53,13 +56,25 @@ public class UsedTradeDAO{
 	}
 	
 	// USED_TRADE_POST_TB로부터 USED_SQ_PK와 일치하는 작성일 받아오기
-	public java.sql.Date getUsedTradePostTbCurrentServerTime(int UTP_SQ_PK){
-		return sqlSessionTemplate.selectOne("getUsedTradePostTbCurrentServerTime", UTP_SQ_PK);
+	public java.sql.Date getUsedTradePostTbUtpReportingDt(int UTP_SQ_PK){
+		return sqlSessionTemplate.selectOne("getUsedTradePostTbUtpReportingDt", UTP_SQ_PK);
+	}
+	
+	// USED_TRADE_POST_TB로부터 특정범위의 레코드 받아오기
+	public List<UsedTradePostTbBean> getUsedTradePostTbList(int startrow, int endrow){
+		HashMap<String,Integer> map = new HashMap<String,Integer>();
+		map.put("startrow", startrow);
+		map.put("endrow", endrow);
+		return sqlSessionTemplate.selectList("getUsedTradePostTbList", map);
 	}
 	
 	// USED_TRADE_POST_TB로부터 USED_SQ_PK와 일치하는 레코드 받아오기
 	public UsedTradePostTbBean getUsedTradePostTb(int UTP_SQ_PK){
 		return sqlSessionTemplate.selectOne("getUsedTradePostTb", UTP_SQ_PK);
+	}
+	
+	public int getUsedTradePostTbUtpNotifyNumber(int UTP_SQ_PK){
+		return sqlSessionTemplate.selectOne("getUsedTradePostTbUtpNotifyNumber", UTP_SQ_PK);
 	}
 	
 	// USED_TRADE_POST_TB로부터 USED_SQ_PK와 일치하는 레코드의 MEM_EMAIL만 받아오기
