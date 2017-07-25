@@ -15,6 +15,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from MEMBER_TB
 		where MEM_EMAIL_PK = #{MEM_EMAIL_PK}
 	</select>
+	
+	<!--PW_FIND_ASK_TB 정보 받아오기 -->
+	<select id="getPwFindAskBeanList" resultType="PwFindAskBean">
+		select * from PW_FIND_ASK_TB
+	</select>
 
 	<!-- MEMBER_TB에 새로운 회원 저장하기 -->
 	<insert id="insertMemberTb" parameterType="JoinBean">

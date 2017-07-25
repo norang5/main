@@ -20,6 +20,7 @@
       <typeAlias type="com.shoes.model.UsedStTbBean" alias="UsedStTbBean"/>
       
       <typeAlias type="com.shoes.model.JoinBean" alias="JoinBean"/>
+      <typeAlias type="com.shoes.model.PwFindAskBean" alias="PwFindAskBean"/>
       
       <typeAlias type="com.shoes.model.PRDTPostBean" alias="PRDTPostBean"/>
       <typeAlias type="com.shoes.model.PRDTSTBean" alias="PRDTSTBean"/>

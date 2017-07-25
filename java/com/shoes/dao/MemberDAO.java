@@ -1,10 +1,13 @@
 package com.shoes.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.shoes.model.JoinBean;
+import com.shoes.model.PwFindAskBean;
 
 @Repository
 public class MemberDAO {
@@ -26,4 +29,12 @@ public class MemberDAO {
 	public JoinBean login(String MEM_EMAIL_PK){
 		return sst.selectOne("getMemberTb", MEM_EMAIL_PK);
 	}
+	
+	//PW_FIND_ASK_TB에 비밀번호 찾기 질문 불러오기
+	public List<PwFindAskBean> getPwFindAskBeanList(){
+		return sst.selectList("getPwFindAskBeanList");
+	}
+	
+	
+
 }// class MemberDAO{}
