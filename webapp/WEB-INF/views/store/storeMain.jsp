@@ -1,6 +1,7 @@
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -202,6 +203,13 @@ bottom:15px;
 	</figure>
 </div>
 <div id="second_page">
+<jsp:include page="./store_category.jsp" flush="false" />
+</div>
+
+
+
+
+
 <a href="#top" id="back_menu"></br></br></br>신발 카테고리 보기</a>
 </div>
 

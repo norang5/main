@@ -382,7 +382,7 @@ $(".hover").mouseleave(
     <h3>Location</h3>
     <p>가까운 오프라인 매장을 찾아보세요</p><i class="ion-ios-arrow-right"></i>
   </figcaption>
-  <a href="./usedStore"></a>
+  <a href="./admin"></a>
 </figure>
 
 <!-- 	<table>
