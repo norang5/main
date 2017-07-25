@@ -6,11 +6,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
 <mapper namespace="com.shoes.model.PRDTBean"> 
 
-	<select id="PRDTList" resultType="PRDT">
+	<select id="PRDTList" resultType="PRDTBean">
 		select * from PRDT_TB
 	</select>
 	
-	<insert id="addPRDT" parameterType="PRDT">
+	<select id="getCD_PK" resultType="PRDTBean" parameterType="PRDTBean">
+		select PRDT_CD_PK from PRDT_TB
+		where PRDT_SIZE_PK = #{PRDT_SIZE_PK} and PRDT_COLOR=#{PRDT_COLOR}
+	</select>
+	
+	
+	<insert id="addPRDT" parameterType="PRDTBean">
 	insert into PRDT_TB values (PRDT_TB_SEQ.nextval,#{PRDT_SIZE_PK},#{PRDT_COLOR},#{PRDT_PRICE},
 	#{PRDT_AMT},PRDT_COMMON_INFO_TB_SEQ.currval)
 	</insert>

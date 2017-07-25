@@ -1,7 +1,9 @@
 package com.shoes.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,7 +24,8 @@ import com.shoes.model.PrdtSizeTbBean;
 import com.shoes.model.UsedStTbBean;
 import com.shoes.model.UsedTradePostTbBean;
 import com.shoes.model.UsedTradeStTbBean;
-import com.shoes.service.CommandMap;
+
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 
 @Controller
@@ -37,17 +40,28 @@ public class UsedTradeController{
 	
 	// 중고장터로 이동
 	@RequestMapping("usedStore")
-	public ModelAndView goToUsedStore(){
+	public ModelAndView goToUsedStore(HttpServletRequest request){
 		ModelAndView mav = new ModelAndView();
 		
-		// DB로부터 특정 범위의 중고거래글을 불러온다.
-		List<UsedTradePostTbBean> usedTradePostTbBeanList = usedDAO.getUsedTradePostTbList(0, 20);
-		/*Map<String, Object> resultMap = usedDAO.getUsedTradePostTbList(commandMap.getMap());
-		mav.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
-		mav.addObject("list", resultMap.get("result"));*/
+		String currentPageNo = request.getParameter("currentPageNo");
+		String PAGE_ROW = request.getParameter("PAGE_ROW");
 		
+		System.out.println("요청받은 페이지 번호: " + currentPageNo);
+		System.out.println("요청받은 한 페이지에 표시할 게시글수: " + PAGE_ROW);
+		
+		Map<String, Object> commandMap = new HashMap<String, Object>();
+		commandMap.put("currentPageNo", currentPageNo);
+		commandMap.put("PAGE_ROW", PAGE_ROW);
+		
+		Map<String, Object> resultMap = usedDAO.selectUsedTradePostTbList(commandMap);
+		mav.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+		
+		
+		// DB로부터 특정 범위의 중고거래글을 불러온다.
+		List<Map<String, Object>> usedTradePostTbBeanList = (List<Map<String, Object>>)resultMap.get("result");
+		
+		/*
 		// 불러온 거래글들 각각에 정규식을 적용해 첫번째 이미지만 따로 빼낸다.
-	//	Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
 		Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
 		Matcher match = null;
 		
@@ -68,13 +82,16 @@ public class UsedTradeController{
 		}
 		
 		mav.addObject("mainImgList", mainImgList);
+		*/
+		
 		mav.addObject("usedTradePostTbBeanList", usedTradePostTbBeanList);
+		
 		mav.setViewName("usedStore/usedStoreMainMasonry");
 		//mav.setViewName("usedStore/usedStoreMain");
 		
 		return mav;
 	}
-
+	
 	// 중고거래글 작성 페이지로 이동(CKEditor)
 	// 파라미터로 게시글 번호가 넘어온다면 DB에서 받아와서 함께 전송해주고(수정),
 	// 파라미터로 아무값도 안넘어온다면 그대로 글 작성 페이지로 연결해준다.(새로 글쓰기)

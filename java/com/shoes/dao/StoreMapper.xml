@@ -8,8 +8,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getCommonINfo" resultType="PRDTCommonBean">
 		select * from PRDT_COMMON_INFO_TB  
-		where PCI_SQ_PK = 142
+		where PCI_SQ_PK = 21
 	</select>
+	
+	
+	
+		<select id="getPostINfo" resultType="PRDTPostBean">
+		select * from PRDT_POST_TB  
+		where PCI_SQ_PK = 21
+	</select>
+	
+	
+	<select id="getPRDTINfo" resultType="PRDTBean">
+		select * from PRDT_TB  
+		where PCI_SQ_PK = 21
+	</select>
+	
+	
 
 	<insert id="addComment" parameterType="PRDTCommentBean">
 	insert into PRDT_COMMENT_TB values(

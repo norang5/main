@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,46 +128,57 @@ position:relative;
 <body>
 <div id='main1'>
 	<!-- 구매 페이지 헤더 (카테고리 역추적) -->
-	<div id="buying_heder"><a href="./store">Store</a>  >  Category  >  <a href="./nmd">NMD </a></div>
+	<div id="buying_heder"><a href="./store">Store</a>  >  Category  >  <a href="./nmd">${Common_CATEGORY}</a></div>
 	<div id='main2'>
 		<!-- 이미지 표시창 (하단에 작은 이미지 클릭시 큰 이미지 변경기능) -->
 		<div id="prdt_image"><img src="./image/nmd02.jpg"></div>
 
 		<!-- 상품 구매 정보 표시 -->
 		<div id="buying_info">
+		<form:form commandName="PRDTBean">
+		
 			<table id="buying_info_table">
 				<tr>
 					<td  colspan="2"><h1>${Common_NAME}</h1></td>
 				</tr>
 				
 				<tr>
-					<td colspan="2"><h2>123,000원</h2></td>
+					<td colspan="2"><h2>${PRDT_PRICE}&nbsp;원</h2></td>
 				</tr>
 				
 				<tr>
-					<td colspan="2">색깔</td>
+					<td colspan="2">마일리지 적립&nbsp;&nbsp;&nbsp;${POST_MILE}&nbsp;%</td>
+				</tr>
+				<tr>
+					<td>색상</td>
+					<td><form:select path="PRDT_COLOR" items="${PRDT_COL}" /></td>
 				</tr>
 				
 				<tr>
 					<td>사이즈</td>
-					<td>수량</td>
+					<td><form:select path="PRDT_SIZE_PK" items="${PRDT_SIZE}" /></td>
 				</tr>
-				
+		<!-- 		<tr>
+					<td>수량</td>
+					<td></td>
+				</tr> -->
 				<tr>
 					<td>배송비 </td>
-					<td>7월 한달간 무료배송 서비스</td>
+					<td>${POST_DLVR}</td>
 				</tr>
 				
 				<tr>
-					<td><a href="./orderdone"><button type=button>구매하기</button></a></td>
+					<td><button type=submit>구매하기</button></td>
 					<td><button type=button>장바구니</button></td>
 				</tr>
 	
-			</table></div>
+			</table></form:form>
 	</div>
-	
+	</div>
 	<!-- 상품 정보 표시 -->
 	<div id="prdt_info">
+		<p>${POST_ST}</p>
+		<P>${POST_BODY}</P>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 			Quisquam temporibus repellat voluptatem sit nulla commodi, maxime
 			optio aperiam! Consequuntur necessitatibus iste amet id, nihil
@@ -188,30 +200,10 @@ position:relative;
 			blanditiis, enim beatae, ipsam tempore, ullam voluptas consequuntur
 			laborum, dolor nobis nam velit iure. Autem veniam atque quo, sunt
 			veritatis!</p>
-			<!-- 다나와 가격비교 api -->
+			<!-- 다나와 가격비교 api : 에이젝스로 if ${POST_ST}=="절판" 이면 이거 뜨게 -->
 		<iframe sandbox src='http://api.danawa.com/api/main/product/priceList?key=66b06ff4202440875f87555d73fb48ba&mediatype=xml&charset=euckr&prodCode=1005774'>
 		</iframe>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-			Quisquam temporibus repellat voluptatem sit nulla commodi, maxime
-			optio aperiam! Consequuntur necessitatibus iste amet id, nihil
-			laboriosam voluptatem cum laudantium ab repudiandae. Lorem ipsum
-			dolor sit amet, consectetur adipisicing elit. Maxime ipsum
-			blanditiis, enim beatae, ipsam tempore, ullam voluptas consequuntur
-			laborum, dolor nobis nam velit iure. Autem veniam atque quo, sunt
-			veritatis! Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-			Maxime ipsum blanditiis, enim beatae, ipsam tempore, ullam voluptas
-			consequuntur laborum, dolor nobis nam velit iure. Autem veniam atque
-			quo, sunt veritatis! Lorem ipsum dolor sit amet, consectetur
-			adipisicing elit. Maxime ipsum blanditiis, enim beatae, ipsam
-			tempore, ullam voluptas consequuntur laborum, dolor nobis nam velit
-			iure. Autem veniam atque quo, sunt veritatis! Lorem ipsum dolor sit
-			amet, consectetur adipisicing elit. Maxime ipsum blanditiis, enim
-			beatae, ipsam tempore, ullam voluptas consequuntur laborum, dolor
-			nobis nam velit iure. Autem veniam atque quo, sunt veritatis! Lorem
-			ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsum
-			blanditiis, enim beatae, ipsam tempore, ullam voluptas consequuntur
-			laborum, dolor nobis nam velit iure. Autem veniam atque quo, sunt
-			veritatis!</p>
+		
 			
 		<table id="prdt_info_table">
 
