@@ -1,8 +1,6 @@
 package com.shoes.controller;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shoes.dao.StoreDAO;
-import com.shoes.model.CategoryBean;
+import com.shoes.model.PRDTBean;
 import com.shoes.model.PRDTCommentBean;
 import com.shoes.model.PRDTCommonBean;
+import com.shoes.model.PRDTPostBean;
 
 
 
@@ -39,6 +38,79 @@ public class StoreController {
 	public String orderDone() {
 		return "store/order_done";
 	}
+	
+	
+	 /*PRDT_TB에서 불러와야할 정보*/
+	
+	@ModelAttribute("PRDT_PRICE")
+	protected int prdtPriceDAta() {
+		List<PRDTBean> bean=storeDao.getPRDTInfo();
+		System.out.println("prdtpriceData: " + bean);
+		return bean.get(1).getPRDT_PRICE();
+	}
+	
+	
+	@ModelAttribute("PRDT_COL")
+	protected List<String> colorData() {
+		List<PRDTBean> beanList=storeDao.getPRDTInfo();
+		List<String> colorList = new ArrayList<String>();		
+		for(int i=0; i<beanList.size(); i++){
+			colorList.add(beanList.get(i).getPRDT_COLOR());
+		}
+		return colorList;
+	}
+	
+	
+	@ModelAttribute("PRDT_SIZE")
+	protected List<String> sizeData() {
+		List<PRDTBean> beanList=storeDao.getPRDTInfo();
+		List<String> sizeList = new ArrayList<String>();		
+		for(int i=0; i<beanList.size(); i++){
+			sizeList.add(beanList.get(i).getPRDT_SIZE_PK());
+		}
+		return sizeList;
+	}
+
+	
+	/*PRDT_POST_TB에서 불러와야할 정보*/
+	
+	@ModelAttribute("POST_ST")
+	protected String postSTData() {
+		PRDTPostBean bean=storeDao.getPostInfo();
+		System.out.println("prdtNameData: " + bean);
+		return bean.getPRDT_ST_NM_PK();
+	}
+	
+	@ModelAttribute("POST_BODY")
+	protected String postBodyData() {
+		PRDTPostBean bean=storeDao.getPostInfo();
+		System.out.println("prdtNameData: " + bean);
+		return bean.getPP_BODY();
+	}
+	
+	@ModelAttribute("POST_DLVR")
+	protected String postDLVRData() {
+		PRDTPostBean bean=storeDao.getPostInfo();
+		System.out.println("prdtNameData: " + bean);
+		return bean.getDLVR_CHRG_NM_PK();
+	}
+	
+	@ModelAttribute("POST_MILE")
+	protected int postMILEData() {
+		PRDTPostBean bean=storeDao.getPostInfo();
+		System.out.println("prdtNameData: " + bean);
+		return bean.getPP_SAVING_MILEAGE_PERCENT();
+	}
+	
+	/*PRDT_COMMON_INFO_TB에서 불러와야할 정보*/
+	
+	@ModelAttribute("Common_CATEGORY")
+	protected String prdtCategoryData() {
+		PRDTCommonBean bean=storeDao.getCommonInfo();
+		System.out.println("prdtNameData: " + bean);
+		return bean.getPRDT_CTG_NM();
+	}
+	
 	
 	@ModelAttribute("Common_NAME")
 	protected String prdtNameData() {
@@ -96,6 +168,7 @@ public class StoreController {
 		return bean.getPCI_AS_MAN_PHONE();
 	}
 
+	/*PRDT_COMMET_TB에서 불러와야할 정보*/
 	
 	@ModelAttribute("REVIEW_FOOT")
 	protected Object footData(){

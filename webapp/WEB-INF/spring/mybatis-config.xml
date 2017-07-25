@@ -11,7 +11,7 @@
       
       <typeAlias type="com.shoes.model.PRDTCommonBean" alias="PRDTCommonBean"/>
       <typeAlias type="com.shoes.model.CategoryBean" alias="Category"/>
-      <typeAlias type="com.shoes.model.PRDTBean" alias="PRDT"/>
+      <typeAlias type="com.shoes.model.PRDTBean" alias="PRDTBean"/>
 
       <typeAlias type="com.shoes.model.UsedTradePostTbBean" alias="UsedTradePostTbBean"/>
       <typeAlias type="com.shoes.model.PrdtSizeTbBean" alias="PrdtSizeTbBean"/>
