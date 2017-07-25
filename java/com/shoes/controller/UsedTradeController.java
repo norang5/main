@@ -2,6 +2,7 @@ package com.shoes.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -60,7 +61,7 @@ public class UsedTradeController{
 		// DB로부터 특정 범위의 중고거래글을 불러온다.
 		List<Map<String, Object>> usedTradePostTbBeanList = (List<Map<String, Object>>)resultMap.get("result");
 		
-		/*
+		
 		// 불러온 거래글들 각각에 정규식을 적용해 첫번째 이미지만 따로 빼낸다.
 		Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
 		Matcher match = null;
@@ -68,13 +69,24 @@ public class UsedTradeController{
 		String body = "";
 		String mainImg = "";
 		List<String> mainImgList = new ArrayList<String>();
-		for(UsedTradePostTbBean bean: usedTradePostTbBeanList){
-			body = bean.getUTP_BODY();
+		
+		
+		HashMap<String, Object> hashBean = null;
+		UsedTradePostTbBean postBean = null;
+		Iterator it = usedTradePostTbBeanList.iterator();
+		while(it.hasNext()){
+			hashBean = (HashMap<String, Object>)it.next();
+			body = (String)hashBean.get("UTP_BODY");
 			match = pattern.matcher(body);
 			
 			if(match.find()){	// 본문에 이미지 태그가 있다면,
 				mainImg = match.group(1);	// 글 내용 중에 첫번째 이미지 태그를 뽑아옴.
 				mainImgList.add(mainImg);
+			}else{
+				StringBuilder builder = new StringBuilder();
+				builder.append(request.getContextPath());
+				builder.append("/resources/image/noimg_green.png");
+				mainImgList.add(builder.toString());
 			}
 			
 			System.out.println("body: " + body);
@@ -82,12 +94,10 @@ public class UsedTradeController{
 		}
 		
 		mav.addObject("mainImgList", mainImgList);
-		*/
-		
 		mav.addObject("usedTradePostTbBeanList", usedTradePostTbBeanList);
 		
-		mav.setViewName("usedStore/usedStoreMainMasonry");
-		//mav.setViewName("usedStore/usedStoreMain");
+		//mav.setViewName("usedStore/usedStoreMainMasonry");
+		mav.setViewName("usedStore/usedStoreMain");
 		
 		return mav;
 	}
@@ -275,6 +285,15 @@ public class UsedTradeController{
 			usedDAO.updateUsedTradePostTb(usedPostBean);
 		}
 		
+		return mav;
+	}
+	
+	// 게시글 클릭시 상세화면 보여주기
+	@RequestMapping("/detail")
+	public ModelAndView usedPostDetailView(){
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("usedStore/used_post_detail_view");
 		return mav;
 	}
 }
