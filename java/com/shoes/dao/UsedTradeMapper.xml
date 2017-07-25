@@ -144,5 +144,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{UTP_NOTIFY_NUMBER}
 		)
 	</insert>
+	
+	<select id="selectUsedTradePostTbList" parameterType="hashMap" resultType="hashMap">
+		SELECT
+			AAA.*
+		FROM(
+			SELECT
+				COUNT(*) OVER() AS TOTAL_COUNT,
+				AA.*
+			FROM(
+				SELECT
+					ROW_NUMBER() OVER (ORDER BY UTP_SQ_PK DESC) RNUM,
+					UTP_SQ_PK,
+					UTP_TITLE,
+					UTP_BODY,
+					UTP_REPORTING_DT,
+					UTP_FIN_MODIF_DT,
+					UTP_CNT,
+					USED_TRADE_ST_PK,
+					DISTRICT_PK,
+					PRDT_SIZE_PK,
+					USED_ST_GRADE_PK,
+					MEM_EMAIL_PK,
+					UTP_NOTIFY_NUMBER
+				FROM
+					USED_TRADE_POST_TB
+			) AA
+		) AAA
+		WHERE
+			AAA.RNUM BETWEEN #{START} AND #{END}
+	</select>
 </mapper>
 
