@@ -4,18 +4,18 @@ import java.sql.Date;
 
 // 중고거래 게시글 테이블의 빈
 public class UsedTradePostTbBean{
-	private int UTP_SQ_PK;
-	private String UTP_TITLE;
-	private String UTP_BODY;
-	private Date UTP_REPORTING_DT;
-	private Date UTP_FIN_MODIF_DT;
-	private int UTP_CNT;
-	private String USED_TRADE_ST_PK;
-	private String DISTRICT_PK;
-	private String PRDT_SIZE_PK;
-	private String USED_ST_GRADE_PK;
-	private String MEM_EMAIL_PK;
-	private int UTP_NOTIFY_NUMBER;
+	private int UTP_SQ_PK;			// 게시글 식별번호(Sequence)
+	private String UTP_TITLE;		// 제목
+	private String UTP_BODY;		// 본문
+	private Date UTP_REPORTING_DT;	// 작성일
+	private Date UTP_FIN_MODIF_DT;	// 최종수정일
+	private int UTP_CNT;			// 조회수
+	private String USED_TRADE_ST_PK;	// 거래상태(판매중/판매완료 등등)
+	private String DISTRICT_PK;			// 거래지역
+	private String PRDT_SIZE_PK;		// 신발 사이즈
+	private String USED_ST_GRADE_PK;	// 판매품의 상태등급(최상/B급/사용감 있음/준수)
+	private String MEM_EMAIL_PK;	// 작성자 이메일
+	private int UTP_NOTIFY_NUMBER;	// 이 게시글이 신고당한 횟수
 	
 	public int getUTP_NOTIFY_NUMBER(){
 		return UTP_NOTIFY_NUMBER;

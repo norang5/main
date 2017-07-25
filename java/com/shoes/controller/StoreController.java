@@ -32,48 +32,56 @@ public class StoreController {
 	@ModelAttribute("Common_NAME")
 	protected String prdtNameData() {
 		PRDTCommonBean bean=storeDao.getCommonInfo();
+		System.out.println("prdtNameData: " + bean);
 		return bean.getPCI_PRDT_NAME();
 	}
 	
 	@ModelAttribute("Common_Mat")
 	protected String materialData() {
 		PRDTCommonBean bean=storeDao.getCommonInfo();
+		System.out.println("materialData: " + bean);
 		return bean.getPCI_MATERIAL();
 	}
 	
 	@ModelAttribute("Common_Con")
 	protected String manufactContryData() {
 		PRDTCommonBean bean=storeDao.getCommonInfo();
+		System.out.println("manufactContryData: " + bean);
 		return bean.getPCI_MANUFACT_COUNTRY();
 	}
 	
 	@ModelAttribute("Common_Mau")
 	protected String manufacturerData() {
 		PRDTCommonBean bean=storeDao.getCommonInfo();
+		System.out.println("manufacturerData: " + bean);
 		return bean.getPCI_MANUFACTURER();
 	}	
 	
 	@ModelAttribute("Common_Imp")
 	protected String importerData() {
 		PRDTCommonBean bean=storeDao.getCommonInfo();
+		System.out.println("importerData: " + bean);
 		return bean.getPCI_IMPORTER();
 	}
 	
 	@ModelAttribute("Common_Qua")
 	protected String qualityGuaranteeData() {
 		PRDTCommonBean bean=storeDao.getCommonInfo();
+		System.out.println("qualityGuaranteeData: " + bean);
 		return bean.getPCI_QUALITY_GUARANTEE();
 	}
 	
 	@ModelAttribute("Common_ATT")
 	protected String requireAttentionData() {
 		PRDTCommonBean bean=storeDao.getCommonInfo();
+		System.out.println("requireAttentionData: " + bean);
 		return bean.getPCI_REQUIRE_ATTENTION();
 	}
 	
 	@ModelAttribute("Common_AS")
 	protected String asInfoData() {
 		PRDTCommonBean bean=storeDao.getCommonInfo();
+		System.out.println("asInfoData: " + bean);
 		return bean.getPCI_AS_MAN_PHONE();
 	}
 }
