@@ -24,6 +24,7 @@
       <typeAlias type="com.shoes.model.PRDTPostBean" alias="PRDTPostBean"/>
       <typeAlias type="com.shoes.model.PRDTSTBean" alias="PRDTSTBean"/>
       <typeAlias type="com.shoes.model.DeliveryBean" alias="DeliveryBean"/>
+      <typeAlias type="com.shoes.model.PRDTCommentBean" alias="PRDTCommentBean"/>
       
       
    </typeAliases>

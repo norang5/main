@@ -62,11 +62,10 @@ public class PRDTPostController {
 	@RequestMapping(value = "/post", method = RequestMethod.POST)
 	public String submit(PRDTPostBean prdtPostBean){
 
-		System.out.println("2번");
-		
+	
 		prdtPostDAO.insertPRDTPost(prdtPostBean);
 		
-		System.out.println("3번");
+		System.out.println("본문내용\n"+prdtPostBean.getPP_BODY());
 		
 		return "redirect:/addprdtdone";
 	}

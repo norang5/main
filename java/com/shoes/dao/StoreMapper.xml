@@ -11,5 +11,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where PCI_SQ_PK = 142
 	</select>
 
-	
+	<insert id="addComment" parameterType="PRDTCommentBean">
+	insert into PRDT_COMMENT_TB values(
+	PRDT_COMMENT_TB_SEQ.nextval,
+	#{PDCMM_IMG_PATH},
+	#{PDCMM_BODY}, 
+	sysdate,
+	#{PDCMM_LOVE}, 
+	0, 
+	${userEmail}, 
+	0,
+	1, 
+	sysdate)
+	</insert>
+
 </mapper>

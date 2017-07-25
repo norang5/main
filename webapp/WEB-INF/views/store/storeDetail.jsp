@@ -110,34 +110,15 @@ width:150px;
 position:relative;
 }
 
-#buying_review{
+#buy_review{
 	border-top: 1px dotted gray;
 	height: 500px;
 }
 
-.review{
-	margin-top:40px;
-	border : 1px solid gray;
-	border-collapse : collapse;
-	width: 100%
-}
 
-.review tr,
-.review td{
 
-	padding:5px;
-	padding-left:15px;
-	margin:0px;
- 	border : 1px solid gray;
- 	border-collapse : collapse;
-	height: 20px;
 
-}
-
-.review thead{
-text-align: center;
-}
-#buying_footer{
+#buy_footer{
 	border-top: 1px dotted gray;
 }
 
@@ -207,6 +188,9 @@ text-align: center;
 			blanditiis, enim beatae, ipsam tempore, ullam voluptas consequuntur
 			laborum, dolor nobis nam velit iure. Autem veniam atque quo, sunt
 			veritatis!</p>
+			<!-- 다나와 가격비교 api -->
+		<iframe sandbox src='http://api.danawa.com/api/main/product/priceList?key=66b06ff4202440875f87555d73fb48ba&mediatype=xml&charset=euckr&prodCode=1005774'>
+		</iframe>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 			Quisquam temporibus repellat voluptatem sit nulla commodi, maxime
 			optio aperiam! Consequuntur necessitatibus iste amet id, nihil
@@ -273,42 +257,12 @@ text-align: center;
 	</div>
 	
 	<!-- 상품 구매 후기 -->
-	<div id="buying_review">
-		<table class="review" border="1" cellspacing="0">
-			<colgroup>
-				<col width="40">
-				<col>
-				<col width="100">
-				<col width="100">
-				<col width="60">
-				<col width="60">
-			</colgroup>
-			<thead>
-				<tr>
-					<th scope="col"></th>
-					<th scope="col">한줄 상품평</th>
-					<th scope="col">글쓴이</th>
-					<th scope="col">날짜</th>
-					<th scope="col">사이즈</th>
-					<th scope="col">발볼</th>
-			</thead>
-			<tbody>
-			<c:forEach items="${list }" var="list">
-				<tr>
-					<td class="idx">${list.idx}</td>
-					<td class="title"><a href="">${list.title}</a></td>
-					<td class="name">${list.id}</td>
-					<td class="date">${list.date}</td>
-					<td class="size">${list.size}</td>
-					<td class="style">${list.style}</td>
-				</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+	<div id="buy_review">
+		<jsp:include page="buy_review.jsp" flush="false" />
 	</div>
 	
 	<!--구매페이지 푸터 (추천상품 등?) -->
-	<div id="buying_footer">
+	<div id="buy_footer">
 
 	</div>
 	
