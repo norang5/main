@@ -16,12 +16,4 @@ public class MainController {
 		return "info/infoMain";
 	}
 	
-	@RequestMapping("store")
-	public String goToStore() {
-		return "store/storeMain";
-	}
-	
-	
-	
-	
 }

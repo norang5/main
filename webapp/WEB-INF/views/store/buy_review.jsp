@@ -53,7 +53,49 @@
 	float: right;
 }
 </style>
-<script type="text/javascript">
+
+</head>
+<body>
+
+	<table class="review" border="1" cellspacing="0">
+		<colgroup>
+			<col width="40">
+			<col>
+			<col width="100">
+			<col width="100">
+			<col width="60">
+			<col width="60">
+		</colgroup>
+		<thead>
+			<tr>
+				<th scope="col"></th>
+				<th scope="col">한줄 상품평</th>
+				<th scope="col">글쓴이</th>
+				<th scope="col">날짜</th>
+				<th scope="col">사이즈</th>
+				<th scope="col">발볼</th>
+		</thead>
+		<tbody>
+			<c:forEach items="${list}" var="list">
+				<tr>
+					<td class="idx">${list.idx}</td>
+					<td class="title"><a href="">${list.title}</a></td>
+					<td class="name">${list.id}</td>
+					<td class="date">${list.date}</td>
+					<td class="size">${list.size}</td>
+					<td class="style">${list.style}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+
+	<div id="lblTable"></div>
+	<div id="button">
+
+		<button type="button" id="addReview">후기 쓰기</button>
+	</div>
+	
+	<script type="text/javascript">
 	$(function() {
 		$("#addReview").click(
 						function() {
@@ -95,45 +137,5 @@
 						});
 				});
 </script>
-</head>
-<body>
-
-	<table class="review" border="1" cellspacing="0">
-		<colgroup>
-			<col width="40">
-			<col>
-			<col width="100">
-			<col width="100">
-			<col width="60">
-			<col width="60">
-		</colgroup>
-		<thead>
-			<tr>
-				<th scope="col"></th>
-				<th scope="col">한줄 상품평</th>
-				<th scope="col">글쓴이</th>
-				<th scope="col">날짜</th>
-				<th scope="col">사이즈</th>
-				<th scope="col">발볼</th>
-		</thead>
-		<tbody>
-			<c:forEach items="${list}" var="list">
-				<tr>
-					<td class="idx">${list.idx}</td>
-					<td class="title"><a href="">${list.title}</a></td>
-					<td class="name">${list.id}</td>
-					<td class="date">${list.date}</td>
-					<td class="size">${list.size}</td>
-					<td class="style">${list.style}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-
-	<div id="lblTable"></div>
-	<div id="button">
-
-		<button type="button" id="addReview">후기 쓰기</button>
-	</div>
 </body>
 </html>

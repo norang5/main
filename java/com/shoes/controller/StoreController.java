@@ -27,8 +27,13 @@ public class StoreController {
 	@Autowired
 	private PRDTDAO prdtDao;
 
-	@RequestMapping(value = "/nmd", method = RequestMethod.GET)
+	
+	@RequestMapping("store")
 	public String goToStore() {
+		return "store/storeMain";
+	}
+	@RequestMapping(value = "/nmd", method = RequestMethod.GET)
+	public String goToCategory() {
 		return "store/storeDetail";
 	}
 	

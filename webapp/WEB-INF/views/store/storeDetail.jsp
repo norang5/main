@@ -1,7 +1,8 @@
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -141,20 +142,20 @@ position:relative;
 				<tr>
 					<td  colspan="2"><h1>${Common_NAME}</h1></td>
 				</tr>
-				
-				<tr>
+
+				<tr class="if">
 					<td colspan="2"><h2>${PRDT_PRICE}&nbsp;원</h2></td>
 				</tr>
 				
-				<tr>
+				<tr class="if">
 					<td colspan="2">마일리지 적립&nbsp;&nbsp;&nbsp;${POST_MILE}&nbsp;%</td>
 				</tr>
-				<tr>
+				<tr class="if">
 					<td>색상</td>
 					<td><form:select path="PRDT_COLOR" items="${PRDT_COL}" /></td>
 				</tr>
 				
-				<tr>
+				<tr class="if">
 					<td>사이즈</td>
 					<td><form:select path="PRDT_SIZE_PK" items="${PRDT_SIZE}" /></td>
 				</tr>
@@ -162,17 +163,23 @@ position:relative;
 					<td>수량</td>
 					<td></td>
 				</tr> -->
-				<tr>
+				<tr class="if">
 					<td>배송비 </td>
 					<td>${POST_DLVR}</td>
 				</tr>
 				
-				<tr>
+				<tr class="if">
 					<td><button type=submit>구매하기</button></td>
 					<td><button type=button>장바구니</button></td>
 				</tr>
 	
+	
+	
+	
+	
 			</table></form:form>
+			
+		
 	</div>
 	</div>
 	<!-- 상품 정보 표시 -->
@@ -200,9 +207,7 @@ position:relative;
 			blanditiis, enim beatae, ipsam tempore, ullam voluptas consequuntur
 			laborum, dolor nobis nam velit iure. Autem veniam atque quo, sunt
 			veritatis!</p>
-			<!-- 다나와 가격비교 api : 에이젝스로 if ${POST_ST}=="절판" 이면 이거 뜨게 -->
-		<iframe sandbox src='http://api.danawa.com/api/main/product/priceList?key=66b06ff4202440875f87555d73fb48ba&mediatype=xml&charset=euckr&prodCode=1005774'>
-		</iframe>
+		
 		
 			
 		<table id="prdt_info_table">
@@ -261,5 +266,26 @@ position:relative;
 	
 	
 </div>
+
+
+<!-- <script src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"
+	type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(function() {
+     
+        	<c:set var="st" value="${POST_ST}" />
+        	<c:if test="${st == '배송중'}">
+        		System.out.println("됨1");
+    	    	$('.if').css({
+					'display':'none'
+				});
+	    	System.out.println("됨2");
+        		</c:if>
+        	
+        });
+    </script> -->
 </body>
 </html>

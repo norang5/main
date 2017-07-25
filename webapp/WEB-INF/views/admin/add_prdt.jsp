@@ -51,13 +51,7 @@ h2 {
 					newitem.find("input:eq(2)").attr("name","PRDTList["+(parseInt(lastItemNo) + 1)+"].PRDT_AMT");
 					$("#info").append(newitem);
 						
-					/* <input id="PRDTList[0].PRDT_COLOR" name="PRDTList[0].PRDT_COLOR" >
-					
-					$(".item"+(parseInt(lastItemNo) + 1)+" #input0").attr("path","PRDTList["+(parseInt(lastItemNo) + 1)+"].PRDT_COLOR");
-					$(".item"+(parseInt(lastItemNo) + 1)+" #input1").attr("path","PRDTList["+(parseInt(lastItemNo) + 1)+"].PRDT_SIZE_PK");
-					$(".item"+(parseInt(lastItemNo) + 1)+" #input2").attr("path","PRDTList["+(parseInt(lastItemNo) + 1)+"].PRDT_PRICE");
-					$(".item"+(parseInt(lastItemNo) + 1)+" #input3").attr("path","PRDTList["+(parseInt(lastItemNo) + 1)+"].PRDT_AMT");	
-					 */
+
 				});
 
 	});
