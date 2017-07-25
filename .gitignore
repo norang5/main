@@ -45,6 +45,7 @@ local.properties
 # STS (Spring Tool Suite)
 .springBeans
 **/resources/upload/
+**/resources/image/wookmarktest
 
 # Code Recommenders
 .recommenders/

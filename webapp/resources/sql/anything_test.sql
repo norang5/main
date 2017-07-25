@@ -1,3 +1,62 @@
+BEGIN
+    FOR i IN 1..500 LOOP
+	    INSERT INTO TB_BOARD(
+	    	IDX,
+	    	TITLE,
+	    	CONTENTS,
+	    	HIT_CNT,
+	    	DEL_GB,
+	    	CREA_DTM,
+	    	CREA_ID
+	    )VALUES(
+	    	SEQ_TB_BOARD_IDX.NEXTVAL,
+	    	'제목 '||i,
+	    	'내용 '||i,
+	    	0,
+	    	'N',
+	    	SYSDATE,
+	    	'Admin'
+	    );
+    END LOOP;
+END;
+/
+
+
+BEGIN
+    FOR i IN 1..100 LOOP
+	    INSERT INTO USED_TRADE_POST_TB(
+	    	UTP_SQ_PK,
+	    	UTP_TITLE,
+	    	UTP_BODY,
+	    	UTP_REPORTING_DT,
+	    	UTP_FIN_MODIF_DT,
+	    	UTP_CNT,
+	    	USED_TRADE_ST_PK,
+	    	DISTRICT_PK,
+	    	PRDT_SIZE_PK,
+	    	USED_ST_GRADE_PK,
+	    	MEM_EMAIL_PK,
+	    	UTP_NOTIFY_NUMBER
+	    )VALUES(
+	    	USED_TRADE_POST_TB_SEQ.NEXTVAL,
+	    	'제목 '||i,
+	    	'내용 '||i,
+	    	SYSDATE,
+	    	SYSDATE,
+	    	0,
+	    	'판매중',
+	    	'서울',
+	    	'260',
+	    	'B급',
+	    	'1@1',
+	    	'0'
+	    );
+    END LOOP;
+END;
+/
+
+
+
 CREATE TABLE TESTBATIS(
 	ID		VARCHAR2(60),
 	PASSWORD	VARCHAR2(30)

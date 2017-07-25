@@ -22,6 +22,8 @@ import com.shoes.model.PrdtSizeTbBean;
 import com.shoes.model.UsedStTbBean;
 import com.shoes.model.UsedTradePostTbBean;
 import com.shoes.model.UsedTradeStTbBean;
+import com.shoes.service.CommandMap;
+
 
 @Controller
 public class UsedTradeController{
@@ -32,6 +34,7 @@ public class UsedTradeController{
 	@Autowired
 	private MemberDAO memberDAO;
 	
+	
 	// 중고장터로 이동
 	@RequestMapping("usedStore")
 	public ModelAndView goToUsedStore(){
@@ -39,6 +42,9 @@ public class UsedTradeController{
 		
 		// DB로부터 특정 범위의 중고거래글을 불러온다.
 		List<UsedTradePostTbBean> usedTradePostTbBeanList = usedDAO.getUsedTradePostTbList(0, 20);
+		/*Map<String, Object> resultMap = usedDAO.getUsedTradePostTbList(commandMap.getMap());
+		mav.addObject("paginationInfo", (PaginationInfo)resultMap.get("paginationInfo"));
+		mav.addObject("list", resultMap.get("result"));*/
 		
 		// 불러온 거래글들 각각에 정규식을 적용해 첫번째 이미지만 따로 빼낸다.
 	//	Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
@@ -63,7 +69,8 @@ public class UsedTradeController{
 		
 		mav.addObject("mainImgList", mainImgList);
 		mav.addObject("usedTradePostTbBeanList", usedTradePostTbBeanList);
-		mav.setViewName("usedStore/usedStoreMain");
+		mav.setViewName("usedStore/usedStoreMainMasonry");
+		//mav.setViewName("usedStore/usedStoreMain");
 		
 		return mav;
 	}

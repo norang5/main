@@ -28,8 +28,9 @@ public class addPRDTController{
 	@Autowired
 	private UsedTradeDAO usedDAO;
 	
-	@ModelAttribute   // ModelAttribute는 항상 RequestMapping된 메서드보다 먼저 실행된다. 메서드명은 자유롭게 지어도 되며, 보통 폼백킹이라고 지어준다.
+	@ModelAttribute("PRDTCommonBean")   // ModelAttribute는 항상 RequestMapping된 메서드보다 먼저 실행된다. 메서드명은 자유롭게 지어도 되며, 보통 폼백킹이라고 지어준다.
 	   public PRDTCommonBean formBacking1(){   // 즉, 여기서 생성한 MemberVO를 디스패쳐서블릿 객체로 반환하고,
+		System.out.println("formBacking1");
 		return new PRDTCommonBean();      // 디스패쳐 서블릿에선 클라이언트로부터 날아온 form 데이타를 commandName과 path에 따라 이 MemberVO와 매칭하여,
 	   }   
 	
@@ -66,12 +67,13 @@ public class addPRDTController{
 	}
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String addPRDTCommon(){
+	public String addPRDTCommon(@ModelAttribute("PRDTCommonBean") PRDTCommonBean prdtCommonBean){
+		System.out.println("addPRDTCommon()");
 		return "admin/add_prdt_common";
 	}
 	
 	@RequestMapping(value="/admin", method=RequestMethod.POST)
-	public String submit(PRDTCommonBean prdtCommonBean){
+	public String submit(@ModelAttribute("PRDTCommonBean") PRDTCommonBean prdtCommonBean){
 
 		System.out.println("2번");
 		prdtDao.insertPRDTCommon(prdtCommonBean);
