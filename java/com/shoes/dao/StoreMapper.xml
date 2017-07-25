@@ -8,20 +8,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getCommonINfo" resultType="PRDTCommonBean">
 		select * from PRDT_COMMON_INFO_TB  
-		where PCI_SQ_PK = 1
+		where PCI_SQ_PK = 21
 	</select>
 	
 	
 	
 		<select id="getPostINfo" resultType="PRDTPostBean">
 		select * from PRDT_POST_TB  
-		where PP_SQ_PK = 21
+		where PCI_SQ_PK = 21
 	</select>
 	
 	
 	<select id="getPRDTINfo" resultType="PRDTBean">
 		select * from PRDT_TB  
-		where PCI_SQ_PK = 1
+		where PCI_SQ_PK = 21
 	</select>
 	
 	

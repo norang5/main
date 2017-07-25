@@ -34,6 +34,22 @@ public class PRDTDAO {
 		List<PrdtSizeTbBean> sizelist = sqlSession.selectList("getPrdtSizeList");
 		return sizelist;
 	}
+/*	
+	public PRDTBean getCD_PK(){
+		PRDTBean bean = sqlSession.selectOne("getCD_PK");
+		return bean;
+	}*/
+	
+	public PRDTBean insertOrder(PRDTBean prdtBean){
+		
+		System.out.println("6번");
+		
+		PRDTBean bean = sqlSession.selectOne("getCD_PK", prdtBean);
+		
+		System.out.println("7번");
+		return bean;
+	}
+	
 	
 	
 	public void insertPRDT(PRDTBean prdtBean){

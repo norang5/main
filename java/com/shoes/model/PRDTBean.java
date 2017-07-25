@@ -12,6 +12,12 @@ public class PRDTBean {
 	String PRDT_SIZE_PK;
 	List<PRDTBean> PRDTList;
 
+	@Override
+	public String toString() {
+		return "PRDTBean [PRDT_CD_PK=" + PRDT_CD_PK + ", PRDT_COLOR=" + PRDT_COLOR + ", PRDT_PRICE=" + PRDT_PRICE
+				+ ", PRDT_AMT=" + PRDT_AMT + ", PCI_SQ_PK=" + PCI_SQ_PK + ", PRDT_SIZE_PK=" + PRDT_SIZE_PK
+				+ ", PRDTList=" + PRDTList + "]";
+	}
 	public List<PRDTBean> getPRDTList() {
 		return PRDTList;
 	}
