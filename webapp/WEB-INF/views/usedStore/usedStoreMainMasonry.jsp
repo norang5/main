@@ -106,24 +106,25 @@
 	</script>
 	
 	
-
-
 	<!-- 페이지 번호 출력 -->
 	<c:if test="${not empty paginationInfo}">
 		<!-- 전자정부프레임웤의 커스텀 태그로써, jsFunction은 페이지 번호 클릭시 호출될 함수를 의미함 -->
 		<ui:pagination paginationInfo = "${paginationInfo}" type="text" jsFunction="fn_search"/>
 	</c:if>
-	<!-- 현재 페이지 번호를 저장하는 히든 태그 -->
-	<input type="hidden" id="currentPageNo" name="currentPageNo"/>
+
+	<form action="usedStore" method="post" id="pageNoForm">
+		<!-- 현재 페이지 번호를 저장하는 히든 태그 -->
+		<input type="hidden" id="currentPageNo" name="currentPageNo" value=""/>
+	</form>
 	
 	<!-- 전자정부 페이징 처리 스크립트 -->
 	<script type="text/javascript">
 		// 페이지 번호 클릭시 현재 페이지 번호를 함께 전송하도록 만든 함수.
 		function fn_search(pageNo){
-			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/sample/openBoardList.do' />");
-			comSubmit.addParam("currentPageNo", pageNo);
-			comSubmit.submit();
+			console.log("pageNo: " + pageNo);
+			$('#currentPageNo').attr('value', pageNo);
+			$('#pageNoForm').submit();
+			// 전송!
 		}
 	</script>
 

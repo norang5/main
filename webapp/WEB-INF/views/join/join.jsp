@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,10 +101,15 @@ header {
 			</tr>
 			<tr>
 				<td colspan="2" style="text-align: center;">
-					<select id="question" name="question" style="width: 100%; height: 30px; text-align: center; ">
+					<!-- <select id="question" name="question" style="width: 100%; height: 30px; text-align: center; ">
 						<option value="a">가장 친한 친구의 이름은?</option>
 						<option value="b">내가 졸업한 초등학교의 이름은?</option>
 						<option value="c">어릴적 나의 별명은?</option>
+					</select> -->
+					<select name="question">
+						<c:forEach var="item" items="${pwfind}">
+							<option value="${item.PW_FIND_ASK_PK}">${item.PW_FIND_ASK_PK}</option>
+						</c:forEach>
 					</select>
 				</td>
 			</tr>
