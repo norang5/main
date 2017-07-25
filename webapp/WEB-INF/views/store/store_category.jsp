@@ -9,9 +9,9 @@
 
 .items{
 border: 1px solid gray;
-margin:10px;
+margin:20px;
 padding:10px;
-}
+display: inline-block;
 }
 
 </style>
@@ -25,15 +25,15 @@ padding:10px;
 </tr>
 
 <tr>
-<td><!-- 포스트 제목 --></td>
+<!-- <td>포스트 제목</td> -->
 </tr>
 
 <tr>
-<td><%-- ${Common_NAME} --%></td>
+<%-- <td>${Common_NAME}</td> --%>
 </tr>
 
 <tr>
-<td><%-- ${PRDT_PRICE}&nbsp;원 --%></td>
+<%-- <td>${PRDT_PRICE}&nbsp;원</td> --%>
 
 </tr>
 </table>
@@ -47,13 +47,12 @@ padding:10px;
 	$(function() {
 
 					var newitem = $(".items").clone();
-			
-					
-					for(var i=0; i<5/* postList.size() */; i++){
+	
+					for(var i=0; i<5; i++){
 						
-					$("newitem td:eq(1)").append($('post'));
-					$("newitem td:eq(2)").append($('post'));
-					$("newitem td:eq(3)").append($('post'));
+					$("newitem tr:eq(1)").append($('<td>post</td>'));
+					$("newitem tr:eq(2)").append($('<td>post</td>'));
+					$("newitem tr:eq(3)").append($('<td>post</td>'));
 					$("#postList").append(newitem);
 						
 					}

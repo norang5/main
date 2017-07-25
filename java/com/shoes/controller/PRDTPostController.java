@@ -53,13 +53,13 @@ public class PRDTPostController {
 	}
 	
 	
-	@RequestMapping(value = "/post", method = RequestMethod.GET)
+	@RequestMapping(value = "/addPost", method = RequestMethod.GET)
 	public String addPostPage(){
 		return "admin/add_post";
 	}
 	
 	
-	@RequestMapping(value = "/post", method = RequestMethod.POST)
+	@RequestMapping(value = "/addPost", method = RequestMethod.POST)
 	public String submit(PRDTPostBean prdtPostBean){
 
 	

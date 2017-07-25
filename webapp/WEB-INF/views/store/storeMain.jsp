@@ -145,10 +145,6 @@ position:fixed;
 bottom:15px;
 }
 
-.items{
-margin:10px;
-float:left;
-}
 </style>
 </head>
 <body>

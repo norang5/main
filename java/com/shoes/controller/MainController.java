@@ -16,4 +16,9 @@ public class MainController {
 		return "info/infoMain";
 	}
 	
+	@RequestMapping("admin")
+	public String goToAdmin() {
+		return "admin/admin_main";
+	}
+	
 }

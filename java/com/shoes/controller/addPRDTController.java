@@ -64,23 +64,23 @@ public class addPRDTController{
 	
 		return sizeList;
 	}
-	
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/addProduct", method = RequestMethod.GET)
 	public String addPRDTCommon(@ModelAttribute("PRDTCommonBean") PRDTCommonBean prdtCommonBean){
 		System.out.println("addPRDTCommon()");
 		return "admin/add_prdt_common";
 	}
-	
-	@RequestMapping(value="/admin", method=RequestMethod.POST)
+
+	@RequestMapping(value="/addProduct", method=RequestMethod.POST)
 	public String submit(@ModelAttribute("PRDTCommonBean") PRDTCommonBean prdtCommonBean){
 
 		System.out.println("2번");
 		prdtDao.insertPRDTCommon(prdtCommonBean);
 		System.out.println("3번");
-		return "redirect:/addprdt";
+		return "redirect:/addDetail";
 	}
 
-	@RequestMapping(value = "/addprdt", method = RequestMethod.GET)
+	@RequestMapping(value = "/addDetail", method = RequestMethod.GET)
 	public ModelAndView addPrdtGet(){
 		ModelAndView mav = new ModelAndView();
 
@@ -96,7 +96,7 @@ public class addPRDTController{
 	}
 	
 
-	@RequestMapping(value="/addprdt", method=RequestMethod.POST)
+	@RequestMapping(value="/addDetail", method=RequestMethod.POST)
 	public String submit(PRDTBean prdtInfo){
      
 		System.out.println("넘어옴1");
