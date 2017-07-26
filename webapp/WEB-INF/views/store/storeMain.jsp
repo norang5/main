@@ -156,7 +156,7 @@ position:relative;
 margin:0;
 padding:0;
 float: left;
-display: none;
+
 }
 
 #back_menu{
@@ -184,68 +184,92 @@ bottom:15px;
 		</span>
 	</figure>
 
-	<figure class="pic pic-3d">
-		<a href="./superstar"><img class="pic-image" id="superstar"
+	<figure class="pic pic-3d" id="superstar-button">
+		<img class="pic-image" id="superstar"
 			src="./image/super_main.png" width=300px; alt="superstar" /> <span
 			class="pic-caption open-right">
-				<h1 class="pic-title">Super Star</h1></a>
+				<h1 class="pic-title">Super Star</h1>
 		</span>
 	</figure>
 
 
-	<figure class="pic pic-3d">
-		<a href="./yeezyboost"><img class="pic-image" id="yeezy"
+	<figure class="pic pic-3d" id="yeezy-button">
+		<img class="pic-image" id="yeezy"
 			src="./image/yeezy_main.png" width=300px; alt="yeezyboost" /> <span
 			class="pic-caption open-right">
-				<h1 class="pic-title">Yeezy Boost</h1></a>
+				<h1 class="pic-title">Yeezy Boost</h1>
 		</span>
 	</figure>
 </div>
-<div id="store_menu2">
-	<figure class="pic pic-3d">
-		<a href="./nmd"><img class="pic-image" id="nmd"
+<div id="store_menu2" >
+	<figure class="pic pic-3d" id="nmd-button">
+	<img class="pic-image" id="nmd"
 			src="./image/nmd_main.png" width=300px; alt="nmd" /> <span
 			class="pic-caption open-right">
-				<h1 class="pic-title">NMD</h1></a>
+				<h1 class="pic-title">NMD</h1>
 		</span>
 	</figure>
 
-	<figure class="pic pic-3d">
-		<a href="./stansmith"><img class="pic-image" id="stan"
+	<figure class="pic pic-3d" id="stan-button">
+		<img class="pic-image" id="stan"
 			src="./image/stan_main.png" width=300px; alt="stansmith" /> <span
 			class="pic-caption open-right">
-				<h1 class="pic-title">Stan Smith</h1></a>
+				<h1 class="pic-title">Stan Smith</h1>
 		</span>
 	</figure>
 
-	<figure class="pic pic-3d">
-		<a href="./tubular"><img class="pic-image" id="tubular"
+	<figure class="pic pic-3d" id="tubular-button">
+		<img class="pic-image" id="tubular"
 			src="./image/superstar.png" width=300px; alt="tubular" /> <span
 			class="pic-caption open-right">
-				<h1 class="pic-title">Tubular</h1></a>
+				<h1 class="pic-title">Tubular</h1>
 		</span>
 	</figure>
 </div>
 </div>
 
 <div id="second_page">
-<jsp:include page="./store_category.jsp" flush="false" />
 </div>
 
 
 <a href="#top" id="back_menu"></br></br></br>신발 카테고리 보기</a>
 
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"
-	type="text/javascript"></script>
+ <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
 
 	$(function() {
+		
+	
 		$("#ultra-button").click(
-				function() {
-					$("#second_page").css('display', 'block');
-					location.href="#second_page"
+			function() {	
+				$("#second_page").load("store_category",{category:"ultra"},function(){location.href="#second_page"})
+		});
+		
+		$("#superstar-button").click(
+				function() {	
+					$("#second_page").load("store_category",{category:"superstar"},function(){location.href="#second_page"})
 			});
+		
+		$("#yeezy-button").click(
+				function() {	
+					$("#second_page").load("store_category",{category:"yeezy"},function(){location.href="#second_page"})
+			});
+		
+		$("#nmd-button").click(
+				function() {	
+					$("#second_page").load("store_category",{category:"nmd"}, function(){location.href="#second_page"})
+			});
+		
+		$("#stan-button").click(
+				function() {	
+					$("#second_page").load("store_category",{category:"stan"},function(){location.href="#second_page"})
+			});
+		
+		$("#tubular-button").click(
+				function() {	
+					$("#second_page").load("store_category",{category:"tubular"},function(){location.href="#second_page"})
+			});
+		
 	});
 </script>
 </body>

@@ -244,4 +244,10 @@ public class StoreController {
 		
 		return "store/order_done";
 	}
+
+
+	@RequestMapping("store_category")
+	public String goToStorecategory() {
+		return "store/store_category";
+	}
 }
