@@ -29,7 +29,7 @@ padding: 3px;
 			<table class="items" Style="cursor: hand;" onclick="location.href='./nmd'">
 
 				<tr>
-					<td><img src="./image/nmd02.jpg" width="200px" height="200px"></td>
+					<td><img src="./image/nmd02.jpg" width="300px" height="300px"></td>
 				</tr>
 
 				<tr>

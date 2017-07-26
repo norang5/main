@@ -77,6 +77,7 @@
          margin: 0;
          font-family: 'Raleway', Arial, sans-serif;
          font-weight:bold;
+         z-index:300;
       }
       
       /* 헤더 보더라인 가시화를 위해 자리를 차지하고 있을 컨테이너*/
@@ -85,6 +86,7 @@
          padding:0px;
          height: 80px;
          transition-duration: 0.5s;
+        z-index:300;
       }
       
       /* 헤더바 뒤쪽에서 실제 자리를 잡고 전체페이지를 밀었다 당겼다 해줄 투명컨테이너 */
@@ -97,6 +99,7 @@
          border-bottom: 1px solid <%= innerTopContainerBorderBottomColor %>;
          transition-duration: 0.5s;
          min-width: 100%;
+           z-index:300;
       }
       
       /* inner_top_container, inner_bottom_container가 담길 헤더 컨테이너 */
@@ -106,7 +109,7 @@
          position: fixed;
          top :0px;
          min-width: 800px;
-      
+      	  z-index:300;
       }
       
       /* left_panel, right_panel이 담길 이너 컨테이너 */

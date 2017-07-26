@@ -25,11 +25,17 @@ a {
 	color: black;
 }
 
-#background {
-	positon: relative;
-	z-index: -300;
-	margin: 0;
-	padding:0;
+
+#first_page{
+position:relative;
+z-index: 0;
+margin:0;
+padding:0;
+background-image: url("./image/store_main.png");
+background-position: relative;
+background-size: 1900px 885px;
+width: 1900px;
+height: 885px;
 }
 
 figure {
@@ -37,30 +43,40 @@ figure {
 	position: relative;
 	z-index: 100;
 	font-family: 'Raleway', Arial, sans-serif;
-	top: -855px;
-	float: left;
+	top: 0px;
 	width: 300px;
 }
 
-#ultra, #yeezy, #superstar {
-	
+#store_menu1{
+position: relative;
+float: left;
+width: 1800px;
+display: flex;
+z-index: 100;
+
+
 }
 
-#nmd, #stan, #tubular {
-	
+#store_menu2{
+display: flex;
+float: left;
 }
 
 .pic {
 	max-width: 300px;
 	position: relative;
 	z-index: 100;
-	overflow: hidden;
 	margin: 100px;
-	display: inline-block;
+	overflow: hidden;
 	animation: anima 2s;
 	backface-visibility: hidden;
+	flex:1;
 }
 
+#nmd, #stan, #tubular {
+
+margin-top:20px;
+}
 .pic-3d {
 	/*   perspective: 500; */
 	transform-style: preserve-3d
@@ -139,10 +155,12 @@ a, a:hover {
 position:relative;
 margin:0;
 padding:0;
+float: left;
 }
 
 #back_menu{
 position:fixed;
+right:20px;
 bottom:15px;
 }
 
@@ -150,10 +168,12 @@ bottom:15px;
 </head>
 <body>
 
-<div id="store_menu">
-	<img id="background" src="./image/store_main.png" width=1900px;
-		height=850px;>
 
+<div id="first_page">
+<!-- 	<img id="background" src="./image/store_main.png" width=1900px;
+		height=850px;> -->
+
+<div id="store_menu1">
 	<figure class="pic pic-3d">
 		<a href="./ultraboost"><img class="pic-image" id="ultra"
 			src="./image/ultra_main.png" width=300px; alt="ultraboost" /> <span
@@ -178,7 +198,8 @@ bottom:15px;
 				<h1 class="pic-title">Yeezy Boost</h1></a>
 		</span>
 	</figure>
-
+</div>
+<div id="store_menu2">
 	<figure class="pic pic-3d">
 		<a href="./nmd"><img class="pic-image" id="nmd"
 			src="./image/nmd_main.png" width=300px; alt="nmd" /> <span
@@ -202,6 +223,7 @@ bottom:15px;
 				<h1 class="pic-title">Tubular</h1></a>
 		</span>
 	</figure>
+</div>
 </div>
 <div id="second_page">
 <jsp:include page="./store_category.jsp" flush="false" />
