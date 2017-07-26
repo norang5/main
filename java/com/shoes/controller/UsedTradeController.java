@@ -1,5 +1,6 @@
 package com.shoes.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -76,21 +77,29 @@ public class UsedTradeController{
 		Iterator it = usedTradePostTbBeanList.iterator();
 		while(it.hasNext()){
 			hashBean = (HashMap<String, Object>)it.next();
-			body = (String)hashBean.get("UTP_BODY");
-			match = pattern.matcher(body);
 			
-			if(match.find()){	// 본문에 이미지 태그가 있다면,
-				mainImg = match.group(1);	// 글 내용 중에 첫번째 이미지 태그를 뽑아옴.
-				mainImgList.add(mainImg);
-			}else{
-				StringBuilder builder = new StringBuilder();
-				builder.append(request.getContextPath());
-				builder.append("/resources/image/noimg_green.png");
-				mainImgList.add(builder.toString());
+			int totalCount = ((BigDecimal)hashBean.get("TOTAL_COUNT")).intValue();
+			
+			if(totalCount != 0){
+				body = (String)hashBean.get("UTP_BODY");
+				System.out.println("hashBean: " + hashBean);
+				System.out.println("body: " + body);
+				
+				match = pattern.matcher(body);
+				
+				if(match.find()){	// 본문에 이미지 태그가 있다면,
+					mainImg = match.group(1);	// 글 내용 중에 첫번째 이미지 태그를 뽑아옴.
+					mainImgList.add(mainImg);
+				}else{
+					StringBuilder builder = new StringBuilder();
+					builder.append(request.getContextPath());
+					builder.append("/resources/image/noimg_green.png");
+					mainImgList.add(builder.toString());
+				}
+				
+				System.out.println("body: " + body);
+				System.out.println("mainImg: " + mainImg);
 			}
-			
-			System.out.println("body: " + body);
-			System.out.println("mainImg: " + mainImg);
 		}
 		
 		mav.addObject("mainImgList", mainImgList);

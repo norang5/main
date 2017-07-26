@@ -56,6 +56,7 @@
 			margin: 3px;
 			border-radius: 5px;
 			cursor: pointer;
+			min-width: 200px
 		}
 		
 		.innerPost{
@@ -101,30 +102,36 @@
 		onclick="location.href='used_post_write_ck'">
 	<hr>
 
-	<section id="list_wrap">
-		<c:forEach var="item" items="${usedTradePostTbBeanList}" varStatus="status">
-			<article class="post">
-				<input type="hidden" class="UTP_SQ_PK" name="UTP_SQ_PK" value="${item.UTP_SQ_PK}">
-				<div class="overlay">
-					
-				</div>
-				<div class="innerPost">
-					<img src="${mainImgList[status.index]}" width="100%">
-					<table style="width: 100%;">
-						<tr>
-							<td colspan="3"  style="text-align: left;">${item.UTP_TITLE}</td><%-- 상품 대표 이미지 --%>
-						</tr>
-						<tr>
-							<td style="text-align: left;">${item.DISTRICT_PK}</td>		<%-- 지역명 --%>
-							<td style="text-align: center;">${item.PRDT_SIZE_PK}mm</td>	<%-- 치수명 --%>
-							<td style="text-align: right;">${item.USED_ST_GRADE_PK}</td>	<%-- 상품상태 --%>
-						</tr>
-					</table>
-				</div>
-			</article>
-		</c:forEach>
-	</section>
-	
+	<c:choose>
+		<c:when test="${null eq usedTradePostTbBeanList.get(0).UTP_SQ_PK}">
+			<h2>등록된 게시글이 없습니다</h2>
+		</c:when>
+		<c:otherwise>
+			<section id="list_wrap">
+				<c:forEach var="item" items="${usedTradePostTbBeanList}" varStatus="status">
+					<article class="post">
+						<input type="hidden" class="UTP_SQ_PK" name="UTP_SQ_PK" value="${item.UTP_SQ_PK}">
+						<div class="overlay">
+							
+						</div>
+						<div class="innerPost">
+							<img src="${mainImgList[status.index]}" width="100%">
+							<table style="width: 100%;">
+								<tr>
+									<td colspan="3"  style="text-align: left;">${item.UTP_TITLE}</td><%-- 상품 대표 이미지 --%>
+								</tr>
+								<tr>
+									<td style="text-align: left;">${item.DISTRICT_PK}</td>		<%-- 지역명 --%>
+									<td style="text-align: center;">${item.PRDT_SIZE_PK}mm</td>	<%-- 치수명 --%>
+									<td style="text-align: right;">${item.USED_ST_GRADE_PK}</td>	<%-- 상품상태 --%>
+								</tr>
+							</table>
+						</div>
+					</article>
+				</c:forEach>
+			</section>
+		</c:otherwise>
+	</c:choose>
 	
 	<script src="./resources/js/imagesloaded.pkgd.min.js"></script>
 	<script src="https://unpkg.com/masonry-layout@4.2.0/dist/masonry.pkgd.min.js"></script>	<!-- Masonry 플러그인 -->
