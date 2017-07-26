@@ -162,7 +162,7 @@ float: left;
 #back_menu{
 position:fixed;
 right:20px;
-bottom:15px;
+bottom:20px;
 }
 
 
@@ -232,7 +232,7 @@ bottom:15px;
 </div>
 
 
-<a href="#top" id="back_menu"></br></br></br>신발 카테고리 보기</a>
+<a href="#top" id="back_menu"></br></br></br><h3>↑ 신발 카테고리 보기 ↑</h3></a>
 
  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">

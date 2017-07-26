@@ -32,6 +32,7 @@
 <script>
 	
 	var token = '1362124742.3ad74ca.6df307b8ac184c2d830f6bd7c2ac5644',
+	/* 내토큰 5716693734.260180d.540d4e29b3384dacbe5d396e55441edb */
 	num_photos = 8;
 
 	$.ajax({

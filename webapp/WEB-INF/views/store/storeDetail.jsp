@@ -33,7 +33,7 @@ body {
 #main1{
 padding-top:80px;
 padding-bottom:80px;
-width: 50vw;
+width: 800px;
 margin: auto;
 }
 
@@ -44,30 +44,31 @@ margin: auto;
 
 #main2{
 display: flex;
+width: 800px;
 
 
 }
 #prdt_image {
 	position: static;
-	height: 600px;
+	height: 450px;
 	flex:1;
 }
 
 #buying_info {
 	position: static;
-	height: 600px;
+	height: 450px;
 	flex:1;
 }
 
 
 #buying_info_table{
 margin:  0px 50px;
-height:80px;
+height:50px;
 
 }
 
 tr{
-height:80px;
+height:50px;
 }
 
 #prdt_info {
@@ -132,7 +133,7 @@ position:relative;
 	<div id="buying_heder"><a href="./store">Store</a>  >  Category  >  <a href="./nmd">${Common_CATEGORY}</a></div>
 	<div id='main2'>
 		<!-- 이미지 표시창 (하단에 작은 이미지 클릭시 큰 이미지 변경기능) -->
-		<div id="prdt_image"><img src="./image/nmd02.jpg"></div>
+		<div id="prdt_image"><img src="./image/nmd02.jpg" width="400px"></div>
 
 		<!-- 상품 구매 정보 표시 -->
 		<div id="buying_info">

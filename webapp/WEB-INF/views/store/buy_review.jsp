@@ -79,7 +79,7 @@
 			<c:forEach items="${list}" var="list">
 				<tr>
 					<td class="idx">${list.idx}</td>
-					<td class="title"><a href="">${list.title}</a></td>
+					<td class="title">${list.title}</a></td>
 					<td class="name">${list.id}</td>
 					<td class="date">${list.date}</td>
 					<td class="size">${list.size}</td>
@@ -89,7 +89,7 @@
 		</tbody>
 	</table>
 
-	<div id="lblTable"></div>
+	<div id="new_review"></div>
 	<div id="button">
 
 		<button type="button" id="addReview">후기 쓰기</button>
@@ -99,7 +99,7 @@
 	$(function() {
 		$("#addReview").click(
 						function() {
-							$('#lblTable').empty();
+							$("#new_review").empty();
 
 							var strTable = "<table id='new' border = '1' cellspacing='0'>";
 
@@ -130,10 +130,10 @@
 							strTable += "</table>";
 							strTable += "</form:form>";
 
-							$('#lblTable').append(strTable);
+							$("new_review").append(strTable);
 
-							$('#addReview').first().remove();
-							$('<button type="submit" id="reviewDone">후기 등록</button>').appendTo('#button');
+							$("#addReview").first().remove();
+							$("<button type='submit' id='reviewDone'>후기 등록</button>").appendTo("#button");
 						});
 				});
 </script>
