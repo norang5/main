@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -299,8 +300,13 @@ public class UsedTradeController{
 	
 	// 게시글 클릭시 상세화면 보여주기
 	@RequestMapping("/detail")
-	public ModelAndView usedPostDetailView(){
+	public ModelAndView usedPostDetailView(HttpServletRequest request){
 		ModelAndView mav = new ModelAndView();
+		
+		int UTP_SQ_PK = Integer.parseInt(request.getParameter("UTP_SQ_PK"));
+		UsedTradePostTbBean bean = usedDAO.getUsedTradePostTb(UTP_SQ_PK);
+		
+		mav.addObject("usedTradePostTbBean", bean);
 		
 		mav.setViewName("usedStore/used_post_detail_view");
 		return mav;
