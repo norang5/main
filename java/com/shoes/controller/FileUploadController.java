@@ -1,11 +1,15 @@
 package com.shoes.controller;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shoes.model.FileBean;
@@ -29,9 +33,12 @@ import com.shoes.model.FileBean;
 @Controller
 public class FileUploadController{
 	// 파일 업로드 예제코드. 마음껏 쓰십시오.(CKEditor)
+		public static final int sizeLimit = 3 * 1024 * 1024;
+	
 		@RequestMapping("/file_upload")
 		public ModelAndView upload(FileBean fileBean, HttpServletRequest request){
 				ModelAndView mav = new ModelAndView();
+				mav.setViewName("fileupload/file_upload_success");
 				
 				// 파일을 실제 서버에 저장
 				// 웹서비스 root 경로
@@ -47,14 +54,35 @@ public class FileUploadController{
 				String rootPath = builder.toString();
 				*/
 				
+				MultipartFile file = fileBean.getUpload();
+				
+				if(file.getSize() > sizeLimit){
+					System.out.println("## 용량이 너무 큽니다. 3메가 이하로 해주세요.");
+					mav.setViewName("fileupload/file_upload_fail");
+					return mav;
+				}
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM_dd_hhmmss");
+				Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Asiz/Seoul"));
 				
 				String rootPath = "C:/workspaces/spring/shoes_shop/src/main/webapp";
 				String savePath = "/resources/upload/";
-				String fileName = fileBean.getUpload().getOriginalFilename();
+				String fileName = file.getOriginalFilename();
+				
+				// 업로드 폴더가 없으면 해당 폴더 생성
+				new File(rootPath + savePath + File.separator).mkdir();
+				
+				// 파일이름과 확장자 분리
+				String getFileName[] = fileName.split("\\.");
+				
+				// 파일 이름 설정 = 원본파일명_년원일분초.확장자
+				String fileReName = getFileName[0] + "_" + sdf.format(c.getTime()) + "." + getFileName[1];
 				
 				System.out.println("rootPath: " + rootPath);
 				System.out.println("savePath: " + savePath);
 				System.out.println("fileName: " + fileName);
+				System.out.println("fileReName: " + fileReName);
+				
 				/*
 				String rootPath = request.getSession().getServletContext().getRealPath("/");를 썼을때,
 				
@@ -70,17 +98,18 @@ public class FileUploadController{
 				savePath: /resources/upload/
 				fileName: background.png
 				*/
-				File file = new File(rootPath + savePath + fileName);
+				
+				
+				
+				File saveFile = new File(rootPath + savePath + fileReName);
 				try{
-					fileBean.getUpload().transferTo(file);
+					fileBean.getUpload().transferTo(saveFile);
 				}catch(Exception e){
 					System.out.println(e.getMessage());
 				}
 				
 				mav.addObject("CKEditorFuncNum", fileBean.getCKEditorFuncNum());
-				mav.addObject("attach_path", request.getContextPath() + savePath + fileName);
-				
-				mav.setViewName("fileupload/file_upload_success");
+				mav.addObject("attach_path", request.getContextPath() + savePath + fileReName);
 				
 				return mav;
 		}

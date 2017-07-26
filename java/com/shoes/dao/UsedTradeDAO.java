@@ -69,6 +69,7 @@ public class UsedTradeDAO{
 		return sqlSessionTemplate.selectOne("getUsedTradePostTb", UTP_SQ_PK);
 	}
 	
+	// USED_TRADE_POST_TB로부터 USED_SQ_PK와 일치하는 레코드의 신고횟수만 받아오기
 	public int getUsedTradePostTbUtpNotifyNumber(int UTP_SQ_PK){
 		return sqlSessionTemplate.selectOne("getUsedTradePostTbUtpNotifyNumber", UTP_SQ_PK);
 	}
