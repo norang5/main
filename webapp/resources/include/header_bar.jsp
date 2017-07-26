@@ -445,9 +445,14 @@
          var showProfile = false;
          var windowWidth=0;
 
-         
+         //창 가로길이 조절시 메뉴 버튼 조정
          $(window).resize(function(){
-        	windowWidth = $( window ).width();
+        	 
+        	 windowWidth = $( window ).width();
+        	   var st = $(this).scrollTop();
+               console.log('currentScrollTop: ' + st);
+
+        	 
         	if (windowWidth < 1400){
         		 $('.menu_btn').css({
                      'padding':'0px',
@@ -456,10 +461,10 @@
         		 
         		 $('#inner_bottom_container').css({
       		       
-    		         'left': '-50px'
+    		         'left': '-70px'
 
     		      });
-        	}else{
+        	}else if (windowWidth >= 1400 && st < menuHiddenPosition){
         		$('.menu_btn').css({
                     'padding':'0 20px',
              	   'font-size': '2em'
@@ -470,6 +475,27 @@
         		         'left': '0px'
 
         		      });
+        		
+        		
+        	}
+        	
+         }).resize();
+         
+         //첫조건이랑 겹쳐서 따로 뺌
+			$(window).resize(function(){
+        	 
+        	 windowWidth = $( window ).width();
+        	   var st = $(this).scrollTop();
+               console.log('currentScrollTop: ' + st);
+               
+               if (windowWidth < 1150 && st > menuHiddenPosition){
+        		   $('#logo_text').css({
+                       'display':'none'
+                    });
+        	}else{
+        		$('#logo_text').css({
+                    'display':'inline'
+                 });
         		
         		
         	}
@@ -646,6 +672,8 @@
                   'display':'inline'
                });
                
+               
+  
             }
             
             // '지난 스크롤 바 위치'에 '현재 스크롤 바 위치'를 저장.
