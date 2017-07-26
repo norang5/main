@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,6 +15,7 @@ border: 1px solid gray;
 margin:20px;
 padding:10px;
 display: inline-block;
+cursor: pointer;
 }
 
 tr, td{
@@ -26,7 +28,7 @@ padding: 3px;
 
 <div id="postList">
 		<c:forEach var="item" items="${Common_NAME_List}" varStatus="status">
-			<table class="items" Style="cursor: hand;" onclick="location.href='./nmd'">
+			<table class="items" onclick="location.href='./nmd'">
 
 				<tr>
 					<td><img src="./image/nmd02.jpg" width="300px" height="300px"></td>

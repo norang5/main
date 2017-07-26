@@ -156,6 +156,7 @@ position:relative;
 margin:0;
 padding:0;
 float: left;
+display: none;
 }
 
 #back_menu{
@@ -163,6 +164,7 @@ position:fixed;
 right:20px;
 bottom:15px;
 }
+
 
 </style>
 </head>
@@ -174,11 +176,11 @@ bottom:15px;
 		height=850px;> -->
 
 <div id="store_menu1">
-	<figure class="pic pic-3d">
-		<a href="./ultraboost"><img class="pic-image" id="ultra"
-			src="./image/ultra_main.png" width=300px; alt="ultraboost" /> <span
-			class="pic-caption open-right">
-				<h1 class="pic-title">Ultra Boost</h1></a>
+	<figure class="pic pic-3d" id="ultra-button">
+	<img class="pic-image" id="ultra" src="./image/ultra_main.png" width=300px; alt="ultraboost" /> 
+			<span	class="pic-caption open-right">
+				<h1 class="pic-title">Ultra Boost</h1>
+
 		</span>
 	</figure>
 
@@ -225,16 +227,26 @@ bottom:15px;
 	</figure>
 </div>
 </div>
+
 <div id="second_page">
 <jsp:include page="./store_category.jsp" flush="false" />
 </div>
 
 
-
-
-
 <a href="#top" id="back_menu"></br></br></br>신발 카테고리 보기</a>
-</div>
 
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"
+	type="text/javascript"></script>
+<script type="text/javascript">
+
+	$(function() {
+		$("#ultra-button").click(
+				function() {
+					$("#second_page").css('display', 'block');
+					location.href="#second_page"
+			});
+	});
+</script>
 </body>
 </html>
