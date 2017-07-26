@@ -14,6 +14,7 @@ import com.shoes.model.PRDTBean;
 import com.shoes.model.PRDTCommentBean;
 import com.shoes.model.PRDTCommonBean;
 import com.shoes.model.PRDTPostBean;
+import com.shoes.model.PrdtSizeTbBean;
 
 
 
@@ -117,6 +118,18 @@ public class StoreController {
 		return bean.getPP_SAVING_MILEAGE_PERCENT();
 	}
 	
+	@ModelAttribute("POST_NAME_List")
+	protected List<String> postNameList() {
+		List<PRDTPostBean> bean=storeDao.getPostInfoList();
+		List<String> postNameList = new ArrayList<String>();
+		System.out.println("postNameData: " + bean);
+		
+		for(int i=0; i<bean.size(); i++){
+			postNameList.add(bean.get(i).getPP_TITLE());
+		}
+			return postNameList;
+	}
+	
 	/*PRDT_COMMON_INFO_TB에서 불러와야할 정보*/
 	
 	@ModelAttribute("Common_CATEGORY")
@@ -133,6 +146,20 @@ public class StoreController {
 		System.out.println("prdtNameData: " + bean);
 		return bean.getPCI_PRDT_NAME();
 	}
+	
+	@ModelAttribute("Common_NAME_List")
+	protected List<String> prdtNameList() {
+		List<PRDTCommonBean> bean=storeDao.getCommonInfoList();
+		List<String> prdtNameList = new ArrayList<String>();
+		System.out.println("prdtNameData: " + bean);
+		
+		for(int i=0; i<bean.size(); i++){
+			prdtNameList.add(bean.get(i).getPCI_PRDT_NAME());
+		}
+			return prdtNameList;
+	}
+	
+	
 	
 	@ModelAttribute("Common_Mat")
 	protected String materialData() {

@@ -11,11 +11,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where PCI_SQ_PK = 21
 	</select>
 	
+	<select id="getCommonINfoList" resultType="PRDTCommonBean">
+		select * from  PRDT_COMMON_INFO_TB  
+	</select>
 	
 	
 		<select id="getPostINfo" resultType="PRDTPostBean">
 		select * from PRDT_POST_TB  
 		where PCI_SQ_PK = 21
+	</select>
+	
+	
+	
+		<select id="getPostINfoList" resultType="PRDTPostBean">
+		select * from PRDT_POST_TB  
 	</select>
 	
 	

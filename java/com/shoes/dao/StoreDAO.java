@@ -34,9 +34,24 @@ public class StoreDAO {
 		return commonInfo;
 	}
 	
+	
+	public List<PRDTCommonBean> getCommonInfoList(){
+		 List<PRDTCommonBean> commonInfo = sqlSession.selectList("getCommonINfoList");
+		System.out.println("DAO +" + commonInfo);
+		
+		return commonInfo;
+	}
+	
 	public PRDTPostBean getPostInfo(){
 		PRDTPostBean postInfo = sqlSession.selectOne("getPostINfo");
 		System.out.println("DAO +" +postInfo);
+		return postInfo;
+	}
+	
+	public List<PRDTPostBean> getPostInfoList(){
+		 List<PRDTPostBean> postInfo = sqlSession.selectList("getPostINfoList");
+		System.out.println("DAO +" + postInfo);
+		
 		return postInfo;
 	}
 

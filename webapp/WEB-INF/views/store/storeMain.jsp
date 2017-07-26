@@ -136,6 +136,7 @@ a, a:hover {
 }
 
 #second_page{
+position:relative;
 margin:0;
 padding:0;
 }
