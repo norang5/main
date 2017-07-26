@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1 align="center">환영합니다!</h1><br>
-	<%=request.getParameter("hi") %>
 	<h3>회원님의 아이디는 ${hi} ${name} 입니다.</h3>
+	<a href="main">메인으로</a>
 </body>
 </html>

@@ -1,8 +1,11 @@
 package com.shoes.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +33,24 @@ public class JoinController {
 		mav.setViewName("join/join");
 		return mav;
 	}
-
+	
+	@RequestMapping(value="emailDuplicateCheck", method=RequestMethod.POST)
+	public void emailDuplicateCheck(HttpServletRequest request, HttpServletResponse response){
+		JoinBean joinBean = mb.getMemberTbMemEmailPk(request.getParameter("MEM_EMAIL_PK"));
+		response.setCharacterEncoding("utf-8");
+		try{
+			PrintWriter out = response.getWriter();
+			
+			if(joinBean == null){
+				out.print("없음");
+			}else{
+				out.print("존재함");
+			}
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	
 	@RequestMapping("id_find")
 	public String IdFind() {
 		return "join/id_find";
@@ -70,9 +90,9 @@ public class JoinController {
 		bean.setMEM_JOIN_DT(new java.sql.Date(new java.util.Date().getTime()));
 
 		System.out.println(bean);
-
+		
 		mb.insertMemberTb(bean);
-
+		mav.addObject("name", bean.getMEM_EMAIL_PK());
 		return mav;
 	}
 
@@ -92,7 +112,7 @@ public class JoinController {
 			System.out.println("로그인성공");
 
 			session.setAttribute("userEmail", email);
-			toHere = "main";
+			toHere = "join/loginSuccess";	// 여기서 바로 main으로 이동하면 주소창이 /login으로 계속 남아있는 문제가 발생하므로 .jsp에서 재요청하도록 코딩.
 		} else {
 			toHere = "join/login";
 			System.out.println("로그인실패");
@@ -107,13 +127,22 @@ public class JoinController {
 
 		String url = request.getHeader("REFERER"); // 클라이언트가 요청을 보내온 페이지의
 													// URL알아내는 방법.
-		String toHere = "/"; // index로 이동
+		
+		System.out.println("로그아웃 페이지로 들어오기 전 url은: " + url);
+		
+		String toHere = "main"; // index로 이동
 		if (url != null) {
+			url = url.substring(url.indexOf("//") + 2).substring(
+						request.getServerName().length()
+						+ 1
+						+ (request.getServerPort() + "").length()
+						+ request.getContextPath().length()
+					);
+			
 			toHere = url; // 이전 페이지로 이동(새로고침 효과)*
 		}
-
-		System.out.println("url은: " + url);
-		System.out.println("toHere는: " + toHere);
+		
+		System.out.println("로그아웃 페이지에서 이동시킬 url은: " + toHere);
 
 		return toHere;
 	}

@@ -69,7 +69,9 @@
 	</style>
 </head>
 <body>
-	<jsp:include page="${ctx}/resources/include/header_bar.jsp" flush="false" />
+	<jsp:include page="${ctx}/resources/include/header_bar.jsp" flush="false" >
+		<jsp:param name="enableSpread"		value="false"/>
+	</jsp:include>
 	
 	<section id="mainSection">
 		<article id="topInfo">
