@@ -170,18 +170,20 @@
          margin: 0;
          transition-duration: 2s;
          z-index: 311;
+
       }
       
       .menu_btn{
          float: left;
          list-style: none;
-         margin: 0 50px;
+         margin: 0 10px;
          font-size: 2em;
          transition-duration: 0.5s;
          color: black;
          box-sizing: border-box;
          padding: 0 20px;
          max-height: 50px;
+        
       }
       
       .shopping_basket{
@@ -441,9 +443,41 @@
          var lastScrollTop = 0;
          var menuHiddenPosition = 40; // 스크롤바의 포지션 값이 이 위치 이상일때 메뉴를 접는다.
          var showProfile = false;
+         var windowWidth=0;
+
+         
+         $(window).resize(function(){
+        	windowWidth = $( window ).width();
+        	if (windowWidth < 1400){
+        		 $('.menu_btn').css({
+                     'padding':'0px',
+                    'font-size': '1.5em'
+                  });
+        		 
+        		 $('#inner_bottom_container').css({
+      		       
+    		         'left': '-50px'
+
+    		      });
+        	}else{
+        		$('.menu_btn').css({
+                    'padding':'0 20px',
+             	   'font-size': '2em'
+                 });
+        		
+        		$('#inner_bottom_container').css({
+        		       
+        		         'left': '0px'
+
+        		      });
+        		
+        		
+        	}
+         }).resize();
+         
          $(function(){
             didScroll = true;
-            
+                   
             // 스크롤 이벤트가 발생하면 실행.
             $(window).scroll(function(event){
                didScroll = true;
@@ -483,10 +517,12 @@
          function visibleProfile(){
             $('.profile_arrow').css({
                'display':'block'
+            	
             });
             
             $('#profile_container').css({
                'display':'block'
+            
             });
             
             showProfile = true;
