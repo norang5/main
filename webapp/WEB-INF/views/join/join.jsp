@@ -10,8 +10,12 @@
 header {
 	text-align: center;
 }
+table{
+	border-collapse: collapse;
+}
 </style>
-</head>
+
+<script src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -71,6 +75,7 @@ header {
 	}
 </script>
 
+</head>
 <body>
 	<form id="joinForm" action="welcome" method="post">
 		<header>
@@ -79,28 +84,29 @@ header {
 		<table border="1" align="center">
 			<tr>
 				<td>Email</td>
-				<td><input type="text" name="MEM_EMAIL_PK" style="width: 99%;" /></td>
+				<td><input type="text" id="MEM_EMAIL_PK" name="MEM_EMAIL_PK" style="width: 98%;" /></td>
+				<td style="text-align: center;"><a href="#" onclick="javascript: emailDuplicateCheck()">이메일 중복 검사</a></td>
 			</tr>
 			<tr>
-				<td colspan="2" style="text-align: center; font-weight: bold;">
+				<td colspan="3" style="text-align: center; font-weight: bold;">
 					Email이 아이디로 사용됩니다.</td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="MEM_PASSWORD"
+				<td colspan="2"><input type="password" name="MEM_PASSWORD"
 					style="width: 99%;" /></td>
 			</tr>
 			<tr>
 				<td>비밀번호 확인</td>
-				<td><input type="password" style="width: 99%;" /></td>
+				<td colspan="2"><input type="password" style="width: 99%;" /></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td style="width: 390px"><input type="text" name="MEM_NM"
+				<td style="width: 390px" colspan="2"><input type="text" name="MEM_NM"
 					style="width: 99%;" /></td>
 			</tr>
 			<tr>
-				<td colspan="2" style="text-align: center;">
+				<td colspan="3" style="text-align: center;">
 					<!-- <select id="question" name="question" style="width: 100%; height: 30px; text-align: center; ">
 						<option value="a">가장 친한 친구의 이름은?</option>
 						<option value="b">내가 졸업한 초등학교의 이름은?</option>
@@ -114,13 +120,13 @@ header {
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="text-align: center;">
+				<td colspan="3" style="text-align: center;">
 					<input type="text" style="width: 99%">
 				</td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><input type="text" id="sample4_postcode" name="MEM_ZIPCODE"
+				<td colspan="2"><input type="text" id="sample4_postcode" name="MEM_ZIPCODE"
 					placeholder="우편번호"> <input type="button"
 					onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 					<input type="text" id="sample4_roadAddress" name="MEM_ROAD_ADDRESS"
@@ -130,22 +136,83 @@ header {
 			</tr>
 			<tr>
 				<td>상세주소</td>
-				<td style="width: 390px"><input type="text"
-					name="MEM_DETAIL_ADDRESS" style="width: 99%;" /></td>
+				<td style="width: 390px" colspan="2"><input type="text"
+					name="MEM_DETAIL_ADDRESS" style="width: 99%;"/></td>
 			<tr>
 				<td>전화번호</td>
-				<td><input type="text" name="MEM_HOME_PHONE"
-					style="width: 99%;" /></td>
+				<td colspan="2"><input type="text" name="MEM_HOME_PHONE"
+					style="width: 99%;"/></td>
 			</tr>
 			<tr>
 				<td>휴대폰번호</td>
-				<td><input type="text" name="MEM_CELL_PHONE"
-					style="width: 99%;" /></td>
+				<td colspan="2"><input type="text" name="MEM_CELL_PHONE"
+					style="width: 99%;"/></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" value="확인" /></td>
+				<td colspan="3" align="center"><a href="#" onclick="javascript: validateCheck()">확인</a></td>
 			</tr>
 		</table>
 	</form>
+	
+	<script>
+		// 이메일 유효성 검사 함수와 전역변수
+		var emailDuplicate = false;	// false면 중복되는 이메일, true면 사용가능한 이메일
+		function emailDuplicateCheck(){
+			var MEM_EMAIL_PK = $('#MEM_EMAIL_PK').val();
+			
+			if(MEM_EMAIL_PK == "" || MEM_EMAIL_PK == null){
+				alert("Email을 입력해주세요.");
+				return;
+			}
+			
+			var regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+			
+			if(MEM_EMAIL_PK.match(regExp)){
+				// do nothing
+			}else{
+				alert('이메일 형식이 잘못되었습니다.');
+				return;
+			};
+			
+			$.ajax({
+				type: "post",
+				url: "/shoes_shop/emailDuplicateCheck",
+				contentType: "application/x-www-form-urlencoded; charset=utf-8",
+				data:{
+					'MEM_EMAIL_PK':MEM_EMAIL_PK
+				},
+				datatype: "text",
+				success:function(data){
+					if(data == '존재함'){
+						alert(MEM_EMAIL_PK + '은(는) 이미 존재하는 계정입니다.');
+						emailDuplicate = false;
+					}else if(data == '없음'){
+						alert(MEM_EMAIL_PK + '은(는) 사용가능합니다.');
+						emailDuplicate = true;
+					}else{
+						alert('알 수 없는 에러');
+						emailDuplicate = false;
+					}
+				},
+					error:function(request, status, error){
+					console.log(	'에러코드 : ' + request.status + '\n'
+							+	'메시지 :' + request.responseText + '\n'
+							+	'에러 : ' + error + '\n'
+							+	'상태 : ' + status
+					);
+					return;
+				}
+			});
+		}
+		
+		// 폼을 전송하기전에 모든 입력이 제대로 되었는지 확인하는 함수. (유효성 검사)
+		function validateCheck(){
+			if(emailDuplicate == false){
+				alert('이메일 중복 검사를 수행하세요');
+			}else{
+				$('#joinForm').submit();
+			}
+		}
+	</script>
 </body>
 </html>

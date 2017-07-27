@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
+	
+	/* 이 헤더를 포함했다면, 웹페이지 어디에서든 ${userEmail}로 접근할 수 있다.
+	몇가지 예시.
+	${!empty userEmail}	- userEmail이 비어있지 않다면(로그인 상태라면) true 반환
+	${null eq userEmail}	- userEmail에 null값이 담겨있다면(로그아웃 상태라면) true 반환
+	${userEmail}		- 현재 userEmail에 담겨있는 값을 반환(로그인 상태라면 abc@abcd.com같은걸
+					반활할테고, 비로그인 상태라면 null을 반환할 것이다.
+	*/
+	String userEmail = (String)session.getAttribute("userEmail");
+	System.out.println("[헤더] header_bar에서 session.getAttribute(\"userEmail\"); 로 나온 값: " + userEmail);
+	
    /*
       이런식으로 사용하세요.
       <jsp:include page="header_bar.jsp">
@@ -367,23 +378,25 @@
       
       <!-- 우측 패널(고객센터/장바구니/프로필 이미지) -->
       <nav id="right_panel">
-         <a href="#" class="right_panel_btn_color none_a_style">
-            <span style="vertical-align: middle;">고객센터</span>
-         </a>
-         <a href="#" class="right_panel_btn_color none_a_style">
-            <span class="shopping_basket"></span>
-            <span style="vertical-align: middle;">장바구니</span>
-         </a>
-         
+         <c:if test="${null eq userEmail}">
+		<a href="join" class="right_panel_btn_color none_a_style">
+			<span style="vertical-align: middle;">회원가입</span>
+		</a>
+	</c:if>	
          <c:choose>
-            <c:when test="false">
+            <c:when test="${null eq userEmail}">
             <!-- 비로그인 유저라면 로그인 버튼 표시 -->
-               <a href="#" class="right_panel_btn_color none_a_style">
+               <a href="login" class="right_panel_btn_color none_a_style">
                   <span style="vertical-align: middle;">로그인</span>
                </a>
             </c:when>
             
-            <c:when test="true">
+            <c:when test="${!empty userEmail}">
+            	<!-- 로그인 유저라면 장바구니 표시 -->
+		<a href="#" class="right_panel_btn_color none_a_style">
+			<span class="shopping_basket"></span>
+			<span style="vertical-align: middle;">장바구니</span>
+		</a>
             <!-- 로그인 유저라면 프로필 사진과 프로필 팝업 박스 표시 -->
                <section style="display: inline-block;">
                   <article style="display: inline-block;">
@@ -391,7 +404,7 @@
                      <!-- 아무동작도 안하는 코드를 넣음으로써 클릭시 페이지 상단으로의 이동을 방지함 -->
                      <a   href="javascript:;"
                         class="right_panel_btn_color none_a_style"
-                        title="계정: 홍길동(abc@abc.com)"
+                        title="계정: 홍길동(${userEmail})"
                         role="button"
                      >
                         <span class="user_small_image showProfile"></span>   
@@ -407,7 +420,7 @@
                         </a>
                         <div class="top_inner_right_panel nothingProfile">
                            <div class="nothingProfile">홍길동</div>
-                           <div class="nothingProfile">abc@abc.com</div>
+                           <div class="nothingProfile">${userEmail}</div>
                            <div class="nothingProfile">
                               <a href="#" class="profile_a_color nothingProfile">프로필</a>
                               -
@@ -420,10 +433,10 @@
                      </div>
                      <div id="profile_bottom_panel" class="nothingProfile">
                         <div style="display: table-cell;text-align: left"  class="nothingProfile">
-                           <a class="gray_btn none_a_style nothingProfile">버튼</a>
+                           <a class="gray_btn none_a_style nothingProfile" href="#">버튼</a>
                         </div>
                         <div style="display: table-cell;text-align: right"  class="nothingProfile">
-                           <a class="gray_btn none_a_style nothingProfile">로그아웃</a>
+                           <a class="gray_btn none_a_style nothingProfile" href="logout">로그아웃</a>
                         </div>
                      </div>
                   </article>

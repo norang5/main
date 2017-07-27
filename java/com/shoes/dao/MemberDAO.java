@@ -35,6 +35,11 @@ public class MemberDAO {
 		return sst.selectList("getPwFindAskBeanList");
 	}
 	
+	// MEMBER_TB로부터 이메일과 일치하는 레코드 가져오기
+	public JoinBean getMemberTbMemEmailPk(String MEM_EMAIL_PK){
+		return sst.selectOne("getMemberTb", MEM_EMAIL_PK);
+	}
+	
 	
 
 }// class MemberDAO{}
