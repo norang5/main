@@ -11,10 +11,16 @@ System.out.println(category);%>
 <title>Insert title here</title>
 <style>
 
+#postList{
+margin-top:100px;
+
+}
+
+
 .items{
 position:relative;
 border: 1px solid gray;
-margin:20px;
+margin:40px;
 padding:10px;
 display: inline-block;
 cursor: pointer;
@@ -24,11 +30,23 @@ tr, td{
 padding: 3px;
 }
 
+#category{
+text-align: center;
+padding:20px;
+}
+
 </style>
 </head>
 <body>
 
 <div id="postList">
+<h2 id="category"><%=category%></h2>
+<%-- <c:choose>
+	<c:when test="${null eq usedTradePostTbBeanList.get(0).UTP_SQ_PK}">
+			<h2>등록된 게시글이 없습니다</h2>
+		</c:when>
+		
+		<c:otherwise> --%>
 		<c:forEach var="item" items="${Common_NAME_List}" varStatus="status">
 			<table class="items" onclick="location.href='./nmd'">
 
@@ -49,6 +67,8 @@ padding: 3px;
 				</tr>
 			</table>
 		</c:forEach>
+<%-- 		</c:otherwise>
+	</c:choose> --%>	
 </div>
 <!-- <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"

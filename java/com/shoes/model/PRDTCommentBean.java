@@ -1,13 +1,27 @@
 package com.shoes.model;
 
 public class PRDTCommentBean {
-
+	int PDCMM_SQ_PK;
+	public int getPDCMM_SQ_PK() {
+		return PDCMM_SQ_PK;
+	}
+	public void setPDCMM_SQ_PK(int pDCMM_SQ_PK) {
+		PDCMM_SQ_PK = pDCMM_SQ_PK;
+	}
 	String PDCMM_BODY;
 	int PDCMM_LOVE;
 	String PDCMM_IMG_PATH;
 	String MEM_EMAIL_PK;
 
+	String PDCMM_FIN_MODIF_DT;
+
 	
+	public String getPDCMM_FIN_MODIF_DT() {
+		return PDCMM_FIN_MODIF_DT;
+	}
+	public void setPDCMM_FIN_MODIF_DT(String pDCMM_FIN_MODIF_DT) {
+		PDCMM_FIN_MODIF_DT = pDCMM_FIN_MODIF_DT;
+	}
 	public String getMEM_EMAIL_PK() {
 		return MEM_EMAIL_PK;
 	}

@@ -9,8 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<jsp:include page="../../../resources/include/header_bar.jsp"
-	flush="false" />
+<jsp:include page="../../../resources/include/header_bar.jsp" flush="false" />
 <style>
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
 
@@ -154,10 +153,11 @@ a, a:hover {
 
 #second_page{
 position:relative;
-margin:0;
+margin-left:100px;
+margin-right:100px;
 padding:0;
 float: left;
-
+margin-bottom:30px;
 }
 
 #back_menu{
@@ -233,7 +233,7 @@ bottom:20px;
 </div>
 
 
-<a href="#top" id="back_menu"></br></br></br><h3>↑ 신발 카테고리 보기 ↑</h3></a>
+<a href="#top" id="back_menu"></br></br></br><h3>↑ 신발 카테고리 전체 보기 ↑</h3></a>
 
  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
@@ -243,7 +243,7 @@ bottom:20px;
 	
 		$("#ultra-button").click(
 			function() {	
-				$("#second_page").load("store_category",{category:"ultra"},function(){location.href="#second_page"})
+				$("#second_page").load("store_category",{category:"ultraboost"},function(){location.href="#second_page"})
 		});
 		
 		$("#superstar-button").click(
@@ -253,7 +253,7 @@ bottom:20px;
 		
 		$("#yeezy-button").click(
 				function() {	
-					$("#second_page").load("store_category",{category:"yeezy"},function(){location.href="#second_page"})
+					$("#second_page").load("store_category",{category:"yeezyboost"},function(){location.href="#second_page"})
 			});
 		
 		$("#nmd-button").click(
@@ -263,7 +263,7 @@ bottom:20px;
 		
 		$("#stan-button").click(
 				function() {	
-					$("#second_page").load("store_category",{category:"stan"},function(){location.href="#second_page"})
+					$("#second_page").load("store_category",{category:"stansmith"},function(){location.href="#second_page"})
 			});
 		
 		$("#tubular-button").click(

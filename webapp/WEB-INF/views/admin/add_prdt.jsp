@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
+<jsp:include page="../../../resources/include/header_bar.jsp" flush="false" />
 <style>
 table {
 	top: 20vh;
@@ -26,6 +26,7 @@ float: right;
 
 h2 {
 	text-align: center;
+	padding:50px;
 }
 </style>
 <script

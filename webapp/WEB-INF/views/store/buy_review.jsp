@@ -32,7 +32,7 @@
 	margin-top: 20px;
 	border: 1px solid gray;
 	border-collapse: collapse;
-	width: 100%
+	width: 100% padding: 5px;
 }
 
 #new tr, #new td {
@@ -46,96 +46,52 @@
 
 #new thead {
 	text-align: center;
+	background-color: beige;
 }
 
-#button {
+#reviewDone {
 	margin-top: 10px;
 	float: right;
+}
+
+#email{
+ display:none; 
+
 }
 </style>
 
 </head>
 <body>
+		<form:form commandName='PRDTCommentBean'>
 
-	<table class="review" border="1" cellspacing="0">
-		<colgroup>
-			<col width="40">
-			<col>
-			<col width="100">
-			<col width="100">
-			<col width="60">
-			<col width="60">
-		</colgroup>
-		<thead>
-			<tr>
-				<th scope="col"></th>
-				<th scope="col">한줄 상품평</th>
-				<th scope="col">글쓴이</th>
-				<th scope="col">날짜</th>
-				<th scope="col">사이즈</th>
-				<th scope="col">발볼</th>
-		</thead>
-		<tbody>
-			<c:forEach items="${list}" var="list">
+	<table id='new' border='1' cellspacing='0'>
+
+
+			<thead>
 				<tr>
-					<td class="idx">${list.idx}</td>
-					<td class="title">${list.title}</a></td>
-					<td class="name">${list.id}</td>
-					<td class="date">${list.date}</td>
-					<td class="size">${list.size}</td>
-					<td class="style">${list.style}</td>
+
+					<th>나의 한줄 상품평 입력</th>
+					<th>발 크기</th>
+					<th >발볼 특징</th>
+
 				</tr>
-			</c:forEach>
-		</tbody>
+			</thead>
+			<tr>
+
+				<td><form:input path='PDCMM_BODY' style="width:600px; height:20px;" /></td>
+				<td><form:select path='PDCMM_LOVE' style="height:20px;"
+						items="${PRDT_SIZE_ALL}" /></td>
+				<td><form:select path='PDCMM_IMG_PATH' style="height:20px;"
+						items="${REVIEW_FOOT}" /></td>
+			
+			</tr>
+		
+		
 	</table>
-
-	<div id="new_review"></div>
-	<div id="button">
-
-		<button type="button" id="addReview">후기 쓰기</button>
-	</div>
+	<input id="MEM_EMAIL_PK" name="MEM_EMAIL_PK" value="${userEmail}" ></input>
+	<button type="submit" id='reviewDone'>후기 등록</button>
 	
-	<script type="text/javascript">
-	$(function() {
-		$("#addReview").click(
-						function() {
-							$("#new_review").empty();
+	</form:form>
 
-							var strTable = "<table id='new' border = '1' cellspacing='0'>";
-
-							strTable += "<form:form commandName='PRDTCommentBean'>";
-							strTable += "<thead>";
-							strTable += "<tr>";
-
-							strTable += "<th>" + "한줄 상품평" + "</th>";
-							strTable += "<th width='100'>" + "내 사이즈" + "</th>";
-							strTable += "<th width='100'>" + "내 발 특징"+ "</th>";
-
-							strTable += "</tr>";
-							strTable += "</thead>";
-							strTable += "<tr>";
-
-							strTable += "<td>"
-									+ "<form:input path='PDCMM_BODY' />"
-									+ "</td>";
-							strTable += "<td>"
-									+ "<form:select path='PDCMM_LOVE' items='${PRDT_SIZE}' />"
-									+ "</td>";
-							strTable += "<td>"
-									+ "<form:select path='PDCMM_IMG_PATH' items='${REVIEW_FOOT}' />"
-									+ "</td>";
-
-							strTable += "</tr>";
-
-							strTable += "</table>";
-							strTable += "</form:form>";
-
-							$("new_review").append(strTable);
-
-							$("#addReview").first().remove();
-							$("<button type='submit' id='reviewDone'>후기 등록</button>").appendTo("#button");
-						});
-				});
-</script>
 </body>
 </html>
