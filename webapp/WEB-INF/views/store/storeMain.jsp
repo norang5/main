@@ -243,7 +243,7 @@ bottom:20px;
 	
 		$("#ultra-button").click(
 			function() {	
-				$("#second_page").load("store_category",{category:"ultraboost"},function(){location.href="#second_page"})
+				$("#second_page").load("store_category",{category:"ultra boost"},function(){location.href="#second_page"})
 		});
 		
 		$("#superstar-button").click(
@@ -253,7 +253,7 @@ bottom:20px;
 		
 		$("#yeezy-button").click(
 				function() {	
-					$("#second_page").load("store_category",{category:"yeezyboost"},function(){location.href="#second_page"})
+					$("#second_page").load("store_category",{category:"yeezy boost"},function(){location.href="#second_page"})
 			});
 		
 		$("#nmd-button").click(
@@ -263,7 +263,7 @@ bottom:20px;
 		
 		$("#stan-button").click(
 				function() {	
-					$("#second_page").load("store_category",{category:"stansmith"},function(){location.href="#second_page"})
+					$("#second_page").load("store_category",{category:"stan smith"},function(){location.href="#second_page"})
 			});
 		
 		$("#tubular-button").click(

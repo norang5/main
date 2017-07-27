@@ -53,5 +53,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from  PRDT_COMMENT_TB 
 	</select>
 	
+	
+	
+	<select id="getCommonCategoryList" parameterType="String" resultType="PRDTCommonBean">
+		select PCI_PRDT_NAME, PCI_SQ_PK from PRDT_COMMON_INFO_TB 
+		where PRDT_CTG_NM = #{value}
+	</select>
+	
+	<select id="getPostTitleList" parameterType="Integer" resultType="PRDTPostBean">
+		select PP_TITLE, PP_SQ_PK from PRDT_POST_TB 
+		where PCI_SQ_PK = #{value}
+	</select>
+	
+	<select id="getPriceList" parameterType="Integer" resultType="Integer">
+		select DISTINCT min(PRDT_PRICE) from PRDT_TB
+		where PCI_SQ_PK = #{value}
+	</select>
+	
+	
+	
 
 </mapper>

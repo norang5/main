@@ -47,7 +47,7 @@ padding:20px;
 		</c:when>
 		
 		<c:otherwise> --%>
-		<c:forEach var="item" items="${Common_NAME_List}" varStatus="status">
+		<c:forEach var="item" items="${categoryPrdtList}" varStatus="status">
 			<table class="items" onclick="location.href='./nmd'">
 
 				<tr>
@@ -55,15 +55,15 @@ padding:20px;
 				</tr>
 
 				<tr>
-					<td>${POST_NAME_List[status.index]}</td>
+					<td>${postTitleList.get(status.index).PP_TITLE}</td>
 				</tr>
 
 				<tr>
-					<td><h3>${item}</h3></td>
+					<td><h3>${item.PCI_PRDT_NAME}</h3></td>
 				</tr>
 
 				<tr>
-					<td>${PRDT_PRICE}</td>
+				<td>${priceList.get(status.index)}&nbsp;원부터</td>
 				</tr>
 			</table>
 		</c:forEach>

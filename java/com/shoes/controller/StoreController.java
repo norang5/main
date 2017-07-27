@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shoes.dao.PRDTDAO;
 import com.shoes.dao.StoreDAO;
@@ -140,7 +142,7 @@ public class StoreController {
 		return bean.getPCI_PRDT_NAME();
 	}
 	
-	@ModelAttribute("Common_NAME_List")
+/*	@ModelAttribute("Common_NAME_List")
 	protected List<String> prdtNameList() {
 		List<PRDTCommonBean> bean=storeDao.getCommonInfoList();
 		List<String> prdtNameList = new ArrayList<String>();
@@ -151,7 +153,7 @@ public class StoreController {
 		}
 			return prdtNameList;
 	}
-	
+	*/
 	
 	
 	@ModelAttribute("Common_Mat")
@@ -269,10 +271,36 @@ public class StoreController {
 	}
 
 
+	
+	
+	
 	@RequestMapping("store_category")
-	public String goToStorecategory() {
+	public String goToStorecategory(@RequestParam("category") String category, Model model) {
+		System.out.println("컨트롤러:"+category);
+		
+		List<PRDTCommonBean> categoryPrdtList=storeDao.getCommonCategoryList(category);
+		List<Integer> PCISQList = new ArrayList<Integer>();
+		System.out.println("prdtNameData: " + categoryPrdtList);
+			
+		for(int i=0; i<categoryPrdtList.size(); i++){
+			PCISQList.add(categoryPrdtList.get(i).getPCI_SQ_PK());
+		}
+	
+		List<PRDTPostBean> postTitleList=storeDao.getPostTitleList(PCISQList);
+		
+		List<Integer> priceList=storeDao.getPriceList(PCISQList);
+		
+		
+		System.out.println("prdtNameData: " + postTitleList);
+		System.out.println("prdtNameData: " + priceList);
+		
+        model.addAttribute("categoryPrdtList", categoryPrdtList);
+        model.addAttribute("postTitleList", postTitleList);
+        model.addAttribute("priceList", priceList);
+        
 		return "store/store_category";
 	}
+	
 	
 	@RequestMapping("danawa")
 	public String goTodanawa() {
