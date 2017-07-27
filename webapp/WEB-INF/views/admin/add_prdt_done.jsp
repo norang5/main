@@ -5,11 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<jsp:include page="../../../resources/include/header_bar.jsp" flush="false" />
 <style>
 #done{
 text-align: center;
 margin:auto;
 vertical-align: middle;
+	padding:100px;
 }
 </style>
 </head>

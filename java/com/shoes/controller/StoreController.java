@@ -29,14 +29,7 @@ public class StoreController {
 	private PRDTDAO prdtDao;
 
 	
-	@RequestMapping("store")
-	public String goToStore() {
-		return "store/storeMain";
-	}
-	@RequestMapping(value = "/nmd", method = RequestMethod.GET)
-	public String goToCategory() {
-		return "store/storeDetail";
-	}
+	
 	
 	@ModelAttribute("PRDTCommentBean")   // ModelAttribute는 항상 RequestMapping된 메서드보다 먼저 실행된다. 메서드명은 자유롭게 지어도 되며, 보통 폼백킹이라고 지어준다.
 	   public PRDTCommentBean formbacking(){   // 즉, 여기서 생성한 MemberVO를 디스패쳐서블릿 객체로 반환하고,
@@ -221,6 +214,29 @@ public class StoreController {
 		return foot;
 		}
 	
+	@ModelAttribute("PRDT_SIZE_ALL")
+	protected List<String> sizeData2() {
+		
+		List<String> sizeList = new ArrayList<String>();
+	
+		List<PrdtSizeTbBean> beanList=prdtDao.getSizeList();
+	
+		for(int i=0; i<beanList.size(); i++){
+		   sizeList.add(beanList.get(i).getPRDT_SIZE_PK());
+		}
+	
+		return sizeList;
+	}
+	
+	
+	
+	@ModelAttribute("Commet_List")
+	protected List<PRDTCommentBean> commentList() {
+		List<PRDTCommentBean> commentList =storeDao.getcommentList();
+
+			return commentList;
+	}
+	
 	
 /*	 상품주문시 식별번호 불러오기 
 	protected int getCD_PK() {
@@ -229,7 +245,14 @@ public class StoreController {
 		return bean.getPRDT_CD_PK();
 	}
 	*/
-	
+	@RequestMapping("store")
+	public String goToStore() {
+		return "store/storeMain";
+	}
+	@RequestMapping(value = "/nmd", method = RequestMethod.GET)
+	public String goToCategory() {
+		return "store/storeDetail";
+	}
 	@RequestMapping(value = "/nmd", method = RequestMethod.POST)
 	public String submit(PRDTBean prdtBean){
 
@@ -255,5 +278,23 @@ public class StoreController {
 	public String goTodanawa() {
 		return "store/danawa";
 	}
+	
+	
+	@RequestMapping(value = "/buy_review", method = RequestMethod.GET)
+	public String newReview(){
+		return "store/buy_review";
+	}
+	
+	@RequestMapping(value = "/buy_review", method = RequestMethod.POST)
+	public String submitReview(PRDTCommentBean prdtCommentBean){
+
+		System.out.println("2번"+prdtCommentBean);
+		System.out.println(prdtCommentBean.getMEM_EMAIL_PK());
+		storeDao.insertCommentInfo(prdtCommentBean);
+		
+		return  "redirect:/nmd";
+	}
+
+	
 	
 }

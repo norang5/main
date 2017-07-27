@@ -43,10 +43,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	sysdate,
 	#{PDCMM_LOVE}, 
 	0, 
-	${userEmail}, 
+	#{MEM_EMAIL_PK}, 
 	0,
 	1, 
 	sysdate)
 	</insert>
+	
+	<select id="getCommentList" resultType="PRDTCommentBean">
+		select * from  PRDT_COMMENT_TB 
+	</select>
+	
 
 </mapper>

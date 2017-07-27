@@ -19,9 +19,9 @@
 
 #rudr_instafeed li {
 	float: left;
-	width: 250px;
-	height: 250px;
-	margin: 10px
+	width: 260px;
+	height: 260px;
+	margin: 3px;
 }
 
 #rudr_instafeed li img {

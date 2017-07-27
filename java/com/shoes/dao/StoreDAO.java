@@ -55,9 +55,21 @@ public class StoreDAO {
 		return postInfo;
 	}
 
+	
+	
+	
+	public List<PRDTCommentBean> getcommentList(){
+		 List<PRDTCommentBean> commentList = sqlSession.selectList("getCommentList");
+		System.out.println("DAO +" + commentList);
+		
+		return commentList;
+	}
+
+	
+	
 	public void insertCommentInfo(PRDTCommentBean prdtCommentBean){
 		sqlSession.insert("addComment", prdtCommentBean);
 	}
-	
+
 }
 
