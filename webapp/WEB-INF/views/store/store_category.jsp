@@ -30,9 +30,9 @@ tr, td{
 padding: 3px;
 }
 
-#category{
-text-align: center;
-padding:20px;
+#category, h2{
+
+padding:60px;
 }
 
 </style>
@@ -41,12 +41,12 @@ padding:20px;
 
 <div id="postList">
 <h2 id="category"><%=category%></h2>
-<%-- <c:choose>
-	<c:when test="${null eq usedTradePostTbBeanList.get(0).UTP_SQ_PK}">
-			<h2>등록된 게시글이 없습니다</h2>
+<c:choose>
+	<c:when test="${null eq postTitleList.get(0).PP_TITLE}">
+			<h2>판매중인 상품이 없습니다</h2>
 		</c:when>
 		
-		<c:otherwise> --%>
+		<c:otherwise>
 		<c:forEach var="item" items="${categoryPrdtList}" varStatus="status">
 			<table class="items" onclick="location.href='./nmd'">
 
@@ -67,8 +67,8 @@ padding:20px;
 				</tr>
 			</table>
 		</c:forEach>
-<%-- 		</c:otherwise>
-	</c:choose> --%>	
+</c:otherwise>
+	</c:choose> 	
 </div>
 <!-- <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"
