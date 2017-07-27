@@ -250,4 +250,10 @@ public class StoreController {
 	public String goToStorecategory() {
 		return "store/store_category";
 	}
+	
+	@RequestMapping("danawa")
+	public String goTodanawa() {
+		return "store/danawa";
+	}
+	
 }
