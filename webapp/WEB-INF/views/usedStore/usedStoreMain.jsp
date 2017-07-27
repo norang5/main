@@ -56,7 +56,7 @@
 			margin: 3px;
 			border-radius: 5px;
 			cursor: pointer;
-			min-width: 200px;
+			min-width: 250px;
 			border: 1px solid #DEE3EB;
 		}
 		

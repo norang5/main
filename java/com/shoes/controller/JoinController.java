@@ -107,7 +107,15 @@ public class JoinController {
 		String pw = request.getParameter("password");
 
 		JoinBean joinBean = mb.login(email);
+		
 		String toHere = "";
+		if(joinBean == null){
+			toHere = "join/login";
+			System.out.println("로그인실패");
+			
+			return toHere;
+		}
+		
 		if ((email.equals(joinBean.getMEM_EMAIL_PK()) == true) && (pw.equals(joinBean.getMEM_PASSWORD()) == true)) {
 			System.out.println("로그인성공");
 

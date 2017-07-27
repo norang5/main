@@ -91,11 +91,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE UTP_SQ_PK = #{UTP_SQ_PK}
 	</select>
 	
-	<!-- USED_TRADE_POST_TB로부터 USED_SQ_PK와 일치하는 레코드의 UTP_CNT(조회수)만 받아오기 -->
+	<!-- USED_TRADE_POST_TB로부터 UTP_SQ_PK와 일치하는 레코드의 UTP_CNT(조회수)만 받아오기 -->
 	<select id="getUsedTradePostTbUtpCnt" parameterType="int" resultType="int">
 		SELECT UTP_CNT FROM USED_TRADE_POST_TB
 		WHERE UTP_SQ_PK = #{UTP_SQ_PK}
 	</select>
+	
+	<!-- USED_TRADE_POST_TB에서 전달된 UTP_SQ_PK와 일치하는 레코드 제거 -->
+	<delete id="deleteUSedTradePostTbUtpSqPk" parameterType="int">
+		DELETE FROM USED_TRADE_POST_TB
+		WHERE UTP_SQ_PK = #{UTP_SQ_PK}
+	</delete>
 	
 	<!-- 전달된 UsedTradePostTbBean의 UTP_SQ_PK와 일치하는 DB상의 레코드를 교체 -->
 	<update id="updateUsedTradePostTb" parameterType="UsedTradePostTbBean">

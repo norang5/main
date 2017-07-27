@@ -1,5 +1,6 @@
 package com.shoes.controller;
 
+import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,8 +11,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.beanutils.converters.BigDecimalConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,14 +45,21 @@ public class UsedTradeController{
 	
 	// 중고 판매글 삭제 요청처리
 	@RequestMapping(value="usedStoreDelete", method=RequestMethod.POST)
-	public ModelAndView usedStoreDelete(@RequestParam(value = "UTP_SQ_PK") int UTP_SQ_PK){
-		ModelAndView mav = new ModelAndView();
-		
+	public void usedStoreDelete(@RequestParam(value = "UTP_SQ_PK") int UTP_SQ_PK, HttpServletResponse response){
 		System.out.println("삭제요청받은 게시글 번호는 " + UTP_SQ_PK);
+		response.setCharacterEncoding("utf-8");
 		
-		mav.setViewName("goToMain");
-		
-		return mav;
+		PrintWriter out = null;
+		try{
+			out = response.getWriter();
+			
+			usedDAO.deleteUSedTradePostTbUtpSqPk(UTP_SQ_PK);
+			out.print("삭제성공");
+			
+		}catch(Exception e){
+			e.printStackTrace();
+			out.print("삭제실패");
+		}
 	}
 	
 	// 중고장터로 이동
@@ -90,7 +100,13 @@ public class UsedTradeController{
 		while(it.hasNext()){
 			hashBean = (HashMap<String, Object>)it.next();
 			
-			int totalCount = ((BigDecimal)hashBean.get("TOTAL_COUNT")).intValue();
+			int totalCount = 0;
+			Object object = hashBean.get("TOTAL_COUNT");
+			if(object instanceof Integer){
+				totalCount = ((Integer)object).intValue();
+			}else if(object instanceof BigDecimal){
+				totalCount = ((BigDecimal)object).intValue();
+			}
 			
 			if(totalCount != 0){
 				body = (String)hashBean.get("UTP_BODY");

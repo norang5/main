@@ -89,9 +89,7 @@
 	</jsp:include>
 	
 	<section id="mainSection">
-		<form method="post" action="usedStoreDelete" id="deleteSubmit">
-			<input type="hidden" name="UTP_SQ_PK" value="${usedTradePostTbBean.UTP_SQ_PK}"/>
-		</form>
+		<input type="hidden" id="UTP_SQ_PK" name="UTP_SQ_PK" value="${usedTradePostTbBean.UTP_SQ_PK}"/>
 		<article id="topInfo">
 			<div class="tableCell" style="text-align: left">
 				<div>글번호 ${usedTradePostTbBean.UTP_SQ_PK}</div>
@@ -145,12 +143,45 @@
 		">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="#" class="noneHyper gray_post_btn" onclick="javascript: deleteSubmit()" style="
 			color: black;
-		">삭제</a>
+		">삭제</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="usedStore" class="noneHyper gray_post_btn" style="
+			color: black;
+		">목록으로</a>
 	</section>
 	
 	<script type="text/javascript">
 		function deleteSubmit(){
-			$('#deleteSubmit').submit();
+			var UTP_SQ_PK = $('#UTP_SQ_PK').val();
+			
+			$.ajax({
+				type: "POST",
+				url: "/shoes_shop/usedStoreDelete",
+				contentType: "application/x-www-form-urlencoded; charset=utf-8",
+				data:{
+					'UTP_SQ_PK': UTP_SQ_PK,
+				},
+				datatype: "text",
+				success:function(data){
+					console.log(data);
+					
+					if(data == '삭제성공'){
+						alert('삭제되었습니다.');
+						location.href="usedStore";
+					}else if(data == '삭제실패'){
+						alert('실패, 다시 시도해 주세요.');
+					}else{
+						alert('알 수 없는 오류');
+					}
+				},
+					error:function(request, status, error){
+					console.log(	'에러코드 : ' + request.status + '\n'
+							+	'메시지 :' + request.responseText + '\n'
+							+	'에러 : ' + error + '\n'
+							+	'상태 : ' + status
+					);
+					return;
+				}
+			});
 		}
 	</script>
 	
