@@ -14,6 +14,7 @@ import com.shoes.model.PrdtSizeTbBean;
 import com.shoes.model.UsedStTbBean;
 import com.shoes.model.UsedTradePostTbBean;
 import com.shoes.model.UsedTradeStTbBean;
+import com.shoes.model.UtpCommentTbBean;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
@@ -22,6 +23,15 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 public class UsedTradeDAO{
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
+	
+	// UTP_COMMENT_TB 로부터 UTP_SQ_PK를 참조하는 레코드들 받아오기
+	public List<UtpCommentTbBean> getUtpCommentTbBeanUtpSqPk(int UTP_SQ_PK){
+		return sqlSessionTemplate.selectList("getUtpCommentTbBeanUtpSqPk", UTP_SQ_PK);
+	}
+	
+	public void insertUtpCommentTb(UtpCommentTbBean utpCommentTbBean){
+		sqlSessionTemplate.insert("insertUtpCommentTb", utpCommentTbBean);
+	}
 	
 	// USED_TRADE_POST_TB로부터 UTP_SQ_PK와 일치하는 게시글 삭제하기
 	public void deleteUSedTradePostTbUtpSqPk(int UTP_SQ_PK){

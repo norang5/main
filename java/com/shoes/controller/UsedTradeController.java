@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.beanutils.converters.BigDecimalConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +28,7 @@ import com.shoes.model.PrdtSizeTbBean;
 import com.shoes.model.UsedStTbBean;
 import com.shoes.model.UsedTradePostTbBean;
 import com.shoes.model.UsedTradeStTbBean;
+import com.shoes.model.UtpCommentTbBean;
 
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
@@ -323,7 +323,7 @@ public class UsedTradeController{
 		
 		System.out.println("저장직전 " + usedPostBean);
 		
-		// 7. UTP_SQ_PK가 0이면(새로 작성된 글이면) USED_TRADE_POST_TB에 저장.
+		// 8. UTP_SQ_PK가 0이면(새로 작성된 글이면) USED_TRADE_POST_TB에 저장.
 		//	0이 아니면(게시글 수정 요청이면) USED_TRADE_POST_TB에 업데이트.
 		if(usedPostBean.getUTP_SQ_PK() == 0){
 			usedDAO.insertUsedTradePostTb(usedPostBean);
@@ -338,13 +338,60 @@ public class UsedTradeController{
 	@RequestMapping("/usedPostDetail")
 	public ModelAndView usedPostDetailView(HttpServletRequest request){
 		ModelAndView mav = new ModelAndView();
-		
 		int UTP_SQ_PK = Integer.parseInt(request.getParameter("UTP_SQ_PK"));
-		UsedTradePostTbBean bean = usedDAO.getUsedTradePostTb(UTP_SQ_PK);
 		
+		// DB로부터 UTP_SQ_PK와 일치하는 게시글 불러와서 저장
+		UsedTradePostTbBean bean = usedDAO.getUsedTradePostTb(UTP_SQ_PK);
 		mav.addObject("usedTradePostTbBean", bean);
+		
+		// DB로부터 UTP_SQ_PK를 참조하는 댓글들 불러와서 저장
+		List<UtpCommentTbBean> utpCommentTbBeanList = usedDAO.getUtpCommentTbBeanUtpSqPk(UTP_SQ_PK);
+		mav.addObject("utpCommentTbBeanList", utpCommentTbBeanList);
 		
 		mav.setViewName("usedStore/used_post_detail_view");
 		return mav;
 	}
+	
+	// 중고거래 게시글에 신규 댓글 등록 요청시
+	@RequestMapping("/usedAddComment")
+	public void usedAddComment(UtpCommentTbBean utpCommentTbBean, HttpServletResponse response, HttpServletRequest request, HttpSession session){
+		ModelAndView mav = new ModelAndView();
+		PrintWriter out = null;
+		
+		String MEM_EMAIL_PK = (String)session.getAttribute("userEmail");
+		//String UTP_SQ_PK = request.getParameter("UTP_SQ_PK");
+		//String UTPC_BODY = request.getParameter("UTPC_BODY");
+		
+		System.out.println("MEM_EMAIL_PK: " + MEM_EMAIL_PK);
+		System.out.println("UTP_SQ_PK: " + utpCommentTbBean.getUTP_SQ_PK());
+		System.out.println("UTPC_BODY: " + utpCommentTbBean.getUTPC_BODY());
+		
+		try{
+			out = response.getWriter();
+			
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		utpCommentTbBean.setMEM_EMAIL_PK(MEM_EMAIL_PK);
+		utpCommentTbBean.setUTPC_NOTIFY_NUMBER(0);
+		
+		usedDAO.insertUtpCommentTb(utpCommentTbBean);
+		
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

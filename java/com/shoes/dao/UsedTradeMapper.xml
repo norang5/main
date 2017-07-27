@@ -19,6 +19,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	그저 아이디 식별을 위해서만 쓰이다보니 사실상 namespace엔 없는 경로를 적어도 아무문제 없다.
  -->
 <mapper namespace="com.shoes.dao.UsedTradeDao"> 
+	<!-- UTP_COMMENT_TB 로부터 UTP_SQ_PK를 참조하는 레코드들 정렬해서 받아오기 -->
+	<select id="getUtpCommentTbBeanUtpSqPk" parameterType="int" resultType="UtpCommentTbBean">
+		SELECT * FROM UTP_COMMENT_TB
+		WHERE UTP_SQ_PK = #{UTP_SQ_PK}
+		ORDER BY UTPC_SQ_PK_FK DESC, UTPC_REPORTING_DT ASC
+	</select>
+	
+	<!-- UTP_COMMENT_TB에 레코드 등록하기 -->
+	<insert id="insertUtpCommentTb" parameterType="UtpCommentTbBean">
+		INSERT INTO UTP_COMMENT_TB(
+			UTPC_SQ_PK,
+			MEM_EMAIL_PK,
+			UTP_SQ_PK,
+			UTPC_BODY,
+			UTPC_REPORTING_DT,
+			UTPC_FIN_MODIF_DT,
+			UTPC_SQ_PK_FK,
+			UTPC_NOTIFY_NUMBER
+		)VALUES(
+			UTP_COMMENT_TB_SEQ.NEXTVAL,
+			#{MEM_EMAIL_PK},
+			#{UTP_SQ_PK},
+			#{UTPC_BODY},
+			SYSDATE,
+			SYSDATE,
+			UTP_COMMENT_TB_SEQ.CURRVAL,
+			#{UTPC_NOTIFY_NUMBER}
+		)
+	</insert>
 
 	<!-- 치수 목록 가져오기 -->
 	<select id="getPrdtSizeList" resultType="PrdtSizeTbBean">

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String ctx = request.getContextPath(); //콘텍스트명 얻어오기.
 %>
@@ -81,6 +82,13 @@
 		.gray_post_btn{
 			background-color: 
 		}
+		
+		#commentBox{
+			margin-top: 20px;
+			background-color: #FFFFFF;
+			border: 1px solid #DEE3EB;
+			padding: 15px;
+		}
 	</style>
 </head>
 <body>
@@ -147,6 +155,48 @@
 		<a href="usedStore" class="noneHyper gray_post_btn" style="
 			color: black;
 		">목록으로</a>
+		
+		<article id="commentBox">
+			<c:choose>
+            			<c:when test="${null eq userEmail}">
+            				<textarea id="UTPC_BODY" rows="4" cols="100" placeholder="로그인이 필요한 기능입니다." readonly="readonly"></textarea>
+					<a href="login">로그인</a>
+            			</c:when>
+            			<c:when test="${!empty userEmail}">
+            				<textarea id="UTPC_BODY" rows="4" cols="100" placeholder="댓글 내용을 입력하세요."></textarea>
+					<a href="#" onclick="javascript: commentSubmit()">등록</a>
+            			</c:when>
+            			<c:otherwise>
+					<span style="color: white;">error</span>
+				</c:otherwise>
+            		</c:choose>
+			
+			<table>
+					<tr>
+						<td>중고거래 댓글 식별번호</td>
+						<td>이메일</td>
+						<td>중고거래 댓글 식별번호2</td>
+						<td>내용</td>
+						<td>작성일</td>
+						<td>최종수정일</td>
+						<td>중고거래 게시글 식별번호</td>
+						<td>신고횟수</td>
+					</tr>
+				<c:forEach var="item" items="${utpCommentTbBeanList}" varStatus="status">
+					<tr>
+						<td>${item.UTPC_SQ_PK}</td>
+						<td>${item.MEM_EMAIL_PK}</td>
+						<td>${item.UTP_SQ_PK}</td>
+						<td>${item.UTPC_BODY}</td>
+						<td>${item.UTPC_REPORTING_DT}</td>
+						<td>${item.UTPC_FIN_MODIF_DT}</td>
+						<td>${item.UTPC_SQ_PK_FK}</td>
+						<td>${item.UTPC_NOTIFY_NUMBER}</td>
+					</tr>
+				</c:forEach>
+			</table>
+			
+		</article>
 	</section>
 	
 	<script type="text/javascript">
@@ -158,7 +208,7 @@
 				url: "/shoes_shop/usedStoreDelete",
 				contentType: "application/x-www-form-urlencoded; charset=utf-8",
 				data:{
-					'UTP_SQ_PK': UTP_SQ_PK,
+					'UTP_SQ_PK': UTP_SQ_PK
 				},
 				datatype: "text",
 				success:function(data){
@@ -171,6 +221,42 @@
 						alert('실패, 다시 시도해 주세요.');
 					}else{
 						alert('알 수 없는 오류');
+					}
+				},
+					error:function(request, status, error){
+					console.log(	'에러코드 : ' + request.status + '\n'
+							+	'메시지 :' + request.responseText + '\n'
+							+	'에러 : ' + error + '\n'
+							+	'상태 : ' + status
+					);
+					return;
+				}
+			});
+		}
+		
+		function commentSubmit(){
+			var UTP_SQ_PK = $('#UTP_SQ_PK').val();
+			var UTPC_BODY = $('#UTPC_BODY').val();
+			
+			$.ajax({
+				type: "POST",
+				url: "/shoes_shop/usedAddComment",
+				contentType: "application/x-www-form-urlencoded; charset=utf-8",
+				data:{
+					'UTP_SQ_PK': UTP_SQ_PK,
+					'UTPC_BODY': UTPC_BODY
+				},
+				datatype: "text",
+				success:function(data){
+					console.log(data);
+					
+					if(data == ''){
+						//alert('등록되었습니다.');
+						history.go(0);	// 현재 페이지 새로고침
+					}else if(data == ''){
+						//alert('실패, 다시 시도해 주세요.');
+					}else{
+						//alert('알 수 없는 오류');
 					}
 				},
 					error:function(request, status, error){
