@@ -492,7 +492,7 @@
         		   $('#logo_text').css({
                        'display':'none'
                     });
-        	}else{
+        	}else if (windowWidth >= 1150 && st > menuHiddenPosition){
         		$('#logo_text').css({
                     'display':'inline'
                  });
