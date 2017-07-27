@@ -477,6 +477,7 @@
     		         'left': '-70px'
 
     		      });
+        		  		 
         	}else if (windowWidth >= 1400 && st < menuHiddenPosition){
         		$('.menu_btn').css({
                     'padding':'0 20px',
@@ -487,9 +488,7 @@
         		       
         		         'left': '0px'
 
-        		      });
-        		
-        		
+        		      });	
         	}
         	
          }).resize();

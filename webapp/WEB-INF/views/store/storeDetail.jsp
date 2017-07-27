@@ -105,7 +105,7 @@ width:150px;
 #prdt_instar {
 	position:relative;
 	border-top: 1px dotted gray;
-	height:600px;
+	height:650px;
 	z-index:-100;
 }
 
@@ -144,19 +144,24 @@ position:relative;
 					<td  colspan="2"><h1>${Common_NAME}</h1></td>
 				</tr>
 
-				<tr class="if">
+
+  	<c:set var="st" value="${POST_ST}"/>
+  	<c:choose>
+        	<c:when test="${st == '판매'}">
+
+				<tr>
 					<td colspan="2"><h2>${PRDT_PRICE}&nbsp;원</h2></td>
 				</tr>
 				
-				<tr class="if">
+				<tr>
 					<td colspan="2">마일리지 적립&nbsp;&nbsp;&nbsp;${POST_MILE}&nbsp;%</td>
 				</tr>
-				<tr class="if">
+				<tr>
 					<td>색상</td>
 					<td><form:select path="PRDT_COLOR" items="${PRDT_COL}" /></td>
 				</tr>
 				
-				<tr class="if">
+				<tr>
 					<td>사이즈</td>
 					<td><form:select path="PRDT_SIZE_PK" items="${PRDT_SIZE}" /></td>
 				</tr>
@@ -164,19 +169,35 @@ position:relative;
 					<td>수량</td>
 					<td></td>
 				</tr> -->
-				<tr class="if">
+				<tr>
 					<td>배송비 </td>
 					<td>${POST_DLVR}</td>
 				</tr>
 				
-				<tr class="if">
+				<tr>
 					<td><button type=submit>구매하기</button></td>
 					<td><button type=button>장바구니</button></td>
 				</tr>
 	
+	</c:when>
+	<c:when test="${st == '준비중'}">
+	<tr>
+					<td colspan="2"><h2>${PRDT_PRICE}&nbsp;원</h2></td>
+				</tr>
+				<tr>
+	<td colspan="2"><h4>발매 예정 상품입니다.</h4></td>
+	</tr>
+	</c:when>
+	<c:otherwise>
+	<tr>
+	<td colspan="2"><h4>현재 사이트에서 품절된 상품입니다.<br>아래의 쇼핑몰들을 참조해주세요.</h4></td>
+	</tr>
+	<tr>
+	<td colspan="2" id="danawa"></td>
+	</tr>
 	
-	
-	
+	</c:otherwise>
+	</c:choose>
 	
 			</table></form:form>
 			
@@ -269,24 +290,18 @@ position:relative;
 </div>
 
 
-<!-- <script src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"
 	type="text/javascript"></script>
 
     <script type="text/javascript">
         $(function() {
-     
-        	<c:set var="st" value="${POST_ST}" />
-        	<c:if test="${st == '배송중'}">
-        		System.out.println("됨1");
-    	    	$('.if').css({
-					'display':'none'
-				});
-	    	System.out.println("됨2");
-        		</c:if>
-        	
-        });
-    </script> -->
+        	$(window).load(
+    			function() {	
+    				$("#danawa").load("danawa")
+    		});
+       });
+    </script>
 </body>
 </html>

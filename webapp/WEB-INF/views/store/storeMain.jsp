@@ -67,15 +67,16 @@ float: left;
 	position: relative;
 	z-index: 100;
 	margin: 100px;
+	margin-top:65px;
 	overflow: hidden;
 	animation: anima 2s;
 	backface-visibility: hidden;
 	flex:1;
 }
 
-#nmd, #stan, #tubular {
+#nmd-button, #stan-button, #tubular-button {
 
-margin-top:20px;
+margin-top:150px;
 }
 .pic-3d {
 	/*   perspective: 500; */
