@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,6 +39,18 @@ public class UsedTradeController{
 	@Autowired
 	private MemberDAO memberDAO;
 	
+	
+	// 중고 판매글 삭제 요청처리
+	@RequestMapping(value="usedStoreDelete", method=RequestMethod.POST)
+	public ModelAndView usedStoreDelete(@RequestParam(value = "UTP_SQ_PK") int UTP_SQ_PK){
+		ModelAndView mav = new ModelAndView();
+		
+		System.out.println("삭제요청받은 게시글 번호는 " + UTP_SQ_PK);
+		
+		mav.setViewName("goToMain");
+		
+		return mav;
+	}
 	
 	// 중고장터로 이동
 	@RequestMapping("usedStore")
@@ -116,7 +127,7 @@ public class UsedTradeController{
 	// 파라미터로 게시글 번호가 넘어온다면 DB에서 받아와서 함께 전송해주고(수정),
 	// 파라미터로 아무값도 안넘어온다면 그대로 글 작성 페이지로 연결해준다.(새로 글쓰기)
 	@RequestMapping(value = "/used_post_write_ck", method = RequestMethod.GET)
-	public ModelAndView usedStroePostWriteCKGet(@RequestParam(value = "UTP_SQ_PK", defaultValue = "0") int UTP_SQ_PK, HttpSession session){
+	public ModelAndView usedStorePostWriteCKGet(@RequestParam(value = "UTP_SQ_PK", defaultValue = "0") int UTP_SQ_PK, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		
 		// 1. 현재 세션의 이메일(작성자) 받아오기
@@ -144,12 +155,21 @@ public class UsedTradeController{
 			
 			// 현재 세션의 mem_email과 요청글의 mem_email이 일치하는지 검사
 			String dbMemEmail = usedDAO.getUsedTradePostTbMemEmailPk(UTP_SQ_PK);
-			String sessionMemEmail = (String)session.getAttribute("user_email");
+			String sessionMemEmail = email;
 			//String sessionMemEmail = "testemail@test.com";
+			
+			System.out.println("[UsedTradeController]세션의 이메일: " + sessionMemEmail);
+			if(sessionMemEmail == null){
+				sessionMemEmail = "";
+			}
 			
 			if(dbMemEmail.equals(sessionMemEmail) == false){
 				// 일치하지 않는다면 수정자의 권한 검사
 				String sessionGradeStPk = memberDAO.getMemberTbGradeStPk(sessionMemEmail);
+				if(sessionGradeStPk == null){
+					sessionGradeStPk = "비회원";
+				}
+				
 				switch(sessionGradeStPk){
 					case "운영자":
 						// 운영자나 관리자라면 로그를 띄우고 통과
@@ -299,7 +319,7 @@ public class UsedTradeController{
 	}
 	
 	// 게시글 클릭시 상세화면 보여주기
-	@RequestMapping("/detail")
+	@RequestMapping("/usedPostDetail")
 	public ModelAndView usedPostDetailView(HttpServletRequest request){
 		ModelAndView mav = new ModelAndView();
 		

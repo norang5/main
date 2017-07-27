@@ -22,7 +22,7 @@
 		
 		#mainSection{
 			width: 1000px;
-			margin: 0 auto;
+			margin: 0 auto 50px auto;
 		}
 		
 		#topInfo{
@@ -32,6 +32,13 @@
 			padding: 10px;
 			text-align: right;
 			font-size: 0.8em;
+			display: table;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		
+		.tableCell{
+			display: table-cell;
 		}
 		
 		#info{
@@ -64,8 +71,16 @@
 			background-color: #FFFFFF;
 			border: 1px solid #DEE3EB;
 			padding: 15px;
+			overflow: scroll;
 		}
-	
+		
+		.noneHyper{
+			text-decoration: none;
+		}
+		
+		.gray_post_btn{
+			background-color: 
+		}
 	</style>
 </head>
 <body>
@@ -74,11 +89,19 @@
 	</jsp:include>
 	
 	<section id="mainSection">
+		<form method="post" action="usedStoreDelete" id="deleteSubmit">
+			<input type="hidden" name="UTP_SQ_PK" value="${usedTradePostTbBean.UTP_SQ_PK}"/>
+		</form>
 		<article id="topInfo">
-			<div>글번호 ${usedTradePostTbBean.UTP_SQ_PK}</div>
-			<div>작성일 ${usedTradePostTbBean.UTP_REPORTING_DT}</div>
-			<div>조회수 ${usedTradePostTbBean.UTP_CNT}</div>
-			<div>신고 ${usedTradePostTbBean.UTP_NOTIFY_NUMBER}</div>
+			<div class="tableCell" style="text-align: left">
+				<div>글번호 ${usedTradePostTbBean.UTP_SQ_PK}</div>
+				<div>조회수 ${usedTradePostTbBean.UTP_CNT}</div>
+			</div>
+			<div class="tableCell" style="text-align: right">
+				<div>작성일 ${usedTradePostTbBean.UTP_REPORTING_DT}</div>
+				<div>신고 ${usedTradePostTbBean.UTP_NOTIFY_NUMBER}</div>
+			</div>
+			
 		</article>
 		<article id="info">
 			<div style="
@@ -96,7 +119,7 @@
 					<td>${usedTradePostTbBean.DISTRICT_PK}</td>
 				</tr>
 				<tr>
-					<td>${usedTradePostTbBean.PRDT_SIZE_PK}</td>
+					<td>${usedTradePostTbBean.PRDT_SIZE_PK} mm</td>
 				</tr>
 				<tr>	
 					<td>${usedTradePostTbBean.USED_ST_GRADE_PK}</td>
@@ -107,7 +130,8 @@
 			</table>
 		</article>
 		<article id="alert">
-			유의사항!
+			<span style="color: orange;">※ 중고 직거래시 유의사항!</span><br>
+			사기에 주의하세요.
 		</article>
 		<article id="prdtBody">
 			${usedTradePostTbBean.UTP_BODY}
@@ -116,8 +140,19 @@
 			text-align: right;
 			font-size: 0.8em;
 		">최종 수정일 ${usedTradePostTbBean.UTP_FIN_MODIF_DT}</div>
+		<a href="used_post_write_ck?UTP_SQ_PK=${usedTradePostTbBean.UTP_SQ_PK}" class="noneHyper gray_post_btn" style="
+			color: black;
+		">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="#" class="noneHyper gray_post_btn" onclick="javascript: deleteSubmit()" style="
+			color: black;
+		">삭제</a>
 	</section>
 	
+	<script type="text/javascript">
+		function deleteSubmit(){
+			$('#deleteSubmit').submit();
+		}
+	</script>
 	
 </body>
 </html>

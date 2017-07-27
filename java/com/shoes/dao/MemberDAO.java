@@ -22,7 +22,7 @@ public class MemberDAO {
 	
 	// MEMBER_TB로부터 이메일과 일치하는 레코드의, 권한 등급만 받아오기
 	public String getMemberTbGradeStPk(String MEM_EMAIL_PK){
-		return sst.selectOne("getGradeStPk");
+		return sst.selectOne("getMemberTbGradeStPk", MEM_EMAIL_PK);
 	}
 	
 	//MEMBER_TB로부터 이메일과 일치하는 레코드 가져오기
@@ -40,6 +40,9 @@ public class MemberDAO {
 		return sst.selectOne("getMemberTb", MEM_EMAIL_PK);
 	}
 	
-	
+	@Override
+	public String toString(){
+		return "멤버디에이오!";
+	}
 
 }// class MemberDAO{}

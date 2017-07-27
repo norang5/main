@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="dj">
 	<!-- MEMBER_TB로부터 이메일과 일치하는 레코드의, 권한 등급만 받아오기 -->
-	<select id="getMemberTbGradeStPk" parameterType="String">
+	<select id="getMemberTbGradeStPk" parameterType="String" resultType="String">
 		SELECT GRADE_ST_PK
 		FROM MEMBER_TB
 		WHERE MEM_EMAIL_PK = #{MEM_EMAIL_PK}

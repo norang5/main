@@ -17,7 +17,7 @@
 	<jsp:include page="${ctx}/resources/include/header_bar.jsp" flush="false" />
 	<style>
 		body{
-			background-color: #A8A8A8;
+			background-color: #F2F4F7;
 		}
 		
 		#list_wrap{
@@ -56,7 +56,8 @@
 			margin: 3px;
 			border-radius: 5px;
 			cursor: pointer;
-			min-width: 200px
+			min-width: 200px;
+			border: 1px solid #DEE3EB;
 		}
 		
 		.innerPost{
@@ -70,7 +71,7 @@
 			position: absolute;
 			width: 100%;
 			height: 100%;
-			opacity: 0.25;
+			opacity: 0.15;
 			background-color: black;
 			box-sizing: border-box;
 			display: none;
@@ -157,7 +158,7 @@
 			$('.post').click(function(){
 				var UTP_SQ_PK = $(this).find('.UTP_SQ_PK').val();
 				console.log("UTP_SQ_PK: " + UTP_SQ_PK);
-				$(location).attr('href', 'detail?UTP_SQ_PK=' + UTP_SQ_PK);
+				$(location).attr('href', 'usedPostDetail?UTP_SQ_PK=' + UTP_SQ_PK);
 			});
 		});
 	
