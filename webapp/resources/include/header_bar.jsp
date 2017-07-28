@@ -142,7 +142,8 @@
       
       #logo{
       width: 40px; 
-      height: 40px; 
+      height: 40px;        
+      padding-top: 8px;
       vertical-align: middle;
       transition-duration: 0.5s;
       }
