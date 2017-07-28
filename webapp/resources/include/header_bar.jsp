@@ -341,7 +341,7 @@
       <article id="inner_top_container">
          <!-- 좌측 패널(로고) -->
          <nav id="left_panel">
-            <a href="./main" class="none_a_style">
+            <a href="<%=request.getContextPath()%>/main" class="none_a_style">
                <img id="logo" src="${pageContext.request.contextPath}/image/logo.png"/>
                <span id="logo_text">adidas original</span>
             </a>
