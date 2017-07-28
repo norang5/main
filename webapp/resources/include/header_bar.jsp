@@ -95,7 +95,7 @@
        #fixed_header{
          margin:0px;
          padding:0px;
-         height: 80px;
+         height': 50px;
          transition-duration: 0.5s;
         z-index:300;
       }
@@ -104,13 +104,13 @@
       #static_header_container{
          margin:0px;
          padding:0px;
-         height: 80px;
+    	 height: 50px;
          position:fixed;
          background-color: <%= innerTopContainerBackgroundColor %>;
          border-bottom: 1px solid <%= innerTopContainerBorderBottomColor %>;
          transition-duration: 0.5s;
          min-width: 100%;
-           z-index:300;
+          z-index:300;
       }
       
       /* inner_top_container, inner_bottom_container가 담길 헤더 컨테이너 */
@@ -148,7 +148,7 @@
       }
       
       #logo_text{
-      display:inline;
+      display:none;
       transition-duration: 0.5s;
       }
       
@@ -188,7 +188,7 @@
          float: left;
          list-style: none;
          margin: 0 10px;
-         font-size: 2em;
+         font-size: 1.5em;
          transition-duration: 0.5s;
          color: black;
          box-sizing: border-box;
@@ -605,7 +605,7 @@
                });
                
                $('.menu_btn').css({
-                  'font-size':'2em',
+                  'font-size':'2.0em',
                   'color':'<%= menuBtnBigColor %>',
                   'margin':'0 30px',
                   'max-height':'80px',
@@ -646,8 +646,8 @@
                
                   $('#fixed_header').css({
 
-         'height': '50px'
-      });
+       				  'height': '50px'
+  				    });
       
             
             
@@ -691,8 +691,6 @@
                   'display':'inline'
                });
                
-               
-  
             }
             
             // '지난 스크롤 바 위치'에 '현재 스크롤 바 위치'를 저장.
