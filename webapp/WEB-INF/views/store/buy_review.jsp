@@ -54,10 +54,11 @@
 	float: right;
 }
 
-#MEM_EMAIL_PK{
+#MEM_EMAIL_PK, #PP_SQ_PK{
  display:none; 
-
 }
+
+
 </style>
 
 </head>
@@ -88,6 +89,9 @@
 		
 	</table>
 	<input id="MEM_EMAIL_PK" name="MEM_EMAIL_PK" value="${userEmail}" ></input>
+	<input id="PP_SQ_PK" name="PP_SQ_PK" value="${PP_SQ_PK}"></input>
+	
+	
 	<button type="submit" id='reviewDone'>후기 등록</button>
 	
 	</form:form>

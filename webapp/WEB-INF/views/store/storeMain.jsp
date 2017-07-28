@@ -164,6 +164,7 @@ margin-bottom:30px;
 position:fixed;
 right:20px;
 bottom:20px;
+display:none;
 }
 
 
@@ -232,8 +233,8 @@ bottom:20px;
 <div id="second_page">
 </div>
 
-
 <a href="#top" id="back_menu"></br></br></br><h3>↑ 신발 카테고리 전체 보기 ↑</h3></a>
+
 
  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
@@ -244,31 +245,56 @@ bottom:20px;
 		$("#ultra-button").click(
 			function() {	
 				$("#second_page").load("store_category",{category:"ultra boost"},function(){location.href="#second_page"})
+			    $('#back_menu').css({
+	                  'display':'inline'
+	               });
+		
+	
 		});
 		
 		$("#superstar-button").click(
 				function() {	
 					$("#second_page").load("store_category",{category:"superstar"},function(){location.href="#second_page"})
+					$('#back_menu').css({
+		                  'display':'inline'
+		               });
+			
 			});
 		
 		$("#yeezy-button").click(
 				function() {	
 					$("#second_page").load("store_category",{category:"yeezy boost"},function(){location.href="#second_page"})
+					$('#back_menu').css({
+		                  'display':'inline'
+		               });
+			
 			});
 		
 		$("#nmd-button").click(
 				function() {	
 					$("#second_page").load("store_category",{category:"nmd"}, function(){location.href="#second_page"})
+					$('#back_menu').css({
+		                  'display':'inline'
+		               });
+				
 			});
 		
 		$("#stan-button").click(
 				function() {	
 					$("#second_page").load("store_category",{category:"stan smith"},function(){location.href="#second_page"})
+					$('#back_menu').css({
+		                  'display':'inline'
+		               });
+				
 			});
 		
 		$("#tubular-button").click(
 				function() {	
 					$("#second_page").load("store_category",{category:"tubular"},function(){location.href="#second_page"})
+					$('#back_menu').css({
+		                  'display':'inline'
+		               });
+				
 			});
 		
 	});

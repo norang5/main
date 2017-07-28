@@ -74,6 +74,5 @@ padding:60px;
 </c:otherwise>
 	</c:choose> 	
 </div>
-
 </body>
 </html>

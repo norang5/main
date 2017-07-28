@@ -96,11 +96,8 @@ public List<Integer> getPriceList(List<Integer> PCISQList){
 		return list;
 	}
 	
-	
-	
-	
-	public List<PRDTCommentBean> getcommentList(){
-		 List<PRDTCommentBean> commentList = sqlSession.selectList("getCommentList");
+	public List<PRDTCommentBean> getcommentList(int num){
+		 List<PRDTCommentBean> commentList = sqlSession.selectList("getCommentList", num);
 		System.out.println("DAO +" + commentList);
 		
 		return commentList;
