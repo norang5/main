@@ -101,9 +101,9 @@ table{
 				<td>Email</td>
 				<td><input type="text" id="MEM_EMAIL_PK" name="MEM_EMAIL_PK" style="width: 98%;" /></td>
 				<td style="text-align: center; color: graytext;">
-					<button style="background: green;border-color: green;">
-						<a style="color: white; text-decoration: none;" href="#" onclick="javascript: emailDuplicateCheck()">중복 검사</a>
-					</button>
+					
+						<a style="color: black; text-decoration: none;" href="#" onclick="javascript: emailDuplicateCheck()">중복 검사</a>
+					
 				</td>
 			</tr>
 			<tr>
@@ -165,9 +165,9 @@ table{
 					style="width: 99%;"/></td>
 			</tr>
 		</table>
-					<button style="border-color: black; background-color: black; margin:10px; width: 100px; height: 30px; border-radius: 15px">
-						<a style="color: white; text-decoration: none; margin: 10px;" href="#" onclick="javascript: validateCheck()">확인</a>
-					</button>
+					
+						<a style="color: black; text-decoration: none; margin: 10px;" href="#" onclick="javascript: validateCheck()">확인</a>
+					
 	</form>
 	
 	<script>
