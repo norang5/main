@@ -77,13 +77,16 @@ public class StoreController {
 		List<PRDTPostBean> postTitleList=storeDao.getPostTitleList(PCISQList);
 		List<Integer> priceList=storeDao.getPriceList(PCISQList);
 		
+		
+		// 이미지 뽑아오기 기능
 		Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
 		Matcher match = null;
 		String body ="";
 		String mainImg ="";
 		List<String> mainImgList = new ArrayList<String>();
-		
-		for(int i=0; i<postTitleList.size(); i++){
+		System.out.println(postTitleList);
+		if(postTitleList!=null){
+			for(int i=0; i<postTitleList.size(); i++){
 			   	body= postTitleList.get(i).getPP_BODY();
 			
 				System.out.println("body: " + body);
@@ -103,7 +106,9 @@ public class StoreController {
 				}
 				
 				System.out.println("mainImg: " + mainImg);
-		
+			}
+		}else{
+			System.out.println("상품목록없음");
 		}
 		
 	
@@ -122,7 +127,7 @@ public class StoreController {
 	
 	
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
-	public String goToCategory(@RequestParam("name") String name, Model model){
+	public String goToCategory(@RequestParam("name") String name, Model model, HttpServletRequest request){
 	
 		System.out.println("상세페이지 들옴"+name);
 		
@@ -143,11 +148,39 @@ public class StoreController {
 		List<PRDTCommentBean> commentList = storeDao.getcommentList(PP_SQ_PK);
 		System.out.println("코멘트리스트"+commentList);
 	
+		
+		
+		
+		// 이미지 뽑아오기 기능
+				Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
+				Matcher match = null;
+				String body ="";
+				String mainImg ="";
+
+		postInfo.getPP_BODY();
+		System.out.println("body: " + body);
+		match = pattern.matcher(body);
+		
+		if(match.find()){	// 본문에 이미지 태그가 있다면,
+			mainImg = match.group(1);	// 글 내용 중에 첫번째 이미지 태그를 뽑아옴.
+			
+		}else{
+			
+			StringBuilder builder = new StringBuilder();
+			builder.append(request.getContextPath());
+			builder.append("/resources/image/noimg_green.png");
+			mainImg=builder.toString();
+		}
+		
+		
         model.addAttribute("commonInfo", commonInfo);
         model.addAttribute("postInfo", postInfo);
         model.addAttribute("prdtInfo", prdtInfo);
         model.addAttribute("commentList", commentList);
         model.addAttribute("PP_SQ_PK", PP_SQ_PK);
+        model.addAttribute("mainImg", mainImg);
+        
+        
         
 		return "store/storeDetail";
 	}
