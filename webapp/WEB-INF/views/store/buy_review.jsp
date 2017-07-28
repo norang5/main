@@ -54,7 +54,7 @@
 	float: right;
 }
 
-#email{
+#MEM_EMAIL_PK{
  display:none; 
 
 }
@@ -71,7 +71,7 @@
 				<tr>
 
 					<th>나의 한줄 상품평 입력</th>
-					<th>발 크기</th>
+					<th>사이즈</th>
 					<th >발볼 특징</th>
 
 				</tr>
@@ -80,10 +80,9 @@
 
 				<td><form:input path='PDCMM_BODY' style="width:600px; height:20px;" /></td>
 				<td><form:select path='PDCMM_LOVE' style="height:20px;"
-						items="${PRDT_SIZE_ALL}" /></td>
+						items="${allSizeList}" /></td>
 				<td><form:select path='PDCMM_IMG_PATH' style="height:20px;"
-						items="${REVIEW_FOOT}" /></td>
-			
+						items="${footType}" /></td>
 			</tr>
 		
 		

@@ -185,6 +185,9 @@ select*from PRDT_POST_TB;
 select*from PRDT_COMMENT_TB;
 
 
+delete from PRDT_POST_TB where PCI_SQ_PK=1;
+delete from PRDT_COMMENT_TB where PP_SQ_PK=1;
+
 truncate table PRDT_TB;
 truncate table PRDT_COMMON_INFO_TB;
 truncate table PRDT_CATEGORY_TB;

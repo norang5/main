@@ -48,7 +48,7 @@ padding:60px;
 		
 		<c:otherwise>
 		<c:forEach var="item" items="${categoryPrdtList}" varStatus="status">
-			<table class="items" onclick="location.href='./nmd'">
+			<table class="items" onclick="location.href='./product?category=<%=category%>&name=${item.PCI_PRDT_NAME}'">
 
 				<tr>
 					<td><img src="./image/nmd02.jpg" width="300px" height="300px"></td>
@@ -70,45 +70,6 @@ padding:60px;
 </c:otherwise>
 	</c:choose> 	
 </div>
-<!-- <script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"
-	type="text/javascript"></script>
-<script type="text/javascript">
 
-	$(function() {
-	
-		var newitem = null;
-		var list = new Array(); 
-			<c:forEach items="${Common_NAME_List}" var="item">
-				list.push("${item}");
-			</c:forEach>
-		
-			$.each(list, function(index, item){
-				var output = '';
-				
-				output += '<h1>'+item+'</h1>';
-				output += '</a>';
-				
-				document.body.innerHTML += output;
-			});
-			
-			
-			
-	/* for(var i=0; i<5; i++){
-		
-		newitem = $(".items:last").clone();
-		
-		newitem.find("td:eq(1)").html('value');
-		newitem.find("td:eq(2)").html(list.[1]);
-		newitem.find("td:eq(3)").html('${PRDT_PRICE}&nbsp;원');
-		$("#postList").append(newitem);
-			
-		}
-		
-		$(".items:first").hide(); */
-	
-	}); 
-	
-</script> -->
 </body>
 </html>

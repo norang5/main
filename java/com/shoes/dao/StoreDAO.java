@@ -20,17 +20,16 @@ public class StoreDAO {
 	private SqlSessionTemplate sqlSession;
 	
 
-	public List<PRDTBean> getPRDTInfo(){
+	public List<PRDTBean> getPRDTInfo(int num){
 		
-		List<PRDTBean> prdtInfolist = sqlSession.selectList("getPRDTINfo");
-		
+		List<PRDTBean> prdtInfolist = sqlSession.selectList("getPRDTINfo", num);
 		System.out.println("DAO +" + prdtInfolist);
 		return prdtInfolist;
 	}
 	
 	
-	public PRDTCommonBean getCommonInfo(){
-		PRDTCommonBean commonInfo = sqlSession.selectOne("getCommonINfo");
+	public PRDTCommonBean getCommonInfo(String name){
+		PRDTCommonBean commonInfo = sqlSession.selectOne("getCommonINfo", name);
 		System.out.println("DAO +" + commonInfo);
 		return commonInfo;
 	}
@@ -43,8 +42,8 @@ public class StoreDAO {
 		return commonInfo;
 	}
 	
-	public PRDTPostBean getPostInfo(){
-		PRDTPostBean postInfo = sqlSession.selectOne("getPostINfo");
+	public PRDTPostBean getPostInfo(int num){
+		PRDTPostBean postInfo = sqlSession.selectOne("getPostINfo", num);
 		System.out.println("DAO +" +postInfo);
 		return postInfo;
 	}

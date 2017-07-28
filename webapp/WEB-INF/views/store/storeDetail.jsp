@@ -3,7 +3,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<% String prdtName = request.getParameter("name"); 
+String category = request.getParameter("category"); 
+System.out.println(category +prdtName);%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -144,7 +146,7 @@ tr {
 	<div id='main1'>
 		<!-- 구매 페이지 헤더 (카테고리 역추적) -->
 		<div id="buying_heder">
-			<a href="./store">Store</a> > <a href="./store">Category > <a href="./nmd">${Common_CATEGORY}</a>
+			<a href="./store">Store</a> > <a href="./store">Category > <a href="./nmd"><%=category%></a>
 		</div>
 		<div id='main2'>
 			<!-- 이미지 표시창 (하단에 작은 이미지 클릭시 큰 이미지 변경기능) -->
@@ -158,30 +160,29 @@ tr {
 
 					<table id="buying_info_table">
 						<tr>
-							<td colspan="2"><h1>${Common_NAME}</h1></td>
+							<td colspan="2"><h1><%=prdtName%></h1></td>
 						</tr>
 
-
-						<c:set var="st" value="${POST_ST}" />
+						<c:set var="st" value="${postInfo.PRDT_ST_NM_PK}" />		
 						<c:choose>
 							<c:when test="${st == '판매중'}">
 
 								<tr>
-									<td colspan="2"><h2>${PRDT_PRICE}&nbsp;원</h2></td>
+									<td colspan="2"><h2>${prdtInfo.get(0).PRDT_PRICE}&nbsp;원</h2></td>
 								</tr>
 
 								<tr>
 									<td colspan="2">마일리지
-										적립&nbsp;&nbsp;&nbsp;${POST_MILE}&nbsp;%</td>
+										적립&nbsp;&nbsp;&nbsp;${postInfo.PP_SAVING_MILEAGE_PERCENT}&nbsp;%</td>
 								</tr>
 								<tr>
 									<td>색상</td>
-									<td><form:select path="PRDT_COLOR" items="${PRDT_COL}" /></td>
+									<td><%-- <form:select path="PRDT_COLOR" items="${prdtInfo.get(0).PRDT_COLOR}" /> --%></td>
 								</tr>
 
 								<tr>
 									<td>사이즈</td>
-									<td><form:select path="PRDT_SIZE_PK" items="${PRDT_SIZE}" /></td>
+									<td><%-- <form:select path="PRDT_SIZE_PK" items="${prdtInfo.get(0).PRDT_SIZE}" /> --%></td>
 								</tr>
 								<!-- 		<tr>
 					<td>수량</td>
@@ -189,7 +190,7 @@ tr {
 				</tr> -->
 								<tr>
 									<td>배송비</td>
-									<td>${POST_DLVR}</td>
+									<td>${postInfo.DLVR_CHRG_NM_PK}</td>
 								</tr>
 
 								<tr>
@@ -200,7 +201,7 @@ tr {
 							</c:when>
 							<c:when test="${st == '준비중'}">
 								<tr>
-									<td colspan="2"><h2>${PRDT_PRICE}&nbsp;원</h2></td>
+									<td colspan="2"><h2>${prdtInfo.get(0).PRDT_PRICE}&nbsp;원</h2></td>
 								</tr>
 								<tr>
 									<td colspan="2"><h4>발매 예정 상품입니다.</h4></td>
@@ -223,12 +224,13 @@ tr {
 				</form:form>
 
 
+
 			</div>
 		</div>
 		<!-- 상품 정보 표시 -->
 		<div id="prdt_info">
-			<p>${POST_ST}</p>
-			<P>${POST_BODY}</P>
+			<p>${postInfo.PRDT_ST_NM_PK}</p>
+			<P>${postInfo.PP_BODY}</P>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 				Quisquam temporibus repellat voluptatem sit nulla commodi, maxime
 				optio aperiam! Consequuntur necessitatibus iste amet id, nihil
@@ -255,36 +257,35 @@ tr {
 
 			<table id="prdt_info_table">
 
-
 				<tr>
 					<td class="table_title">소재</td>
-					<td colspan="3">${Common_Mat}</td>
+					<td colspan="3">${commonInfo.PCI_MATERIAL}</td>
 				</tr>
 
 				<tr>
 					<td class="table_title">제조국</td>
-					<td colspan="3">${Common_Con}</td>
+					<td colspan="3">${commonInfo.PCI_MANUFACT_COUNTRY}</td>
 				</tr>
 
 				<tr>
 					<td class="table_title">제조자</td>
-					<td>${Common_Mau}</td>
+					<td>${commonInfo.PCI_MANUFACTURER}</td>
 					<td class="table_title">수입자</td>
-					<td>${Common_Imp}</td>
+					<td>${commonInfo.PCI_IMPORTER}</td>
 				</tr>
 
 				<tr>
 					<td class="table_title">품질보증기준</td>
-					<td colspan="3">${Common_Qua}</td>
+					<td colspan="3">${commonInfo.PCI_QUALITY_GUARANTEE}</td>
 				</tr>
 
 				<tr>
 					<td class="table_title">취급시 주의사항</td>
-					<td colspan="3">${Common_ATT}</td>
+					<td colspan="3">${commonInfo.PCI_REQUIRE_ATTENTION}</td>
 				</tr>
 				<tr>
 					<td class="table_title">A/S 담당(연락처)</td>
-					<td colspan="3">${Common_AS}</td>
+					<td colspan="3">${commonInfo.PCI_AS_MAN_PHONE}</td>
 				</tr>
 			</table>
 		</div>
@@ -319,7 +320,7 @@ tr {
 		</thead>
 		<tbody>
 	<c:choose>
-	<c:when test="${null eq Commet_List.get(0).PDCMM_SQ_PK}">
+	<c:when test="${empty Commet_List}">
 			<tr>
 					<td colspan=5 style="text-align: center">등록된 후기가 없습니다. 첫 후기를 남겨주세요!</td>
 					</tr>
@@ -339,6 +340,7 @@ tr {
 			</c:forEach>
 			
 			</c:otherwise>
+		
 			</c:choose>
 			
 		</tbody>
