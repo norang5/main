@@ -6,6 +6,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MyPageController{
+	@RequestMapping("mypage")
+	public ModelAndView mypage(){
+		ModelAndView mav = new ModelAndView("mypage/mypage_main");
+		
+		return mav;
+	}
+	
 	@RequestMapping("basket")
 	public ModelAndView bascket(){
 		ModelAndView mav = new ModelAndView("mypage/basket");

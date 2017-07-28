@@ -427,7 +427,7 @@
                               <a href="#" class="profile_a_color nothingProfile">개인정보 보호</a>
                            </div class="nothingProfile">
                            <a   class="my_account_btn none_a_style nothingProfile"
-                              href="#"
+                              href="mypage"
                            >내 계정</a>
                         </div>
                      </div>
