@@ -62,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getPostTitleList" parameterType="Integer" resultType="PRDTPostBean">
-		select PP_TITLE, PP_SQ_PK from PRDT_POST_TB 
+		select PP_TITLE, PP_BODY, PP_SQ_PK from PRDT_POST_TB 
 		where PCI_SQ_PK = #{value}
 	</select>
 	

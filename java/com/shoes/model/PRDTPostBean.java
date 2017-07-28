@@ -13,7 +13,14 @@ public class PRDTPostBean {
 	String PP_REPORTING_DT;			
 	String PP_FIN_MODIF_DT;		
 	int PCI_SQ_PK;								 //FK
+	String PCI_PRDT_NAME;
 	
+public String getPCI_PRDT_NAME() {
+		return PCI_PRDT_NAME;
+	}
+	public void setPCI_PRDT_NAME(String pCI_PRDT_NAME) {
+		PCI_PRDT_NAME = pCI_PRDT_NAME;
+	}
 public int getPP_SQ_PK() {
 		return PP_SQ_PK;
 	}

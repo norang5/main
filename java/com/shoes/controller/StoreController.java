@@ -1,6 +1,10 @@
 package com.shoes.controller;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,28 +63,59 @@ public class StoreController {
 	}
 	
 	@RequestMapping("store_category")
-	public String goToStorecategory(@RequestParam("category") String category, Model model) {
-		System.out.println("컨트롤러:"+category);
+	public String goToStorecategory(@RequestParam("category") String category, Model model,HttpServletRequest request) {
+		
+		System.out.println("컨트롤러 : "+category);
 		
 		List<PRDTCommonBean> categoryPrdtList=storeDao.getCommonCategoryList(category);
 		List<Integer> PCISQList = new ArrayList<Integer>();
-		System.out.println("prdtNameData: " + categoryPrdtList);
-			
+		
 		for(int i=0; i<categoryPrdtList.size(); i++){
 			PCISQList.add(categoryPrdtList.get(i).getPCI_SQ_PK());
 		}
 	
 		List<PRDTPostBean> postTitleList=storeDao.getPostTitleList(PCISQList);
-		
 		List<Integer> priceList=storeDao.getPriceList(PCISQList);
 		
+		Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
+		Matcher match = null;
+		String body ="";
+		String mainImg ="";
+		List<String> mainImgList = new ArrayList<String>();
 		
-		System.out.println("prdtNameData: " + postTitleList);
-		System.out.println("prdtNameData: " + priceList);
+		for(int i=0; i<postTitleList.size(); i++){
+			   body= postTitleList.get(i).getPP_BODY();
+			
+				System.out.println("body: " + body);
+				
+				match = pattern.matcher(body);
+				
+				if(match.find()){	// 본문에 이미지 태그가 있다면,
+					mainImg = match.group(1);	// 글 내용 중에 첫번째 이미지 태그를 뽑아옴.
+					mainImgList.add(mainImg);
+					
+				}else{
+					
+					StringBuilder builder = new StringBuilder();
+					builder.append(request.getContextPath());
+					builder.append("/resources/image/noimg_green.png");
+					mainImgList.add(builder.toString());
+				}
+				
+				System.out.println("mainImg: " + mainImg);
+		
+		}
+		
+	
+		System.out.println("prdtNameData: " + categoryPrdtList);
+		System.out.println("postTitleList: " + postTitleList);
+		System.out.println("priceList: " + priceList);
+		System.out.println("mainImgList: " + mainImgList);
 		
         model.addAttribute("categoryPrdtList", categoryPrdtList);
         model.addAttribute("postTitleList", postTitleList);
         model.addAttribute("priceList", priceList);
+        model.addAttribute("mainImgList", mainImgList);
         
 		return "store/store_category";
 	}

@@ -66,7 +66,6 @@ public class StoreDAO {
 	}
 
 	
-	
 	public List<PRDTPostBean>getPostTitleList(List<Integer> PCISQList){
 		
 		System.out.println("DAO 전달값"+PCISQList);

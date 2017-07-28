@@ -14,6 +14,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from DELIVERY_CHARGE_TB
 	</select>
 	
+	
+	<select id="getPostNum" parameterType="int" resultType="String">
+		select PP_SQ_PK from PRDT_POST_TB
+		where PCI_SQ_PK = #{value}
+		
+	</select>
+	
+	<select id="getPCINum" parameterType="String" resultType="int">
+		select PCI_SQ_PK from PRDT_COMMON_INFO_TB
+		where PCI_PRDT_NAME = #{value}
+		
+	</select>
+	
+	
+	
+	
+	
     <insert id="newPRDTPost" parameterType="PRDTPostBean">
 	insert into PRDT_POST_TB values (PRDT_POST_TB_SEQ.nextval,
 	#{PP_TITLE},

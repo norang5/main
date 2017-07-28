@@ -29,6 +29,26 @@ public class PRDTPostDAO {
 		return DLVRlist;
 	}
 
+	
+	public String getPostNum(int prdtnum){
+		
+		String num=sqlSession.selectOne("getPostNum", prdtnum);
+		System.out.println("포스트 넘값"+ num);
+		return num;
+	}
+	
+	
+	public int 	getPCINum(String name){
+		
+		int num=sqlSession.selectOne("getPCINum", name);
+		System.out.println("포스트 키 값"+ num);
+		return num;
+	}
+
+	
+	
+	
+	
 	public void insertPRDTPost(PRDTPostBean prdtPostBean){
 		System.out.println("4번");
 		sqlSession.insert("newPRDTPost", prdtPostBean);

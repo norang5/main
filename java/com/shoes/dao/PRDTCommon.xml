@@ -17,6 +17,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from PRDT_CATEGORY_TB
 	</select>
 	
+	
+	<select id="getPrdtNameList" resultType="PRDTCommonBean">
+		select PCI_PRDT_NAME, PCI_SQ_PK from PRDT_COMMON_INFO_TB
+	</select>
+	
 </mapper>
 
 

@@ -34,6 +34,15 @@ public class PRDTDAO {
 		List<PrdtSizeTbBean> sizelist = sqlSession.selectList("getPrdtSizeList");
 		return sizelist;
 	}
+	
+	public List<PRDTCommonBean> getprdtNameList(){
+		List<PRDTCommonBean>list = sqlSession.selectList("getPrdtNameList");
+		return list;
+	}
+	
+	
+	
+	
 /*	
 	public PRDTBean getCD_PK(){
 		PRDTBean bean = sqlSession.selectOne("getCD_PK");

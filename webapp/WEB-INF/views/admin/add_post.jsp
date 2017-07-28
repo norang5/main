@@ -35,8 +35,8 @@ h2 {
 		<table>
 			
 			<tr>
-				<td>상품 공통정보 식별번호</td>
-				<td><form:input path="PCI_SQ_PK" /></td>
+				<td>상품명</td>
+				<td><form:select path="PCI_PRDT_NAME" items="${prdtlist}" /></td>
 			</tr>
 			<tr>
 				<td>상품상태명</td>
