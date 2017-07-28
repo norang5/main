@@ -88,16 +88,44 @@
 			<div class="navMenu"><div class="menuText">결제 내역</div></div>
 			<div class="navMenu"><div class="menuText">장바구니</div></div>
 			<div class="navMenu"><div class="menuText">관심상품</div></div>
-			<div class="navMenu"><div class="menuText">내 정보관리</div></div>
 			<div class="navMenu"><div class="menuText">마일리지 사용내역</div></div>
+			<div class="navMenu"><div class="menuText">내 정보관리</div></div>
 			<div class="navMenu"><div class="menuText">통계</div></div>
 			<div class="navMenu"><div class="menuText">재고관리</div></div>
 		</nav>
+		
+		<script type="text/javascript">
+			$(function(){
+				$('#mainNav .navMenu:nth-child(1)').click({url:'<%=ctx%>/'}, loadPage);
+				$('#mainNav .navMenu:nth-child(2)').click({url:'<%=ctx%>/mypage/basket'}, loadPage);
+				$('#mainNav .navMenu:nth-child(3)').click({url:'<%=ctx%>/'}, loadPage);
+				$('#mainNav .navMenu:nth-child(4)').click({url:'<%=ctx%>/'}, loadPage);
+				$('#mainNav .navMenu:nth-child(5)').click({url:'<%=ctx%>/'}, loadPage);
+				$('#mainNav .navMenu:nth-child(6)').click({url:'<%=ctx%>/'}, loadPage);
+				$('#mainNav .navMenu:nth-child(7)').click({url:'<%=ctx%>/'}, loadPage);
+			});
+			
+			function loadPage(event){
+				console.log('호출됨');
+				$.ajax({
+					url:event.data.url,
+					contentType: "application/x-www-form-urlencoded; charset=utf-8",
+					dataType:'html',
+					success:function(data){
+						$('#mainSection').html(data);
+					}
+				});
+			}
+		</script>
 		
 		<section id="mainSection" class="flex-column">
 				
 		
 		</section>
 	</div>
+	
+	<script>
+		
+	</script>
 </body>
 </html>

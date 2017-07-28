@@ -341,7 +341,7 @@
       <article id="inner_top_container">
          <!-- 좌측 패널(로고) -->
          <nav id="left_panel">
-            <a href="./main" class="none_a_style">
+            <a href="<%=request.getContextPath()%>/main" class="none_a_style">
                <img id="logo" src="${pageContext.request.contextPath}/image/logo.png"/>
                <span id="logo_text">adidas original</span>
             </a>
@@ -394,7 +394,7 @@
             
             <c:when test="${!empty userEmail}">
             	<!-- 로그인 유저라면 장바구니 표시 -->
-		<a href="mypage/basket" class="right_panel_btn_color none_a_style">
+		<a href="mypage/basket?header=true" class="right_panel_btn_color none_a_style">
 			<span class="shopping_basket"></span>
 			<span style="vertical-align: middle;">장바구니</span>
 		</a>
