@@ -8,7 +8,7 @@
 <head>
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>title</title>
+	<title>게시글 상세보기</title>
 	
 	
 	<style type="text/css">

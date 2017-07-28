@@ -6,7 +6,7 @@
 <head>
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>title</title>
+	<title>게시글 작성</title>
 	
 	<style type="text/css">
 		table td{
