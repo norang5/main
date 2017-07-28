@@ -1,19 +1,29 @@
 package com.shoes.model;
 
 public class PRDTCommentBean {
+	
 	int PDCMM_SQ_PK;
+	String PDCMM_BODY;
+	int PDCMM_LOVE;
+	String PDCMM_IMG_PATH;
+	String MEM_EMAIL_PK;
+	String PDCMM_FIN_MODIF_DT;
+	int PP_SQ_PK;
+	
+	
+	public int getPP_SQ_PK() {
+		return PP_SQ_PK;
+	}
+	public void setPP_SQ_PK(int pP_SQ_PK) {
+		PP_SQ_PK = pP_SQ_PK;
+	}
 	public int getPDCMM_SQ_PK() {
 		return PDCMM_SQ_PK;
 	}
 	public void setPDCMM_SQ_PK(int pDCMM_SQ_PK) {
 		PDCMM_SQ_PK = pDCMM_SQ_PK;
 	}
-	String PDCMM_BODY;
-	int PDCMM_LOVE;
-	String PDCMM_IMG_PATH;
-	String MEM_EMAIL_PK;
 
-	String PDCMM_FIN_MODIF_DT;
 
 	
 	public String getPDCMM_FIN_MODIF_DT() {
@@ -47,5 +57,11 @@ public class PRDTCommentBean {
 		PDCMM_IMG_PATH = pDCMM_IMG_PATH;
 	}
 	
+	@Override
+	public String toString() {
+		return "PRDTCommentBean [PDCMM_SQ_PK=" + PDCMM_SQ_PK + ", PDCMM_BODY=" + PDCMM_BODY + ", PDCMM_LOVE="
+				+ PDCMM_LOVE + ", PDCMM_IMG_PATH=" + PDCMM_IMG_PATH + ", MEM_EMAIL_PK=" + MEM_EMAIL_PK
+				+ ", PDCMM_FIN_MODIF_DT=" + PDCMM_FIN_MODIF_DT + ", PP_SQ_PK=" + PP_SQ_PK + "]";
+	}
 
 }

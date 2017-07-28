@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 		<select id="getPostINfo" parameterType="int" resultType="PRDTPostBean">
-		select PCI_SQ_PK, PRDT_ST_NM_PK, PP_BODY, DLVR_CHRG_NM_PK, PP_SAVING_MILEAGE_PERCENT from PRDT_POST_TB  
+		select PCI_SQ_PK, PRDT_ST_NM_PK, PP_BODY, DLVR_CHRG_NM_PK, PP_SAVING_MILEAGE_PERCENT, PP_SQ_PK from PRDT_POST_TB  
 		where PCI_SQ_PK = #{value}
 	</select>
 	
@@ -45,12 +45,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	0, 
 	#{MEM_EMAIL_PK}, 
 	0,
-	1, 
+	#{PP_SQ_PK}, 
 	sysdate)
 	</insert>
 	
-	<select id="getCommentList" resultType="PRDTCommentBean">
+	<select id="getCommentList" parameterType="int" resultType="PRDTCommentBean">
 		select * from  PRDT_COMMENT_TB 
+		where PP_SQ_PK = #{value}
 	</select>
 	
 	

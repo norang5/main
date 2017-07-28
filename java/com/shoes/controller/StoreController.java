@@ -43,176 +43,7 @@ public class StoreController {
 		return new PRDTBean();      // 디스패쳐 서블릿에선 클라이언트로부터 날아온 form 데이타를 commandName과 path에 따라 이 MemberVO와 매칭하여,
 	   }   
 	
-	@RequestMapping("orderdone")
-	public String orderDone() {
-		return "store/order_done";
-	}
-	
-	
-	 /*PRDT_TB에서 불러와야할 정보*/
-/*	
-	@ModelAttribute("PRDT_PRICE")
-	protected int prdtPriceDAta() {
-		List<PRDTBean> bean=storeDao.getPRDTInfo();
-		System.out.println("prdtpriceData: " + bean);
-		return bean.get(1).getPRDT_PRICE();
-	}
-	
-	
-	@ModelAttribute("PRDT_COL")
-	protected List<String> colorData() {
-		List<PRDTBean> beanList=storeDao.getPRDTInfo();
-		List<String> colorList = new ArrayList<String>();		
-		for(int i=0; i<beanList.size(); i++){
-			colorList.add(beanList.get(i).getPRDT_COLOR());
-		}
-		return colorList;
-	}
-	
-	
-	@ModelAttribute("PRDT_SIZE")
-	protected List<String> sizeData() {
-		List<PRDTBean> beanList=storeDao.getPRDTInfo();
-		List<String> sizeList = new ArrayList<String>();		
-		for(int i=0; i<beanList.size(); i++){
-			sizeList.add(beanList.get(i).getPRDT_SIZE_PK());
-		}
-		return sizeList;
-	}
-*/
-	
-	/*PRDT_POST_TB에서 불러와야할 정보*/
-	/*
-	@ModelAttribute("POST_ST")
-	protected String postSTData() {
-		PRDTPostBean bean=storeDao.getPostInfo();
-		System.out.println("prdtNameData: " + bean);
-		return bean.getPRDT_ST_NM_PK();
-	}
-	
-	@ModelAttribute("POST_BODY")
-	protected String postBodyData() {
-		PRDTPostBean bean=storeDao.getPostInfo();
-		System.out.println("prdtNameData: " + bean);
-		return bean.getPP_BODY();
-	}
-	
-	@ModelAttribute("POST_DLVR")
-	protected String postDLVRData() {
-		PRDTPostBean bean=storeDao.getPostInfo();
-		System.out.println("prdtNameData: " + bean);
-		return bean.getDLVR_CHRG_NM_PK();
-	}
-	
-	@ModelAttribute("POST_MILE")
-	protected int postMILEData() {
-		PRDTPostBean bean=storeDao.getPostInfo();
-		System.out.println("prdtNameData: " + bean);
-		return bean.getPP_SAVING_MILEAGE_PERCENT();
-	}*/
-	
-	/*@ModelAttribute("POST_NAME_List")
-	protected List<String> postNameList() {
-		List<PRDTPostBean> bean=storeDao.getPostInfoList();
-		List<String> postNameList = new ArrayList<String>();
-		System.out.println("postNameData: " + bean);
-		
-		for(int i=0; i<bean.size(); i++){
-			postNameList.add(bean.get(i).getPP_TITLE());
-		}
-			return postNameList;
-	}*/
-	
-	/*PRDT_COMMON_INFO_TB에서 불러와야할 정보*/
-	
-	/*@ModelAttribute("Common_CATEGORY")
-	protected String prdtCategoryData() {
-		PRDTCommonBean bean=storeDao.getCommonInfo();
-		System.out.println("prdtNameData: " + bean);
-		return bean.getPRDT_CTG_NM();
-	}
-	
-	
-	@ModelAttribute("Common_NAME")
-	protected String prdtNameData() {
-		PRDTCommonBean bean=storeDao.getCommonInfo();
-		System.out.println("prdtNameData: " + bean);
-		return bean.getPCI_PRDT_NAME();
-	}*/
-	
-/*	@ModelAttribute("Common_NAME_List")
-	protected List<String> prdtNameList() {
-		List<PRDTCommonBean> bean=storeDao.getCommonInfoList();
-		List<String> prdtNameList = new ArrayList<String>();
-		System.out.println("prdtNameData: " + bean);
-		
-		for(int i=0; i<bean.size(); i++){
-			prdtNameList.add(bean.get(i).getPCI_PRDT_NAME());
-		}
-			return prdtNameList;
-	}
-	*/
-	
-/*	
-	@ModelAttribute("Common_Mat")
-	protected String materialData() {
-		PRDTCommonBean bean=storeDao.getCommonInfo();
-		System.out.println("materialData: " + bean);
-		return bean.getPCI_MATERIAL();
-	}
-	
-	@ModelAttribute("Common_Con")
-	protected String manufactContryData() {
-		PRDTCommonBean bean=storeDao.getCommonInfo();
-		System.out.println("manufactContryData: " + bean);
-		return bean.getPCI_MANUFACT_COUNTRY();
-	}
-	
-	@ModelAttribute("Common_Mau")
-	protected String manufacturerData() {
-		PRDTCommonBean bean=storeDao.getCommonInfo();
-		System.out.println("manufacturerData: " + bean);
-		return bean.getPCI_MANUFACTURER();
-	}	
-	
-	@ModelAttribute("Common_Imp")
-	protected String importerData() {
-		PRDTCommonBean bean=storeDao.getCommonInfo();
-		System.out.println("importerData: " + bean);
-		return bean.getPCI_IMPORTER();
-	}
-	
-	@ModelAttribute("Common_Qua")
-	protected String qualityGuaranteeData() {
-		PRDTCommonBean bean=storeDao.getCommonInfo();
-		System.out.println("qualityGuaranteeData: " + bean);
-		return bean.getPCI_QUALITY_GUARANTEE();
-	}
-	
-	@ModelAttribute("Common_ATT")
-	protected String requireAttentionData() {
-		PRDTCommonBean bean=storeDao.getCommonInfo();
-		System.out.println("requireAttentionData: " + bean);
-		return bean.getPCI_REQUIRE_ATTENTION();
-	}
-	
-	@ModelAttribute("Common_AS")
-	protected String asInfoData() {
-		PRDTCommonBean bean=storeDao.getCommonInfo();
-		System.out.println("asInfoData: " + bean);
-		return bean.getPCI_AS_MAN_PHONE();
-	}
-*/
-	/*PRDT_COMMET_TB에서 불러와야할 정보*/
-	
-	@ModelAttribute("Commet_List")
-	protected List<PRDTCommentBean> commentList() {
-		List<PRDTCommentBean> commentList =storeDao.getcommentList();
-		System.out.println("코멘트리스트"+commentList);
-			return commentList;
-	}
-	
-	
+
 /*	 상품주문시 식별번호 불러오기 
 	protected int getCD_PK() {
 		PRDTBean bean=prdtDao.getCD_PK();
@@ -220,6 +51,8 @@ public class StoreController {
 		return bean.getPRDT_CD_PK();
 	}
 	*/
+	
+	
 	@RequestMapping("store")
 	public String goToStore() {
 		return "store/storeMain";
@@ -266,15 +99,21 @@ public class StoreController {
 		
 		PRDTPostBean postInfo = storeDao.getPostInfo(PCI_SQ_PK);
 		System.out.println("Data: " + postInfo);
+		int PP_SQ_PK = postInfo.getPP_SQ_PK();
+		System.out.println("피피에스큐피케이: " + PP_SQ_PK);
 	
 		List<PRDTBean> prdtInfo=storeDao.getPRDTInfo(PCI_SQ_PK);
 		System.out.println("Data: " + prdtInfo);
-			
+		
+		List<PRDTCommentBean> commentList = storeDao.getcommentList(PP_SQ_PK);
+		System.out.println("코멘트리스트"+commentList);
+	
         model.addAttribute("commonInfo", commonInfo);
         model.addAttribute("postInfo", postInfo);
         model.addAttribute("prdtInfo", prdtInfo);
+        model.addAttribute("commentList", commentList);
+        model.addAttribute("PP_SQ_PK", PP_SQ_PK);
         
-			
 		return "store/storeDetail";
 	}
 	
@@ -286,8 +125,9 @@ public class StoreController {
 	
 	
 	@RequestMapping(value = "/buy_review", method = RequestMethod.GET)
-	public String newReview(Model model){
+	public String newReview(@RequestParam("PP_SQ_PK") int PP_SQ_PK,Model model){
 
+		    System.out.println("바이리뷰 겟"+PP_SQ_PK);
 			List<String> foot = new ArrayList<String>();
 			foot.add("발볼 넓음");
 			foot.add("발볼 좁음");
@@ -303,6 +143,7 @@ public class StoreController {
 		
 			model.addAttribute("footType", foot);
 	        model.addAttribute("allSizeList", sizeList);
+	        model.addAttribute("PP_SQ_PK", PP_SQ_PK);
 		
 	        return "store/buy_review";
 	}
@@ -310,18 +151,18 @@ public class StoreController {
 	@RequestMapping(value = "/buy_review", method = RequestMethod.POST)
 	public String submitReview(PRDTCommentBean prdtCommentBean){
 
-		System.out.println("2번"+prdtCommentBean);
+		System.out.println("바이리뷰 포스트"+prdtCommentBean);
 		System.out.println(prdtCommentBean.getMEM_EMAIL_PK());
 		storeDao.insertCommentInfo(prdtCommentBean);
 		
-		return  "redirect:/nmd";
+		return  "redirect:/product";
 	}
 
 	
 	@RequestMapping(value = "/product", method = RequestMethod.POST)
 	public String submit(PRDTBean prdtBean){
 
-		System.out.println("2번"+prdtBean);
+		System.out.println("프로덕트 포스트"+prdtBean);
 	
 		PRDTBean bean= prdtDao.insertOrder(prdtBean);
 		System.out.println("CD_PKData: " + bean);
@@ -330,8 +171,13 @@ public class StoreController {
 		
 		System.out.println("3번"+CD);
 		
-		return "store/order_done";
+		return "redirect:/orderdone";
 	}
 
+	
+	@RequestMapping("orderdone")
+	public String orderDone() {
+		return "store/order_done";
+	}
 	
 }

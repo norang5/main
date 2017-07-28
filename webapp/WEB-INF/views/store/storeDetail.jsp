@@ -4,8 +4,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% String prdtName = request.getParameter("name"); 
-String category = request.getParameter("category"); 
-System.out.println(category +prdtName);%>
+String category = request.getParameter("category"); %>
+<%System.out.println("스토어 디테일"+category +prdtName);%>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -143,10 +146,11 @@ tr {
 </style>
 </head>
 <body>
+
 	<div id='main1'>
 		<!-- 구매 페이지 헤더 (카테고리 역추적) -->
 		<div id="buying_heder">
-			<a href="./store">Store</a> > <a href="./store">Category > <a href="./nmd"><%=category%></a>
+			<a href="./store">Store</a> > <a href="./store">Category > <a href="store_category?category=<%=category%>"><%=category%></a>
 		</div>
 		<div id='main2'>
 			<!-- 이미지 표시창 (하단에 작은 이미지 클릭시 큰 이미지 변경기능) -->
@@ -216,6 +220,9 @@ tr {
 								<tr>
 									<td colspan="2" id="danawa"></td>
 								</tr>
+								<tr>
+									<td colspan="2"">정보제공 : danawa.com</td>
+								</tr>
 
 							</c:otherwise>
 						</c:choose>
@@ -229,7 +236,7 @@ tr {
 		</div>
 		<!-- 상품 정보 표시 -->
 		<div id="prdt_info">
-			<p>${postInfo.PRDT_ST_NM_PK}</p>
+			<%-- <p>${postInfo.PRDT_ST_NM_PK}</p> --%>
 			<P>${postInfo.PP_BODY}</P>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 				Quisquam temporibus repellat voluptatem sit nulla commodi, maxime
@@ -320,7 +327,7 @@ tr {
 		</thead>
 		<tbody>
 	<c:choose>
-	<c:when test="${empty Commet_List}">
+	<c:when test="${empty commentList}">
 			<tr>
 					<td colspan=5 style="text-align: center">등록된 후기가 없습니다. 첫 후기를 남겨주세요!</td>
 					</tr>
@@ -328,9 +335,8 @@ tr {
 		
 		<c:otherwise>
 
-			<c:forEach items="${Commet_List}" var="list">
+			<c:forEach items="${commentList}" var="list">
 				<tr>
-					
 					<td class="title">${list.PDCMM_BODY}</td>
 					<td class="name">${list.MEM_EMAIL_PK}</td>
 					<td class="date">${list.PDCMM_FIN_MODIF_DT}</td>
@@ -372,13 +378,13 @@ tr {
         $(function() {
         	$(window).load(
     			function() {	
-    				$("#danawa").load("danawa")
+    				$("#danawa").load("danawa",{category:"<%=category%>"})
     		});
         	
         	
         	$("#addReview").click(
         		function() {	
-        			$("#new_review").load("buy_review", function(){$("#button").css({"display":"none"});})
+        			$("#new_review").load("buy_review?PP_SQ_PK=${PP_SQ_PK}", function(){$("#button").css({"display":"none"});})
         	});
             	
        });
