@@ -6,9 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
 <mapper namespace="com.shoes.model.PRDTCommonBean"> 
 
-	<select id="getCommonINfo" resultType="PRDTCommonBean">
+	<select id="getCommonINfo" parameterType="String" resultType="PRDTCommonBean">
 		select * from PRDT_COMMON_INFO_TB  
-		where PCI_SQ_PK = 21
+		where PCI_PRDT_NAME = #{value}
 	</select>
 	
 	<select id="getCommonINfoList" resultType="PRDTCommonBean">
@@ -16,9 +16,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-		<select id="getPostINfo" resultType="PRDTPostBean">
-		select * from PRDT_POST_TB  
-		where PCI_SQ_PK = 21
+		<select id="getPostINfo" parameterType="int" resultType="PRDTPostBean">
+		select PCI_SQ_PK, PRDT_ST_NM_PK, PP_BODY, DLVR_CHRG_NM_PK, PP_SAVING_MILEAGE_PERCENT from PRDT_POST_TB  
+		where PCI_SQ_PK = #{value}
 	</select>
 	
 	
@@ -28,9 +28,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<select id="getPRDTINfo" resultType="PRDTBean">
+	<select id="getPRDTINfo" parameterType="int" resultType="PRDTBean">
 		select * from PRDT_TB  
-		where PCI_SQ_PK = 21
+		where PCI_SQ_PK = #{value}
 	</select>
 	
 	
