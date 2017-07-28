@@ -27,11 +27,9 @@ text-decoration: none;
 color:white;}
 
 #video {	
-	position: relative;
+	position: static;
 	min-width: 100vn;
-	min-height: 100vh;
-	width: auto;
-	height: auto;
+	width: 100%;
 	z-index: -100;
 	overflow: hidden;
 }
@@ -70,14 +68,14 @@ color: white;
 
 .page.second {
 	text-decoration: none;
-	position: absolute;
-	top: 1130px;
+	position: static;
 	min-width: 100%;
-	min-height: 80vh;
+	min-height: 68vh;
 	background-color: balck;
 	z-index: -30;
 	font-size: 2em;
 	margin:0;
+	padding:25px;
 	text-align:center;
 	background-size: cover;
 }
@@ -90,7 +88,7 @@ figure.snip1384 {
   position: relative;
   float: left;
   overflow: hidden;
-  margin: 30px 15px;
+  margin: 8px 8px;
   min-width: 445px;
   max-width: 445px;
   height: 70vh;
@@ -248,8 +246,8 @@ td{
 
 .page.third {
 	text-decoration: none;
-	position: absolute;
-	top: 1930px;
+	position: static;
+
 	min-width: 100%;
 	min-height: 100vh;
 	background-color: gray;
@@ -552,47 +550,32 @@ $(".hover").mouseleave(
 		consectetur adipisicing elit. Maxime ipsum blanditiis, enim beatae,
 		ipsam tempore, ullam voluptas consequuntur laborum, dolor nobis nam
 		velit iure. Autem veniam atque quo, sunt veritatis!</p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-		Quisquam temporibus repellat voluptatem sit nulla commodi, maxime
-		optio aperiam! Consequuntur necessitatibus iste amet id, nihil
-		laboriosam voluptatem cum laudantium ab repudiandae. Lorem ipsum dolor
-		sit amet, consectetur adipisicing elit. Maxime ipsum blanditiis, enim
-		beatae, ipsam tempore, ullam voluptas consequuntur laborum, dolor
-		nobis nam velit iure. Autem veniam atque quo, sunt veritatis! Lorem
-		ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsum
-		blanditiis, enim beatae, ipsam tempore, ullam voluptas consequuntur
-		laborum, dolor nobis nam velit iure. Autem veniam atque quo, sunt
-		veritatis! Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-		Maxime ipsum blanditiis, enim beatae, ipsam tempore, ullam voluptas
-		consequuntur laborum, dolor nobis nam velit iure. Autem veniam atque
-		quo, sunt veritatis! Lorem ipsum dolor sit amet, consectetur
-		adipisicing elit. Maxime ipsum blanditiis, enim beatae, ipsam tempore,
-		ullam voluptas consequuntur laborum, dolor nobis nam velit iure. Autem
-		veniam atque quo, sunt veritatis! Lorem ipsum dolor sit amet,
-		consectetur adipisicing elit. Maxime ipsum blanditiis, enim beatae,
-		ipsam tempore, ullam voluptas consequuntur laborum, dolor nobis nam
-		velit iure. Autem veniam atque quo, sunt veritatis!</p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-		Quisquam temporibus repellat voluptatem sit nulla commodi, maxime
-		optio aperiam! Consequuntur necessitatibus iste amet id, nihil
-		laboriosam voluptatem cum laudantium ab repudiandae. Lorem ipsum dolor
-		sit amet, consectetur adipisicing elit. Maxime ipsum blanditiis, enim
-		beatae, ipsam tempore, ullam voluptas consequuntur laborum, dolor
-		nobis nam velit iure. Autem veniam atque quo, sunt veritatis! Lorem
-		ipsum dolor sit amet, consectetur adipisicing elit. Maxime ipsum
-		blanditiis, enim beatae, ipsam tempore, ullam voluptas consequuntur
-		laborum, dolor nobis nam velit iure. Autem veniam atque quo, sunt
-		veritatis! Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-		Maxime ipsum blanditiis, enim beatae, ipsam tempore, ullam voluptas
-		consequuntur laborum, dolor nobis nam velit iure. Autem veniam atque
-		quo, sunt veritatis! Lorem ipsum dolor sit amet, consectetur
-		adipisicing elit. Maxime ipsum blanditiis, enim beatae, ipsam tempore,
-		ullam voluptas consequuntur laborum, dolor nobis nam velit iure. Autem
-		veniam atque quo, sunt veritatis! Lorem ipsum dolor sit amet,
-		consectetur adipisicing elit. Maxime ipsum blanditiis, enim beatae,
-		ipsam tempore, ullam voluptas consequuntur laborum, dolor nobis nam
-		velit iure. Autem veniam atque quo, sunt veritatis!</p>
+
 		</section>
 
+  <script src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   
+   <script type="text/javascript">
+   
+   $(window).resize(function(){
+  	 
+  	 windowWidth = $( window ).width();
+
+  	if (windowWidth < 1845){
+  		
+  		$('.page.second').css({
+  			'min-height': '140vh'
+            });
+  		  		 
+  	}else{
+  		$('.page.second').css({
+  			'min-height': '68vh'
+            });
+  	}
+  	
+   }).resize();
+   
+   </script>
+  
 </body>
 </html>

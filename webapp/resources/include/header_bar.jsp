@@ -95,9 +95,9 @@
        #fixed_header{
          margin:0px;
          padding:0px;
-         height': 50px;
+         height: 50px;
          transition-duration: 0.5s;
-        z-index:300;
+ 	      z-index:300;
       }
       
       /* 헤더바 뒤쪽에서 실제 자리를 잡고 전체페이지를 밀었다 당겼다 해줄 투명컨테이너 */
@@ -177,7 +177,7 @@
       #inner_bottom_container ul{
          display: inline-block;
          position: relative;
-         left: -100px;
+         left: 0px;
          padding: 0;
          margin: 0;
          transition-duration: 2s;
@@ -529,6 +529,9 @@
     		         'left': '-70px'
 
     		      });
+        		 $('#logo_text').css({
+                     'display':'none'
+                  });
         		  		 
         	}else if (windowWidth >= 1400 && st < menuHiddenPosition){
         		$('.menu_btn').css({
@@ -552,11 +555,11 @@
         	   var st = $(this).scrollTop();
                console.log('currentScrollTop: ' + st);
                
-               if (windowWidth < 1150 && st > menuHiddenPosition){
+               if (windowWidth < 1340 && st > menuHiddenPosition){
         		   $('#logo_text').css({
                        'display':'none'
                     });
-        	}else if (windowWidth >= 1150 && st > menuHiddenPosition){
+        	}else if (windowWidth >= 1340 && st > menuHiddenPosition){
         		$('#logo_text').css({
                     'display':'inline'
                  });
@@ -688,10 +691,13 @@
                   'padding-top': '8px'
                });
                
+               if(windowWidth >= 1400){ 
+               
+               
                $('#logo_text').css({
                   'display':'inline'
                });
-               
+               }
             }
             
             // '지난 스크롤 바 위치'에 '현재 스크롤 바 위치'를 저장.
