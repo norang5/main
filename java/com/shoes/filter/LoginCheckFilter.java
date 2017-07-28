@@ -43,6 +43,15 @@ public class LoginCheckFilter implements Filter{
 			toURL: used_post_write_ck
 		*/
 		
+		System.out.println("getRequestURI(): " + req.getRequestURI());
+		System.out.println("getContextPath(): " + req.getContextPath());
+		System.out.println("getServletPath(): " + req.getServletPath());
+		System.out.println("getServerName(): " + req.getServerName());
+		System.out.println("getServerPort(): " + req.getServerPort());
+		System.out.println("getProtocol(): " + req.getProtocol());
+		
+		
+		
 		// 클라이언트가 요청을 보내온 이전 URL을 얻음.
 		// 주소창에 직접 쳐서 들어온 경우엔  null 값 반환.
 		String referURL = req.getHeader("REFERER");
@@ -61,15 +70,19 @@ public class LoginCheckFilter implements Filter{
 		// 클라이언트가 이동을 요청한 URL 알아내기
 		UrlPathHelper urlPathHelper = new UrlPathHelper();
 		String originalURL = urlPathHelper.getOriginatingRequestUri(req);
-		String toURL =  originalURL.substring(req.getContextPath().length() + 1);
+		//String toURL =  originalURL.substring(req.getContextPath().length() + 1);
+		String toURL =  req.getServletPath();
 		
 		if(email == null || email.equals("")){
 			System.out.println("[필터] 다음의 URL로부터 비로그인 유저의 접근이 있었습니다\n" + referURL);
+			System.out.println("[필터] 다음의 URL로 이동합니다.\n" + req.getContextPath() + fromURL);
+			
 			//req.getRequestDispatcher(fromURL).forward(req, res);
 			res.sendRedirect(req.getContextPath() + fromURL);
 			
 		}else{
 			System.out.println("[필터] 다음의 URL로부터 로그인 유저의 접근이 있었습니다\n" + referURL);
+			System.out.println("[필터] 다음의 URL로 이동합니다.\n" + toURL);
 			req.getRequestDispatcher(toURL).forward(req, res);
 		}
 	}

@@ -351,22 +351,22 @@
       <nav id="inner_bottom_container">
          <ul>
             <!-- 이곳에 메뉴를 등록하세요. -->
-            <a class="none_a_style" href="./info">
+            <a class="none_a_style" href="<%=request.getContextPath()%>/info">
                <li class="menu_btn">
                   <span style="vertical-align: super;">ABOUT</span>
                </li>
             </a>
-            <a class="none_a_style" href="./store">
+            <a class="none_a_style" href="<%=request.getContextPath()%>/store">
                <li class="menu_btn">
                   <span style="vertical-align: super;">STORE</span>
                </li>
             </a>
-            <a class="none_a_style" href="./usedStore">
+            <a class="none_a_style" href="<%=request.getContextPath()%>/usedStore">
                <li class="menu_btn">
                   <span style="vertical-align: super;">USED-ITEM</span>
                </li>
             </a>
-                            <a class="none_a_style" href="./admin">
+            <a class="none_a_style" href="<%=request.getContextPath()%>/admin">
 
                <li class="menu_btn">
                   <span style="vertical-align: super;">LOCATION</span>
@@ -393,7 +393,7 @@
             
             <c:when test="${!empty userEmail}">
             	<!-- 로그인 유저라면 장바구니 표시 -->
-		<a href="basket" class="right_panel_btn_color none_a_style">
+		<a href="mypage/basket" class="right_panel_btn_color none_a_style">
 			<span class="shopping_basket"></span>
 			<span style="vertical-align: middle;">장바구니</span>
 		</a>
@@ -427,7 +427,7 @@
                               <a href="#" class="profile_a_color nothingProfile">개인정보 보호</a>
                            </div class="nothingProfile">
                            <a   class="my_account_btn none_a_style nothingProfile"
-                              href="mypage"
+                              href="mypage/main"
                            >내 계정</a>
                         </div>
                      </div>
@@ -453,6 +453,8 @@
    <script src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>
    
    <script type="text/javascript">
+   	var showProfile = false;
+   	
 	$(function(){
 		// 클릭이벤트 발생시 프로필 팝업창의 숨기기/보이기 여부 판단
 		$(window).click(function(event){
@@ -505,7 +507,6 @@
       <script type="text/javascript">
          var lastScrollTop = 0;
          var menuHiddenPosition = 40; // 스크롤바의 포지션 값이 이 위치 이상일때 메뉴를 접는다.
-         var showProfile = false;
          var windowWidth=0;
 
          //창 가로길이 조절시 메뉴 버튼 조정
