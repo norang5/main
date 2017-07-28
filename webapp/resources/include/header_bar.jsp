@@ -393,7 +393,7 @@
             
             <c:when test="${!empty userEmail}">
             	<!-- 로그인 유저라면 장바구니 표시 -->
-		<a href="#" class="right_panel_btn_color none_a_style">
+		<a href="basket" class="right_panel_btn_color none_a_style">
 			<span class="shopping_basket"></span>
 			<span style="vertical-align: middle;">장바구니</span>
 		</a>
