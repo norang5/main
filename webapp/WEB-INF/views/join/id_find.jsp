@@ -1,70 +1,34 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>아이디/비밀번호 찾기</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.0.min.js" ></script>
-<script type="text/javascript">
-$(function(){
-	  $('.btn_show').click(function(){
-	    $('.btn_email').show();
-	    $('.btn_mobile').hide();
-	  });
-	  $('.btn_hide').click(function(){
-	    $('.btn_email').hide();
-	    $('.btn_mobile').show();
-	  });
-	});
-</script>
-<style type="text/css">
-header {
-	text-align: center;
-}
+ <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-section {
-	text-align: center;
-}
-h2{
-	margin: 0;
-}
-.btn_mobile{
-		display: none;
-	}
-</style>
+ <title>팝업띄우기</title>
+ 
+ <script type="text/javascript">
+​
+ function openPopup(idx, url){
+ // 여기서 idx는 상세화면의 idx를 의미, url은 controller의 url을 의미함.
+   var _data = {
+     surIdx: idx
+   };
+   //    JSON.stringify(_data);
 
-</head>
-<body>
-	<header>
-		<img src="/shoes_shop/resources/image/find.jpg">
-		<h2>FIND ID</h2>
-		<h3>아이디 찾기</h3>
-		<h5>가입하신 방법에 따라 아이디 찾기가 가능합니다.</h5>
-	</header>
-	<hr/>
-	<section> 
-		<a href="/shoes_shop/id_find"><input type="button" value="아이디 찾기" id="idfindbtn"></a>
-		<a href="/shoes_shop/pw_find"><input type="button" value="비밀번호 찾기"></a>
-		<br/>
-		<hr/>
-		<input type="radio" class="btn_show" name="a" checked="checked">질문으로찾기
-		<input type="radio" class="btn_hide" name="a" >휴대폰번호
-		<form action="">
-			<div class="btn_nm">이름<input type="text"></div>
-			<div class="btn_email">질문 내용
-				<select style="height: 30px">
-						<option value="a">가장 친한 친구의 이름은?</option>
-						<option value="b">내가 졸업한 초등학교의 이름은?</option>
-						<option value="c">어릴적 나의 별명은?</option>
-				</select>
-				<br/>
-				<input type="text" style="height: 30px">
-			</div>
-			<div class="btn_mobile">휴대폰<input type="text"></div>
-			<div><input type="submit" value="확인"></div>
-		</form>
-	</section>
-
-</body>
-</html>
+   $.ajax({
+    
+    type:"POST",
+    url: url,
+    data: _data,
+    success: function(data){
+     
+     $("#popupWrapper").show();
+     $("#popupWrapper").html(data); // 넘어온 데이타는 html 형태이기 때문에, display:none으로 해두었던
+                                                        div를 show 시켜주고, 그뒤에 ajax로 가지고온 data를 넣어준다. ​
+    }, // end success
+    error:function(request,status){
+     $("#popupWrapper").hide();
+     alert("데이터 처리 중 오류가 발생했습니다.\n관리자에게 문의하세요.");
+    }
+   });  // end ajax
+   
+  }  
