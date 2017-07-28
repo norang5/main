@@ -18,8 +18,6 @@
 	<jsp:param name="centerMenuBigColor"	value="white"/>
 </jsp:include>
 
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/main.css">
 
 <style>
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
@@ -86,10 +84,6 @@ color: white;
 
 
 /* 피겨 이용 */
-
-
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
-@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 
 figure.snip1384 {
   font-family: 'Raleway', Arial, sans-serif;
