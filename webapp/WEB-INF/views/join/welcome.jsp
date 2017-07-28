@@ -5,6 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>가입완료 페이지</title>
+<style type="text/css">
+body{
+text-align: center;
+}
+</style>
 </head>
 <body>
 	<h1 align="center">환영합니다!</h1><br>
