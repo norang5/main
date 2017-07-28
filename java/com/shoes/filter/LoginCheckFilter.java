@@ -65,7 +65,8 @@ public class LoginCheckFilter implements Filter{
 		
 		if(email == null || email.equals("")){
 			System.out.println("[필터] 다음의 URL로부터 비로그인 유저의 접근이 있었습니다\n" + referURL);
-			req.getRequestDispatcher(fromURL).forward(req, res);
+			//req.getRequestDispatcher(fromURL).forward(req, res);
+			res.sendRedirect(req.getContextPath() + fromURL);
 			
 		}else{
 			System.out.println("[필터] 다음의 URL로부터 로그인 유저의 접근이 있었습니다\n" + referURL);

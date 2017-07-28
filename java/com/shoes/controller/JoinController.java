@@ -130,7 +130,7 @@ public class JoinController {
 	}
 
 	@RequestMapping(value = "logout")
-	public String logout(HttpServletRequest request, HttpSession session) {
+	public void logout(HttpServletRequest request, HttpSession session, HttpServletResponse response) {
 		session.removeAttribute("userEmail");
 
 		String url = request.getHeader("REFERER"); // 클라이언트가 요청을 보내온 페이지의
@@ -138,7 +138,7 @@ public class JoinController {
 		
 		System.out.println("로그아웃 페이지로 들어오기 전 url은: " + url);
 		
-		String toHere = "main"; // index로 이동
+		String toHere = "/main"; // index로 이동
 		if (url != null) {
 			url = url.substring(url.indexOf("//") + 2).substring(
 						request.getServerName().length()
@@ -151,8 +151,12 @@ public class JoinController {
 		}
 		
 		System.out.println("로그아웃 페이지에서 이동시킬 url은: " + toHere);
-
-		return toHere;
+		
+		try{
+			response.sendRedirect(request.getContextPath() + toHere);
+		}catch(IOException e){
+			e.printStackTrace();
+		}
 	}
 
 	/*
