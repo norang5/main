@@ -379,7 +379,7 @@
       <!-- 우측 패널(고객센터/장바구니/프로필 이미지) -->
       <nav id="right_panel">
          <c:if test="${null eq userEmail}">
-		<a href="#" class="right_panel_btn_color none_a_style" onclick='openPopup("join", "/shoes_shop/join")'>
+		<a href="join" class="right_panel_btn_color none_a_style">
 			<span style="vertical-align: middle;">회원가입</span>
 		</a>
 	</c:if>	
@@ -458,29 +458,6 @@
          var showProfile = false;
          var windowWidth=0;
 
-         function openPopup(idx, url){   	
-   	        $.ajax({
-   		        url: url,
-   		        type: "POST",
-   		        data: {
-   		        	"surIdx": idx
-   		        },
-   		        success: function(data){
-   		      
-   		      var popupX = (window.screen.width / 2) - (500/ 2);
-   		      // 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
-
-   		      var popupY= (window.screen.height /2) - (550/ 2);
-   		      // 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
-
-   		        	open("/shoes_shop/join", "", "width=550, height=500"+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
-   		        },
-	        	error:function(request,status){
-	        		alert("데이터 처리 중 오류가 발생했습니다.\n관리자에게 문의하세요.");
-	        	}
-   	        });
-	     }
-         
          //창 가로길이 조절시 메뉴 버튼 조정
          $(window).resize(function(){
         	 
@@ -714,8 +691,6 @@
             // '지난 스크롤 바 위치'에 '현재 스크롤 바 위치'를 저장.
             lastScrollTop = st;
          }
-         
-         
       </script>
    </c:if>
 </body>
