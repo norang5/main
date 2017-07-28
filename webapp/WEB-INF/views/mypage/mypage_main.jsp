@@ -23,22 +23,46 @@
 			height: 100%;
 		}
 	
-		/* 여유 공간이 있으면 width까지 늘어나고,
-		여유 공간이 없으면 min-width까지 줄어들지만
-		그 이하로 더 작아지지는 않아요. */
+		/* 좌측 메뉴바 */
 		#mainNav{
 			border: 3px solid red;
 			width: 220px;
 			min-width: 150px;
 			
 			height: 100%;
+			display: flex;
+			flex-direction: column;
 		}
 		
+		/* 메뉴바내의 각 버튼들 */
 		.navMenu{
 			border: 3px solid green;
 			height: 50px;
+			
+			-webkit-flex: 1;
+			flex: 1;
+			text-align: center;
+			
+			display: -webkit-flex;
+			display: flex;
+			-webkit-align-items: center;
+			align-items: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+			
+			cursor: pointer;
 		}
 		
+		.navMenu:HOVER{
+			opacity: 0.2;
+		}
+		
+		/* 메뉴바내의 각 버튼들 속에 있는 텍스트들 */
+		.menuText{
+			border: 1px solid black;
+		}
+		
+		/* 우측 내용 출력박스 */
 		#mainSection{
 			border: 3px solid orange;
 			min-width: 400px;
@@ -46,7 +70,7 @@
 			height: 100%;
 		}
 		
-		/* 나머지 너비의 1/1을 채워요. */
+		/* 나머지 너비의 1/n을 채워요. */
 		.flex-column{
 			-webkit-flex: 1;
 			flex: 1;
@@ -61,13 +85,13 @@
 	
 	<div id="mainContainer">
 		<nav id="mainNav">
-			<div class="navMenu">주문/결제 내역</div>
-			<div class="navMenu">장바구니</div>
-			<div class="navMenu">관심상품</div>
-			<div class="navMenu">내 정보관리</div>
-			<div class="navMenu">마일리지 사용내역</div>
-			<div class="navMenu">통계</div>
-			<div class="navMenu">재고관리</div>
+			<div class="navMenu"><div class="menuText">결제 내역</div></div>
+			<div class="navMenu"><div class="menuText">장바구니</div></div>
+			<div class="navMenu"><div class="menuText">관심상품</div></div>
+			<div class="navMenu"><div class="menuText">내 정보관리</div></div>
+			<div class="navMenu"><div class="menuText">마일리지 사용내역</div></div>
+			<div class="navMenu"><div class="menuText">통계</div></div>
+			<div class="navMenu"><div class="menuText">재고관리</div></div>
 		</nav>
 		
 		<section id="mainSection" class="flex-column">
