@@ -84,7 +84,7 @@ public class StoreController {
 		List<String> mainImgList = new ArrayList<String>();
 		
 		for(int i=0; i<postTitleList.size(); i++){
-			   body= postTitleList.get(i).getPP_BODY();
+			   	body= postTitleList.get(i).getPP_BODY();
 			
 				System.out.println("body: " + body);
 				

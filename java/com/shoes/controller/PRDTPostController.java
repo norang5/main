@@ -102,8 +102,7 @@ public class PRDTPostController {
 
         prdtPostBean.setMEM_EMAIL_PK(MEM_EMAIL_PK);
         
-        
-        prdtPostDAO.insertPRDTPost(prdtPostBean);
+ 
         
         System.out.println("본문내용\n"+prdtPostBean.getPP_BODY());
 
