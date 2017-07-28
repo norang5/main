@@ -157,16 +157,14 @@ public class StoreController {
 		List<PRDTCommentBean> commentList = storeDao.getcommentList(PP_SQ_PK);
 		System.out.println("코멘트리스트"+commentList);
 	
-		
-		
-		
-		// 이미지 뽑아오기 기능
-				Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
-				Matcher match = null;
-				String body ="";
-				String mainImg ="";
 
-		postInfo.getPP_BODY();
+		// 이미지 뽑아오기 기능
+		Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
+		Matcher match = null;
+		String body ="";
+		String mainImg ="";
+
+		body=postInfo.getPP_BODY();
 		System.out.println("body: " + body);
 		match = pattern.matcher(body);
 		

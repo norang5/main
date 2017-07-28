@@ -142,6 +142,15 @@ tr {
 }
 
 
+img{
+
+display: none;
+
+}
+
+#imgMain{
+display: inline;
+}
 
 </style>
 </head>
@@ -155,7 +164,7 @@ tr {
 		<div id='main2'>
 			<!-- 이미지 표시창 (하단에 작은 이미지 클릭시 큰 이미지 변경기능) -->
 			<div id="prdt_image">
-				<img src="${mainImg}" width="400px">
+				<img id="imgMain" src="${mainImg}" width="400px" height="400px">
 			</div>
 
 			<!-- 상품 구매 정보 표시 -->
