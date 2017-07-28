@@ -238,7 +238,7 @@ public class StoreController {
 		System.out.println(prdtCommentBean.getMEM_EMAIL_PK());
 		storeDao.insertCommentInfo(prdtCommentBean);
 		
-		return  "redirect:/product";
+		return  "redirect:/store";
 	}
 
 	

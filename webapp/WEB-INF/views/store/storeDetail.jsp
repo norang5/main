@@ -156,6 +156,10 @@ display: inline;
 display: inline;
 }
 
+#logo{
+display: inline;
+}
+
 
 
 </style>
