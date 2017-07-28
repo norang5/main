@@ -152,6 +152,10 @@ display: none;
 display: inline;
 }
 
+.instar{
+display: inline;
+}
+
 </style>
 </head>
 <body>

@@ -48,7 +48,7 @@ System.out.println("공백제거 : "+tag);
 	success: function(data){
 	    console.log(data);
 	    for( x in data.data ){
-	        $('#rudr_instafeed').append('<li><img src="'+data.data[x].images.low_resolution.url+'"></li>');
+	        $('#rudr_instafeed').append('<li><img class="instar" src="'+data.data[x].images.low_resolution.url+'"></li>');
 	    }
 	},
 	error: function(data){
