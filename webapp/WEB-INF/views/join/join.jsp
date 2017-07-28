@@ -6,10 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title>
+
+<jsp:include page="../../../resources/include/header_bar.jsp" flush="false">
+	<jsp:param name="enableSpread"		value="true"/>
+	<jsp:param name="backgroundColor"	value="#212121"/>
+	<jsp:param name="borderBottomColor"	value="black"/>
+	<jsp:param name="rightMenuColor"	value="white"/>
+	<jsp:param name="centerMenuSmallColor"	value="white"/>
+	<jsp:param name="centerMenuBigColor"	value="white"/>
+</jsp:include>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/css/main.css">
+
 <style type="text/css">
-header {
-	text-align: center;
+body{
+	background-image: url("/shoes_shop/resources/image/adipattern.jpg"); 
 }
+form{
+}
+
 table{
 	border-collapse: collapse;
 }
@@ -74,21 +89,25 @@ table{
 				}).open();
 	}
 </script>
-
 </head>
 <body>
-	<form id="joinForm" action="welcome" method="post">
-		<header>
+<div>
+	<form id="joinForm" action="welcome" method="post" style="text-align: center; width:610px; height:450px; margin:0 auto; margin-top:150px; background-color: white; border: 3px solid black;">
+		<header style="margin: 10px">
 			<img src="/shoes_shop/resources/image/memberJoin.jpg">
 		</header>
 		<table border="1" align="center">
 			<tr>
 				<td>Email</td>
 				<td><input type="text" id="MEM_EMAIL_PK" name="MEM_EMAIL_PK" style="width: 98%;" /></td>
-				<td style="text-align: center;"><a href="#" onclick="javascript: emailDuplicateCheck()">이메일 중복 검사</a></td>
+				<td style="text-align: center; color: graytext;">
+					<button style="background: green;border-color: green;">
+						<a style="color: white; text-decoration: none;" href="#" onclick="javascript: emailDuplicateCheck()">중복 검사</a>
+					</button>
+				</td>
 			</tr>
 			<tr>
-				<td colspan="3" style="text-align: center; font-weight: bold;">
+				<td colspan="3" style="text-align: center; font-weight: bold; color: red;">
 					Email이 아이디로 사용됩니다.</td>
 			</tr>
 			<tr>
@@ -106,13 +125,9 @@ table{
 					style="width: 99%;" /></td>
 			</tr>
 			<tr>
-				<td colspan="3" style="text-align: center;">
-					<!-- <select id="question" name="question" style="width: 100%; height: 30px; text-align: center; ">
-						<option value="a">가장 친한 친구의 이름은?</option>
-						<option value="b">내가 졸업한 초등학교의 이름은?</option>
-						<option value="c">어릴적 나의 별명은?</option>
-					</select> -->
-					<select name="question">
+				<td>질문</td>
+				<td colspan="3">
+					<select name="question" style="width: 100%; height: 25px;">
 						<c:forEach var="item" items="${pwfind}">
 							<option value="${item.PW_FIND_ASK_PK}">${item.PW_FIND_ASK_PK}</option>
 						</c:forEach>
@@ -120,13 +135,14 @@ table{
 				</td>
 			</tr>
 			<tr>
+				<td>답변</td>
 				<td colspan="3" style="text-align: center;">
 					<input type="text" style="width: 99%">
 				</td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td colspan="2"><input type="text" id="sample4_postcode" name="MEM_ZIPCODE"
+				<td colspan="2" style="text-align: left;"><input type="text" id="sample4_postcode" name="MEM_ZIPCODE"
 					placeholder="우편번호"> <input type="button"
 					onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 					<input type="text" id="sample4_roadAddress" name="MEM_ROAD_ADDRESS"
@@ -148,10 +164,10 @@ table{
 				<td colspan="2"><input type="text" name="MEM_CELL_PHONE"
 					style="width: 99%;"/></td>
 			</tr>
-			<tr>
-				<td colspan="3" align="center"><a href="#" onclick="javascript: validateCheck()">확인</a></td>
-			</tr>
 		</table>
+					<button style="border-color: black; background-color: black; margin:10px; width: 100px; height: 30px; border-radius: 15px">
+						<a style="color: white; text-decoration: none; margin: 10px;" href="#" onclick="javascript: validateCheck()">확인</a>
+					</button>
 	</form>
 	
 	<script>
@@ -214,5 +230,6 @@ table{
 			}
 		}
 	</script>
+</div>
 </body>
 </html>

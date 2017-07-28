@@ -3,6 +3,8 @@ package com.shoes.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,7 +76,9 @@ public class PRDTPostController {
 			System.out.println("포스트 넘버 :" +postNum);
 			if(postNum==null){
 					prdtlist.add(name);
-			}else{System.out.println("판매글이 존재합니다");}
+			}else{System.out.println("판매글이 존재합니다");
+			
+			}
 		}
 		
 		model.addAttribute("prdtlist", prdtlist);
@@ -85,9 +89,24 @@ public class PRDTPostController {
 	
 	
 	@RequestMapping(value = "/addPost", method = RequestMethod.POST)
-	public String submit(PRDTPostBean prdtPostBean){
+    public String submit(PRDTPostBean prdtPostBean, HttpSession session){
 
-		
+        // 1. 작성자 정보를 알아냅니다. 만약 비회원의 요청이라면 팅겨냅니다.
+        String MEM_EMAIL_PK = (String)session.getAttribute("userEmail");
+        if(MEM_EMAIL_PK == null || MEM_EMAIL_PK.equals("")){
+            return "redirect:/main";
+        }
+        
+        // 2. 회원등급을 알아냅니다. 이 과정에서 DB에 등록되지 않는 유저라면 팅겨냅니다.
+        // -- 이 기능은 관리자 등급을 어디서 부여할지 확정한 이후에 다루는게 좋겠습니다.
+
+        prdtPostBean.setMEM_EMAIL_PK(MEM_EMAIL_PK);
+        
+        
+        prdtPostDAO.insertPRDTPost(prdtPostBean);
+        
+        System.out.println("본문내용\n"+prdtPostBean.getPP_BODY());
+
 		String name = prdtPostBean.getPCI_PRDT_NAME();
 			
 		System.out.println("상품이름"+name);

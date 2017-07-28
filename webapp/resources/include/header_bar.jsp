@@ -341,7 +341,7 @@
       <article id="inner_top_container">
          <!-- 좌측 패널(로고) -->
          <nav id="left_panel">
-            <a href="./main" class="none_a_style">
+            <a href="<%=request.getContextPath()%>/main" class="none_a_style">
                <img id="logo" src="${pageContext.request.contextPath}/image/logo.png"/>
                <span id="logo_text">adidas original</span>
             </a>
@@ -380,21 +380,23 @@
       <!-- 우측 패널(고객센터/장바구니/프로필 이미지) -->
       <nav id="right_panel">
          <c:if test="${null eq userEmail}">
-		<a href="join" class="right_panel_btn_color none_a_style">
+		<a href="<%=request.getContextPath()%>/join" class="right_panel_btn_color none_a_style">
 			<span style="vertical-align: middle;">회원가입</span>
 		</a>
 	</c:if>	
          <c:choose>
             <c:when test="${null eq userEmail}">
             <!-- 비로그인 유저라면 로그인 버튼 표시 -->
-               <a href="login" class="right_panel_btn_color none_a_style">
+               <a href="<%=request.getContextPath()%>/login" class="right_panel_btn_color none_a_style">
                   <span style="vertical-align: middle;">로그인</span>
                </a>
             </c:when>
             
             <c:when test="${!empty userEmail}">
             	<!-- 로그인 유저라면 장바구니 표시 -->
-		<a href="mypage/basket" class="right_panel_btn_color none_a_style">
+
+		<a href="<%=request.getContextPath()%>/mypage/basket?header=true" class="right_panel_btn_color none_a_style">
+
 			<span class="shopping_basket"></span>
 			<span style="vertical-align: middle;">장바구니</span>
 		</a>
@@ -428,7 +430,7 @@
                               <a href="#" class="profile_a_color nothingProfile">개인정보 보호</a>
                            </div class="nothingProfile">
                            <a   class="my_account_btn none_a_style nothingProfile"
-                              href="mypage/main"
+                              href="<%=request.getContextPath()%>/mypage/main"
                            >내 계정</a>
                         </div>
                      </div>
@@ -437,7 +439,7 @@
                            <a class="gray_btn none_a_style nothingProfile" href="#">버튼</a>
                         </div>
                         <div style="display: table-cell;text-align: right"  class="nothingProfile">
-                           <a class="gray_btn none_a_style nothingProfile" href="logout">로그아웃</a>
+                           <a class="gray_btn none_a_style nothingProfile" href="<%=request.getContextPath()%>/logout">로그아웃</a>
                         </div>
                      </div>
                   </article>
