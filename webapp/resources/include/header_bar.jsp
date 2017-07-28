@@ -451,6 +451,56 @@
    </header>
    
    <script src = "https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   
+   <script type="text/javascript">
+	$(function(){
+		// 클릭이벤트 발생시 프로필 팝업창의 숨기기/보이기 여부 판단
+		$(window).click(function(event){
+			if($(event.target).hasClass('showProfile')){
+				if(showProfile == true){
+					hiddenProfile();
+	                
+				}else{
+					visibleProfile()
+				}
+			}else if($(event.target).hasClass('nothingProfile')){
+				return;
+			}else{
+				hiddenProfile();
+			}
+		});
+	});
+	
+		// 프로필 팝업 숨기기
+	    function hiddenProfile(){
+	       $('.profile_arrow').css({
+	          'display':'none'
+	       });
+	       
+	       $('#profile_container').css({
+	          'display':'none'
+	       });
+	       
+	       showProfile = false;
+	    }
+	    
+	    // 프로필 팝업 보이기
+	    function visibleProfile(){
+	       $('.profile_arrow').css({
+	          'display':'block'
+	       	
+	       });
+	       
+	       $('#profile_container').css({
+	          'display':'block'
+	       
+	       });
+	       
+	       showProfile = true;
+	    }
+   	
+   </script>
+   
    <c:if test="<%=enableSpread%>">
       <script type="text/javascript">
          var lastScrollTop = 0;
@@ -520,51 +570,7 @@
             $(window).scroll(function(event){
                didScroll = true;
             });
-            
-            // 클릭이벤트 발생시 프로필 팝업창의 숨기기/보이기 여부 판단
-            $(window).click(function(event){
-               if($(event.target).hasClass('showProfile')){
-                  if(showProfile == true){
-                     hiddenProfile();
-                     
-                  }else{
-                     visibleProfile()
-                  }
-               }else if($(event.target).hasClass('nothingProfile')){
-                  return;
-               }else{
-                  hiddenProfile();
-               }
-            });
          });
-         
-         // 프로필 팝업 숨기기
-         function hiddenProfile(){
-            $('.profile_arrow').css({
-               'display':'none'
-            });
-            
-            $('#profile_container').css({
-               'display':'none'
-            });
-            
-            showProfile = false;
-         }
-         
-         // 프로필 팝업 보이기
-         function visibleProfile(){
-            $('.profile_arrow').css({
-               'display':'block'
-            	
-            });
-            
-            $('#profile_container').css({
-               'display':'block'
-            
-            });
-            
-            showProfile = true;
-         }
          
          // 500ms 마다 스크롤 이벤트가 있었는지 확인
          setInterval(function(){
