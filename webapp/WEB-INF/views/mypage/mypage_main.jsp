@@ -34,6 +34,10 @@
 			height: 100%;
 		}
 		
+		.navMenu{
+			border: 3px solid green;
+			height: 50px;
+		}
 		
 		#mainSection{
 			border: 3px solid orange;
@@ -57,7 +61,13 @@
 	
 	<div id="mainContainer">
 		<nav id="mainNav">
-			
+			<div class="navMenu">주문/결제 내역</div>
+			<div class="navMenu">장바구니</div>
+			<div class="navMenu">관심상품</div>
+			<div class="navMenu">내 정보관리</div>
+			<div class="navMenu">마일리지 사용내역</div>
+			<div class="navMenu">통계</div>
+			<div class="navMenu">재고관리</div>
 		</nav>
 		
 		<section id="mainSection" class="flex-column">
