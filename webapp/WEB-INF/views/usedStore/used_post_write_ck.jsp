@@ -23,7 +23,7 @@
 	<br>
 	중고상품 판매글 작성<br>
 	<br>
-	<form id="form" method="post" method="post" enctype="multipart/form-data">
+	<form id="form" action="used_post_write_ck_submit" method="post" enctype="multipart/form-data">
 	<!-- 스프링의 form 태그 라이브러리. commandName에 객체의 아이디를 써주면 디스패쳐서블릿에서 해당 아이디의 객체와 결합시켜준다. -->
 	<!-- 또한, 자동으로 POST 방식으로 전송하도록 정의되어 있다. get방식으로 보내고 싶으면 method="get"을 써주자. -->
 		<table style="

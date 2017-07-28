@@ -142,7 +142,7 @@ public class UsedTradeController{
 	// 중고거래글 작성 페이지로 이동(CKEditor)
 	// 파라미터로 게시글 번호가 넘어온다면 DB에서 받아와서 함께 전송해주고(수정),
 	// 파라미터로 아무값도 안넘어온다면 그대로 글 작성 페이지로 연결해준다.(새로 글쓰기)
-	@RequestMapping(value = "/used_post_write_ck", method = RequestMethod.GET)
+	@RequestMapping(value = "used_post_write_ck", method = RequestMethod.GET)
 	public ModelAndView usedStorePostWriteCKGet(@RequestParam(value = "UTP_SQ_PK", defaultValue = "0") int UTP_SQ_PK, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		
@@ -220,7 +220,7 @@ public class UsedTradeController{
 	}
 	
 	// 클라이언트 쪽에서 중고거래글 작성후에, 그 데이터를 서버로 전송할때.(CKEditor)
-	@RequestMapping(value = "/used_post_write_ck", method = RequestMethod.POST)
+	@RequestMapping(value = "used_post_write_ck_submit", method = RequestMethod.POST)
 	public ModelAndView usedStroePostWritePEGet(UsedTradePostTbBean usedPostBean, HttpServletRequest request, HttpSession session){
 		System.out.println("전송받음 " + usedPostBean);
 		/*
@@ -335,7 +335,7 @@ public class UsedTradeController{
 	}
 	
 	// 게시글 클릭시 상세화면 보여주기
-	@RequestMapping("/usedPostDetail")
+	@RequestMapping("usedPostDetail")
 	public ModelAndView usedPostDetailView(HttpServletRequest request){
 		ModelAndView mav = new ModelAndView();
 		int UTP_SQ_PK = Integer.parseInt(request.getParameter("UTP_SQ_PK"));
@@ -353,7 +353,7 @@ public class UsedTradeController{
 	}
 	
 	// 중고거래 게시글에 신규 댓글 등록 요청시
-	@RequestMapping("/usedAddComment")
+	@RequestMapping("usedAddComment")
 	public void usedAddComment(UtpCommentTbBean utpCommentTbBean, HttpServletResponse response, HttpServletRequest request, HttpSession session){
 		ModelAndView mav = new ModelAndView();
 		PrintWriter out = null;

@@ -94,15 +94,35 @@
 
 	중고거래페이지
 	<br>
-	<input	style="
-			color: white;
-			background-color: skyBlue;
-			border: 1px solid black;
-		"
-		type="button" value="글쓰기"
-		onclick="location.href='used_post_write_ck'">
-	<hr>
-
+	<c:choose>
+		<%-- 비로그인 상태라면 로그인 하라고 알림 --%>
+		<c:when test="${null eq userEmail}">
+			<input	style="
+					color: white;
+					background-color: skyBlue;
+					border: 1px solid black;
+				"
+				type="button" value="글쓰기"
+				onclick="javascript: loginCheck()">
+		</c:when>
+		<%-- 로그인 상태라면 글쓰기 페이지로 이동--%>
+		<c:when test="${!empty userEmail}">
+			<input	style="
+					color: white;
+					background-color: skyBlue;
+					border: 1px solid black;
+				"
+				type="button" value="글쓰기"
+				onclick="location.href='used_post_write_ck'">	
+		</c:when>
+	</c:choose>
+		
+	<script type="text/javascript">
+		function loginCheck(){
+				alert('로그인이 필요한 기능입니다.');
+		}
+	</script>	
+		
 	<c:choose>
 		<c:when test="${null eq usedTradePostTbBeanList.get(0).UTP_SQ_PK}">
 			<h2>등록된 게시글이 없습니다</h2>
