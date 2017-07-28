@@ -102,7 +102,7 @@ public class StoreController {
 							
 							StringBuilder builder = new StringBuilder();
 							builder.append(request.getContextPath());
-							builder.append("/resources/image/noimg_green.png");
+							builder.append("/resources/image/noImage.png");
 							mainImgList.add(builder.toString());
 						}
 						
@@ -110,7 +110,7 @@ public class StoreController {
 				}else{
 					StringBuilder builder = new StringBuilder();
 					builder.append(request.getContextPath());
-					builder.append("/resources/image/noimg_green.png");
+					builder.append("/resources/image/noImage.png");
 					mainImgList.add(builder.toString());
 					
 					System.out.println("상품목록없음");
@@ -146,14 +146,22 @@ public class StoreController {
 		
 		int PCI_SQ_PK = commonInfo.getPCI_SQ_PK();
 		
+		
+		//포스트 정보 가져오기 
 		PRDTPostBean postInfo = storeDao.getPostInfo(PCI_SQ_PK);
 		System.out.println("Data: " + postInfo);
+		
 		int PP_SQ_PK = postInfo.getPP_SQ_PK();
 		System.out.println("피피에스큐피케이: " + PP_SQ_PK);
 	
+		
+		//상품정보 가져오기 
+		
 		List<PRDTBean> prdtInfo=storeDao.getPRDTInfo(PCI_SQ_PK);
 		System.out.println("Data: " + prdtInfo);
 		
+		
+		//코멘트 리스트 받아오기
 		List<PRDTCommentBean> commentList = storeDao.getcommentList(PP_SQ_PK);
 		System.out.println("코멘트리스트"+commentList);
 	
@@ -175,7 +183,7 @@ public class StoreController {
 			
 			StringBuilder builder = new StringBuilder();
 			builder.append(request.getContextPath());
-			builder.append("/resources/image/noimg_green.png");
+			builder.append("/resources/image/noImage.png");
 			mainImg=builder.toString();
 		}
 		

@@ -156,10 +156,7 @@ display: inline;
 display: inline;
 }
 
-#loginPlz{
 
- appearance: button;
- }
 
 </style>
 </head>
@@ -172,7 +169,7 @@ display: inline;
 		</div>
 		<div id='main2'>
 			<!-- 이미지 표시창 (하단에 작은 이미지 클릭시 큰 이미지 변경기능) -->
-			<div id="prdt_image">
+			<div id="prdt_image" >
 				<img id="imgMain" src="${mainImg}" width="400px" height="400px">
 			</div>
 
@@ -373,7 +370,7 @@ display: inline;
 	<div id="new_review"></div>
 	<div id="button"><c:choose>
                      <c:when test="${null eq userEmail}">
-               <a id="loginPlz" href="login">로그인 후 작성</a>
+               <a href="login" role="button">로그인 후 작성</a>
                      </c:when>
                      <c:when test="${!empty userEmail}">
                <button type="button" id="addReview">후기 쓰기</button>

@@ -374,7 +374,7 @@ $(".hover").mouseleave(
     <h3>Location</h3>
     <p>가까운 오프라인 매장을 찾아보세요</p><i class="ion-ios-arrow-right"></i>
   </figcaption>
-  <a href="./admin"></a>
+  <a href="./location"></a>
 </figure>
 
 <!-- 	<table>

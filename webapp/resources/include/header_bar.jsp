@@ -367,7 +367,7 @@
                   <span style="vertical-align: super;">USED-ITEM</span>
                </li>
             </a>
-            <a class="none_a_style" href="<%=request.getContextPath()%>/admin">
+            <a class="none_a_style" href="<%=request.getContextPath()%>/location">
 
                <li class="menu_btn">
                   <span style="vertical-align: super;">LOCATION</span>
