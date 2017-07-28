@@ -605,9 +605,9 @@
                });
                
                $('.menu_btn').css({
-                  'font-size':'2.0em',
+                  'font-size':'1.8em',
                   'color':'<%= menuBtnBigColor %>',
-                  'margin':'0 30px',
+                  'margin':'0 20px',
                   'max-height':'80px',
       
                         

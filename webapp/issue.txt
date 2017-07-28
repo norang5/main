@@ -23,9 +23,6 @@
 - 로그아웃후 JoinController에서 바로 이전 페이지로 보내지 못하고 404에러를 출력하는 문제
 - 데이터가 없을 경우, PRODUCT 메뉴에 접근할 수 없는 문제 
 - 가로 1000px에서 헤더의 ABOUT버튼이 좌측 로고에 파묻히는 문제
-
-
-
 - 메인에 들어갈때마다 X main:586 GET http://localhost:8090/shoes_shop/css/main.css
 에러가 브라우저 콘솔창에 출력되는 문제
 - 헤더에 enableSpread=false 옵션을 주었을때 ABOUT버튼이 좌측 로고의 adidas original과 겹쳐보이는 문제
