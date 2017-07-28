@@ -46,6 +46,10 @@ padding:60px;
 			<h2>판매중인 상품이 없습니다</h2>
 		</c:when>
 		
+			<c:when test="${empty categoryPrdtList}">
+			<h2>판매중인 상품이 없습니다</h2>
+		</c:when>
+		
 		<c:otherwise>
 		<c:forEach var="item" items="${categoryPrdtList}" varStatus="status">
 			<table class="items" onclick="location.href='./product?category=<%=category%>&name=${item.PCI_PRDT_NAME}'">

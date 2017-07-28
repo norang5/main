@@ -293,7 +293,7 @@ tr {
 		<!--인스타 리뷰, 추천상품 등 -->
 		<div id="prdt_instar">
 			<div id="instar_image">
-				<jsp:include page="../../../resources/include/instar.jsp"
+				<jsp:include page="../../../resources/include/instar.jsp?category=<%=category%>"
 					flush="false" />
 			</div>
 		</div>
