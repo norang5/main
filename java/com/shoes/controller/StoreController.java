@@ -87,25 +87,34 @@ public class StoreController {
 		System.out.println(postTitleList);
 		if(postTitleList!=null){
 			for(int i=0; i<postTitleList.size(); i++){
-			   	body= postTitleList.get(i).getPP_BODY();
-			
-				System.out.println("body: " + body);
-				
-				match = pattern.matcher(body);
-				
-				if(match.find()){	// 본문에 이미지 태그가 있다면,
-					mainImg = match.group(1);	// 글 내용 중에 첫번째 이미지 태그를 뽑아옴.
-					mainImgList.add(mainImg);
+				if(postTitleList.get(i)!=null){
+					   	body= postTitleList.get(i).getPP_BODY();
 					
+						System.out.println("body: " + body);
+						
+						match = pattern.matcher(body);
+						
+						if(match.find()){	// 본문에 이미지 태그가 있다면,
+							mainImg = match.group(1);	// 글 내용 중에 첫번째 이미지 태그를 뽑아옴.
+							mainImgList.add(mainImg);
+							
+						}else{
+							
+							StringBuilder builder = new StringBuilder();
+							builder.append(request.getContextPath());
+							builder.append("/resources/image/noimg_green.png");
+							mainImgList.add(builder.toString());
+						}
+						
+						System.out.println("mainImg: " + mainImg);
 				}else{
-					
 					StringBuilder builder = new StringBuilder();
 					builder.append(request.getContextPath());
 					builder.append("/resources/image/noimg_green.png");
 					mainImgList.add(builder.toString());
+					
+					System.out.println("상품목록없음");
 				}
-				
-				System.out.println("mainImg: " + mainImg);
 			}
 		}else{
 			System.out.println("상품목록없음");
