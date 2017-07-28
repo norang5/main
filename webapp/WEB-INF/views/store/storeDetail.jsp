@@ -156,6 +156,11 @@ display: inline;
 display: inline;
 }
 
+#loginPlz{
+
+ appearance: button;
+ }
+
 </style>
 </head>
 <body>
@@ -194,7 +199,7 @@ display: inline;
 								</tr>
 								<tr>
 									<td>색상</td>
-									<td><%-- <form:select path="PRDT_COLOR" items="${prdtInfo.get(0).PRDT_COLOR}" /> --%></td>
+									<td> <%-- <form:select path="PRDT_COLOR" items="${prdtInfo.getPRDT_COLOR}" />--%></td>
 								</tr>
 
 								<tr>
@@ -366,9 +371,19 @@ display: inline;
 	</table>
 
 	<div id="new_review"></div>
-	<div id="button">
+	<div id="button"><c:choose>
+                     <c:when test="${null eq userEmail}">
+               <a id="loginPlz" href="login">로그인 후 작성</a>
+                     </c:when>
+                     <c:when test="${!empty userEmail}">
+               <button type="button" id="addReview">후기 쓰기</button>
+                     </c:when>
+                     <c:otherwise>
+               <span style="color: white;">error</span>
+            </c:otherwise>
+                  </c:choose>
 
-		<button type="button" id="addReview">후기 쓰기</button>
+		
 	</div>
 	
 		
