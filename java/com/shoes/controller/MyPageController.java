@@ -29,5 +29,9 @@ public class MyPageController{
 		return mav;
 	}
 	
-	
+	@RequestMapping("mypage/product")
+	public ModelAndView proudct(){
+		ModelAndView mav = new ModelAndView("mypage/product");
+		return mav;
+	}
 }

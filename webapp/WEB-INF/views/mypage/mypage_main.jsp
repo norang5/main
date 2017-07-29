@@ -102,7 +102,7 @@
 				$('#mainNav .navMenu:nth-child(4)').click({url:'<%=ctx%>/'}, loadPage);
 				$('#mainNav .navMenu:nth-child(5)').click({url:'<%=ctx%>/'}, loadPage);
 				$('#mainNav .navMenu:nth-child(6)').click({url:'<%=ctx%>/'}, loadPage);
-				$('#mainNav .navMenu:nth-child(7)').click({url:'<%=ctx%>/'}, loadPage);
+				$('#mainNav .navMenu:nth-child(7)').click({url:'<%=ctx%>/mypage/product'}, loadPage);
 			});
 			
 			function loadPage(event){

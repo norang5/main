@@ -418,27 +418,16 @@
                   <article id="profile_container" class="nothingProfile">
                   <!-- 프로필 이미지 버튼 클릭시 표시될 프로필 팝업 박스 -->
                      <div id="profile_top_panel" class="nothingProfile">
-                        <a class="top_inner_left_panel none_a_style nothingProfile">
-                           <div   class="user_big_image nothingProfile"></div>
-                        </a>
                         <div class="top_inner_right_panel nothingProfile">
                            <div class="nothingProfile">홍길동</div>
                            <div class="nothingProfile">${userEmail}</div>
-                           <div class="nothingProfile">
-                              <a href="#" class="profile_a_color nothingProfile">프로필</a>
-                              -
-                              <a href="#" class="profile_a_color nothingProfile">개인정보 보호</a>
-                           </div class="nothingProfile">
                            <a   class="my_account_btn none_a_style nothingProfile"
                               href="<%=request.getContextPath()%>/mypage/main"
                            >내 계정</a>
                         </div>
                      </div>
                      <div id="profile_bottom_panel" class="nothingProfile">
-                        <div style="display: table-cell;text-align: left"  class="nothingProfile">
-                           <a class="gray_btn none_a_style nothingProfile" href="#">버튼</a>
-                        </div>
-                        <div style="display: table-cell;text-align: right"  class="nothingProfile">
+                        <div style="display: table-cell;text-align: center;"  class="nothingProfile">
                            <a class="gray_btn none_a_style nothingProfile" href="<%=request.getContextPath()%>/logout">로그아웃</a>
                         </div>
                      </div>

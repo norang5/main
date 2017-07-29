@@ -88,6 +88,19 @@
 		#paging_bar_ui{
 			font-size: 2em;
 		}
+		
+		#addPostBtn{
+			position: fixed;
+			right: 2px;
+			bottom: 20px;
+			z-index: 10;
+			
+			width: 42px;
+			height: 42px;
+			cursor: pointer;
+			background-image:url("resources/image/addpostbtn.png");
+			padding: 0;
+		}
 	</style>
 </head>
 <body>
@@ -97,23 +110,13 @@
 	<c:choose>
 		<%-- 비로그인 상태라면 로그인 하라고 알림 --%>
 		<c:when test="${null eq userEmail}">
-			<input	style="
-					color: white;
-					background-color: skyBlue;
-					border: 1px solid black;
-				"
-				type="button" value="글쓰기"
-				onclick="javascript: loginCheck()">
+			<div	onclick="javascript: loginCheck()"
+				id="addPostBtn"></div>
 		</c:when>
 		<%-- 로그인 상태라면 글쓰기 페이지로 이동--%>
 		<c:when test="${!empty userEmail}">
-			<input	style="
-					color: white;
-					background-color: skyBlue;
-					border: 1px solid black;
-				"
-				type="button" value="글쓰기"
-				onclick="location.href='used_post_write_ck'">	
+			<div	onclick="location.href='used_post_write_ck'"
+				id="addPostBtn"></div>	
 		</c:when>
 	</c:choose>
 		
