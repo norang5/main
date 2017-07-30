@@ -253,16 +253,16 @@
          border-radius: 2px;
          color: #000;
          text-align: left;
-         min-width: 315px;
-         min-height: 150px;
          background-color: white;
          z-index: 315;
          display: none;
          transition-duration: 3s;
+       
       }
       
       #profile_top_panel{
          margin: 15px;
+         text-align: center;
       }
       
       .top_inner_left_panel{
@@ -284,23 +284,18 @@
       .top_inner_right_panel{
          display: inline-block;
          vertical-align: top;
+         text-align: center;
       }
       
       .my_account_btn{
          display: inline-block;
-         color: white;
-         background: #4d90fe;
-         border: 1px solid #3079ed;
-         border-radius: 2px;
          font-weight: bold;
-         margin: 10px 0 0 0;
-         padding: 0 12px;
+         color: black;
       }
       
       #profile_bottom_panel{
          padding: 10px 0;
          width: 100%;
-         display: table;
          border-top: 1px solid #ccc;
          borrder-color: rgba(0,0,0,.2);
          background: #f5f5f5;
@@ -312,14 +307,15 @@
       
       .gray_btn{
          color: #666;
-         margin: 0 20px;
+         margin: 0 10px;
          background-color: #f8f8f8;
          border: 1px solid #c6c6c6;
          display: inline-block;
-         line-height: 50px;
+         line-height: 52px;
          padding: 0 12px;
          border-radius: 2px;
          cursor: pointer;
+         box-sizing: border-box;
       }
       
       /* 후손 선택자. right_panel안에 있는 모든 user_smal_image에 적용 */
@@ -395,7 +391,7 @@
             <c:when test="${!empty userEmail}">
             	<!-- 로그인 유저라면 장바구니 표시 -->
 
-		<a href="<%=request.getContextPath()%>/mypage/basket?header=true" class="right_panel_btn_color none_a_style">
+		<a href="<%=request.getContextPath()%>/mypage/main?page=basket" class="right_panel_btn_color none_a_style">
 
 			<span class="shopping_basket"></span>
 			<span style="vertical-align: middle;">장바구니</span>
@@ -407,29 +403,26 @@
                      <!-- 아무동작도 안하는 코드를 넣음으로써 클릭시 페이지 상단으로의 이동을 방지함 -->
                      <a   href="javascript:;"
                         class="right_panel_btn_color none_a_style"
-                        title="계정: 홍길동(${userEmail})"
+                        title="계정: ${userEmail}"
                         role="button"
                      >
                         <span class="user_small_image showProfile"></span>   
                      </a>
                      <!-- 프로필 박스상단에 붙은 세모모양 꼭지 -->
-                     <div class="profile_arrow"></div>
+                     <!-- <div class="profile_arrow"></div> -->
                   </article>
                   <article id="profile_container" class="nothingProfile">
                   <!-- 프로필 이미지 버튼 클릭시 표시될 프로필 팝업 박스 -->
                      <div id="profile_top_panel" class="nothingProfile">
                         <div class="top_inner_right_panel nothingProfile">
-                           <div class="nothingProfile">홍길동</div>
-                           <div class="nothingProfile">${userEmail}</div>
+                           <div class="nothingProfile" style="color: gray;">${userEmail}</div>
                            <a   class="my_account_btn none_a_style nothingProfile"
                               href="<%=request.getContextPath()%>/mypage/main"
-                           >내 계정</a>
+                           >마이 페이지</a>
                         </div>
                      </div>
                      <div id="profile_bottom_panel" class="nothingProfile">
-                        <div style="display: table-cell;text-align: center;"  class="nothingProfile">
-                           <a class="gray_btn none_a_style nothingProfile" href="<%=request.getContextPath()%>/logout">로그아웃</a>
-                        </div>
+                         <a class="gray_btn none_a_style nothingProfile" href="<%=request.getContextPath()%>/logout">로그아웃</a>
                      </div>
                   </article>
                </section>
@@ -481,12 +474,12 @@
 	    // 프로필 팝업 보이기
 	    function visibleProfile(){
 	       $('.profile_arrow').css({
-	          'display':'block'
+	          'display':'inline-block'
 	       	
 	       });
 	       
 	       $('#profile_container').css({
-	          'display':'block'
+	          'display':'inline-block'
 	       
 	       });
 	       

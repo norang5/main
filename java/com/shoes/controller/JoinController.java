@@ -63,7 +63,7 @@ public class JoinController {
 
 
 	@RequestMapping("welcome")
-	public ModelAndView welcome(HttpServletRequest request, JoinBean bean) {
+	public ModelAndView welcome(HttpServletRequest request, JoinBean bean, HttpSession session) {
 
 		System.out.println(bean);
 
@@ -84,7 +84,9 @@ public class JoinController {
 		} else {
 			id = id.substring(0, id.indexOf('@'));
 		}
-
+		
+		
+		
 		bean.setMEM_ID(id);
 		bean.setGRADE_ST_PK("일반회원");
 		bean.setMEM_JOIN_DT(new java.sql.Date(new java.util.Date().getTime()));
@@ -92,6 +94,9 @@ public class JoinController {
 		System.out.println(bean);
 		
 		mb.insertMemberTb(bean);
+		
+		session.setAttribute("userEmail", bean.getMEM_EMAIL_PK());
+		
 		mav.addObject("name", bean.getMEM_EMAIL_PK());
 		return mav;
 	}

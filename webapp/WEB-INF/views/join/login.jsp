@@ -6,13 +6,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인</title>
 <style type="text/css">
-section {
-	width:1000px;
-	overflow:hidden;
-	text-align: center;
+
+html, body{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
 }
-#id_pw_find{
-	margin-left: 108px;
+
+section {
+	text-align: center;
+	margin: 0 auto;
+	box-sizing: border-box;
+	width: 330px;
+	height: 240px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -180px;
+	margin-left: -165px;
 }
 
 </style>
@@ -27,6 +39,7 @@ section {
 				style="width: 306px; height: 30px; margin: 1px;; background-color: black; color: white;"><br>
 		</form>
 		<div id="id_pw_find">
+				<a href="/shoes_shop/join"><img src="/shoes_shop/resources/image/join.png"></a>
 				<a href="/shoes_shop/id_find"><img src="/shoes_shop/resources/image/id_find.jpg" name="id_find"></a>
 				<a href="/shoes_shop/pw_find"><img src="/shoes_shop/resources/image/pw_find.jpg" name="pw_find"></a>
 		</div>

@@ -44,7 +44,6 @@
 		<filter-name>LoginBlock</filter-name>
 		<url-pattern>/used_post_write_ck</url-pattern>
 		<url-pattern>/used_post_write_ck_submit</url-pattern>
-		<url-pattern>/mypage/*</url-pattern>
 	</filter-mapping>
 	
 	

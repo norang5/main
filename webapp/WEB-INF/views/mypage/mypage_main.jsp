@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String ctx = request.getContextPath(); //콘텍스트명 얻어오기.
 %>
+<%
+	//String menuUrl = ctx + "/mypage/basket";
+	String menuUrl = (String)request.getAttribute("menuUrl");
+	System.out.println("페이지에서 menuUrl: " + menuUrl);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,18 +32,20 @@
 	
 		/* 좌측 메뉴바 */
 		#mainNav{
-			border: 3px solid red;
 			width: 220px;
 			min-width: 150px;
 			
 			height: 100%;
 			display: flex;
 			flex-direction: column;
+			
+			margin-right: 5px;
 		}
 		
 		/* 메뉴바내의 각 버튼들 */
 		.navMenu{
-			border: 3px solid green;
+			border: 3px solid #D9D9D9;
+			background-color: #FAFAFA;
 			height: 50px;
 			
 			-webkit-flex: 1;
@@ -54,18 +63,19 @@
 		}
 		
 		.navMenu:HOVER{
-			opacity: 0.2;
+			background-color: #E1302A;
+			color: white;
 		}
 		
 		/* 메뉴바내의 각 버튼들 속에 있는 텍스트들 */
 		.menuText{
-			border: 1px solid black;
 		}
 		
 		/* 우측 내용 출력박스 */
 		#mainSection{
-			border: 3px solid orange;
+			border: 3px solid #E0E0E0;
 			min-width: 400px;
+			padding: 15px;
 			
 			height: 100%;
 		}
@@ -96,12 +106,12 @@
 		
 		<script type="text/javascript">
 			$(function(){
-				$('#mainNav .navMenu:nth-child(1)').click({url:'<%=ctx%>/'}, loadPage);
+				$('#mainNav .navMenu:nth-child(1)').click({url:'<%=ctx%>/mypage/payment_info'}, loadPage);
 				$('#mainNav .navMenu:nth-child(2)').click({url:'<%=ctx%>/mypage/basket'}, loadPage);
-				$('#mainNav .navMenu:nth-child(3)').click({url:'<%=ctx%>/'}, loadPage);
-				$('#mainNav .navMenu:nth-child(4)').click({url:'<%=ctx%>/'}, loadPage);
-				$('#mainNav .navMenu:nth-child(5)').click({url:'<%=ctx%>/'}, loadPage);
-				$('#mainNav .navMenu:nth-child(6)').click({url:'<%=ctx%>/'}, loadPage);
+				$('#mainNav .navMenu:nth-child(3)').click({url:'<%=ctx%>/mypage/interest'}, loadPage);
+				$('#mainNav .navMenu:nth-child(4)').click({url:'<%=ctx%>/mypage/mileage_history'}, loadPage);
+				$('#mainNav .navMenu:nth-child(5)').click({url:'<%=ctx%>/mypage/my_info'}, loadPage);
+				$('#mainNav .navMenu:nth-child(6)').click({url:'<%=ctx%>/mypage/chart'}, loadPage);
 				$('#mainNav .navMenu:nth-child(7)').click({url:'<%=ctx%>/mypage/product'}, loadPage);
 			});
 			
@@ -124,8 +134,13 @@
 		</section>
 	</div>
 	
-	<script>
-		
-	</script>
+	<c:if test="${!empty menuUrl}">
+		<script type="text/javascript">
+			$(function(){
+				loadPage({data:{url:'<%=menuUrl%>'}});
+				console.log(menuUrl);
+			});
+		</script>
+	</c:if>
 </body>
 </html>
