@@ -46,7 +46,6 @@ body {
 	background-image: url(image/adidas.006.png);
 }
 
-
 .scene.seven {
 	background-image: url(image/adidas.007.png);
 }
@@ -76,7 +75,7 @@ z-index: 10;
 	width: 170px;
 	height: 36px;
 	border-radius: 18px;
-	border: 1px solid gray;
+	border: 2px solid gray;
 	color: gray;
 	font-weight: bold;
 	font-size: 1.5em;

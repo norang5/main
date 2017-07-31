@@ -63,7 +63,7 @@ body {
 }
 
 #buying_info_table {
-	margin: 0px 50px;
+	margin: 0px 30px;
 	height: 50px;
 }
 
@@ -200,12 +200,12 @@ display: inline;
 								</tr>
 								<tr>
 									<td>색상</td>
-									<td> <%-- <form:select path="PRDT_COLOR" items="${prdtInfo.getPRDT_COLOR}" />--%></td>
+									<td><form:select path="PRDT_COLOR" items="${prdtColorInfo}" /></td>
 								</tr>
 
 								<tr>
 									<td>사이즈</td>
-									<td><%-- <form:select path="PRDT_SIZE_PK" items="${prdtInfo.get(0).PRDT_SIZE}" /> --%></td>
+									<td><form:select path="PRDT_SIZE_PK" items="${prdtSizeInfo}" /></td>
 								</tr>
 								<!-- 		<tr>
 					<td>수량</td>

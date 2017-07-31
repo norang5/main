@@ -250,3 +250,15 @@ INSERT INTO MEMBER_TB(
 
 SELECT * FROM MEMBER_TB;
 
+
+PRDT_POST_TB
+
+delete from PRDT_TB where   PCI_SQ_PK=1;
+delete from PRDT_COMMON_INFO_TB where   PCI_SQ_PK=1;
+delete from PRDT_POST_TB where   PCI_SQ_PK=1;
+
+delete from PRDT_COMMENT_TB where   PP_SQ_PK=41;
+
+
+update PRDT_COMMON_INFO_TB set PRDT_CTG_NM='ultra boost' where PCI_SQ_PK=110;
+

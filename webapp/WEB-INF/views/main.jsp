@@ -349,7 +349,7 @@ $(".hover").mouseleave(
 	<figure class="snip1384"><img src="./image/about_back03.jpg" alt="about" />
   <figcaption>
     <h3>About us</h3>
-    <p>나이키 오리지널스 슈즈 샵을 소개합니다</p><i class="ion-ios-arrow-right"></i>
+    <p>아디다스 오리지널스 슈즈 샵을 소개합니다</p><i class="ion-ios-arrow-right"></i>
   </figcaption>
   <a href="./info"></a>
 </figure>

@@ -160,6 +160,24 @@ public class StoreController {
 		List<PRDTBean> prdtInfo=storeDao.getPRDTInfo(PCI_SQ_PK);
 		System.out.println("Data: " + prdtInfo);
 		
+		List<String> prdtColorInfo = new ArrayList<String>();
+		
+		for(int i=0; i<prdtInfo.size(); i++){
+			
+				prdtColorInfo.add(prdtInfo.get(i).getPRDT_COLOR());
+				
+		}
+		
+		List<String> prdtSizeInfo = new ArrayList<String>();
+		
+		for(int i=0; i<prdtInfo.size(); i++){
+			
+			prdtSizeInfo.add(prdtInfo.get(i).getPRDT_SIZE_PK());
+				
+		}
+			
+			System.out.println("Data: " + prdtColorInfo);
+		
 		
 		//코멘트 리스트 받아오기
 		List<PRDTCommentBean> commentList = storeDao.getcommentList(PP_SQ_PK);
@@ -191,6 +209,8 @@ public class StoreController {
         model.addAttribute("commonInfo", commonInfo);
         model.addAttribute("postInfo", postInfo);
         model.addAttribute("prdtInfo", prdtInfo);
+        model.addAttribute("prdtColorInfo", prdtColorInfo);
+        model.addAttribute("prdtSizeInfo", prdtSizeInfo);
         model.addAttribute("commentList", commentList);
         model.addAttribute("PP_SQ_PK", PP_SQ_PK);
         model.addAttribute("mainImg", mainImg);
