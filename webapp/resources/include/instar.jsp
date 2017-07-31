@@ -41,7 +41,7 @@ System.out.println("공백제거 : "+tag);
 	num_photos = 6;
 
 	$.ajax({
-	url: 'https://api.instagram.com/v1/tags/<%=category%>/media/recent',
+	url: 'https://api.instagram.com/v1/tags/<%=tag%>/media/recent',
 	dataType: 'jsonp',
 	type: 'GET',
 	data: {access_token: token, count: num_photos},
